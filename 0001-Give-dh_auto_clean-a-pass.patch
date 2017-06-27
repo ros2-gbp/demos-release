@@ -1,0 +1,29 @@
+From 277e3ed9943019d7e6d80663be2263e446d05108 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Steven!=20Ragnar=C3=B6k?= <steven@nuclearsandwich.com>
+Date: Tue, 27 Jun 2017 13:06:08 -0400
+Subject: [PATCH] Give dh_auto_clean a pass.
+
+This is needed until python build deps are available at sourcedeb time.
+---
+ debian/rules.em | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/debian/rules.em b/debian/rules.em
+index f589242..bab4eac 100755
+--- a/debian/rules.em
++++ b/debian/rules.em
+@@ -26,6 +26,11 @@ export @(var[0])=@(var[1])
+ %:
+ 	dh $@@ -v @(debhelper_toplevel_options)
+ 
++override_dh_auto_clean:
++	# We don't have ament_python in the iamge that creates sourcedebs
++	# So for now we need to give a pass to dh_auto_clean invoking setup.py clean.
++	dh_auto_clean || true
++
+ override_dh_auto_configure:
+ 	# In case we're installing to a non-standard location, look for a setup.sh
+ 	# in the install tree that was dropped by catkin, and source it.  It will
+-- 
+2.7.4
+
