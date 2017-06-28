@@ -26,6 +26,11 @@ export @(var[0])=@(var[1])
 %:
 	dh $@@ -v @(debhelper_toplevel_options)
 
+override_dh_auto_clean:
+	# We don't have ament_python in the iamge that creates sourcedebs
+	# So for now we need to give a pass to dh_auto_clean invoking setup.py clean.
+	dh_auto_clean || true
+
 override_dh_auto_configure:
 	# In case we're installing to a non-standard location, look for a setup.sh
 	# in the install tree that was dropped by catkin, and source it.  It will
