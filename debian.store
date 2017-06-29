@@ -1,1 +1,1 @@
-{"parent": "debian/r2b2/image_tools", "trimbase": "", "previous": "87b71fe", "trim": "", "base": "11e3533"}
+{"base": "d69f4f9", "previous": "55fa11b", "parent": "debian/r2b2/image_tools", "trim": "", "trimbase": ""}
