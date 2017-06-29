@@ -1,4 +1,4 @@
-# Copyright 2016 Open Source Robotics Foundation, Inc.
+# Copyright 2017 Open Source Robotics Foundation, Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,27 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from example_interfaces.srv import AddTwoInts
-
-import rclpy
+from ament_flake8.main import main
 
 
-def main(args=None):
-    rclpy.init(args=args)
-
-    node = rclpy.create_node('add_two_ints_client')
-
-    cli = node.create_client(AddTwoInts, 'add_two_ints')
-    req = AddTwoInts.Request()
-    req.a = 2
-    req.b = 3
-    cli.call(req)
-    cli.wait_for_future()
-    print('Result of add_two_ints: %d' % cli.response.sum)
-
-    node.destroy_node()
-    rclpy.shutdown()
-
-
-if __name__ == '__main__':
-    main()
+def test_flake8():
+    rc = main(argv=[])
+    assert rc == 0, 'Found errors'
