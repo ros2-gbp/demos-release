@@ -29,6 +29,7 @@ export @(var[0])=@(var[1])
 override_dh_auto_clean:
 	# We don't have ament_python in the iamge that creates sourcedebs
 	# So for now we need to give a pass to dh_auto_clean invoking setup.py clean.
+	if [ -f "@(InstallationPrefix)/setup.sh" ]; then . "@(InstallationPrefix)/setup.sh"; fi && \
 	dh_auto_clean || true
 
 override_dh_auto_configure:
