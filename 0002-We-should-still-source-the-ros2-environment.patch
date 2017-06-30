@@ -1,0 +1,27 @@
+From 290bc14b42a12aecba54a60e5a34129c76c3ca27 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Steven!=20Ragnar=C3=B6k?= <steven@nuclearsandwich.com>
+Date: Fri, 30 Jun 2017 14:47:02 -0400
+Subject: [PATCH 2/2] We should still source the ros2 environment.
+
+The override to ignore failed cleans should still source the environment
+so that when ament_package is present in the ROS 2 prefix it is
+available and used.
+---
+ debian/rules.em | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/debian/rules.em b/debian/rules.em
+index bab4eac..d953865 100755
+--- a/debian/rules.em
++++ b/debian/rules.em
+@@ -29,6 +29,7 @@ export @(var[0])=@(var[1])
+ override_dh_auto_clean:
+ 	# We don't have ament_python in the iamge that creates sourcedebs
+ 	# So for now we need to give a pass to dh_auto_clean invoking setup.py clean.
++	if [ -f "@(InstallationPrefix)/setup.sh" ]; then . "@(InstallationPrefix)/setup.sh"; fi && \
+ 	dh_auto_clean || true
+ 
+ override_dh_auto_configure:
+-- 
+2.7.4
+
