@@ -1,4 +1,4 @@
-From f6ff2fafebe31d1b945c98012c8d3ba960843149 Mon Sep 17 00:00:00 2001
+From 3fdfb744ec86dc9fddbdc502be89bcbe4c0b6602 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Steven!=20Ragnar=C3=B6k?= <steven@nuclearsandwich.com>
 Date: Tue, 27 Jun 2017 13:06:08 -0400
 Subject: [PATCH 1/2] Give dh_auto_clean a pass.
