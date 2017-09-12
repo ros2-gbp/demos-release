@@ -12,30 +12,32 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from example_interfaces.srv import AddTwoInts
+import sys
 
 import rclpy
 
+from std_msgs.msg import String
 
-def add_two_ints_callback(request, response):
-    response.sum = request.a + request.b
-    print('Incoming request\na: %d b:%d' % (request.a, request.b))
 
-    return response
+class Listener(rclpy.Node):
+
+    def __init__(self):
+        super().__init__('listener')
+        self.sub = self.create_subscription(String, 'chatter', self.chatter_callback)
+        assert self.sub  # prevent unused warning
+
+    def chatter_callback(self, msg):
+        print('I heard: [%s]' % msg.data)
 
 
 def main(args=None):
+    if args is None:
+        args = sys.argv
+
     rclpy.init(args=args)
 
-    node = rclpy.create_node('add_two_ints_server')
-
-    srv = node.create_service(AddTwoInts, 'add_two_ints', add_two_ints_callback)
-    while rclpy.ok():
-        rclpy.spin_once(node)
-    # Destroy the service attached to the node explicitly
-    # (optional - otherwise it will be done automatically
-    # when the garbage collector destroys the node object)
-    node.destroy_service(srv)
+    node = Listener()
+    rclpy.spin(node)
 
     node.destroy_node()
     rclpy.shutdown()

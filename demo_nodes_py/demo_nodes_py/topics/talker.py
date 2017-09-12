@@ -19,8 +19,21 @@ import rclpy
 from std_msgs.msg import String
 
 
-def chatter_callback(msg):
-    print('I heard: [%s]' % msg.data)
+class Talker(rclpy.Node):
+
+    def __init__(self):
+        super().__init__('talker')
+        self.i = 0
+        self.pub = self.create_publisher(String, 'chatter')
+        timer_period = 1.0
+        self.tmr = self.create_timer(timer_period, self.timer_callback)
+
+    def timer_callback(self):
+        msg = String()
+        msg.data = 'Hello World: {0}'.format(self.i)
+        self.i += 1
+        print('Publishing: "{0}"'.format(msg.data))
+        self.pub.publish(msg)
 
 
 def main(args=None):
@@ -29,13 +42,9 @@ def main(args=None):
 
     rclpy.init(args=args)
 
-    node = rclpy.create_node('listener')
+    node = Talker()
 
-    sub = node.create_subscription(String, 'chatter', chatter_callback)
-    assert sub  # prevent unused warning
-
-    while rclpy.ok():
-        rclpy.spin_once(node)
+    rclpy.spin(node)
 
     node.destroy_node()
     rclpy.shutdown()

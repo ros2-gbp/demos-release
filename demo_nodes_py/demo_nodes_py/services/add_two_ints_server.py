@@ -12,35 +12,34 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import sys
-from time import sleep
+from example_interfaces.srv import AddTwoInts
 
 import rclpy
 
-from std_msgs.msg import String
+
+class AddTwoIntsServer(rclpy.Node):
+
+    def __init__(self):
+        super().__init__('add_two_ints_server')
+        self.srv = self.create_service(AddTwoInts, 'add_two_ints', self.add_two_ints_callback)
+        assert self.srv  # prevent unused variable warning
+
+    def add_two_ints_callback(self, request, response):
+        response.sum = request.a + request.b
+        print('Incoming request\na: %d b:%d' % (request.a, request.b))
+
+        return response
 
 
 def main(args=None):
-    if args is None:
-        args = sys.argv
-
     rclpy.init(args=args)
 
-    node = rclpy.create_node('talker')
+    node = AddTwoIntsServer()
 
-    chatter_pub = node.create_publisher(String, 'chatter')
+    rclpy.spin(node)
 
-    msg = String()
-
-    i = 1
-    while True:
-        msg.data = 'Hello World: {0}'.format(i)
-        i += 1
-        print('Publishing: "{0}"'.format(msg.data))
-        chatter_pub.publish(msg)
-        # TODO(wjwwood): need to spin_some or spin_once with timeout
-        sleep(1)
-
+    # Destroy the node explicitly
+    # (optional - Done automatically when node is garbage collected)
     node.destroy_node()
     rclpy.shutdown()
 
