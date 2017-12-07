@@ -17,7 +17,9 @@
 #include <iostream>
 #include <memory>
 
+#include "rclcpp/clock.hpp"
 #include "rclcpp/rclcpp.hpp"
+#include "rclcpp/time_source.hpp"
 
 #include "sensor_msgs/msg/joint_state.hpp"
 
@@ -25,7 +27,7 @@ int main(int argc, char * argv[])
 {
   rclcpp::init(argc, argv);
 
-  auto node = rclcpp::node::Node::make_shared("dummy_joint_states");
+  auto node = rclcpp::Node::make_shared("dummy_joint_states");
 
   auto joint_state_pub = node->create_publisher<sensor_msgs::msg::JointState>(
     "joint_states");
@@ -48,7 +50,10 @@ int main(int argc, char * argv[])
       msg->position[i] = joint_value;
     }
 
-    msg->header.stamp = rclcpp::Time::now();
+    rclcpp::TimeSource ts(node);
+    rclcpp::Clock::SharedPtr clock = std::make_shared<rclcpp::Clock>(RCL_ROS_TIME);
+    ts.attachClock(clock);
+    msg->header.stamp = clock->now();
 
     joint_state_pub->publish(msg);
     rclcpp::spin_some(node);

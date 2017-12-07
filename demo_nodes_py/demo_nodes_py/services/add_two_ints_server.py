@@ -15,18 +15,18 @@
 from example_interfaces.srv import AddTwoInts
 
 import rclpy
+from rclpy.node import Node
 
 
-class AddTwoIntsServer(rclpy.Node):
+class AddTwoIntsServer(Node):
 
     def __init__(self):
         super().__init__('add_two_ints_server')
         self.srv = self.create_service(AddTwoInts, 'add_two_ints', self.add_two_ints_callback)
-        assert self.srv  # prevent unused variable warning
 
     def add_two_ints_callback(self, request, response):
         response.sum = request.a + request.b
-        print('Incoming request\na: %d b:%d' % (request.a, request.b))
+        self.get_logger().info('Incoming request\na: %d b:%d' % (request.a, request.b))
 
         return response
 

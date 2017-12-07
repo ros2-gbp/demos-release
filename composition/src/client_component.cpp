@@ -26,45 +26,32 @@ using namespace std::chrono_literals;
 namespace composition
 {
 
-template<typename FutureT, typename WaitTimeT>
-std::future_status
-wait_for_result(
-  FutureT & future,
-  WaitTimeT time_to_wait)
-{
-  auto end = std::chrono::steady_clock::now() + time_to_wait;
-  std::chrono::milliseconds wait_period(100);
-  std::future_status status = std::future_status::timeout;
-  do {
-    auto now = std::chrono::steady_clock::now();
-    auto time_left = end - now;
-    if (time_left <= std::chrono::seconds(0)) {break;}
-    status = future.wait_for((time_left < wait_period) ? time_left : wait_period);
-  } while (rclcpp::ok() && status != std::future_status::ready);
-  return status;
-}
-
 Client::Client()
 : Node("Client")
 {
   client_ = create_client<example_interfaces::srv::AddTwoInts>("add_two_ints");
-  timer_ = create_wall_timer(1s, std::bind(&Client::on_timer, this));
+  // Note(dhood): The timer period must be greater than the duration of the timer callback.
+  // Otherwise, the timer can starve a single-threaded executor.
+  // See https://github.com/ros2/rclcpp/issues/392 for updates.
+  timer_ = create_wall_timer(2s, std::bind(&Client::on_timer, this));
 }
 
-bool Client::on_timer()
+void Client::on_timer()
 {
+  if (!client_->wait_for_service(1s)) {
+    if (!rclcpp::ok()) {
+      RCLCPP_ERROR(
+        this->get_logger(),
+        "Interrupted while waiting for the service. Exiting.")
+      return;
+    }
+    RCLCPP_INFO(this->get_logger(), "Service not available after waiting")
+    return;
+  }
+
   auto request = std::make_shared<example_interfaces::srv::AddTwoInts::Request>();
   request->a = 2;
   request->b = 3;
-
-  while (!client_->wait_for_service(1s)) {
-    if (!rclcpp::ok()) {
-      fprintf(stderr,
-        "add_two_ints_client was interrupted while waiting for the service. Exiting.\n");
-      return false;
-    }
-    fprintf(stderr, "service not available, waiting again...\n");
-  }
 
   // In order to wait for a response to arrive, we need to spin().
   // However, this function is already being called from within another spin().
@@ -77,13 +64,11 @@ bool Client::on_timer()
   // We then return from this callback so that the existing spin() function can
   // continue and our callback will get called once the response is received.
   using ServiceResponseFuture =
-      rclcpp::client::Client<example_interfaces::srv::AddTwoInts>::SharedFuture;
-  auto response_received_callback = [](ServiceResponseFuture future) {
-      printf("Got result: [%" PRIu64 "]\n", future.get()->sum);
+      rclcpp::Client<example_interfaces::srv::AddTwoInts>::SharedFuture;
+  auto response_received_callback = [this](ServiceResponseFuture future) {
+      RCLCPP_INFO(this->get_logger(), "Got result: [%" PRId64 "]", future.get()->sum)
     };
   auto future_result = client_->async_send_request(request, response_received_callback);
-
-  return true;
 }
 
 }  // namespace composition

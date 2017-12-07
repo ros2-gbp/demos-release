@@ -42,6 +42,8 @@ encoding2mat_type(const std::string & encoding)
     return CV_16SC1;
   } else if (encoding == "rgba8") {
     return CV_8UC4;
+  } else if (encoding == "bgra8") {
+    return CV_8UC4;
   } else if (encoding == "32FC1") {
     return CV_32FC1;
   } else if (encoding == "rgb8") {
@@ -53,9 +55,10 @@ encoding2mat_type(const std::string & encoding)
 
 /// Convert the ROS Image message to an OpenCV matrix and display it to the user.
 // \param[in] msg The image message to show.
-void show_image(const sensor_msgs::msg::Image::SharedPtr msg, bool show_camera)
+void show_image(
+  const sensor_msgs::msg::Image::SharedPtr msg, bool show_camera, rclcpp::Logger logger)
 {
-  printf("Received image #%s\n", msg->header.frame_id.c_str());
+  RCLCPP_INFO(logger, "Received image #%s", msg->header.frame_id.c_str())
 
   if (show_camera) {
     // Convert to an OpenCV matrix by assigning the data.
@@ -112,7 +115,7 @@ int main(int argc, char * argv[])
   }
 
   // Initialize a ROS node.
-  auto node = rclcpp::node::Node::make_shared("showimage");
+  auto node = rclcpp::Node::make_shared("showimage");
 
   // Set quality of service profile based on command line options.
   rmw_qos_profile_t custom_qos_profile = rmw_qos_profile_default;
@@ -131,12 +134,12 @@ int main(int argc, char * argv[])
   // makes no guarantees about the order or reliability of delivery.
   custom_qos_profile.reliability = reliability_policy;
 
-  auto callback = [show_camera](const sensor_msgs::msg::Image::SharedPtr msg)
+  auto callback = [show_camera, &node](const sensor_msgs::msg::Image::SharedPtr msg)
     {
-      show_image(msg, show_camera);
+      show_image(msg, show_camera, node->get_logger());
     };
 
-  printf("Subscribing to topic '%s'\n", topic.c_str());
+  RCLCPP_INFO(node->get_logger(), "Subscribing to topic '%s'", topic.c_str())
   // Initialize a subscriber that will receive the ROS Image message to be displayed.
   auto sub = node->create_subscription<sensor_msgs::msg::Image>(
     topic, callback, custom_qos_profile);

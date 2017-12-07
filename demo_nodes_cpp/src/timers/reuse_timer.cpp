@@ -24,24 +24,28 @@ class OneOffTimerNode : public rclcpp::Node
 {
 public:
   OneOffTimerNode()
-  : rclcpp::Node("reuse_timer"), count(0)
+  : Node("reuse_timer"), count(0)
   {
-    one_off_timer = this->create_wall_timer(1s, [this]() {
-      printf("in one_off_timer callback\n");
-      this->one_off_timer->cancel();
-    });
+    one_off_timer = this->create_wall_timer(
+      1s,
+      [this]() {
+        RCLCPP_INFO(this->get_logger(), "in one_off_timer callback")
+        this->one_off_timer->cancel();
+      });
     // cancel immediately to prevent it running the first time.
     one_off_timer->cancel();
 
-    periodic_timer = this->create_wall_timer(2s, [this]() {
-      printf("in periodic_timer callback\n");
-      if (this->count++ % 3 == 0) {
-        printf("  resetting one off timer\n");
-        this->one_off_timer->reset();
-      } else {
-        printf("  not resetting one off timer\n");
-      }
-    });
+    periodic_timer = this->create_wall_timer(
+      2s,
+      [this]() {
+        RCLCPP_INFO(this->get_logger(), "in periodic_timer callback")
+        if (this->count++ % 3 == 0) {
+          RCLCPP_INFO(this->get_logger(), "  resetting one off timer")
+          this->one_off_timer->reset();
+        } else {
+          RCLCPP_INFO(this->get_logger(), "  not resetting one off timer")
+        }
+      });
   }
 
   rclcpp::TimerBase::SharedPtr periodic_timer;
@@ -51,6 +55,9 @@ public:
 
 int main(int argc, char * argv[])
 {
+  // Force flush of the stdout buffer.
+  setvbuf(stdout, NULL, _IONBF, BUFSIZ);
+
   rclcpp::init(argc, argv);
 
   auto node = std::make_shared<OneOffTimerNode>();

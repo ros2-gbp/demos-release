@@ -16,6 +16,7 @@ find_package(ament_index_cpp REQUIRED)
 find_package(class_loader REQUIRED)
 find_package(example_interfaces REQUIRED)
 find_package(rclcpp REQUIRED)
+find_package(rcutils REQUIRED)
 find_package(rosidl_cmake REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
 find_package(std_msgs REQUIRED)
@@ -73,6 +74,13 @@ ament_target_dependencies(client_component
 rclcpp_register_node_plugins(client_component "composition::Client")
 set(node_plugins "${node_plugins}composition::Client;$<TARGET_FILE:client_component>\n")
 
+# since the package installs libraries without exporting them
+# it needs to make sure that the library path is being exported
+if(NOT WIN32)
+  ament_environment_hooks(
+    "${ament_cmake_package_templates_ENVIRONMENT_HOOK_LIBRARY_PATH}")
+endif()
+
 add_executable(manual_composition
   src/manual_composition.cpp)
 target_link_libraries(manual_composition
@@ -115,7 +123,8 @@ if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
 endif()
 ament_target_dependencies(api_composition
   "class_loader"
-  "rclcpp")
+  "rclcpp"
+  "rcutils")
 rosidl_target_interfaces(api_composition
   ${PROJECT_NAME} "rosidl_typesupport_cpp")
 
@@ -147,13 +156,15 @@ if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
   ament_lint_auto_find_test_dependencies()
 
+  find_package(ament_cmake_pytest REQUIRED)
   find_package(rmw_implementation_cmake REQUIRED)
 
   file(GENERATE
     OUTPUT
-    "test_ament_index/$<CONFIG>/share/ament_index/resource_index/node_plugin/${PROJECT_NAME}"
+    "${CMAKE_CURRENT_BINARY_DIR}/test_ament_index/$<CONFIG>/share/ament_index/resource_index/node_plugin/${PROJECT_NAME}"
     CONTENT "${node_plugins}")
 
+  set(generated_python_files)
   macro(tests)
     set(MANUAL_COMPOSITION_EXECUTABLE $<TARGET_FILE:manual_composition>)
     set(LINKTIME_COMPOSITION_EXECUTABLE $<TARGET_FILE:linktime_composition>)
@@ -174,14 +185,18 @@ if(BUILD_TESTING)
       @ONLY
     )
     file(GENERATE
-      OUTPUT test_composition${target_suffix}_$<CONFIG>.py
-      INPUT test_composition${target_suffix}.py.genexp)
-    ament_add_nose_test(test_composition${target_suffix}
+      OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/test_composition${target_suffix}_$<CONFIG>.py"
+      INPUT "${CMAKE_CURRENT_BINARY_DIR}/test_composition${target_suffix}.py.genexp"
+    )
+    ament_add_pytest_test(test_composition${target_suffix}
       "${CMAKE_CURRENT_BINARY_DIR}/test_composition${target_suffix}_$<CONFIG>.py"
       ENV RMW_IMPLEMENTATION=${rmw_implementation}
       APPEND_ENV AMENT_PREFIX_PATH=${CMAKE_CURRENT_BINARY_DIR}/test_ament_index/$<CONFIG>
       APPEND_LIBRARY_DIRS "${append_library_dirs}"
-      TIMEOUT 90)
+      TIMEOUT 100)
+    list(
+      APPEND generated_python_files
+      "${CMAKE_CURRENT_BINARY_DIR}/test_composition${target_suffix}_$<CONFIG>.py")
   endmacro()
 
   set(append_library_dirs "${CMAKE_CURRENT_BINARY_DIR}")
@@ -190,6 +205,13 @@ if(BUILD_TESTING)
   endif()
 
   call_for_each_rmw_implementation(tests)
+
+  find_package(ament_cmake_flake8 REQUIRED)
+  ament_flake8(
+    TESTNAME "flake8_generated_launch"
+    # the generated code might contain longer lines for templated types
+    MAX_LINE_LENGTH 999
+    ${generated_python_files})
 endif()
 
 ament_package()

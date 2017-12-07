@@ -18,14 +18,33 @@
 
 #include "composition/srv/load_node.hpp"
 #include "rclcpp/rclcpp.hpp"
+#include "rcutils/cmdline_parser.h"
 
 using namespace std::chrono_literals;
 
+void print_usage()
+{
+  printf("Usage for api_composition_cli:\n");
+  printf("api_composition_cli package_name plugin_name [--delay delay_ms] [-h]\n");
+  printf("options:\n");
+  printf("-h : Print this help function.\n");
+  printf("--delay delay_ms: Delay in ms before attempting request. Defaults to 0.\n");
+}
+
 int main(int argc, char * argv[])
 {
-  if (argc != 3) {
-    fprintf(stderr, "Requires exactly two arguments to be passed: package name and plugin name\n");
-    return 1;
+  // Force flush of the stdout buffer.
+  setvbuf(stdout, NULL, _IONBF, BUFSIZ);
+
+  if (argc < 3 || rcutils_cli_option_exist(argv, argv + argc, "-h")) {
+    print_usage();
+    return 0;
+  }
+
+  if (rcutils_cli_option_exist(argv, argv + argc, "--delay")) {
+    std::chrono::milliseconds delay = std::chrono::milliseconds(
+      std::stoul(rcutils_cli_get_option(argv, argv + argc, "--delay")));
+    std::this_thread::sleep_for(delay);
   }
 
   rclcpp::init(argc, argv);
@@ -34,29 +53,33 @@ int main(int argc, char * argv[])
 
   while (!client->wait_for_service(1s)) {
     if (!rclcpp::ok()) {
-      printf("api_composition_cli was interrupted while waiting for the service. Exiting.\n");
+      RCLCPP_ERROR(
+        node->get_logger(),
+        "Interrupted while waiting for the service. Exiting.")
       return 0;
     }
-    printf("service not available, waiting again...\n");
+    RCLCPP_INFO(node->get_logger(), "Service not available, waiting again...")
   }
 
   auto request = std::make_shared<composition::srv::LoadNode::Request>();
   request->package_name = argv[1];
   request->plugin_name = argv[2];
 
-  printf("Sending request...\n");
+  RCLCPP_INFO(node->get_logger(), "Sending request...")
   auto result = client->async_send_request(request);
-  printf("Waiting for response...\n");
+  RCLCPP_INFO(node->get_logger(), "Waiting for response...")
   if (rclcpp::spin_until_future_complete(node, result) !=
     rclcpp::executor::FutureReturnCode::SUCCESS)
   {
-    fprintf(stderr, "api_composition_cli was interrupted. Exiting.\n");
+    RCLCPP_ERROR(node->get_logger(), "Interrupted while waiting for response. Exiting.")
     if (!rclcpp::ok()) {
       return 0;
     }
     return 1;
   }
-  printf("Result of load_node: success = %s\n", result.get()->success ? "true" : "false");
+  RCLCPP_INFO(
+    node->get_logger(), "Result of load_node: success = %s",
+    result.get()->success ? "true" : "false")
 
   rclcpp::shutdown();
 

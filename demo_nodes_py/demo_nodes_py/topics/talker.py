@@ -15,11 +15,12 @@
 import sys
 
 import rclpy
+from rclpy.node import Node
 
 from std_msgs.msg import String
 
 
-class Talker(rclpy.Node):
+class Talker(Node):
 
     def __init__(self):
         super().__init__('talker')
@@ -32,7 +33,7 @@ class Talker(rclpy.Node):
         msg = String()
         msg.data = 'Hello World: {0}'.format(self.i)
         self.i += 1
-        print('Publishing: "{0}"'.format(msg.data))
+        self.get_logger().info('Publishing: "{0}"'.format(msg.data))
         self.pub.publish(msg)
 
 

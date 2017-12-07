@@ -31,11 +31,11 @@
  *   notifications about state changes of the node
  *   lc_talker
  */
-class LifecycleListener : public rclcpp::node::Node
+class LifecycleListener : public rclcpp::Node
 {
 public:
   explicit LifecycleListener(const std::string & node_name)
-  : rclcpp::node::Node(node_name)
+  : Node(node_name)
   {
     // Data topic from the lc_talker node
     sub_data_ = this->create_subscription<std_msgs::msg::String>("lifecycle_chatter",
@@ -51,18 +51,18 @@ public:
 
   void data_callback(const std_msgs::msg::String::SharedPtr msg)
   {
-    RCUTILS_LOG_INFO_NAMED(get_name(), "data_callback: %s", msg->data.c_str())
+    RCLCPP_INFO(get_logger(), "data_callback: %s", msg->data.c_str())
   }
 
   void notification_callback(const lifecycle_msgs::msg::TransitionEvent::SharedPtr msg)
   {
-    RCUTILS_LOG_INFO_NAMED(get_name(), "notify callback: Transition from state %s to %s",
+    RCLCPP_INFO(get_logger(), "notify callback: Transition from state %s to %s",
       msg->start_state.label.c_str(), msg->goal_state.label.c_str())
   }
 
 private:
-  std::shared_ptr<rclcpp::subscription::Subscription<std_msgs::msg::String>> sub_data_;
-  std::shared_ptr<rclcpp::subscription::Subscription<lifecycle_msgs::msg::TransitionEvent>>
+  std::shared_ptr<rclcpp::Subscription<std_msgs::msg::String>> sub_data_;
+  std::shared_ptr<rclcpp::Subscription<lifecycle_msgs::msg::TransitionEvent>>
   sub_notification_;
 };
 

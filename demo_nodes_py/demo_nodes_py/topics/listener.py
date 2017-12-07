@@ -15,19 +15,19 @@
 import sys
 
 import rclpy
+from rclpy.node import Node
 
 from std_msgs.msg import String
 
 
-class Listener(rclpy.Node):
+class Listener(Node):
 
     def __init__(self):
         super().__init__('listener')
         self.sub = self.create_subscription(String, 'chatter', self.chatter_callback)
-        assert self.sub  # prevent unused warning
 
     def chatter_callback(self, msg):
-        print('I heard: [%s]' % msg.data)
+        self.get_logger().info('I heard: [%s]' % msg.data)
 
 
 def main(args=None):
