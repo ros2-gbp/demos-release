@@ -1,0 +1,12 @@
+Source: ros-ardent-composition
+Section: misc
+Priority: extra
+Maintainer: Dirk Thomas <dthomas@osrfoundation.org>
+Build-Depends: debhelper (>= 9.0.0), ros-ardent-ament-cmake, ros-ardent-ament-cmake-pytest, ros-ardent-ament-index-cpp, ros-ardent-ament-lint-auto, ros-ardent-ament-lint-common, ros-ardent-class-loader, ros-ardent-example-interfaces, ros-ardent-launch, ros-ardent-launch-testing, ros-ardent-rclcpp, ros-ardent-rcutils, ros-ardent-rmw-implementation-cmake, ros-ardent-rosidl-cmake, ros-ardent-rosidl-default-generators, ros-ardent-std-msgs, ros-ardent-ros-workspace
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-ardent-composition
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-ardent-ament-index-cpp, ros-ardent-class-loader, ros-ardent-example-interfaces, ros-ardent-rclcpp, ros-ardent-rcutils, ros-ardent-rosidl-default-runtime, ros-ardent-std-msgs, ros-ardent-ros-workspace
+Description: Examples for composing multiple nodes in a single process.
