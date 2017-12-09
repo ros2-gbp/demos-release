@@ -1,4 +1,4 @@
-From 85a5cd14d9838f70a62639c8bb942f178a28c8dd Mon Sep 17 00:00:00 2001
+From 6d82b4bcad6b5f2c0b93216c16a0e5b0e234e917 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Steven!=20Ragnar=C3=B6k?= <steven@nuclearsandwich.com>
 Date: Thu, 7 Dec 2017 05:25:00 -0800
 Subject: [PATCH] Support GNU installdirs.
