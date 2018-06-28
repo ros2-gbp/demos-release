@@ -1,0 +1,8 @@
+ros-bouncy-dummy-robot-bringup (0.5.0-0bionic) bionic; urgency=high
+
+  * Convert launch files to new launch style. (#262 <https://github.com/ros2/demos/issues/262>)
+  * Contributors: Kevin Allen
+
+ -- Karsten Knese <karsten@osrfoundation.org>  Wed, 27 Jun 2018 07:00:00 -0000
+
+
