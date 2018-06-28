@@ -1,0 +1,12 @@
+Source: ros-bouncy-topic-monitor
+Section: misc
+Priority: extra
+Maintainer: D. Hood <dhood@osrfoundation.org>
+Build-Depends: debhelper (>= 9.0.0), python3-pytest, ros-bouncy-ament-flake8, ros-bouncy-ament-pep257, ros-bouncy-rclpy, ros-bouncy-ros-workspace, python3-all, python3-setuptools
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-bouncy-topic-monitor
+Architecture: any
+Depends: ${python3:Depends}, ${misc:Depends}, ros-bouncy-launch, ros-bouncy-launch-ros, ros-bouncy-rclpy, ros-bouncy-std-msgs, ros-bouncy-ros-workspace
+Description: Package containing tools for monitoring ROS 2 topics.
