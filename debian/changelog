@@ -1,0 +1,10 @@
+ros-bouncy-logging-demo (0.5.0-0bionic) bionic; urgency=high
+
+  * Updated to use the log level parsing functions from ``rcutils``. (#240 <https://github.com/ros2/demos/issues/240>)
+  * Updated launch files to account for the "old launch" getting renamespaced as ``launch`` -> ``launch.legacy``. (#239 <https://github.com/ros2/demos/issues/239>)
+  * Updated to avoid use of newly deprecated class loader headers. (#229 <https://github.com/ros2/demos/issues/229>)
+  * Contributors: Dirk Thomas, Michael Carroll, Mikael Arguedas, William Woodall, dhood
+
+ -- D. Hood <dhood@osrfoundation.org>  Wed, 27 Jun 2018 07:00:00 -0000
+
+
