@@ -1,0 +1,14 @@
+ros-bouncy-pendulum-msgs (0.5.1-0bionic) bionic; urgency=high
+
+  * make Mikael Arguedas the maintainer (#263 <https://github.com/ros2/demos/issues/263>)
+  * Contributors: Mikael Arguedas
+
+ -- Mikael Arguedas <mikael@osrfoundation.org>  Thu, 28 Jun 2018 07:00:00 -0000
+
+ros-bouncy-pendulum-msgs (0.5.0-0bionic) bionic; urgency=high
+
+
+
+ -- Jackie Kay <jackie@osrfoundation.org>  Wed, 27 Jun 2018 07:00:00 -0000
+
+
