@@ -64,7 +64,7 @@ public:
     // This way we can return immediately from this method and allow other work to be done by the
     // executor in `spin` while waiting for the response.
     using ServiceResponseFuture =
-        rclcpp::Client<example_interfaces::srv::AddTwoInts>::SharedFuture;
+      rclcpp::Client<example_interfaces::srv::AddTwoInts>::SharedFuture;
     auto response_received_callback = [this](ServiceResponseFuture future) {
         auto result = future.get();
         RCLCPP_INFO(this->get_logger(), "Result of add_two_ints: %" PRId64, result->sum)
@@ -92,9 +92,11 @@ int main(int argc, char ** argv)
   rclcpp::init(argc, argv);
 
   auto service_name = std::string("add_two_ints");
-  if (rcutils_cli_option_exist(argv, argv + argc, "-s")) {
-    service_name = std::string(rcutils_cli_get_option(argv, argv + argc, "-s"));
+  char * cli_option = rcutils_cli_get_option(argv, argv + argc, "-s");
+  if (nullptr != cli_option) {
+    service_name = std::string(cli_option);
   }
+
   auto node = std::make_shared<ClientNode>(service_name);
   rclcpp::spin(node);
 

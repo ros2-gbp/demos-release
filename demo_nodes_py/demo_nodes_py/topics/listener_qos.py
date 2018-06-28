@@ -47,8 +47,11 @@ def main(argv=sys.argv[1:]):
     parser.add_argument(
         '-n', '--number_of_cycles', type=int, default=20,
         help='max number of spin_once iterations')
+    parser.add_argument(
+        'argv', nargs=argparse.REMAINDER,
+        help='Pass arbitrary arguments to the executable')
     args = parser.parse_args(argv)
-    rclpy.init()
+    rclpy.init(args=args.argv)
 
     if args.reliable:
         custom_qos_profile = qos_profile_default

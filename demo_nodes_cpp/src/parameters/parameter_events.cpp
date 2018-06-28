@@ -25,7 +25,7 @@ void on_parameter_event(
 {
   // TODO(wjwwood): The message should have an operator<<, which would replace all of this.
   std::stringstream ss;
-  ss << "Parameter event:\n new parameters:";
+  ss << "\nParameter event:\n new parameters:";
   for (auto & new_parameter : event->new_parameters) {
     ss << "\n  " << new_parameter.name;
   }
@@ -37,6 +37,7 @@ void on_parameter_event(
   for (auto & deleted_parameter : event->deleted_parameters) {
     ss << "\n  " << deleted_parameter.name;
   }
+  ss << "\n";
   RCLCPP_INFO(logger, ss.str().c_str())
 }
 
@@ -48,9 +49,6 @@ int main(int argc, char ** argv)
   rclcpp::init(argc, argv);
 
   auto node = rclcpp::Node::make_shared("parameter_events");
-
-  // TODO(esteve): Make the parameter service automatically start with the node.
-  auto parameter_service = std::make_shared<rclcpp::ParameterService>(node);
 
   auto parameters_client = std::make_shared<rclcpp::SyncParametersClient>(node);
   while (!parameters_client->wait_for_service(1s)) {
@@ -70,16 +68,16 @@ int main(int argc, char ** argv)
 
   // Set several differnet types of parameters.
   auto set_parameters_results = parameters_client->set_parameters({
-    rclcpp::parameter::ParameterVariant("foo", 2),
-    rclcpp::parameter::ParameterVariant("bar", "hello"),
-    rclcpp::parameter::ParameterVariant("baz", 1.45),
-    rclcpp::parameter::ParameterVariant("foobar", true),
+    rclcpp::Parameter("foo", 2),
+    rclcpp::Parameter("bar", "hello"),
+    rclcpp::Parameter("baz", 1.45),
+    rclcpp::Parameter("foobar", true),
   });
 
   // Change the value of some of them.
   set_parameters_results = parameters_client->set_parameters({
-    rclcpp::parameter::ParameterVariant("foo", 3),
-    rclcpp::parameter::ParameterVariant("bar", "world"),
+    rclcpp::Parameter("foo", 3),
+    rclcpp::Parameter("bar", "world"),
   });
 
   // TODO(wjwwood): Create and use delete_parameter

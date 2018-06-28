@@ -28,9 +28,6 @@ int main(int argc, char ** argv)
 
   auto node = rclcpp::Node::make_shared("list_parameters");
 
-  // TODO(esteve): Make the parameter service automatically start with the node.
-  auto parameter_service = std::make_shared<rclcpp::ParameterService>(node);
-
   auto parameters_client = std::make_shared<rclcpp::SyncParametersClient>(node);
   while (!parameters_client->wait_for_service(1s)) {
     if (!rclcpp::ok()) {
@@ -43,12 +40,12 @@ int main(int argc, char ** argv)
   RCLCPP_INFO(node->get_logger(), "Setting parameters...")
   // Set several differnet types of parameters.
   auto set_parameters_results = parameters_client->set_parameters({
-    rclcpp::parameter::ParameterVariant("foo", 2),
-    rclcpp::parameter::ParameterVariant("bar", "hello"),
-    rclcpp::parameter::ParameterVariant("baz", 1.45),
-    rclcpp::parameter::ParameterVariant("foo.first", 8),
-    rclcpp::parameter::ParameterVariant("foo.second", 42),
-    rclcpp::parameter::ParameterVariant("foobar", true),
+    rclcpp::Parameter("foo", 2),
+    rclcpp::Parameter("bar", "hello"),
+    rclcpp::Parameter("baz", 1.45),
+    rclcpp::Parameter("foo.first", 8),
+    rclcpp::Parameter("foo.second", 42),
+    rclcpp::Parameter("foobar", true),
   });
 
   RCLCPP_INFO(node->get_logger(), "Listing parameters...")
@@ -56,7 +53,7 @@ int main(int argc, char ** argv)
   auto parameters_and_prefixes = parameters_client->list_parameters({"foo", "bar"}, 10);
 
   std::stringstream ss;
-  ss << "Parameter names:";
+  ss << "\nParameter names:";
   for (auto & name : parameters_and_prefixes.names) {
     ss << "\n " << name;
   }

@@ -38,6 +38,8 @@ custom_executable(topics imu_listener)
 ament_target_dependencies(imu_listener
   "sensor_msgs")
 custom_executable(topics allocator_tutorial)
+custom_executable(topics talker_serialized_message)
+custom_executable(topics listener_serialized_message)
 
 # Tutorials of Request/Response with Services
 custom_executable(services add_two_ints_client)
@@ -52,7 +54,6 @@ custom_executable(parameters parameter_events_async)
 custom_executable(parameters parameter_node)
 custom_executable(parameters set_and_get_parameters)
 custom_executable(parameters set_and_get_parameters_async)
-custom_executable(parameters ros2param)
 
 # Tutorials of Timers
 custom_executable(timers one_off_timer)
@@ -123,5 +124,11 @@ if(BUILD_TESTING)
 
   call_for_each_rmw_implementation(tests)
 endif()
+
+# Install launch files.
+install(DIRECTORY
+  launch
+  DESTINATION share/${PROJECT_NAME}/
+)
 
 ament_package()

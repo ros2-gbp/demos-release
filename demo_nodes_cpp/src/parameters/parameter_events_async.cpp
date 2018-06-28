@@ -21,7 +21,7 @@
 
 using namespace std::chrono_literals;
 using SetParametersResult =
-    std::shared_future<std::vector<rcl_interfaces::msg::SetParametersResult>>;
+  std::shared_future<std::vector<rcl_interfaces::msg::SetParametersResult>>;
 
 class ParameterEventsAsyncNode : public rclcpp::Node
 {
@@ -38,7 +38,7 @@ public:
       {
         // TODO(wjwwood): The message should have an operator<<, which would replace all of this.
         std::stringstream ss;
-        ss << "Parameter event:\n new parameters:";
+        ss << "\nParameter event:\n new parameters:";
         for (auto & new_parameter : event->new_parameters) {
           ss << "\n  " << new_parameter.name;
         }
@@ -50,6 +50,7 @@ public:
         for (auto & deleted_parameter : event->deleted_parameters) {
           ss << "\n  " << deleted_parameter.name;
         }
+        ss << "\n";
         RCLCPP_INFO(this->get_logger(), ss.str().c_str())
       };
 
@@ -87,10 +88,10 @@ public:
       };
 
     parameters_client_->set_parameters({
-      rclcpp::parameter::ParameterVariant("foo", 2),
-      rclcpp::parameter::ParameterVariant("bar", "hello"),
-      rclcpp::parameter::ParameterVariant("baz", 1.45),
-      rclcpp::parameter::ParameterVariant("foobar", true),
+      rclcpp::Parameter("foo", 2),
+      rclcpp::Parameter("bar", "hello"),
+      rclcpp::Parameter("baz", 1.45),
+      rclcpp::Parameter("foobar", true),
     }, response_received_callback);
   }
 
@@ -113,8 +114,8 @@ public:
             });
       };
     parameters_client_->set_parameters({
-      rclcpp::parameter::ParameterVariant("foo", 3),
-      rclcpp::parameter::ParameterVariant("bar", "world"),
+      rclcpp::Parameter("foo", 3),
+      rclcpp::Parameter("bar", "world"),
     }, response_received_callback);
   }
 
@@ -132,8 +133,6 @@ int main(int argc, char ** argv)
   rclcpp::init(argc, argv);
 
   auto node = std::make_shared<ParameterEventsAsyncNode>();
-  // TODO(esteve): Make the parameter service automatically start with the node.
-  auto parameter_service = std::make_shared<rclcpp::ParameterService>(node);
 
   rclcpp::spin(node);
   rclcpp::shutdown();
