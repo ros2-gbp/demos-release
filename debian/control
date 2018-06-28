@@ -1,0 +1,12 @@
+Source: ros-bouncy-pendulum-msgs
+Section: misc
+Priority: extra
+Maintainer: Jackie Kay <jackie@osrfoundation.org>
+Build-Depends: debhelper (>= 9.0.0), ros-bouncy-ament-cmake, ros-bouncy-builtin-interfaces, ros-bouncy-rosidl-default-generators, ros-bouncy-ros-workspace, ros-bouncy-rosidl-typesupport-connext-c, ros-bouncy-rosidl-typesupport-connext-cpp, ros-bouncy-rosidl-typesupport-opensplice-c, ros-bouncy-rosidl-typesupport-opensplice-cpp
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-bouncy-pendulum-msgs
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-bouncy-builtin-interfaces, ros-bouncy-rosidl-default-runtime, ros-bouncy-ros-workspace
+Description: Custom messages for real-time pendulum control.
