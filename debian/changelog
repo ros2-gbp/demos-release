@@ -1,0 +1,9 @@
+ros-bouncy-demo-nodes-py (0.5.0-0bionic) bionic; urgency=high
+
+  * Updated demos so that they support remapping arguments to python nodes by passing arguments to rclpy from argparse. (#252 <https://github.com/ros2/demos/issues/252> and #253 <https://github.com/ros2/demos/issues/253>)
+  * Updated client demo to handle multiple requests. (#228 <https://github.com/ros2/demos/issues/228>)
+  * Contributors: Dirk Thomas, Mikael Arguedas, Shane Loretz, dhood
+
+ -- Mikael Arguedas <mikael@osrfoundation.org>  Wed, 27 Jun 2018 07:00:00 -0000
+
+
