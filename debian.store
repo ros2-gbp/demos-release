@@ -1,1 +1,1 @@
-{"trim": "", "base": "ecb6c80", "trimbase": "", "parent": "debian/bouncy/dummy_robot_bringup", "previous": "4d05422"}
+{"base": "fbc5238", "parent": "debian/bouncy/dummy_robot_bringup", "trim": "", "trimbase": "", "previous": "da5b2bb"}
