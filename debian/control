@@ -1,0 +1,12 @@
+Source: ros-bouncy-demo-nodes-py
+Section: misc
+Priority: extra
+Maintainer: Mikael Arguedas <mikael@osrfoundation.org>
+Build-Depends: debhelper (>= 9.0.0), python3-pytest, ros-bouncy-ament-copyright, ros-bouncy-ament-flake8, ros-bouncy-ament-pep257, ros-bouncy-ros-workspace, python3-all, python3-setuptools
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-bouncy-demo-nodes-py
+Architecture: any
+Depends: ${python3:Depends}, ${misc:Depends}, ros-bouncy-example-interfaces, ros-bouncy-rclpy, ros-bouncy-std-msgs, ros-bouncy-ros-workspace
+Description: Python nodes which were previously in the ros2/examples repository but are now just used for demo purposes.
