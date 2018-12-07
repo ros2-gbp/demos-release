@@ -1,0 +1,20 @@
+ros-crystal-intra-process-demo (0.6.0-0bionic) bionic; urgency=high
+
+
+
+ -- William Woodall <william@osrfoundation.org>  Fri, 07 Dec 2018 08:00:00 -0000
+
+ros-crystal-intra-process-demo (0.5.1-0bionic) bionic; urgency=high
+
+
+
+ -- William Woodall <william@osrfoundation.org>  Thu, 28 Jun 2018 07:00:00 -0000
+
+ros-crystal-intra-process-demo (0.5.0-0bionic) bionic; urgency=high
+
+  * Updated launch files to account for the "old launch" getting renamespaced as ``launch`` -> ``launch.legacy``. (#239 <https://github.com/ros2/demos/issues/239>)
+  * Contributors: Dirk Thomas, William Woodall
+
+ -- William Woodall <william@osrfoundation.org>  Wed, 27 Jun 2018 07:00:00 -0000
+
+
