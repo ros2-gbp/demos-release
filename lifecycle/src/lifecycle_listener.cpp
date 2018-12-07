@@ -42,7 +42,7 @@ public:
         std::bind(&LifecycleListener::data_callback, this, std::placeholders::_1));
 
     // Notification event topic. All state changes
-    // are published here as TransiitonEvents with
+    // are published here as TransitionEvents with
     // a start and goal state indicating the transition
     sub_notification_ = this->create_subscription<lifecycle_msgs::msg::TransitionEvent>(
       "/lc_talker/transition_event", std::bind(&LifecycleListener::notification_callback, this,
@@ -51,13 +51,13 @@ public:
 
   void data_callback(const std_msgs::msg::String::SharedPtr msg)
   {
-    RCLCPP_INFO(get_logger(), "data_callback: %s", msg->data.c_str())
+    RCLCPP_INFO(get_logger(), "data_callback: %s", msg->data.c_str());
   }
 
   void notification_callback(const lifecycle_msgs::msg::TransitionEvent::SharedPtr msg)
   {
     RCLCPP_INFO(get_logger(), "notify callback: Transition from state %s to %s",
-      msg->start_state.label.c_str(), msg->goal_state.label.c_str())
+      msg->start_state.label.c_str(), msg->goal_state.label.c_str());
   }
 
 private:

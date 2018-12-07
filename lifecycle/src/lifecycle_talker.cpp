@@ -32,7 +32,7 @@
 
 using namespace std::chrono_literals;
 
-/// LifeycycleTalker inheriting from rclcpp_lifecycle::LifecycleNode
+/// LifecycleTalker inheriting from rclcpp_lifecycle::LifecycleNode
 /**
  * The lifecycle talker does not like the regular "talker" node
  * inherit from node, but rather from lifecyclenode. This brings
@@ -79,10 +79,10 @@ public:
     // Print the current state for demo purposes
     if (!pub_->is_activated()) {
       RCLCPP_INFO(
-        get_logger(), "Lifecycle publisher is currently inactive. Messages are not published.")
+        get_logger(), "Lifecycle publisher is currently inactive. Messages are not published.");
     } else {
       RCLCPP_INFO(
-        get_logger(), "Lifecycle publisher is active. Publishing: [%s]", msg_->data.c_str())
+        get_logger(), "Lifecycle publisher is active. Publishing: [%s]", msg_->data.c_str());
     }
 
     // We independently from the current state call publish on the lifecycle
@@ -103,12 +103,12 @@ public:
    * TRANSITION_CALLBACK_FAILURE transitions to "unconfigured"
    * TRANSITION_CALLBACK_ERROR or any uncaught exceptions to "errorprocessing"
    */
-  rcl_lifecycle_transition_key_t
+  rclcpp_lifecycle::node_interfaces::LifecycleNodeInterface::CallbackReturn
   on_configure(const rclcpp_lifecycle::State &)
   {
     // This callback is supposed to be used for initialization and
     // configuring purposes.
-    // We thus initalize and configure our messages, publishers and timers.
+    // We thus initialize and configure our messages, publishers and timers.
     // The lifecycle node API does return lifecycle components such as
     // lifecycle publishers. These entities obey the lifecycle and
     // can comply to the current state of the node.
@@ -119,7 +119,7 @@ public:
     timer_ = this->create_wall_timer(
       1s, std::bind(&LifecycleTalker::publish, this));
 
-    RCLCPP_INFO(get_logger(), "on_configure() is called.")
+    RCLCPP_INFO(get_logger(), "on_configure() is called.");
 
     // We return a success and hence invoke the transition to the next
     // step: "inactive".
@@ -127,7 +127,7 @@ public:
     // would stay in the "unconfigured" state.
     // In case of TRANSITION_CALLBACK_ERROR or any thrown exception within
     // this callback, the state machine transitions to state "errorprocessing".
-    return lifecycle_msgs::msg::Transition::TRANSITION_CALLBACK_SUCCESS;
+    return rclcpp_lifecycle::node_interfaces::LifecycleNodeInterface::CallbackReturn::SUCCESS;
   }
 
   /// Transition callback for state activating
@@ -141,7 +141,7 @@ public:
    * TRANSITION_CALLBACK_FAILURE transitions to "inactive"
    * TRANSITION_CALLBACK_ERROR or any uncaught exceptions to "errorprocessing"
    */
-  rcl_lifecycle_transition_key_t
+  rclcpp_lifecycle::node_interfaces::LifecycleNodeInterface::CallbackReturn
   on_activate(const rclcpp_lifecycle::State &)
   {
     // We explicitly activate the lifecycle publisher.
@@ -149,7 +149,7 @@ public:
     // ignored but sent into the network.
     pub_->on_activate();
 
-    RCUTILS_LOG_INFO_NAMED(get_name(), "on_activate() is called.")
+    RCUTILS_LOG_INFO_NAMED(get_name(), "on_activate() is called.");
 
     // Let's sleep for 2 seconds.
     // We emulate we are doing important
@@ -162,7 +162,7 @@ public:
     // would stay in the "inactive" state.
     // In case of TRANSITION_CALLBACK_ERROR or any thrown exception within
     // this callback, the state machine transitions to state "errorprocessing".
-    return lifecycle_msgs::msg::Transition::TRANSITION_CALLBACK_SUCCESS;
+    return rclcpp_lifecycle::node_interfaces::LifecycleNodeInterface::CallbackReturn::SUCCESS;
   }
 
   /// Transition callback for state deactivating
@@ -176,7 +176,7 @@ public:
    * TRANSITION_CALLBACK_FAILURE transitions to "active"
    * TRANSITION_CALLBACK_ERROR or any uncaught exceptions to "errorprocessing"
    */
-  rcl_lifecycle_transition_key_t
+  rclcpp_lifecycle::node_interfaces::LifecycleNodeInterface::CallbackReturn
   on_deactivate(const rclcpp_lifecycle::State &)
   {
     // We explicitly deactivate the lifecycle publisher.
@@ -184,7 +184,7 @@ public:
     // sent into the network.
     pub_->on_deactivate();
 
-    RCUTILS_LOG_INFO_NAMED(get_name(), "on_deactivate() is called.")
+    RCUTILS_LOG_INFO_NAMED(get_name(), "on_deactivate() is called.");
 
     // We return a success and hence invoke the transition to the next
     // step: "inactive".
@@ -192,7 +192,7 @@ public:
     // would stay in the "active" state.
     // In case of TRANSITION_CALLBACK_ERROR or any thrown exception within
     // this callback, the state machine transitions to state "errorprocessing".
-    return lifecycle_msgs::msg::Transition::TRANSITION_CALLBACK_SUCCESS;
+    return rclcpp_lifecycle::node_interfaces::LifecycleNodeInterface::CallbackReturn::SUCCESS;
   }
 
   /// Transition callback for state cleaningup
@@ -200,13 +200,13 @@ public:
    * on_cleanup callback is being called when the lifecycle node
    * enters the "cleaningup" state.
    * Depending on the return value of this function, the state machine
-   * either invokes a transition to the "uncofigured" state or stays
+   * either invokes a transition to the "unconfigured" state or stays
    * in "inactive".
    * TRANSITION_CALLBACK_SUCCESS transitions to "unconfigured"
    * TRANSITION_CALLBACK_FAILURE transitions to "inactive"
    * TRANSITION_CALLBACK_ERROR or any uncaught exceptions to "errorprocessing"
    */
-  rcl_lifecycle_transition_key_t
+  rclcpp_lifecycle::node_interfaces::LifecycleNodeInterface::CallbackReturn
   on_cleanup(const rclcpp_lifecycle::State &)
   {
     // In our cleanup phase, we release the shared pointers to the
@@ -215,7 +215,7 @@ public:
     timer_.reset();
     pub_.reset();
 
-    RCUTILS_LOG_INFO_NAMED(get_name(), "on cleanup is called.")
+    RCUTILS_LOG_INFO_NAMED(get_name(), "on cleanup is called.");
 
     // We return a success and hence invoke the transition to the next
     // step: "unconfigured".
@@ -223,7 +223,41 @@ public:
     // would stay in the "inactive" state.
     // In case of TRANSITION_CALLBACK_ERROR or any thrown exception within
     // this callback, the state machine transitions to state "errorprocessing".
-    return lifecycle_msgs::msg::Transition::TRANSITION_CALLBACK_SUCCESS;
+    return rclcpp_lifecycle::node_interfaces::LifecycleNodeInterface::CallbackReturn::SUCCESS;
+  }
+
+  /// Transition callback for state shutting down
+  /**
+   * on_shutdown callback is being called when the lifecycle node
+   * enters the "shuttingdown" state.
+   * Depending on the return value of this function, the state machine
+   * either invokes a transition to the "finalized" state or stays
+   * in its current state.
+   * TRANSITION_CALLBACK_SUCCESS transitions to "finalized"
+   * TRANSITION_CALLBACK_FAILURE transitions to current state
+   * TRANSITION_CALLBACK_ERROR or any uncaught exceptions to "errorprocessing"
+   */
+  rclcpp_lifecycle::node_interfaces::LifecycleNodeInterface::CallbackReturn
+  on_shutdown(const rclcpp_lifecycle::State & state)
+  {
+    // In our cleanup phase, we release the shared pointers to the
+    // timer and publisher. These entities are no longer available
+    // and our node is "clean".
+    timer_.reset();
+    pub_.reset();
+
+    RCUTILS_LOG_INFO_NAMED(
+      get_name(),
+      "on shutdown is called from state %s.",
+      state.label().c_str());
+
+    // We return a success and hence invoke the transition to the next
+    // step: "unconfigured".
+    // If we returned TRANSITION_CALLBACK_FAILURE instead, the state machine
+    // would stay in the "inactive" state.
+    // In case of TRANSITION_CALLBACK_ERROR or any thrown exception within
+    // this callback, the state machine transitions to state "errorprocessing".
+    return rclcpp_lifecycle::node_interfaces::LifecycleNodeInterface::CallbackReturn::SUCCESS;
   }
 
 private:

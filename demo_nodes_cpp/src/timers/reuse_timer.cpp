@@ -20,16 +20,16 @@
 
 using namespace std::chrono_literals;
 
-class OneOffTimerNode : public rclcpp::Node
+class ReuseTimerNode : public rclcpp::Node
 {
 public:
-  OneOffTimerNode()
+  ReuseTimerNode()
   : Node("reuse_timer"), count(0)
   {
     one_off_timer = this->create_wall_timer(
       1s,
       [this]() {
-        RCLCPP_INFO(this->get_logger(), "in one_off_timer callback")
+        RCLCPP_INFO(this->get_logger(), "in one_off_timer callback");
         this->one_off_timer->cancel();
       });
     // cancel immediately to prevent it running the first time.
@@ -38,12 +38,12 @@ public:
     periodic_timer = this->create_wall_timer(
       2s,
       [this]() {
-        RCLCPP_INFO(this->get_logger(), "in periodic_timer callback")
+        RCLCPP_INFO(this->get_logger(), "in periodic_timer callback");
         if (this->count++ % 3 == 0) {
-          RCLCPP_INFO(this->get_logger(), "  resetting one off timer")
+          RCLCPP_INFO(this->get_logger(), "  resetting one off timer");
           this->one_off_timer->reset();
         } else {
-          RCLCPP_INFO(this->get_logger(), "  not resetting one off timer")
+          RCLCPP_INFO(this->get_logger(), "  not resetting one off timer");
         }
       });
   }
@@ -60,7 +60,7 @@ int main(int argc, char * argv[])
 
   rclcpp::init(argc, argv);
 
-  auto node = std::make_shared<OneOffTimerNode>();
+  auto node = std::make_shared<ReuseTimerNode>();
 
   rclcpp::spin(node);
 

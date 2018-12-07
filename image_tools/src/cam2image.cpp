@@ -77,10 +77,10 @@ int main(int argc, char * argv[])
 
   // Initialize default demo parameters
   bool show_camera = false;
-  size_t depth = 10;
+  size_t depth = rmw_qos_profile_default.depth;
   double freq = 30.0;
-  rmw_qos_reliability_policy_t reliability_policy = RMW_QOS_POLICY_RELIABILITY_RELIABLE;
-  rmw_qos_history_policy_t history_policy = RMW_QOS_POLICY_HISTORY_KEEP_ALL;
+  rmw_qos_reliability_policy_t reliability_policy = rmw_qos_profile_default.reliability;
+  rmw_qos_history_policy_t history_policy = rmw_qos_profile_default.history;
   size_t width = 320;
   size_t height = 240;
   bool burger_mode = false;
@@ -92,10 +92,10 @@ int main(int argc, char * argv[])
   setvbuf(stdout, NULL, _IONBF, BUFSIZ);
 
   // Configure demo parameters with command line options.
-  bool success = parse_command_options(
-    argc, argv, &depth, &reliability_policy, &history_policy, &show_camera, &freq, &width, &height,
-    &burger_mode, &topic);
-  if (!success) {
+  if (!parse_command_options(
+      argc, argv, &depth, &reliability_policy, &history_policy, &show_camera, &freq, &width,
+      &height, &burger_mode, &topic))
+  {
     return 0;
   }
 
@@ -121,7 +121,7 @@ int main(int argc, char * argv[])
   // parameter.
   custom_camera_qos_profile.history = history_policy;
 
-  RCLCPP_INFO(node_logger, "Publishing data on topic '%s'", topic.c_str())
+  RCLCPP_INFO(node_logger, "Publishing data on topic '%s'", topic.c_str());
   // Create the image publisher with our custom QoS profile.
   auto pub = node->create_publisher<sensor_msgs::msg::Image>(
     topic, custom_camera_qos_profile);
@@ -135,7 +135,7 @@ int main(int argc, char * argv[])
     [&is_flipped, &node_logger](const std_msgs::msg::Bool::SharedPtr msg) -> void
     {
       is_flipped = msg->data;
-      RCLCPP_INFO(node_logger, "Set flip mode to: %s", is_flipped ? "on" : "off")
+      RCLCPP_INFO(node_logger, "Set flip mode to: %s", is_flipped ? "on" : "off");
     };
 
   // Set the QoS profile for the subscription to the flip message.
@@ -159,7 +159,7 @@ int main(int argc, char * argv[])
     cap.set(CV_CAP_PROP_FRAME_WIDTH, static_cast<double>(width));
     cap.set(CV_CAP_PROP_FRAME_HEIGHT, static_cast<double>(height));
     if (!cap.isOpened()) {
-      RCLCPP_ERROR(node_logger, "Could not open video stream")
+      RCLCPP_ERROR(node_logger, "Could not open video stream");
       return 1;
     }
   }
@@ -202,7 +202,7 @@ int main(int argc, char * argv[])
         cv::waitKey(1);
       }
       // Publish the image message and increment the frame_id.
-      RCLCPP_INFO(node_logger, "Publishing image #%zd", i)
+      RCLCPP_INFO(node_logger, "Publishing image #%zd", i);
       pub->publish(msg);
       ++i;
     }
