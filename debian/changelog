@@ -1,0 +1,26 @@
+ros-crystal-dummy-sensors (0.6.1-0bionic) bionic; urgency=high
+
+
+
+ -- Karsten Knese <karsten@osrfoundation.org>  Thu, 13 Dec 2018 08:00:00 -0000
+
+ros-crystal-dummy-sensors (0.6.0-0bionic) bionic; urgency=high
+
+  * Added semicolons to all RCLCPP and RCUTILS macros. (#278 <https://github.com/ros2/demos/issues/278>)
+  * Contributors: Chris Lalancette
+
+ -- Karsten Knese <karsten@osrfoundation.org>  Fri, 07 Dec 2018 08:00:00 -0000
+
+ros-crystal-dummy-sensors (0.5.1-0bionic) bionic; urgency=high
+
+
+
+ -- Karsten Knese <karsten@osrfoundation.org>  Thu, 28 Jun 2018 07:00:00 -0000
+
+ros-crystal-dummy-sensors (0.5.0-0bionic) bionic; urgency=high
+
+
+
+ -- Karsten Knese <karsten@osrfoundation.org>  Wed, 27 Jun 2018 07:00:00 -0000
+
+
