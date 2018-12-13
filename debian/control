@@ -1,0 +1,12 @@
+Source: ros-crystal-pendulum-msgs
+Section: misc
+Priority: extra
+Maintainer: Michael Carroll <michael@openrobotics.org>
+Build-Depends: debhelper (>= 9.0.0), ros-crystal-ament-cmake, ros-crystal-builtin-interfaces, ros-crystal-rosidl-default-generators, ros-crystal-ros-workspace, ros-crystal-rmw-connext-cpp, ros-crystal-rmw-fastrtps-cpp, ros-crystal-rmw-implementation, ros-crystal-rmw-opensplice-cpp, ros-crystal-rosidl-typesupport-connext-c, ros-crystal-rosidl-typesupport-connext-cpp, ros-crystal-rosidl-typesupport-opensplice-c, ros-crystal-rosidl-typesupport-opensplice-cpp
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-crystal-pendulum-msgs
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-crystal-builtin-interfaces, ros-crystal-rosidl-default-runtime, ros-crystal-ros-workspace
+Description: Custom messages for real-time pendulum control.
