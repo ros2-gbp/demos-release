@@ -5,7 +5,7 @@ package_name = 'demo_nodes_py'
 
 setup(
     name=package_name,
-    version='0.6.1',
+    version='0.6.2',
     packages=find_packages(exclude=['test']),
     data_files=[
         ('share/ament_index/resource_index/packages',
@@ -37,6 +37,7 @@ setup(
             'talker = demo_nodes_py.topics.talker:main',
             'listener_qos = demo_nodes_py.topics.listener_qos:main',
             'talker_qos = demo_nodes_py.topics.talker_qos:main',
+            'listener_serialized = demo_nodes_py.topics.listener_serialized:main',
             'add_two_ints_client = demo_nodes_py.services.add_two_ints_client:main',
             'add_two_ints_client_async = demo_nodes_py.services.add_two_ints_client_async:main',
             'add_two_ints_server = demo_nodes_py.services.add_two_ints_server:main'
