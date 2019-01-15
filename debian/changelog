@@ -1,0 +1,33 @@
+ros-crystal-dummy-robot-bringup (0.6.2-0bionic) bionic; urgency=high
+
+
+
+ -- Karsten Knese <karsten@osrfoundation.org>  Tue, 15 Jan 2019 08:00:00 -0000
+
+ros-crystal-dummy-robot-bringup (0.6.1-0bionic) bionic; urgency=high
+
+
+
+ -- Karsten Knese <karsten@osrfoundation.org>  Thu, 13 Dec 2018 08:00:00 -0000
+
+ros-crystal-dummy-robot-bringup (0.6.0-0bionic) bionic; urgency=high
+
+  * Added missing launch_ros exec dependency (#277 <https://github.com/ros2/demos/issues/277>)
+  * Contributors: Mikael Arguedas
+
+ -- Karsten Knese <karsten@osrfoundation.org>  Fri, 07 Dec 2018 08:00:00 -0000
+
+ros-crystal-dummy-robot-bringup (0.5.1-0bionic) bionic; urgency=high
+
+
+
+ -- Karsten Knese <karsten@osrfoundation.org>  Thu, 28 Jun 2018 07:00:00 -0000
+
+ros-crystal-dummy-robot-bringup (0.5.0-0bionic) bionic; urgency=high
+
+  * Convert launch files to new launch style. (#262 <https://github.com/ros2/demos/issues/262>)
+  * Contributors: Kevin Allen
+
+ -- Karsten Knese <karsten@osrfoundation.org>  Wed, 27 Jun 2018 07:00:00 -0000
+
+
