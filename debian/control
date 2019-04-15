@@ -1,0 +1,12 @@
+Source: ros-dashing-demo-nodes-cpp-native
+Section: misc
+Priority: extra
+Maintainer: Dirk Thomas <dthomas@osrfoundation.org>
+Build-Depends: debhelper (>= 9.0.0), ros-dashing-ament-cmake, ros-dashing-ament-cmake-pytest, ros-dashing-ament-lint-auto, ros-dashing-ament-lint-common, ros-dashing-launch, ros-dashing-launch-testing, ros-dashing-rclcpp, ros-dashing-rmw-fastrtps-cpp, ros-dashing-std-msgs, ros-dashing-ros-workspace
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-dashing-demo-nodes-cpp-native
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-dashing-rclcpp, ros-dashing-rmw-fastrtps-cpp, ros-dashing-std-msgs, ros-dashing-ros-workspace
+Description: C++ nodes which access the native handles of the rmw implemenation.
