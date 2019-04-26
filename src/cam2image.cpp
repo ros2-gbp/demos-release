@@ -156,14 +156,8 @@ int main(int argc, char * argv[])
     cap.open(0);
 
     // Set the width and height based on command line arguments.
-    // TODO(jacobperron): Remove pre-compiler check when we drop support for Xenial
-#if CV_MAJOR_VERSION < 3
-    cap.set(CV_CAP_PROP_FRAME_WIDTH, static_cast<double>(width));
-    cap.set(CV_CAP_PROP_FRAME_HEIGHT, static_cast<double>(height));
-#else
     cap.set(cv::CAP_PROP_FRAME_WIDTH, static_cast<double>(width));
     cap.set(cv::CAP_PROP_FRAME_HEIGHT, static_cast<double>(height));
-#endif
     if (!cap.isOpened()) {
       RCLCPP_ERROR(node_logger, "Could not open video stream");
       return 1;
@@ -199,8 +193,6 @@ int main(int argc, char * argv[])
         convert_frame_to_message(flipped_frame, i, msg);
       }
       if (show_camera) {
-        // NOTE(esteve): Use C version of cvShowImage to avoid this on Windows:
-        // http://stackoverflow.com/questions/20854682/opencv-multiple-unwanted-window-with-garbage-name
         cv::Mat cvframe = frame;
         // Show the image in a window called "cam2image".
         cv::imshow("cam2image", cvframe);
