@@ -1,3 +1,40 @@
+## demos (dashing) - 0.7.1-1
+
+The packages in the `demos` repository were released into the `dashing` distro by running `/usr/bin/bloom-release -r dashing demos --override-release-repository-push-url git@github.com:ros2-gbp/demos-release` on `Fri, 26 Apr 2019 19:36:11 -0000`
+
+These packages were released:
+- `composition`
+- `demo_nodes_cpp`
+- `demo_nodes_cpp_native`
+- `demo_nodes_py`
+- `dummy_map_server`
+- `dummy_robot_bringup`
+- `dummy_sensors`
+- `image_tools`
+- `intra_process_demo`
+- `lifecycle`
+- `logging_demo`
+- `pendulum_control`
+- `pendulum_msgs`
+- `topic_monitor`
+
+Version of package(s) in repository `demos`:
+
+- upstream repository: https://github.com/ros2/demos.git
+- release repository: https://github.com/ros2-gbp/demos-release.git
+- rosdistro version: `0.7.0-1`
+- old version: `0.7.0-1`
+- new version: `0.7.1-1`
+
+Versions of tools used:
+
+- bloom version: `0.8.0`
+- catkin_pkg version: `0.4.11`
+- rosdep version: `0.15.1`
+- rosdistro version: `0.7.3`
+- vcstools version: `0.1.40`
+
+
 ## demos (dashing) - 0.7.0-1
 
 The packages in the `demos` repository were released into the `dashing` distro by running `/usr/bin/bloom-release -n -r dashing demos --override-release-repository-push-url git@github.com:ros2-gbp/demos-release` on `Mon, 15 Apr 2019 02:42:26 -0000`
