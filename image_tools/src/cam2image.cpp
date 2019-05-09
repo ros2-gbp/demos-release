@@ -16,6 +16,7 @@
 #include <iostream>
 #include <memory>
 #include <string>
+#include <utility>
 
 #include "opencv2/highgui/highgui.hpp"
 
@@ -57,17 +58,17 @@ mat_type2encoding(int mat_type)
  * \param[out] Allocated shared pointer for the ROS Image message.
  */
 void convert_frame_to_message(
-  const cv::Mat & frame, size_t frame_id, sensor_msgs::msg::Image::SharedPtr msg)
+  const cv::Mat & frame, size_t frame_id, sensor_msgs::msg::Image & msg)
 {
   // copy cv information into ros message
-  msg->height = frame.rows;
-  msg->width = frame.cols;
-  msg->encoding = mat_type2encoding(frame.type());
-  msg->step = static_cast<sensor_msgs::msg::Image::_step_type>(frame.step);
+  msg.height = frame.rows;
+  msg.width = frame.cols;
+  msg.encoding = mat_type2encoding(frame.type());
+  msg.step = static_cast<sensor_msgs::msg::Image::_step_type>(frame.step);
   size_t size = frame.step * frame.rows;
-  msg->data.resize(size);
-  memcpy(&msg->data[0], frame.data, size);
-  msg->header.frame_id = std::to_string(frame_id);
+  msg.data.resize(size);
+  memcpy(&msg.data[0], frame.data, size);
+  msg.header.frame_id = std::to_string(frame_id);
 }
 
 int main(int argc, char * argv[])
@@ -105,26 +106,24 @@ int main(int argc, char * argv[])
 
   // Set the parameters of the quality of service profile. Initialize as the default profile
   // and set the QoS parameters specified on the command line.
-  rmw_qos_profile_t custom_camera_qos_profile = rmw_qos_profile_default;
-
-  // Depth represents how many messages to store in history when the history policy is KEEP_LAST.
-  custom_camera_qos_profile.depth = depth;
+  auto qos = rclcpp::QoS(
+    rclcpp::QoSInitialization(
+      // The history policy determines how messages are saved until taken by the reader.
+      // KEEP_ALL saves all messages until they are taken, up to a system resource limit.
+      // KEEP_LAST enforces a limit on the number of messages that are saved.
+      // The limit is specified by the history "depth" parameter.
+      history_policy,
+      // Depth represents how many messages to save in history when the history policy is KEEP_LAST.
+      depth));
 
   // The reliability policy can be reliable, meaning that the underlying transport layer will try
   // ensure that every message gets received in order, or best effort, meaning that the transport
   // makes no guarantees about the order or reliability of delivery.
-  custom_camera_qos_profile.reliability = reliability_policy;
-
-  // The history policy determines how messages are saved until the message is taken by the reader.
-  // KEEP_ALL saves all messages until they are taken.
-  // KEEP_LAST enforces a limit on the number of messages that are saved, specified by the "depth"
-  // parameter.
-  custom_camera_qos_profile.history = history_policy;
+  qos.reliability(reliability_policy);
 
   RCLCPP_INFO(node_logger, "Publishing data on topic '%s'", topic.c_str());
   // Create the image publisher with our custom QoS profile.
-  auto pub = node->create_publisher<sensor_msgs::msg::Image>(
-    topic, custom_camera_qos_profile);
+  auto pub = node->create_publisher<sensor_msgs::msg::Image>(topic, qos);
 
   // is_flipped will cause the incoming camera image message to flip about the y-axis.
   bool is_flipped = false;
@@ -139,11 +138,8 @@ int main(int argc, char * argv[])
     };
 
   // Set the QoS profile for the subscription to the flip message.
-  rmw_qos_profile_t custom_flip_qos_profile = rmw_qos_profile_sensor_data;
-  custom_flip_qos_profile.depth = 10;
-
   auto sub = node->create_subscription<std_msgs::msg::Bool>(
-    "flip_image", callback, custom_flip_qos_profile);
+    "flip_image", rclcpp::SensorDataQoS(), callback);
 
   // Set a loop rate for our main event loop.
   rclcpp::WallRate loop_rate(freq);
@@ -168,14 +164,13 @@ int main(int argc, char * argv[])
   cv::Mat frame;
   cv::Mat flipped_frame;
 
-  // Initialize a shared pointer to an Image message.
-  auto msg = std::make_shared<sensor_msgs::msg::Image>();
-  msg->is_bigendian = false;
-
   size_t i = 1;
 
   // Our main event loop will spin until the user presses CTRL-C to exit.
   while (rclcpp::ok()) {
+    // Initialize a shared pointer to an Image message.
+    auto msg = std::make_unique<sensor_msgs::msg::Image>();
+    msg->is_bigendian = false;
     // Get the frame from the video capture.
     if (burger_mode) {
       frame = burger_cap.render_burger(width, height);
@@ -186,11 +181,11 @@ int main(int argc, char * argv[])
     if (!frame.empty()) {
       // Convert to a ROS image
       if (!is_flipped) {
-        convert_frame_to_message(frame, i, msg);
+        convert_frame_to_message(frame, i, *msg);
       } else {
         // Flip the frame if needed
         cv::flip(frame, flipped_frame, 1);
-        convert_frame_to_message(flipped_frame, i, msg);
+        convert_frame_to_message(flipped_frame, i, *msg);
       }
       if (show_camera) {
         cv::Mat cvframe = frame;
@@ -201,7 +196,7 @@ int main(int argc, char * argv[])
       }
       // Publish the image message and increment the frame_id.
       RCLCPP_INFO(node_logger, "Publishing image #%zd", i);
-      pub->publish(msg);
+      pub->publish(std::move(msg));
       ++i;
     }
     // Do some work in rclcpp and wait for more to come in.
