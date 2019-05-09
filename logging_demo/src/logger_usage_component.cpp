@@ -18,6 +18,7 @@
 #include <iostream>
 #include <memory>
 #include <string>
+#include <utility>
 
 #include "rclcpp/rclcpp.hpp"
 #include "rcutils/error_handling.h"
@@ -31,7 +32,7 @@ namespace logging_demo
 LoggerUsage::LoggerUsage(rclcpp::NodeOptions options)
 : Node("logger_usage_demo", options), count_(0)
 {
-  pub_ = create_publisher<std_msgs::msg::String>("logging_demo_count");
+  pub_ = create_publisher<std_msgs::msg::String>("logging_demo_count", 10);
   timer_ = create_wall_timer(500ms, std::bind(&LoggerUsage::on_timer, this));
   debug_function_to_evaluate_ = std::bind(is_divisor_of_twelve, std::cref(count_), get_logger());
 
@@ -56,12 +57,12 @@ void LoggerUsage::on_timer()
   // This message will be logged only the first time this line is reached.
   RCLCPP_INFO_ONCE(get_logger(), "Timer callback called (this will only log once)");
 
-  auto msg = std::make_shared<std_msgs::msg::String>();
+  auto msg = std::make_unique<std_msgs::msg::String>();
   msg->data = "Current count: " + std::to_string(count_);
 
   // This message will be logged each time it is reached.
   RCLCPP_INFO(get_logger(), "Publishing: '%s'", msg->data.c_str());
-  pub_->publish(msg);
+  pub_->publish(std::move(msg));
 
   // This message will be logged when the function evaluates to true.
   // The function will only be evaluated when DEBUG severity is enabled.
