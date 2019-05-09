@@ -19,6 +19,7 @@
 #include <sstream>
 #include <string>
 #include <thread>
+#include <utility>
 
 #include "opencv2/highgui/highgui.hpp"
 #include "rclcpp/rclcpp.hpp"
@@ -51,7 +52,7 @@ public:
       throw std::runtime_error("Could not open video stream!");
     }
     // Create a publisher on the output topic.
-    pub_ = this->create_publisher<sensor_msgs::msg::Image>(output, rmw_qos_profile_sensor_data);
+    pub_ = this->create_publisher<sensor_msgs::msg::Image>(output, rclcpp::SensorDataQoS());
     // Create the camera reading loop.
     thread_ = std::thread(std::bind(&CameraNode::loop, this));
   }
@@ -92,7 +93,7 @@ public:
       msg->is_bigendian = false;
       msg->step = static_cast<sensor_msgs::msg::Image::_step_type>(frame_.step);
       msg->data.assign(frame_.datastart, frame_.dataend);
-      pub_->publish(msg);  // Publish.
+      pub_->publish(std::move(msg));  // Publish.
     }
   }
 

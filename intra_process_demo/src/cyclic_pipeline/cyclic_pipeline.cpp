@@ -17,6 +17,7 @@
 #include <cstdio>
 #include <memory>
 #include <string>
+#include <utility>
 
 #include "rclcpp/rclcpp.hpp"
 #include "std_msgs/msg/int32.hpp"
@@ -30,11 +31,12 @@ struct IncrementerPipe : public rclcpp::Node
   : Node(name, rclcpp::NodeOptions().use_intra_process_comms(true))
   {
     // Create a publisher on the output topic.
-    pub = this->create_publisher<std_msgs::msg::Int32>(out, rmw_qos_profile_default);
+    pub = this->create_publisher<std_msgs::msg::Int32>(out, 10);
     std::weak_ptr<std::remove_pointer<decltype(pub.get())>::type> captured_pub = pub;
     // Create a subscription on the input topic.
     sub = this->create_subscription<std_msgs::msg::Int32>(
       in,
+      10,
       [captured_pub](std_msgs::msg::Int32::UniquePtr msg) {
         auto pub_ptr = captured_pub.lock();
         if (!pub_ptr) {
@@ -52,9 +54,8 @@ struct IncrementerPipe : public rclcpp::Node
         printf(
           "Incrementing and sending with value: %d, and address: 0x%" PRIXPTR "\n", msg->data,
           reinterpret_cast<std::uintptr_t>(msg.get()));
-        pub_ptr->publish(msg);    // Send the message along to the output topic.
-      },
-      rmw_qos_profile_default);
+        pub_ptr->publish(std::move(msg));    // Send the message along to the output topic.
+      });
   }
 
   rclcpp::Publisher<std_msgs::msg::Int32>::SharedPtr pub;
@@ -78,7 +79,7 @@ int main(int argc, char * argv[])
   printf(
     "Published first message with value:  %d, and address: 0x%" PRIXPTR "\n", msg->data,
     reinterpret_cast<std::uintptr_t>(msg.get()));
-  pipe1->pub->publish(msg);
+  pipe1->pub->publish(std::move(msg));
 
   executor.add_node(pipe1);
   executor.add_node(pipe2);
