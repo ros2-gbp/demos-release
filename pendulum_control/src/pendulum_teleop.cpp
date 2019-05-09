@@ -16,6 +16,7 @@
 #include <cmath>
 #include <fstream>
 #include <memory>
+#include <utility>
 
 #include "rclcpp/rclcpp.hpp"
 
@@ -41,18 +42,16 @@ int main(int argc, char * argv[])
 
   auto teleop_node = rclcpp::Node::make_shared("pendulum_teleop");
 
-  rmw_qos_profile_t qos_profile = rmw_qos_profile_default;
-  qos_profile.durability = RMW_QOS_POLICY_DURABILITY_TRANSIENT_LOCAL;
-  qos_profile.reliability = RMW_QOS_POLICY_RELIABILITY_RELIABLE;
+  auto qos = rclcpp::QoS(rclcpp::KeepLast(10)).transient_local().reliable();
 
-  auto pub = teleop_node->create_publisher<pendulum_msgs::msg::JointCommand>(
-    "pendulum_setpoint", qos_profile);
+  auto pub =
+    teleop_node->create_publisher<pendulum_msgs::msg::JointCommand>("pendulum_setpoint", qos);
 
-  auto msg = std::make_shared<pendulum_msgs::msg::JointCommand>();
+  auto msg = std::make_unique<pendulum_msgs::msg::JointCommand>();
   msg->position = command;
 
   rclcpp::sleep_for(500ms);
-  pub->publish(msg);
+  pub->publish(std::move(msg));
   rclcpp::spin_some(teleop_node);
   printf("Teleop message published.\n");
   rclcpp::sleep_for(1s);
