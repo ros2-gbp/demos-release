@@ -1,0 +1,12 @@
+Source: ros-dashing-image-tools
+Section: misc
+Priority: extra
+Maintainer: Dirk Thomas <dthomas@osrfoundation.org>
+Build-Depends: debhelper (>= 9.0.0), libopencv-dev, ros-dashing-ament-cmake, ros-dashing-ament-cmake-pytest, ros-dashing-ament-lint-auto, ros-dashing-ament-lint-common, ros-dashing-launch, ros-dashing-launch-testing, ros-dashing-launch-testing-ament-cmake, ros-dashing-launch-testing-ros, ros-dashing-rclcpp, ros-dashing-rmw-implementation-cmake, ros-dashing-sensor-msgs, ros-dashing-std-msgs, ros-dashing-ros-workspace
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-dashing-image-tools
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libopencv-dev, ros-dashing-rclcpp, ros-dashing-sensor-msgs, ros-dashing-std-msgs, ros-dashing-ros-workspace
+Description: Tools to capture and play back images to and from DDS subscriptions and publications.
