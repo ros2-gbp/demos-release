@@ -2,6 +2,9 @@
 Changelog for package pendulum_control
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.7.3 (2019-05-10)
+------------------
+
 0.7.2 (2019-05-08)
 ------------------
 * changes to avoid deprecated API's (`#332 <https://github.com/ros2/demos/issues/332>`_)
