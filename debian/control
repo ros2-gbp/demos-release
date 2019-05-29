@@ -1,0 +1,12 @@
+Source: ros-dashing-quality-of-service-demo-cpp
+Section: misc
+Priority: extra
+Maintainer: Amazon ROS Contributions <ros-contributions@amazon.com>
+Build-Depends: debhelper (>= 9.0.0), ros-dashing-ament-cmake, ros-dashing-ament-lint-auto, ros-dashing-ament-lint-common, ros-dashing-example-interfaces, ros-dashing-launch, ros-dashing-launch-testing, ros-dashing-rclcpp, ros-dashing-rcutils, ros-dashing-rmw, ros-dashing-rmw-implementation-cmake, ros-dashing-std-msgs, ros-dashing-ros-workspace
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-dashing-quality-of-service-demo-cpp
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-dashing-example-interfaces, ros-dashing-launch-ros, ros-dashing-rclcpp, ros-dashing-rcutils, ros-dashing-rmw, ros-dashing-std-msgs, ros-dashing-ros-workspace
+Description: C++ Demo applications for Quality of Service features
