@@ -1,0 +1,12 @@
+Source: ros-dashing-action-tutorials
+Section: misc
+Priority: extra
+Maintainer: Jacob Perron <jacob@openrobotics.org>
+Build-Depends: debhelper (>= 9.0.0), ros-dashing-action-msgs, ros-dashing-ament-cmake, ros-dashing-ament-lint-auto, ros-dashing-ament-lint-common, ros-dashing-rosidl-default-generators, ros-dashing-ros-workspace, ros-dashing-rmw-connext-cpp, ros-dashing-rmw-fastrtps-cpp, ros-dashing-rmw-implementation, ros-dashing-rmw-opensplice-cpp, ros-dashing-rosidl-typesupport-connext-c, ros-dashing-rosidl-typesupport-connext-cpp, ros-dashing-rosidl-typesupport-opensplice-c, ros-dashing-rosidl-typesupport-opensplice-cpp
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-dashing-action-tutorials
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-dashing-action-msgs, ros-dashing-rclpy, ros-dashing-rosidl-default-runtime, ros-dashing-ros-workspace
+Description: Action tutorial code examples
