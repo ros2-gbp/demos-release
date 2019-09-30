@@ -249,9 +249,12 @@ int main(int argc, char * argv[])
   auto logger_publish_callback =
     [&logger_pub, &executor, &pendulum_motor, &pendulum_controller]() {
       pendulum_msgs::msg::RttestResults results_msg;
+      if (!executor->set_rtt_results_message(results_msg)) {
+        // No data is available, just get out instead of publishing bogus data.
+        return;
+      }
       results_msg.command = pendulum_controller->get_next_command_message();
       results_msg.state = pendulum_motor->get_next_sensor_message();
-      executor->set_rtt_results_message(results_msg);
       logger_pub->publish(results_msg);
     };
 
@@ -300,8 +303,8 @@ int main(int argc, char * argv[])
   // deallocation is handled automatically by objects going out of scope
   running = false;
 
-  printf("PendulumMotor received %lu messages\n", pendulum_motor->messages_received);
-  printf("PendulumController received %lu messages\n", pendulum_controller->messages_received);
+  printf("PendulumMotor received %zu messages\n", pendulum_motor->messages_received);
+  printf("PendulumController received %zu messages\n", pendulum_controller->messages_received);
 
   rclcpp::shutdown();
 

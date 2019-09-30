@@ -16,13 +16,21 @@
 #include <vector>
 
 #include "rclcpp/rclcpp.hpp"
+#include "rclcpp_components/register_node_macro.hpp"
 
+#include "demo_nodes_cpp/visibility_control.h"
+
+namespace demo_nodes_cpp
+{
 class EvenParameterNode : public rclcpp::Node
 {
 public:
-  EvenParameterNode()
-  : Node("even_parameters_node")
+  DEMO_NODES_CPP_PUBLIC
+  explicit EvenParameterNode(const rclcpp::NodeOptions options)
+  : Node("even_parameters_node", options)
   {
+    // Force flush of the stdout buffer.
+    setvbuf(stdout, NULL, _IONBF, BUFSIZ);
     // Declare a parameter change request callback
     // This function will enforce that only setting even integer parameters is allowed
     // any other change will be discarded
@@ -80,16 +88,6 @@ public:
   }
 };
 
-int main(int argc, char ** argv)
-{
-  // Force flush of the stdout buffer.
-  setvbuf(stdout, NULL, _IONBF, BUFSIZ);
+}  // namespace demo_nodes_cpp
 
-  rclcpp::init(argc, argv);
-
-  auto node = std::make_shared<EvenParameterNode>();
-
-  rclcpp::spin(node);
-  rclcpp::shutdown();
-  return 0;
-}
+RCLCPP_COMPONENTS_REGISTER_NODE(demo_nodes_cpp::EvenParameterNode)

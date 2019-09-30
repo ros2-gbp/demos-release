@@ -16,29 +16,43 @@
 #include <cstdio>
 #include <memory>
 #include <string>
+#include <vector>
 
 #include "rclcpp/rclcpp.hpp"
+#include "rclcpp_components/register_node_macro.hpp"
 #include "rcutils/cmdline_parser.h"
 
 #include "example_interfaces/srv/add_two_ints.hpp"
 
-void print_usage()
-{
-  printf("Usage for add_two_ints_server app:\n");
-  printf("add_two_ints_server [-s service_name] [-h]\n");
-  printf("options:\n");
-  printf("-h : Print this help function.\n");
-  printf("-s service_name : Specify the service name for this server. Defaults to add_two_ints.\n");
-}
+#include "demo_nodes_cpp/visibility_control.h"
 
+namespace demo_nodes_cpp
+{
 
 class ServerNode : public rclcpp::Node
 {
 public:
-  explicit ServerNode(const std::string & service_name)
-  : Node("add_two_ints_server")
+  DEMO_NODES_CPP_PUBLIC
+  explicit ServerNode(const rclcpp::NodeOptions & options)
+  : Node("add_two_ints_server", options)
   {
-    // Create a callback function for when service requests are received.
+    setvbuf(stdout, NULL, _IONBF, BUFSIZ);
+    std::vector<std::string> args = options.arguments();
+    if (find_command_option(args, "-h")) {
+      print_usage();
+      rclcpp::shutdown();
+    } else {
+      std::string tmptopic = get_command_option(args, "-s");
+      if (!tmptopic.empty()) {
+        service_name_ = tmptopic;
+      }
+      execute();
+    }
+  }
+
+  DEMO_NODES_CPP_PUBLIC
+  void execute()
+  {
     auto handle_add_two_ints =
       [this](const std::shared_ptr<rmw_request_id_t> request_header,
         const std::shared_ptr<example_interfaces::srv::AddTwoInts::Request> request,
@@ -49,38 +63,41 @@ public:
           request->a, request->b);
         response->sum = request->a + request->b;
       };
-
     // Create a service that will use the callback function to handle requests.
-    srv_ = create_service<example_interfaces::srv::AddTwoInts>(service_name, handle_add_two_ints);
+    srv_ = create_service<example_interfaces::srv::AddTwoInts>(service_name_, handle_add_two_ints);
   }
 
 private:
+  DEMO_NODES_CPP_LOCAL
+  void print_usage()
+  {
+    printf("Usage for add_two_ints_server app:\n");
+    printf("add_two_ints_server [-s service_name] [-h]\n");
+    printf("options:\n");
+    printf("-h : Print this help function.\n");
+    printf("-s service_name : Specify the service name for server. Defaults to add_two_ints.\n");
+  }
+
+  DEMO_NODES_CPP_LOCAL
+  bool find_command_option(const std::vector<std::string> & args, const std::string & option)
+  {
+    return std::find(args.begin(), args.end(), option) != args.end();
+  }
+
+  DEMO_NODES_CPP_LOCAL
+  std::string get_command_option(const std::vector<std::string> & args, const std::string & option)
+  {
+    auto it = std::find(args.begin(), args.end(), option);
+    if (it != args.end() && ++it != args.end()) {
+      return *it;
+    }
+    return std::string();
+  }
+
   rclcpp::Service<example_interfaces::srv::AddTwoInts>::SharedPtr srv_;
+  std::string service_name_ = "add_two_ints";
 };
 
-int main(int argc, char * argv[])
-{
-  // Force flush of the stdout buffer.
-  // This ensures a correct sync of all prints
-  // even when executed simultaneously within the launch file.
-  setvbuf(stdout, NULL, _IONBF, BUFSIZ);
+}  // namespace demo_nodes_cpp
 
-  if (rcutils_cli_option_exist(argv, argv + argc, "-h")) {
-    print_usage();
-    return 0;
-  }
-
-  rclcpp::init(argc, argv);
-
-  auto service_name = std::string("add_two_ints");
-  char * cli_option = rcutils_cli_get_option(argv, argv + argc, "-s");
-  if (nullptr != cli_option) {
-    service_name = std::string(cli_option);
-  }
-
-  auto node = std::make_shared<ServerNode>(service_name);
-  rclcpp::spin(node);
-
-  rclcpp::shutdown();
-  return 0;
-}
+RCLCPP_COMPONENTS_REGISTER_NODE(demo_nodes_cpp::ServerNode)

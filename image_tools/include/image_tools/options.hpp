@@ -20,12 +20,14 @@
 
 #include "rmw/types.h"
 
+#include "image_tools/visibility_control.h"
 /// Find "option" in the argument vector.
 /**
  * \param[in] args The argument vector
  * \param[in] option The option to search for
  * \return True if option was found in args, false otherwise.
  */
+IMAGE_TOOLS_PUBLIC
 bool find_command_option(
   const std::vector<std::string> & args, const std::string & option);
 
@@ -35,6 +37,7 @@ bool find_command_option(
  * \param[in] option The option to search for
  * \return The value that comes after "option"
  */
+IMAGE_TOOLS_PUBLIC
 std::string get_command_option(
   const std::vector<std::string> & args, const std::string & option);
 
@@ -50,8 +53,9 @@ std::string get_command_option(
  * \param[in] height The height of the image to get, 240 by default.
  * \param[in] burger_mode If true, produce images of burgers rather than use a camera.
  */
+IMAGE_TOOLS_PUBLIC
 bool parse_command_options(
-  int argc, char ** argv, size_t * depth,
+  std::vector<std::string> args, size_t * depth,
   rmw_qos_reliability_policy_t * reliability_policy,
   rmw_qos_history_policy_t * history_policy, bool * show_camera = nullptr, double * freq = nullptr,
   size_t * width = nullptr, size_t * height = nullptr, bool * burger_mode = nullptr,
