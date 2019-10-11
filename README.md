@@ -1,3 +1,43 @@
+## demos (dashing) - 0.7.9-1
+
+The packages in the `demos` repository were released into the `dashing` distro by running `/usr/bin/bloom-release demos --ros-distro dashing` on `Fri, 11 Oct 2019 21:46:55 -0000`
+
+These packages were released:
+- `action_tutorials`
+- `composition`
+- `demo_nodes_cpp`
+- `demo_nodes_cpp_native`
+- `demo_nodes_py`
+- `dummy_map_server`
+- `dummy_robot_bringup`
+- `dummy_sensors`
+- `image_tools`
+- `intra_process_demo`
+- `lifecycle`
+- `logging_demo`
+- `pendulum_control`
+- `pendulum_msgs`
+- `quality_of_service_demo_cpp`
+- `quality_of_service_demo_py`
+- `topic_monitor`
+
+Version of package(s) in repository `demos`:
+
+- upstream repository: https://github.com/ros2/demos.git
+- release repository: https://github.com/ros2-gbp/demos-release.git
+- rosdistro version: `0.7.8-1`
+- old version: `0.7.8-1`
+- new version: `0.7.9-1`
+
+Versions of tools used:
+
+- bloom version: `0.8.0`
+- catkin_pkg version: `0.4.13`
+- rosdep version: `0.16.1`
+- rosdistro version: `0.7.4`
+- vcstools version: `0.1.42`
+
+
 ## demos (eloquent) - 0.8.0-1
 
 The packages in the `demos` repository were released into the `eloquent` distro by running `/home/jacob/.local/bin/bloom-release -r eloquent -t eloquent demos` on `Mon, 30 Sep 2019 18:25:47 -0000`
