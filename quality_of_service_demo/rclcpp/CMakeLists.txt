@@ -21,10 +21,7 @@ include_directories(include)
 ament_export_include_directories(include)
 
 function(qos_demo_executable target)
-  add_executable(${target}
-    src/${target}.cpp
-    src/common_nodes.cpp
-    src/utils.cpp)
+  add_executable(${target} src/${target}.cpp src/common_nodes.cpp)
   ament_target_dependencies(${target}
     "rclcpp"
     "rcutils"
@@ -36,8 +33,6 @@ endfunction()
 qos_demo_executable(liveliness)
 qos_demo_executable(lifespan)
 qos_demo_executable(deadline)
-qos_demo_executable(interactive_publisher)
-qos_demo_executable(interactive_subscriber)
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)

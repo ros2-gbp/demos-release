@@ -17,24 +17,19 @@
 
 #include "rcl_interfaces/srv/list_parameters.hpp"
 #include "rclcpp/rclcpp.hpp"
-#include "rclcpp_components/register_node_macro.hpp"
-
-#include "demo_nodes_cpp/visibility_control.h"
-
-namespace demo_nodes_cpp
-{
 
 class ParameterBlackboard : public rclcpp::Node
 {
 public:
-  DEMO_NODES_CPP_PUBLIC
-  explicit ParameterBlackboard(
+  ParameterBlackboard(
+    const std::string & name = "parameter_blackboard",
+    const std::string & namespace_ = "",
     const rclcpp::NodeOptions & options = (
       rclcpp::NodeOptions()
       .allow_undeclared_parameters(true)
       .automatically_declare_parameters_from_overrides(true)
   ))
-  : Node("parameter_blackboard", options)
+  : rclcpp::Node(name, namespace_, options)
   {
     RCLCPP_INFO(this->get_logger(),
       "Parameter blackboard node named '%s' ready, and serving '%zu' parameters already!",
@@ -43,6 +38,9 @@ public:
   }
 };
 
-}  // namespace demo_nodes_cpp
-
-RCLCPP_COMPONENTS_REGISTER_NODE(demo_nodes_cpp::ParameterBlackboard)
+int main(int argc, char const * argv[])
+{
+  rclcpp::init(argc, argv);
+  rclcpp::spin(std::make_shared<ParameterBlackboard>());
+  return 0;
+}

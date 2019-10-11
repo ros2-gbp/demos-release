@@ -11,7 +11,6 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-
 #include <chrono>
 #include <iostream>
 #include <memory>
@@ -108,11 +107,11 @@ int main(int argc, char * argv[])
   .transient_local()
   .lifespan(lifespan_duration);
 
-  auto talker = std::make_shared<Talker>(qos_profile, topic, publish_count);
-  auto listener = std::make_shared<Listener>(qos_profile, topic, true);
+  rclcpp::SubscriptionOptions sub_options;
+  rclcpp::PublisherOptions pub_options;
 
-  talker->initialize();
-  listener->initialize();
+  auto listener = std::make_shared<Listener>(topic, qos_profile, sub_options, true);
+  auto talker = std::make_shared<Talker>(topic, qos_profile, pub_options, publish_count);
 
   auto timer = listener->create_wall_timer(
     subscribe_after_duration,

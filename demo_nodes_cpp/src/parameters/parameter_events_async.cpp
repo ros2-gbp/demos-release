@@ -18,23 +18,17 @@
 #include <vector>
 
 #include "rclcpp/rclcpp.hpp"
-#include "rclcpp_components/register_node_macro.hpp"
-
-#include "demo_nodes_cpp/visibility_control.h"
 
 using namespace std::chrono_literals;
 using SetParametersResult =
   std::shared_future<std::vector<rcl_interfaces::msg::SetParametersResult>>;
-namespace demo_nodes_cpp
-{
+
 class ParameterEventsAsyncNode : public rclcpp::Node
 {
 public:
-  DEMO_NODES_CPP_PUBLIC
-  explicit ParameterEventsAsyncNode(const rclcpp::NodeOptions & options)
-  : Node("parameter_events", options)
+  ParameterEventsAsyncNode()
+  : Node("parameter_events")
   {
-    setvbuf(stdout, NULL, _IONBF, BUFSIZ);
     // Typically a parameter client is created for a remote node by passing the name of the remote
     // node in the constructor; in this example we create a parameter client for this node itself.
     parameters_client_ = std::make_shared<rclcpp::AsyncParametersClient>(this);
@@ -77,9 +71,7 @@ public:
         });
   }
 
-private:
   // Set several different types of parameters.
-  DEMO_NODES_CPP_LOCAL
   void queue_first_set_parameter_request()
   {
     timer_->cancel();  // Prevent another request from being queued by the timer.
@@ -102,15 +94,14 @@ private:
       };
 
     parameters_client_->set_parameters({
-        rclcpp::Parameter("foo", 2),
-        rclcpp::Parameter("bar", "hello"),
-        rclcpp::Parameter("baz", 1.45),
-        rclcpp::Parameter("foobar", true),
-      }, response_received_callback);
+      rclcpp::Parameter("foo", 2),
+      rclcpp::Parameter("bar", "hello"),
+      rclcpp::Parameter("baz", 1.45),
+      rclcpp::Parameter("foobar", true),
+    }, response_received_callback);
   }
 
   // Change the value of some of them.
-  DEMO_NODES_CPP_LOCAL
   void queue_second_set_parameter_request()
   {
     auto response_received_callback = [this](SetParametersResult future) {
@@ -129,16 +120,28 @@ private:
             });
       };
     parameters_client_->set_parameters({
-        rclcpp::Parameter("foo", 3),
-        rclcpp::Parameter("bar", "world"),
-      }, response_received_callback);
+      rclcpp::Parameter("foo", 3),
+      rclcpp::Parameter("bar", "world"),
+    }, response_received_callback);
   }
 
+private:
   rclcpp::AsyncParametersClient::SharedPtr parameters_client_;
   rclcpp::Subscription<rcl_interfaces::msg::ParameterEvent>::SharedPtr parameter_event_sub_;
   rclcpp::TimerBase::SharedPtr timer_;
 };
 
-}  // namespace demo_nodes_cpp
+int main(int argc, char ** argv)
+{
+  // Force flush of the stdout buffer.
+  setvbuf(stdout, NULL, _IONBF, BUFSIZ);
 
-RCLCPP_COMPONENTS_REGISTER_NODE(demo_nodes_cpp::ParameterEventsAsyncNode)
+  rclcpp::init(argc, argv);
+
+  auto node = std::make_shared<ParameterEventsAsyncNode>();
+
+  rclcpp::spin(node);
+  rclcpp::shutdown();
+
+  return 0;
+}
