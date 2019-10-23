@@ -2,6 +2,16 @@
 Changelog for package lifecycle
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.8.1 (2019-10-23)
+------------------
+* Replace ready_fn with ReadyToTest action (`#404 <https://github.com/ros2/demos/issues/404>`_)
+* Contributors: Peter Baughman
+
+0.8.0 (2019-09-26)
+------------------
+* Fix lifecycle_service_client namespace (`#369 <https://github.com/ros2/demos/issues/369>`_)
+* Contributors: Cameron Evans
+
 0.7.6 (2019-05-30)
 ------------------
 

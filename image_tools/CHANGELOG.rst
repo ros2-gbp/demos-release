@@ -2,6 +2,19 @@
 Changelog for package image_tools
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.8.1 (2019-10-23)
+------------------
+* Fix burguer mode parameter typo in help text (`#406 <https://github.com/ros2/demos/issues/406>`_)
+* Replace ready_fn with ReadyToTest action (`#404 <https://github.com/ros2/demos/issues/404>`_)
+* [image_tools] Use ROS parameters instead of regular CLI arguments (`#398 <https://github.com/ros2/demos/issues/398>`_)
+* Contributors: Brian Marchi, Jacob Perron, Peter Baughman
+
+0.8.0 (2019-09-26)
+------------------
+* Adding visibility macros to demos (`#381 <https://github.com/ros2/demos/issues/381>`_)
+* Demos using composition (`#375 <https://github.com/ros2/demos/issues/375>`_)
+* Contributors: Siddharth Kucheria
+
 0.7.6 (2019-05-30)
 ------------------
 

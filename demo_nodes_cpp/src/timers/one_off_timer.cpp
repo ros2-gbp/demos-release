@@ -17,15 +17,23 @@
 #include <memory>
 
 #include "rclcpp/rclcpp.hpp"
+#include "rclcpp_components/register_node_macro.hpp"
+
+#include "demo_nodes_cpp/visibility_control.h"
 
 using namespace std::chrono_literals;
+
+namespace demo_nodes_cpp
+{
 
 class OneOffTimerNode : public rclcpp::Node
 {
 public:
-  OneOffTimerNode()
-  : Node("one_off_timer"), count(0)
+  DEMO_NODES_CPP_PUBLIC
+  explicit OneOffTimerNode(const rclcpp::NodeOptions & options)
+  : Node("one_off_timer", options), count(0)
   {
+    setvbuf(stdout, NULL, _IONBF, BUFSIZ);
     periodic_timer = this->create_wall_timer(
       2s,
       [this]() {
@@ -47,16 +55,6 @@ public:
   size_t count;
 };
 
-int main(int argc, char * argv[])
-{
-  // Force flush of the stdout buffer.
-  setvbuf(stdout, NULL, _IONBF, BUFSIZ);
+}  // namespace demo_nodes_cpp
 
-  rclcpp::init(argc, argv);
-
-  auto node = std::make_shared<OneOffTimerNode>();
-
-  rclcpp::spin(node);
-
-  return 0;
-}
+RCLCPP_COMPONENTS_REGISTER_NODE(demo_nodes_cpp::OneOffTimerNode)

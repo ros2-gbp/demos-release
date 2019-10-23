@@ -12,39 +12,37 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include <chrono>
 #include <iostream>
 #include <memory>
-#include <string>
 
 #include "rclcpp/rclcpp.hpp"
+#include "rclcpp_components/register_node_macro.hpp"
 
-#include "rcutils/cmdline_parser.h"
-#include "rcutils/snprintf.h"
+#include "rcutils/allocator.h"
 
 #include "std_msgs/msg/string.hpp"
 
 #include "rmw/serialized_message.h"
 
+#include "demo_nodes_cpp/visibility_control.h"
+
 using namespace std::chrono_literals;
 
-void print_usage()
+namespace demo_nodes_cpp
 {
-  printf("Usage for talker app:\n");
-  printf("talker [-t topic_name] [-h]\n");
-  printf("options:\n");
-  printf("-h : Print this help function.\n");
-  printf("-t topic_name : Specify the topic on which to publish. Defaults to chatter.\n");
-}
 
 class SerializedMessageTalker : public rclcpp::Node
 {
 public:
-  explicit SerializedMessageTalker(const std::string & topic_name)
-  : Node("serialized_message_talker")
+  DEMO_NODES_CPP_PUBLIC
+  explicit SerializedMessageTalker(const rclcpp::NodeOptions & options)
+  : Node("serialized_message_talker", options)
   {
     // In this example we send serialized data (serialized data).
     // For this we initially allocate a container message
     // which can hold the data.
+    setvbuf(stdout, NULL, _IONBF, BUFSIZ);
     serialized_msg_ = rmw_get_zero_initialized_serialized_message();
     auto allocator = rcutils_get_default_allocator();
     auto initial_capacity = 0u;
@@ -80,8 +78,8 @@ public:
         // necessary memory to hold all the data.
         // This is specifically interesting to do here, because this means
         // no dynamic memory allocation has to be done down the stack.
-        // If we don't allocate enough memory, the serialized message will be dynamically allocated
-        // before sending it to the wire.
+        // If we don't allocate enough memory, the serialized message will be
+        // dynamically allocated before sending it to the wire.
         auto message_header_length = 8u;
         auto message_payload_length = static_cast<size_t>(string_msg->data.size());
         auto ret = rmw_serialized_message_resize(
@@ -114,12 +112,13 @@ public:
       };
 
     rclcpp::QoS qos(rclcpp::KeepLast(7));
-    pub_ = this->create_publisher<std_msgs::msg::String>(topic_name, qos);
+    pub_ = this->create_publisher<std_msgs::msg::String>("chatter", qos);
 
     // Use a timer to schedule periodic message publishing.
     timer_ = this->create_wall_timer(1s, publish_message);
   }
 
+  DEMO_NODES_CPP_PUBLIC
   ~SerializedMessageTalker()
   {
     auto ret = rmw_serialized_message_fini(&serialized_msg_);
@@ -135,36 +134,6 @@ private:
   rclcpp::TimerBase::SharedPtr timer_;
 };
 
-int main(int argc, char * argv[])
-{
-  // Force flush of the stdout buffer.
-  // This ensures a correct sync of all prints
-  // even when executed simultaneously within the launch file.
-  setvbuf(stdout, NULL, _IONBF, BUFSIZ);
+}  // namespace demo_nodes_cpp
 
-  if (rcutils_cli_option_exist(argv, argv + argc, "-h")) {
-    print_usage();
-    return 0;
-  }
-
-  // Initialize any global resources needed by the middleware and the client library.
-  // You must call this before using any other part of the ROS system.
-  // This should be called once per process.
-  rclcpp::init(argc, argv);
-
-  // Parse the command line options.
-  auto topic = std::string("chatter");
-  if (rcutils_cli_option_exist(argv, argv + argc, "-t")) {
-    topic = std::string(rcutils_cli_get_option(argv, argv + argc, "-t"));
-  }
-
-  // Create a node.
-  auto node = std::make_shared<SerializedMessageTalker>(topic);
-
-  // spin will block until work comes in, execute work as it becomes available, and keep blocking.
-  // It will only be interrupted by Ctrl-C.
-  rclcpp::spin(node);
-
-  rclcpp::shutdown();
-  return 0;
-}
+RCLCPP_COMPONENTS_REGISTER_NODE(demo_nodes_cpp::SerializedMessageTalker)

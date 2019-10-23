@@ -16,29 +16,28 @@
 #include <vector>
 
 #include "rclcpp/rclcpp.hpp"
+#include "rclcpp_components/register_node_macro.hpp"
 
+#include "demo_nodes_cpp/visibility_control.h"
+
+namespace demo_nodes_cpp
+{
 class EvenParameterNode : public rclcpp::Node
 {
 public:
-  EvenParameterNode()
-  : Node("even_parameters_node")
+  DEMO_NODES_CPP_PUBLIC
+  explicit EvenParameterNode(rclcpp::NodeOptions options)
+  : Node("even_parameters_node", options.allow_undeclared_parameters(true))
   {
+    // Force flush of the stdout buffer.
+    setvbuf(stdout, NULL, _IONBF, BUFSIZ);
     // Declare a parameter change request callback
     // This function will enforce that only setting even integer parameters is allowed
     // any other change will be discarded
-    auto existing_callback = this->set_on_parameters_set_callback(nullptr);
     auto param_change_callback =
-      [this, existing_callback](std::vector<rclcpp::Parameter> parameters)
+      [this](std::vector<rclcpp::Parameter> parameters)
       {
         auto result = rcl_interfaces::msg::SetParametersResult();
-        // first call the existing callback, if there was one
-        if (nullptr != existing_callback) {
-          result = existing_callback(parameters);
-          // if the existing callback failed, go ahead and return the result
-          if (!result.successful) {
-            return result;
-          }
-        }
         result.successful = true;
         for (auto parameter : parameters) {
           rclcpp::ParameterType parameter_type = parameter.get_type();
@@ -76,20 +75,13 @@ public:
         }
         return result;
       };
-    this->set_on_parameters_set_callback(param_change_callback);
+    // callback_handler needs to be alive to keep the callback functional
+    callback_handler = this->add_on_set_parameters_callback(param_change_callback);
   }
+
+  OnSetParametersCallbackHandle::SharedPtr callback_handler;
 };
 
-int main(int argc, char ** argv)
-{
-  // Force flush of the stdout buffer.
-  setvbuf(stdout, NULL, _IONBF, BUFSIZ);
+}  // namespace demo_nodes_cpp
 
-  rclcpp::init(argc, argv);
-
-  auto node = std::make_shared<EvenParameterNode>();
-
-  rclcpp::spin(node);
-  rclcpp::shutdown();
-  return 0;
-}
+RCLCPP_COMPONENTS_REGISTER_NODE(demo_nodes_cpp::EvenParameterNode)

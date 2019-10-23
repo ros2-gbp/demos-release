@@ -2,6 +2,12 @@
 Changelog for package dummy_sensors
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.8.1 (2019-10-23)
+------------------
+
+0.8.0 (2019-09-26)
+------------------
+
 0.7.6 (2019-05-30)
 ------------------
 * Fix memory leak in the dummy robot examples. (`#361 <https://github.com/ros2/demos/issues/361>`_)

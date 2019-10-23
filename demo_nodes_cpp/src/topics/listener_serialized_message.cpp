@@ -14,33 +14,29 @@
 
 #include <iostream>
 #include <memory>
-#include <string>
 
 #include "rcl/types.h"
 #include "rclcpp/rclcpp.hpp"
-#include "rcutils/cmdline_parser.h"
+#include "rclcpp_components/register_node_macro.hpp"
 
 #include "std_msgs/msg/string.hpp"
 
 #include "rosidl_typesupport_cpp/message_type_support.hpp"
 
-void print_usage()
-{
-  printf("Usage for listener app:\n");
-  printf("listener [-t topic_name] [-h]\n");
-  printf("options:\n");
-  printf("-h : Print this help function.\n");
-  printf("-t topic_name : Specify the topic on which to subscribe. Defaults to chatter.\n");
-}
+#include "demo_nodes_cpp/visibility_control.h"
 
+namespace demo_nodes_cpp
+{
 // Create a Listener class that subclasses the generic rclcpp::Node base class.
 // The main function below will instantiate the class as a ROS node.
 class SerializedMessageListener : public rclcpp::Node
 {
 public:
-  explicit SerializedMessageListener(const std::string & topic_name)
-  : Node("serialized_message_listener")
+  DEMO_NODES_CPP_PUBLIC
+  explicit SerializedMessageListener(const rclcpp::NodeOptions & options)
+  : Node("serialized_message_listener", options)
   {
+    setvbuf(stdout, NULL, _IONBF, BUFSIZ);
     // We create a callback to a rmw_serialized_message_t here. This will pass a serialized
     // message to the callback. We can then further deserialize it and convert it into
     // a ros2 compliant message.
@@ -71,46 +67,17 @@ public:
         // Finally print the ROS2 message data
         std::cout << "serialized data after deserialization: " << string_msg->data << std::endl;
       };
-
     // Create a subscription to the topic which can be matched with one or more compatible ROS
     // publishers.
     // Note that not all publishers on the same topic with the same type will be compatible:
     // they must have compatible Quality of Service policies.
-    sub_ = create_subscription<std_msgs::msg::String>(topic_name, 10, callback);
+    sub_ = create_subscription<std_msgs::msg::String>("chatter", 10, callback);
   }
 
 private:
   rclcpp::Subscription<rmw_serialized_message_t>::SharedPtr sub_;
 };
 
-int main(int argc, char * argv[])
-{
-  // Force flush of the stdout buffer.
-  setvbuf(stdout, NULL, _IONBF, BUFSIZ);
+}  // namespace demo_nodes_cpp
 
-  if (rcutils_cli_option_exist(argv, argv + argc, "-h")) {
-    print_usage();
-    return 0;
-  }
-
-  // Initialize any global resources needed by the middleware and the client library.
-  // You must call this before using any other part of the ROS system.
-  // This should be called once per process.
-  rclcpp::init(argc, argv);
-
-  // Parse the command line options.
-  auto topic = std::string("chatter");
-  if (rcutils_cli_option_exist(argv, argv + argc, "-t")) {
-    topic = std::string(rcutils_cli_get_option(argv, argv + argc, "-t"));
-  }
-
-  // Create a node.
-  auto node = std::make_shared<SerializedMessageListener>(topic);
-
-  // spin will block until work comes in, execute work as it becomes available, and keep blocking.
-  // It will only be interrupted by Ctrl-C.
-  rclcpp::spin(node);
-
-  rclcpp::shutdown();
-  return 0;
-}
+RCLCPP_COMPONENTS_REGISTER_NODE(demo_nodes_cpp::SerializedMessageListener)
