@@ -2,6 +2,9 @@
 Changelog for package action_tutorials_interfaces
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.8.1 (2019-10-23)
+------------------
+
 0.8.0 (2019-09-26)
 ------------------
 * Move action tutorial interface to a new package, action_tutorials_interfaces (`#378 <https://github.com/ros2/demos/issues/378>`_)
