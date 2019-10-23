@@ -2,6 +2,11 @@
 Changelog for package action_tutorials_py
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.8.1 (2019-10-23)
+------------------
+* Update setup.py versions
+* Contributors: Jacob Perron
+
 0.8.0 (2019-09-26)
 ------------------
 * Remove non-existing dependency (`#384 <https://github.com/ros2/demos/issues/384>`_)
