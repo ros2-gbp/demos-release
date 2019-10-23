@@ -12,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include <chrono>
 #include <list>
 #include <memory>
 #include <string>
@@ -22,6 +23,7 @@
 #include "rclcpp/strategies/allocator_memory_strategy.hpp"
 #include "std_msgs/msg/u_int32.hpp"
 
+using namespace std::chrono_literals;
 
 // For demonstration purposes only, not necessary for allocator_traits
 static uint32_t num_allocs = 0;
@@ -153,10 +155,6 @@ int main(int argc, char ** argv)
   if (intra_process) {
     printf("Intra-process pipeline is ON.\n");
     auto context = rclcpp::contexts::default_context::get_global_default_context();
-    auto ipm_state =
-      std::make_shared<rclcpp::intra_process_manager::IntraProcessManagerImpl<MessageAlloc>>();
-    // Constructs the intra-process manager with a custom allocator.
-    context->get_sub_context<rclcpp::intra_process_manager::IntraProcessManager>(ipm_state);
     auto options = rclcpp::NodeOptions()
       .context(context)
       .use_intra_process_comms(true);
@@ -207,7 +205,7 @@ int main(int argc, char ** argv)
   MessageAlloc message_alloc = *alloc;
   rclcpp::allocator::set_allocator_for_deleter(&message_deleter, &message_alloc);
 
-  rclcpp::sleep_for(std::chrono::milliseconds(1));
+  rclcpp::sleep_for(1ms);
   is_running = true;
 
   uint32_t i = 0;
@@ -220,7 +218,7 @@ int main(int argc, char ** argv)
     msg->data = i;
     ++i;
     publisher->publish(std::move(msg));
-    rclcpp::sleep_for(std::chrono::milliseconds(10));
+    rclcpp::sleep_for(10ms);
     executor.spin_some();
   }
   is_running = false;
