@@ -2,6 +2,12 @@
 Changelog for package logging_demo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.8.1 (2019-10-23)
+------------------
+* Replace ready_fn with ReadyToTest action (`#404 <https://github.com/ros2/demos/issues/404>`_)
+* Fix logging demo test (`#400 <https://github.com/ros2/demos/issues/400>`_)
+* Contributors: Michel Hidalgo, Peter Baughman
+
 0.8.0 (2019-09-26)
 ------------------
 
