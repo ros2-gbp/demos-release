@@ -16,14 +16,14 @@ import unittest
 
 from launch import LaunchDescription
 from launch.actions import ExecuteProcess
-from launch.actions import OpaqueFunction
 
 import launch_testing
+import launch_testing.actions
 import launch_testing.asserts
 import launch_testing_ros
 
 
-def generate_test_description(ready_fn):
+def generate_test_description():
     launch_description = LaunchDescription()
     process_under_test = ExecuteProcess(
         cmd=['@LOGGING_DEMO_MAIN_EXECUTABLE@'],
@@ -32,18 +32,16 @@ def generate_test_description(ready_fn):
     )
     launch_description.add_action(process_under_test)
     launch_description.add_action(
-        OpaqueFunction(function=lambda context: ready_fn())
+        launch_testing.actions.ReadyToTest()
     )
     return launch_description, locals()
 
 
 class TestLoggingDemo(unittest.TestCase):
 
-    @classmethod
-    def setUpClass(cls):
-        cls.output_filter = launch_testing_ros.tools.basic_output_filter(
-            filtered_rmw_implementation='@rmw_implementation@'
-        )
+    output_filter = launch_testing_ros.tools.basic_output_filter(
+        filtered_rmw_implementation='@rmw_implementation@'
+    )
 
     def test_default_severity(self, proc_output, process_under_test):
         """Test process' logs at default severity."""
