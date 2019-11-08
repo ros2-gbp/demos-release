@@ -1,0 +1,12 @@
+Source: ros-eloquent-action-tutorials-cpp
+Section: misc
+Priority: optional
+Maintainer: Jacob Perron <jacob@openrobotics.org>
+Build-Depends: debhelper (>= 9.0.0), ros-eloquent-action-tutorials-interfaces, ros-eloquent-ament-cmake, ros-eloquent-ament-lint-auto, ros-eloquent-ament-lint-common, ros-eloquent-rclcpp, ros-eloquent-rclcpp-action, ros-eloquent-rclcpp-components, ros-eloquent-ros-workspace
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-eloquent-action-tutorials-cpp
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-eloquent-action-tutorials-interfaces, ros-eloquent-rclcpp, ros-eloquent-rclcpp-action, ros-eloquent-rclcpp-components, ros-eloquent-ros-workspace
+Description: C++ action tutorial cpp code
