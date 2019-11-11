@@ -1,0 +1,12 @@
+Source: ros-eloquent-demo-nodes-cpp
+Section: misc
+Priority: optional
+Maintainer: William Woodall <william@osrfoundation.org>
+Build-Depends: debhelper (>= 9.0.0), ros-eloquent-ament-cmake, ros-eloquent-ament-cmake-pytest, ros-eloquent-ament-lint-auto, ros-eloquent-ament-lint-common, ros-eloquent-example-interfaces, ros-eloquent-launch, ros-eloquent-launch-testing, ros-eloquent-launch-testing-ament-cmake, ros-eloquent-launch-testing-ros, ros-eloquent-rclcpp, ros-eloquent-rclcpp-components, ros-eloquent-rcutils, ros-eloquent-rmw, ros-eloquent-rmw-implementation-cmake, ros-eloquent-std-msgs, ros-eloquent-ros-workspace
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-eloquent-demo-nodes-cpp
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-eloquent-example-interfaces, ros-eloquent-launch-ros, ros-eloquent-rclcpp, ros-eloquent-rclcpp-components, ros-eloquent-rcutils, ros-eloquent-rmw, ros-eloquent-std-msgs, ros-eloquent-ros-workspace
+Description: C++ nodes which were previously in the ros2/examples repository but are now just used for demo purposes.
