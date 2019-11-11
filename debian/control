@@ -1,0 +1,12 @@
+Source: ros-eloquent-pendulum-control
+Section: misc
+Priority: optional
+Maintainer: Michael Carroll <michael@openrobotics.org>
+Build-Depends: debhelper (>= 9.0.0), ros-eloquent-ament-cmake, ros-eloquent-ament-cmake-pytest, ros-eloquent-ament-lint-auto, ros-eloquent-ament-lint-common, ros-eloquent-launch, ros-eloquent-launch-testing, ros-eloquent-launch-testing-ament-cmake, ros-eloquent-launch-testing-ros, ros-eloquent-pendulum-msgs, ros-eloquent-rclcpp, ros-eloquent-rmw-implementation-cmake, ros-eloquent-ros2run, ros-eloquent-rttest, ros-eloquent-tlsf-cpp, ros-eloquent-ros-workspace
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-eloquent-pendulum-control
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-eloquent-pendulum-msgs, ros-eloquent-rclcpp, ros-eloquent-rttest, ros-eloquent-tlsf-cpp, ros-eloquent-ros-workspace
+Description: Demonstrates ROS 2's realtime capabilities with a simulated inverted pendulum.
