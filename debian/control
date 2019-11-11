@@ -1,0 +1,12 @@
+Source: ros-eloquent-dummy-map-server
+Section: misc
+Priority: optional
+Maintainer: Karsten Knese <karsten@osrfoundation.org>
+Build-Depends: debhelper (>= 9.0.0), ros-eloquent-ament-cmake, ros-eloquent-ament-cmake-gtest, ros-eloquent-ament-lint-auto, ros-eloquent-ament-lint-common, ros-eloquent-nav-msgs, ros-eloquent-rclcpp, ros-eloquent-ros-workspace
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-eloquent-dummy-map-server
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-eloquent-nav-msgs, ros-eloquent-rclcpp, ros-eloquent-ros-workspace
+Description: dummy map server node
