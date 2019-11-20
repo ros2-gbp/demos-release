@@ -1,3 +1,45 @@
+## demos (eloquent) - 0.8.4-1
+
+The packages in the `demos` repository were released into the `eloquent` distro by running `/home/mjcarroll/.local/bin/bloom-release --ros-distro eloquent demos` on `Wed, 20 Nov 2019 05:48:27 -0000`
+
+These packages were released:
+- `action_tutorials_cpp`
+- `action_tutorials_interfaces`
+- `action_tutorials_py`
+- `composition`
+- `demo_nodes_cpp`
+- `demo_nodes_cpp_native`
+- `demo_nodes_py`
+- `dummy_map_server`
+- `dummy_robot_bringup`
+- `dummy_sensors`
+- `image_tools`
+- `intra_process_demo`
+- `lifecycle`
+- `logging_demo`
+- `pendulum_control`
+- `pendulum_msgs`
+- `quality_of_service_demo_cpp`
+- `quality_of_service_demo_py`
+- `topic_monitor`
+
+Version of package(s) in repository `demos`:
+
+- upstream repository: https://github.com/ros2/demos.git
+- release repository: https://github.com/ros2-gbp/demos-release.git
+- rosdistro version: `0.8.3-1`
+- old version: `0.8.3-1`
+- new version: `0.8.4-1`
+
+Versions of tools used:
+
+- bloom version: `0.9.0`
+- catkin_pkg version: `0.4.14`
+- rosdep version: `0.17.1`
+- rosdistro version: `0.7.5`
+- vcstools version: `0.1.42`
+
+
 ## demos (eloquent) - 0.8.3-1
 
 The packages in the `demos` repository were released into the `eloquent` distro by running `/usr/bin/bloom-release --ros-distro eloquent --track eloquent demos` on `Mon, 11 Nov 2019 22:32:36 -0000`
