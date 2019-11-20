@@ -1,0 +1,12 @@
+Source: ros-eloquent-action-tutorials-py
+Section: misc
+Priority: optional
+Maintainer: Jacob Perron <jacob@openrobotics.org>
+Build-Depends: debhelper (>= 9.0.0), ros-eloquent-action-tutorials-interfaces, ros-eloquent-ament-lint-auto, ros-eloquent-ament-lint-common, ros-eloquent-ros-workspace, python3-all, python3-setuptools
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-eloquent-action-tutorials-py
+Architecture: any
+Depends: ${python3:Depends}, ${misc:Depends}, ros-eloquent-action-tutorials-interfaces, ros-eloquent-rclpy, ros-eloquent-ros-workspace
+Description: Python action tutorial code
