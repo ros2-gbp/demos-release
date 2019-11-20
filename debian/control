@@ -1,0 +1,12 @@
+Source: ros-eloquent-topic-monitor
+Section: misc
+Priority: optional
+Maintainer: Scott K Logan <scott@openrobotics.org>
+Build-Depends: debhelper (>= 9.0.0), python3-pytest, ros-eloquent-ament-flake8, ros-eloquent-ament-pep257, ros-eloquent-rclpy, ros-eloquent-ros-workspace, python3-all, python3-setuptools
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-eloquent-topic-monitor
+Architecture: any
+Depends: ${python3:Depends}, ${misc:Depends}, ros-eloquent-launch, ros-eloquent-launch-ros, ros-eloquent-rclpy, ros-eloquent-std-msgs, ros-eloquent-ros-workspace
+Description: Package containing tools for monitoring ROS 2 topics.
