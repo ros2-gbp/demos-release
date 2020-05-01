@@ -13,8 +13,10 @@
 // limitations under the License.
 
 #include <chrono>
+#include <future>
 #include <memory>
 #include <sstream>
+#include <utility>
 
 #include "rclcpp/rclcpp.hpp"
 
@@ -59,11 +61,20 @@ int main(int argc, char ** argv)
     RCLCPP_INFO(node->get_logger(), "service not available, waiting again...");
   }
 
+  auto events_received_promise = std::make_shared<std::promise<void>>();
+  auto events_received_future = events_received_promise->get_future();
+
   // Setup callback for changes to parameters.
   auto sub = parameters_client->on_parameter_event(
-    [node](const rcl_interfaces::msg::ParameterEvent::SharedPtr event) -> void
+    [node, promise = std::move(events_received_promise)](
+      const rcl_interfaces::msg::ParameterEvent::SharedPtr event) -> void
     {
+      static size_t n_times_called = 0u;
       on_parameter_event(event, node->get_logger());
+      if (10u == ++n_times_called) {
+        // This callback will be called 10 times, set the promise when that happens.
+        promise->set_value();
+      }
     });
 
   // Declare parameters that may be set on this node
@@ -73,7 +84,8 @@ int main(int argc, char ** argv)
   node->declare_parameter("foobar");
 
   // Set several different types of parameters.
-  auto set_parameters_results = parameters_client->set_parameters({
+  auto set_parameters_results = parameters_client->set_parameters(
+  {
     rclcpp::Parameter("foo", 2),
     rclcpp::Parameter("bar", "hello"),
     rclcpp::Parameter("baz", 1.45),
@@ -81,20 +93,15 @@ int main(int argc, char ** argv)
   });
 
   // Change the value of some of them.
-  set_parameters_results = parameters_client->set_parameters({
+  set_parameters_results = parameters_client->set_parameters(
+  {
     rclcpp::Parameter("foo", 3),
     rclcpp::Parameter("bar", "world"),
   });
 
   // TODO(wjwwood): Create and use delete_parameter
 
-  // TODO(hidmic): Fast-RTPS takes a significant amount of time to deliver
-  //               requests and response, thus the rather long sleep. Reduce
-  //               once that's resolved.
-  rclcpp::sleep_for(3s);
-
-  rclcpp::spin_some(node);
-
+  rclcpp::spin_until_future_complete(node, events_received_future.share());
   rclcpp::shutdown();
 
   return 0;

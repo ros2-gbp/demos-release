@@ -2,6 +2,11 @@
 Changelog for package demo_nodes_py
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.9.0 (2020-04-30)
+------------------
+* more verbose test_flake8 error messages (same as `ros2/launch_ros#135 <https://github.com/ros2/launch_ros/issues/135>`_)
+* Contributors: Dirk Thomas
+
 0.8.4 (2019-11-19)
 ------------------
 * Make demos handle SIGINT gracefully. (`#377 <https://github.com/ros2/demos/issues/377>`_)

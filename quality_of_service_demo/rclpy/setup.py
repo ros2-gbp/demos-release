@@ -4,7 +4,7 @@ package_name = 'quality_of_service_demo_py'
 
 setup(
     name=package_name,
-    version='0.8.4',
+    version='0.9.0',
     packages=[package_name],
     data_files=[
         ('share/ament_index/resource_index/packages', ['resource/' + package_name]),
@@ -30,6 +30,7 @@ setup(
             'lifespan = quality_of_service_demo_py.lifespan:main',
             'liveliness = quality_of_service_demo_py.liveliness:main',
             'deadline = quality_of_service_demo_py.deadline:main',
+            'incompatible_qos = quality_of_service_demo_py.incompatible_qos:main',
         ],
     },
 )
