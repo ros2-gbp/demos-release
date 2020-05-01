@@ -1,0 +1,12 @@
+Source: ros-foxy-action-tutorials-interfaces
+Section: misc
+Priority: optional
+Maintainer: Jacob Perron <jacob@openrobotics.org>
+Build-Depends: debhelper (>= 9.0.0), ros-foxy-action-msgs, ros-foxy-ament-cmake, ros-foxy-ament-lint-auto, ros-foxy-ament-lint-common, ros-foxy-rosidl-default-generators, ros-foxy-ros-workspace, ros-foxy-rmw-connext-cpp, ros-foxy-rmw-fastrtps-cpp, ros-foxy-rmw-implementation, ros-foxy-rmw-opensplice-cpp, ros-foxy-rosidl-typesupport-connext-c, ros-foxy-rosidl-typesupport-connext-cpp, ros-foxy-rosidl-typesupport-opensplice-c, ros-foxy-rosidl-typesupport-opensplice-cpp
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-foxy-action-tutorials-interfaces
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-foxy-action-msgs, ros-foxy-rosidl-default-runtime, ros-foxy-ros-workspace
+Description: Action tutorials action
