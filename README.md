@@ -1,3 +1,46 @@
+## demos (rolling) - 0.10.1-1
+
+The packages in the `demos` repository were released into the `rolling` distro by running `/usr/bin/bloom-release --track rolling --rosdistro rolling demos` on `Mon, 21 Sep 2020 15:34:56 -0000`
+
+These packages were released:
+- `action_tutorials_cpp`
+- `action_tutorials_interfaces`
+- `action_tutorials_py`
+- `composition`
+- `demo_nodes_cpp`
+- `demo_nodes_cpp_native`
+- `demo_nodes_py`
+- `dummy_map_server`
+- `dummy_robot_bringup`
+- `dummy_sensors`
+- `image_tools`
+- `intra_process_demo`
+- `lifecycle`
+- `logging_demo`
+- `pendulum_control`
+- `pendulum_msgs`
+- `quality_of_service_demo_cpp`
+- `quality_of_service_demo_py`
+- `topic_monitor`
+- `topic_statistics_demo`
+
+Version of package(s) in repository `demos`:
+
+- upstream repository: https://github.com/ros2/demos.git
+- release repository: https://github.com/ros2-gbp/demos-release.git
+- rosdistro version: `0.10.0-1`
+- old version: `0.10.0-1`
+- new version: `0.10.1-1`
+
+Versions of tools used:
+
+- bloom version: `0.9.8`
+- catkin_pkg version: `0.4.22`
+- rosdep version: `0.19.0`
+- rosdistro version: `0.8.2`
+- vcstools version: `0.1.42`
+
+
 ## demos (rolling) - 0.10.0-1
 
 The packages in the `demos` repository were released into the `rolling` distro by running `/usr/bin/bloom-release --track rolling --rosdistro rolling demos` on `Wed, 17 Jun 2020 19:30:21 -0000`
