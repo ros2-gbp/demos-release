@@ -4,7 +4,7 @@ package_name = 'quality_of_service_demo_py'
 
 setup(
     name=package_name,
-    version='0.10.0',
+    version='0.10.1',
     packages=[package_name],
     data_files=[
         ('share/ament_index/resource_index/packages', ['resource/' + package_name]),
@@ -27,10 +27,11 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'lifespan = quality_of_service_demo_py.lifespan:main',
-            'liveliness = quality_of_service_demo_py.liveliness:main',
             'deadline = quality_of_service_demo_py.deadline:main',
             'incompatible_qos = quality_of_service_demo_py.incompatible_qos:main',
+            'lifespan = quality_of_service_demo_py.lifespan:main',
+            'liveliness = quality_of_service_demo_py.liveliness:main',
+            'message_lost_listener = quality_of_service_demo_py.message_lost_listener:main',
         ],
     },
 )
