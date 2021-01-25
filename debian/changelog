@@ -1,0 +1,22 @@
+ros-rolling-topic-statistics-demo (0.12.0-1focal) focal; urgency=high
+
+  * Update logging macros (#476 <https://github.com/ros2/demos/issues/476>)
+  * Contributors: Audrow Nash
+
+ -- Mabel Zhang <mabel@openrobotics.org>  Mon, 25 Jan 2021 00:00:00 -0000
+
+ros-rolling-topic-statistics-demo (0.11.0-1focal) focal; urgency=high
+
+  * Update the package.xml files with the latest Open Robotics maintainers (#466 <https://github.com/ros2/demos/issues/466>)
+  * Contributors: Michael Jeronimo
+
+ -- Mabel Zhang <mabel@openrobotics.org>  Thu, 10 Dec 2020 00:00:00 -0000
+
+ros-rolling-topic-statistics-demo (0.10.1-1focal) focal; urgency=high
+
+  * Create new topic statistics demo package (#454 <https://github.com/ros2/demos/issues/454>)
+  * Contributors: Prajakta Gokhale
+
+ -- Amazon ROS Contributions <ros-contributions@amazon.com>  Mon, 21 Sep 2020 00:00:00 -0000
+
+
