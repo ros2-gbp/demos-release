@@ -4,7 +4,7 @@ package_name = 'quality_of_service_demo_py'
 
 setup(
     name=package_name,
-    version='0.11.0',
+    version='0.12.0',
     packages=[package_name],
     data_files=[
         ('share/ament_index/resource_index/packages', ['resource/' + package_name]),
@@ -32,6 +32,8 @@ setup(
             'lifespan = quality_of_service_demo_py.lifespan:main',
             'liveliness = quality_of_service_demo_py.liveliness:main',
             'message_lost_listener = quality_of_service_demo_py.message_lost_listener:main',
+            'qos_overrides_listener = quality_of_service_demo_py.qos_overrides_listener:main',
+            'qos_overrides_talker = quality_of_service_demo_py.qos_overrides_talker:main',
         ],
     },
 )
