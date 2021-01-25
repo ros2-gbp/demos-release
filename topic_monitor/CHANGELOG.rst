@@ -2,6 +2,9 @@
 Changelog for package topic_monitor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.12.0 (2021-01-25)
+-------------------
+
 0.11.0 (2020-12-10)
 -------------------
 * Update deprecated qos policy value names (`#468 <https://github.com/ros2/demos/issues/468>`_)
