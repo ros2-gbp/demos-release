@@ -1,8 +1,3 @@
-@{
-# FastRTPS is not available for RHEL 8 - ignore any deps related to it
-Depends = [d for d in Depends if 'fastrtps' not in d]
-BuildDepends = [d for d in BuildDepends if 'fastrtps' not in d]
-}@
 %bcond_without tests
 %bcond_without weak_deps
 
