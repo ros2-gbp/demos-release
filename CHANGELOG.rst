@@ -2,6 +2,9 @@
 Changelog for package topic_statistics_demo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.14.1 (2021-04-19)
+-------------------
+
 0.14.0 (2021-04-06)
 -------------------
 * Change index.ros.org -> docs.ros.org. (`#496 <https://github.com/ros2/demos/issues/496>`_)
