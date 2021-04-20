@@ -1,0 +1,12 @@
+Source: ros-galactic-quality-of-service-demo-py
+Section: misc
+Priority: optional
+Maintainer: Mabel Zhang <mabel@openrobotics.org>
+Build-Depends: debhelper (>= 9.0.0), python3-pytest, ros-galactic-ament-copyright, ros-galactic-ament-flake8, ros-galactic-ament-pep257, ros-galactic-ros-workspace, python3-all, python3-setuptools
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-galactic-quality-of-service-demo-py
+Architecture: any
+Depends: ${python3:Depends}, ${misc:Depends}, ros-galactic-rclpy, ros-galactic-std-msgs, ros-galactic-ros-workspace
+Description: Python Demo applications for Quality of Service features
