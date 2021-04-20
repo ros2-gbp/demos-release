@@ -1,0 +1,12 @@
+Source: ros-galactic-topic-statistics-demo
+Section: misc
+Priority: optional
+Maintainer: Mabel Zhang <mabel@openrobotics.org>
+Build-Depends: debhelper (>= 9.0.0), ros-galactic-ament-cmake, ros-galactic-ament-lint-auto, ros-galactic-ament-lint-common, ros-galactic-rclcpp, ros-galactic-rcutils, ros-galactic-sensor-msgs, ros-galactic-statistics-msgs, ros-galactic-ros-workspace
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-galactic-topic-statistics-demo
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-galactic-rclcpp, ros-galactic-rcutils, ros-galactic-sensor-msgs, ros-galactic-statistics-msgs, ros-galactic-ros-workspace
+Description: C++ demo application for topic statistics feature.
