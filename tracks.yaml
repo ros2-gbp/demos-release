@@ -169,7 +169,8 @@ tracks:
     ros_distro: galactic
     vcs_type: git
     vcs_uri: https://github.com/ros2/demos.git
-    version: :{auto}
+    version: 0.14.1
+    version_saved: :{auto}
   r2b2:
     actions:
     - bloom-export-upstream :{vcs_local_uri} :{vcs_type} --tag :{release_tag} --display-uri
