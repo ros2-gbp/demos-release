@@ -1,0 +1,12 @@
+Source: ros-galactic-composition
+Section: misc
+Priority: optional
+Maintainer: Mabel Zhang <mabel@openrobotics.org>
+Build-Depends: debhelper (>= 9.0.0), ros-galactic-ament-cmake, ros-galactic-ament-cmake-pytest, ros-galactic-ament-lint-auto, ros-galactic-ament-lint-common, ros-galactic-example-interfaces, ros-galactic-launch, ros-galactic-launch-testing, ros-galactic-launch-testing-ament-cmake, ros-galactic-launch-testing-ros, ros-galactic-rclcpp, ros-galactic-rclcpp-components, ros-galactic-rcutils, ros-galactic-rmw-implementation-cmake, ros-galactic-std-msgs, ros-galactic-ros-workspace
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-galactic-composition
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-galactic-example-interfaces, ros-galactic-launch-ros, ros-galactic-rclcpp, ros-galactic-rclcpp-components, ros-galactic-rcutils, ros-galactic-std-msgs, ros-galactic-ros-workspace
+Description: Examples for composing multiple nodes in a single process.
