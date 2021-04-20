@@ -1,1 +1,1 @@
-{"base": "90730882", "parent": "debian/rolling/dummy_map_server", "previous": "10037c24", "trim": "", "trimbase": ""}
+{"base": "71268b88", "parent": "debian/galactic/dummy_map_server", "previous": "6e8c0cf5", "trim": "", "trimbase": ""}
