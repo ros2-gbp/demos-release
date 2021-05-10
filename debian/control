@@ -1,0 +1,12 @@
+Source: ros-galactic-topic-monitor
+Section: misc
+Priority: optional
+Maintainer: Mabel Zhang <mabel@openrobotics.org>
+Build-Depends: debhelper (>= 9.0.0), python3-pytest, ros-galactic-ament-flake8, ros-galactic-ament-pep257, ros-galactic-rclpy, ros-galactic-ros-workspace, python3-all, python3-setuptools
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-galactic-topic-monitor
+Architecture: any
+Depends: ${python3:Depends}, ${misc:Depends}, ros-galactic-launch, ros-galactic-launch-ros, ros-galactic-rclpy, ros-galactic-std-msgs, ros-galactic-ros-workspace
+Description: Package containing tools for monitoring ROS 2 topics.
