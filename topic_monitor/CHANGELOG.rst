@@ -2,10 +2,11 @@
 Changelog for package topic_monitor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-0.14.3 (2021-05-10)
+0.15.0 (2021-05-14)
 -------------------
-* Use is_alive for threads. (`#510 <https://github.com/ros2/demos/issues/510>`_) (`#513 <https://github.com/ros2/demos/issues/513>`_)
-* Contributors: Chris Lalancette
+* Fix topic_monitor for high publication rate (`#461 <https://github.com/ros2/demos/issues/461>`_)
+* Use is_alive for threads. (`#510 <https://github.com/ros2/demos/issues/510>`_)
+* Contributors: Chris Lalancette, Elias De Coninck
 
 0.14.2 (2021-04-26)
 -------------------
