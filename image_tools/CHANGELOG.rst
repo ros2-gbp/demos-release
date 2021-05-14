@@ -2,6 +2,11 @@
 Changelog for package image_tools
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.15.0 (2021-05-14)
+-------------------
+* Add support for visualizing yuv422 (`#499 <https://github.com/ros2/demos/issues/499>`_)
+* Contributors: joshua-qnx
+
 0.14.2 (2021-04-26)
 -------------------
 
