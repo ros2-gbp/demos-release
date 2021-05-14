@@ -2,6 +2,9 @@
 Changelog for package lifecycle
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.15.0 (2021-05-14)
+-------------------
+
 0.14.2 (2021-04-26)
 -------------------
 * Cleanup the README.rst for the lifecycle demo. (`#508 <https://github.com/ros2/demos/issues/508>`_)
