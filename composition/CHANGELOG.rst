@@ -2,6 +2,11 @@
 Changelog for package composition
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.17.0 (2021-10-18)
+-------------------
+* Fixing deprecated subscriber callback warnings (`#532 <https://github.com/ros2/demos/issues/532>`_)
+* Contributors: Abrar Rahman Protyasha
+
 0.16.0 (2021-08-11)
 -------------------
 
