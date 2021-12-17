@@ -4,7 +4,7 @@ package_name = 'quality_of_service_demo_py'
 
 setup(
     name=package_name,
-    version='0.17.0',
+    version='0.18.0',
     packages=[package_name],
     data_files=[
         ('share/ament_index/resource_index/packages', ['resource/' + package_name]),
@@ -13,8 +13,8 @@ setup(
     install_requires=['setuptools'],
     zip_safe=True,
     author='Emerson Knapp',
-    maintainer='Amazon ROS Contributions',
-    maintainer_email='ros-contributions@amazon.com',
+    maintainer='Audrow Nash, Michael Jeronimo',
+    maintainer_email='audrow@openrobotics.org, michael.jeronimo@openrobotics.org',
     keywords=['ROS'],
     classifiers=[
         'Intended Audience :: Developers',
