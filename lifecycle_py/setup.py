@@ -1,11 +1,12 @@
+from setuptools import find_packages
 from setuptools import setup
 
-package_name = 'action_tutorials_py'
+package_name = 'lifecycle_py'
 
 setup(
     name=package_name,
     version='0.19.0',
-    packages=[package_name],
+    packages=find_packages(exclude=['test']),
     data_files=[
         ('share/ament_index/resource_index/packages',
             ['resource/' + package_name]),
@@ -13,10 +14,10 @@ setup(
     ],
     install_requires=['setuptools'],
     zip_safe=True,
-    author='Jacob Perron',
-    author_email='jacob@openrobotics.org',
-    maintainer='Audrow Nash, Michael Jeronimo',
-    maintainer_email='audrow@openrobotics.org, michael.jeronimo@openrobotics.org',
+    author='Ivan Santiago Paunovic',
+    author_email='ivanpauno@ekumenlabs.com',
+    maintainer='Ivan Santiago Paunovic',
+    maintainer_email='ivanpauno@ekumenlabs.com',
     keywords=['ROS'],
     classifiers=[
         'Intended Audience :: Developers',
@@ -24,13 +25,14 @@ setup(
         'Programming Language :: Python',
         'Topic :: Software Development',
     ],
-    description='Python action tutorials code.',
+    description=(
+        'Python lifecycle node demo'
+    ),
     license='Apache License, Version 2.0',
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'fibonacci_action_server = action_tutorials_py.fibonacci_action_server:main',
-            'fibonacci_action_client = action_tutorials_py.fibonacci_action_client:main',
+            'lifecycle_talker = lifecycle_py.talker:main',
         ],
     },
 )
