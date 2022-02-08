@@ -243,4 +243,5 @@ tracks:
     ros_distro: rolling
     vcs_type: git
     vcs_uri: https://github.com/ros2/demos.git
-    version: :{auto}
+    version: 0.19.0
+    version_saved: :{auto}
