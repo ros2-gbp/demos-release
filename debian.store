@@ -1,1 +1,1 @@
-{"base": "31616c0b", "parent": "debian/rolling/lifecycle_py", "previous": "db9ccdc8", "trim": "", "trimbase": ""}
+{"base": "bbac084d", "parent": "debian/humble/lifecycle_py", "previous": "b368eee4", "trim": "", "trimbase": ""}
