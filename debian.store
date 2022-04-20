@@ -1,1 +1,1 @@
-{"base": "c21d0318", "parent": "debian/rolling/dummy_sensors", "previous": "01dd4e0f", "trim": "", "trimbase": ""}
+{"base": "2e40c33e", "parent": "debian/humble/dummy_sensors", "previous": "938e9396", "trim": "", "trimbase": ""}
