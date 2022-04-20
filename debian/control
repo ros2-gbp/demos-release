@@ -1,0 +1,12 @@
+Source: ros-humble-lifecycle-py
+Section: misc
+Priority: optional
+Maintainer: Audrow Nash <audrow@openrobotics.org>
+Build-Depends: debhelper (>= 9.0.0), ros-humble-ament-lint-auto <!nocheck>, ros-humble-ament-lint-common <!nocheck>, ros-humble-lifecycle <!nocheck>, ros-humble-ros-testing <!nocheck>, ros-humble-ros-workspace, python3-all, python3-setuptools, dh-python
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-humble-lifecycle-py
+Architecture: any
+Depends: ${python3:Depends}, ${misc:Depends}, ros-humble-lifecycle-msgs, ros-humble-rclpy, ros-humble-std-msgs, ros-humble-ros-workspace
+Description: Package containing demos for rclpy lifecycle implementation
