@@ -1,3 +1,47 @@
+## demos (humble) - 0.20.2-1
+
+The packages in the `demos` repository were released into the `humble` distro by running `/usr/local/bin/bloom-release --non-interactive -r humble demos` on `Wed, 11 May 2022 01:27:26 -0000`
+
+These packages were released:
+- `action_tutorials_cpp`
+- `action_tutorials_interfaces`
+- `action_tutorials_py`
+- `composition`
+- `demo_nodes_cpp`
+- `demo_nodes_cpp_native`
+- `demo_nodes_py`
+- `dummy_map_server`
+- `dummy_robot_bringup`
+- `dummy_sensors`
+- `image_tools`
+- `intra_process_demo`
+- `lifecycle`
+- `lifecycle_py`
+- `logging_demo`
+- `pendulum_control`
+- `pendulum_msgs`
+- `quality_of_service_demo_cpp`
+- `quality_of_service_demo_py`
+- `topic_monitor`
+- `topic_statistics_demo`
+
+Version of package(s) in repository `demos`:
+
+- upstream repository: https://github.com/ros2/demos.git
+- release repository: https://github.com/ros2-gbp/demos-release.git
+- rosdistro version: `0.20.1-2`
+- old version: `0.20.1-2`
+- new version: `0.20.2-1`
+
+Versions of tools used:
+
+- bloom version: `0.11.1`
+- catkin_pkg version: `0.4.24`
+- rosdep version: `0.21.0`
+- rosdistro version: `0.8.3`
+- vcstools version: `0.1.42`
+
+
 ## demos (rolling) - 0.21.0-1
 
 The packages in the `demos` repository were released into the `rolling` distro by running `/home/parallels/.local/bin/bloom-release -r rolling demos` on `Sat, 30 Apr 2022 00:20:24 -0000`
