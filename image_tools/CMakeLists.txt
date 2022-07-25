@@ -16,42 +16,30 @@ find_package(rclcpp REQUIRED)
 find_package(rclcpp_components REQUIRED)
 find_package(sensor_msgs REQUIRED)
 find_package(std_msgs REQUIRED)
-find_package(OpenCV REQUIRED COMPONENTS core highgui imgcodecs imgproc videoio)
+find_package(OpenCV REQUIRED)
 
-add_library(${PROJECT_NAME} SHARED
-  src/burger.cpp
+include_directories(include)
+
+add_library(imagetools SHARED
   src/cam2image.cpp
-  src/cv_mat_sensor_msgs_image_type_adapter.cpp
   src/showimage.cpp
-)
-target_compile_definitions(${PROJECT_NAME}
+  src/burger.cpp)
+target_compile_definitions(imagetools
   PRIVATE "IMAGE_TOOLS_BUILDING_DLL")
-target_include_directories(${PROJECT_NAME} PUBLIC
-  "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>"
-  "$<INSTALL_INTERFACE:include/${PROJECT_NAME}>")
-target_link_libraries(${PROJECT_NAME}
-  rclcpp::rclcpp
-  ${sensor_msgs_TARGETS}
-  ${std_msgs_TARGETS}
-  rclcpp_components::component
-  ${OpenCV_LIBS})
-rclcpp_components_register_node(${PROJECT_NAME} PLUGIN "image_tools::Cam2Image" EXECUTABLE cam2image)
-rclcpp_components_register_node(${PROJECT_NAME} PLUGIN "image_tools::ShowImage" EXECUTABLE showimage)
+ament_target_dependencies(imagetools
+  "rclcpp"
+  "sensor_msgs"
+  "std_msgs"
+  "rclcpp_components"
+  "OpenCV")
+rclcpp_components_register_node(imagetools PLUGIN "image_tools::Cam2Image" EXECUTABLE cam2image)
+rclcpp_components_register_node(imagetools PLUGIN "image_tools::ShowImage" EXECUTABLE showimage)
 
-install(
-  TARGETS ${PROJECT_NAME} EXPORT ${PROJECT_NAME}
+install(TARGETS
+  imagetools
   ARCHIVE DESTINATION lib
   LIBRARY DESTINATION lib
   RUNTIME DESTINATION bin)
-
-install(DIRECTORY include/ DESTINATION include/${PROJECT_NAME})
-
-# TODO(sloretz) stop exporting old-style CMake variables in the future
-ament_export_libraries(${PROJECT_NAME})
-
-ament_export_targets(${PROJECT_NAME})
-
-ament_export_dependencies(rclcpp_components)
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)

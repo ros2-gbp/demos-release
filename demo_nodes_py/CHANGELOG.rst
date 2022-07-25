@@ -2,67 +2,10 @@
 Changelog for package demo_nodes_py
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-0.20.2 (2022-05-10)
--------------------
-
-0.20.1 (2022-04-08)
--------------------
-
-0.20.0 (2022-03-01)
--------------------
-* Cleanups in demo_nodes_py. (`#555 <https://github.com/ros2/demos/issues/555>`_)
-* Contributors: Chris Lalancette
-
-0.19.0 (2022-01-14)
--------------------
-
-0.18.0 (2021-12-17)
--------------------
-* Update maintainers to Audrow Nash and Michael Jeronimo (`#543 <https://github.com/ros2/demos/issues/543>`_)
-* Fixed typo executor -> executors (`#542 <https://github.com/ros2/demos/issues/542>`_)
-* Update python nodes SIGINT handling (`#539 <https://github.com/ros2/demos/issues/539>`_)
-* Contributors: Audrow Nash, Ivan Santiago Paunovic, ori155
-
-0.17.0 (2021-10-18)
--------------------
-
-0.16.0 (2021-08-11)
--------------------
-
-0.15.0 (2021-05-14)
--------------------
-
-0.14.2 (2021-04-26)
--------------------
-
-0.14.1 (2021-04-19)
--------------------
-* Use underscores instead of dashes in setup.cfg (`#502 <https://github.com/ros2/demos/issues/502>`_)
-* Contributors: Ivan Santiago Paunovic
-
-0.14.0 (2021-04-06)
--------------------
-
-0.13.0 (2021-03-25)
--------------------
-
-0.12.1 (2021-03-18)
--------------------
-
-0.12.0 (2021-01-25)
--------------------
-
-0.11.0 (2020-12-10)
--------------------
-* Update deprecated qos policy value names (`#468 <https://github.com/ros2/demos/issues/468>`_)
-* Update the package.xml files with the latest Open Robotics maintainers (`#466 <https://github.com/ros2/demos/issues/466>`_)
-* Contributors: Ivan Santiago Paunovic, Michael Jeronimo
-
-0.10.1 (2020-09-21)
--------------------
-
-0.10.0 (2020-06-17)
--------------------
+0.9.4 (2022-07-25)
+------------------
+* Update maintainer list for Foxy (`#471 <https://github.com/ros2/demos/issues/471>`_)
+* Contributors: Michael Jeronimo
 
 0.9.3 (2020-06-01)
 ------------------

@@ -147,7 +147,7 @@ int main(int argc, char ** argv)
     "This simple demo shows off a custom memory allocator to count all\n"
     "instances of new/delete in the program.  It can be run in either regular\n"
     "mode (no arguments), or in intra-process mode (by passing 'intra' as a\n"
-    "command-line argument).  It will then publish a message to the\n"
+    "command-line argument)'.  It will then publish a message to the\n"
     "'/allocator_tutorial' topic every 10 milliseconds until Ctrl-C is pressed.\n"
     "At that time it will print a count of the number of allocations and\n"
     "deallocations that happened during the program.\n\n");
@@ -177,7 +177,7 @@ int main(int argc, char ** argv)
   }
 
   uint32_t counter = 0;
-  auto callback = [&counter](std_msgs::msg::UInt32::ConstSharedPtr msg) -> void
+  auto callback = [&counter](std_msgs::msg::UInt32::SharedPtr msg) -> void
     {
       (void)msg;
       ++counter;

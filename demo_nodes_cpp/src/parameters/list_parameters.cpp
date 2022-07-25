@@ -34,12 +34,12 @@ public:
   : Node("list_paramters", options)
   {
     setvbuf(stdout, NULL, _IONBF, BUFSIZ);
-    this->declare_parameter("foo", 0);
-    this->declare_parameter("bar", "");
-    this->declare_parameter("baz", 0.);
-    this->declare_parameter("foo.first", 0);
-    this->declare_parameter("foo.second", 0);
-    this->declare_parameter("foobar", false);
+    this->declare_parameter("foo");
+    this->declare_parameter("bar");
+    this->declare_parameter("baz");
+    this->declare_parameter("foo.first");
+    this->declare_parameter("foo.second");
+    this->declare_parameter("foobar");
 
     auto parameters_client = std::make_shared<rclcpp::SyncParametersClient>(this);
     while (!parameters_client->wait_for_service(1s)) {
@@ -75,7 +75,7 @@ public:
     for (auto & prefix : parameters_and_prefixes.prefixes) {
       ss << "\n " << prefix;
     }
-    RCLCPP_INFO(this->get_logger(), "%s", ss.str().c_str());
+    RCLCPP_INFO(this->get_logger(), ss.str().c_str());
     rclcpp::shutdown();
   }
 };

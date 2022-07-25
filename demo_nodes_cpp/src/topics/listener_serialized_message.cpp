@@ -70,7 +70,7 @@ public:
   }
 
 private:
-  rclcpp::Subscription<std_msgs::msg::String>::SharedPtr sub_;
+  rclcpp::Subscription<rclcpp::SerializedMessage>::SharedPtr sub_;
 };
 
 }  // namespace demo_nodes_cpp

@@ -81,8 +81,9 @@ private:
   rclcpp::TimerBase::SharedPtr timer_;
 
   ACTION_TUTORIALS_CPP_LOCAL
-  void goal_response_callback(GoalHandleFibonacci::SharedPtr goal_handle)
+  void goal_response_callback(std::shared_future<GoalHandleFibonacci::SharedPtr> future)
   {
+    auto goal_handle = future.get();
     if (!goal_handle) {
       RCLCPP_ERROR(this->get_logger(), "Goal was rejected by server");
     } else {
@@ -100,7 +101,7 @@ private:
     for (auto number : feedback->partial_sequence) {
       ss << number << " ";
     }
-    RCLCPP_INFO(this->get_logger(), "%s", ss.str().c_str());
+    RCLCPP_INFO(this->get_logger(), ss.str().c_str());
   }
 
   ACTION_TUTORIALS_CPP_LOCAL
@@ -124,7 +125,7 @@ private:
     for (auto number : result.result->sequence) {
       ss << number << " ";
     }
-    RCLCPP_INFO(this->get_logger(), "%s", ss.str().c_str());
+    RCLCPP_INFO(this->get_logger(), ss.str().c_str());
     rclcpp::shutdown();
   }
 };  // class FibonacciActionClient

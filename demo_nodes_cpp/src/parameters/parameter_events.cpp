@@ -13,7 +13,6 @@
 // limitations under the License.
 
 #include <chrono>
-#include <cstring>
 #include <future>
 #include <memory>
 #include <sstream>
@@ -23,28 +22,11 @@
 
 using namespace std::chrono_literals;
 
-bool on_parameter_event(
-  rcl_interfaces::msg::ParameterEvent::UniquePtr event, rclcpp::Logger logger)
+void on_parameter_event(
+  const rcl_interfaces::msg::ParameterEvent::SharedPtr event, rclcpp::Logger logger)
 {
   // TODO(wjwwood): The message should have an operator<<, which would replace all of this.
   std::stringstream ss;
-  // ignore qos overrides
-  event->new_parameters.erase(
-    std::remove_if(
-      event->new_parameters.begin(),
-      event->new_parameters.end(),
-      [](const auto & item) {
-        const char * param_override_prefix = "qos_overrides.";
-        return std::strncmp(
-          item.name.c_str(), param_override_prefix, sizeof(param_override_prefix) - 1) == 0u;
-      }),
-    event->new_parameters.end());
-  if (
-    !event->new_parameters.size() && !event->changed_parameters.size() &&
-    !event->deleted_parameters.size())
-  {
-    return false;
-  }
   ss << "\nParameter event:\n new parameters:";
   for (auto & new_parameter : event->new_parameters) {
     ss << "\n  " << new_parameter.name;
@@ -58,8 +40,7 @@ bool on_parameter_event(
     ss << "\n  " << deleted_parameter.name;
   }
   ss << "\n";
-  RCLCPP_INFO(logger, "%s", ss.str().c_str());
-  return true;
+  RCLCPP_INFO(logger, ss.str().c_str());
 }
 
 int main(int argc, char ** argv)
@@ -86,23 +67,21 @@ int main(int argc, char ** argv)
   // Setup callback for changes to parameters.
   auto sub = parameters_client->on_parameter_event(
     [node, promise = std::move(events_received_promise)](
-      rcl_interfaces::msg::ParameterEvent::UniquePtr event) -> void
+      const rcl_interfaces::msg::ParameterEvent::SharedPtr event) -> void
     {
       static size_t n_times_called = 0u;
-      if (on_parameter_event(std::move(event), node->get_logger())) {
-        ++n_times_called;
-      }
-      if (10u == n_times_called) {
+      on_parameter_event(event, node->get_logger());
+      if (10u == ++n_times_called) {
         // This callback will be called 10 times, set the promise when that happens.
         promise->set_value();
       }
     });
 
   // Declare parameters that may be set on this node
-  node->declare_parameter("foo", 0);
-  node->declare_parameter("bar", "");
-  node->declare_parameter("baz", 0.);
-  node->declare_parameter("foobar", false);
+  node->declare_parameter("foo");
+  node->declare_parameter("bar");
+  node->declare_parameter("baz");
+  node->declare_parameter("foobar");
 
   // Set several different types of parameters.
   auto set_parameters_results = parameters_client->set_parameters(

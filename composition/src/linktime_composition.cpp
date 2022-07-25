@@ -15,7 +15,6 @@
 #include <memory>
 #include <string>
 #include <vector>
-#include <utility>
 
 #include "class_loader/class_loader.hpp"
 #include "rclcpp/rclcpp.hpp"
@@ -33,7 +32,7 @@ int main(int argc, char * argv[])
   rclcpp::Logger logger = rclcpp::get_logger(LINKTIME_COMPOSITION_LOGGER_NAME);
   rclcpp::executors::SingleThreadedExecutor exec;
   rclcpp::NodeOptions options;
-  std::vector<std::unique_ptr<class_loader::ClassLoader>> loaders;
+  std::vector<class_loader::ClassLoader *> loaders;
   std::vector<rclcpp_components::NodeInstanceWrapper> node_wrappers;
 
   std::vector<std::string> libraries = {
@@ -43,7 +42,7 @@ int main(int argc, char * argv[])
   };
   for (auto library : libraries) {
     RCLCPP_INFO(logger, "Load library %s", library.c_str());
-    auto loader = std::make_unique<class_loader::ClassLoader>(library);
+    auto loader = new class_loader::ClassLoader(library);
     auto classes = loader->getAvailableClasses<rclcpp_components::NodeFactory>();
     for (auto clazz : classes) {
       RCLCPP_INFO(logger, "Instantiate class %s", clazz.c_str());
@@ -53,7 +52,7 @@ int main(int argc, char * argv[])
       node_wrappers.push_back(wrapper);
       exec.add_node(node);
     }
-    loaders.push_back(std::move(loader));
+    loaders.push_back(loader);
   }
 
   exec.spin();

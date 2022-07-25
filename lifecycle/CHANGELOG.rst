@@ -2,73 +2,10 @@
 Changelog for package lifecycle
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-0.20.2 (2022-05-10)
--------------------
-
-0.20.1 (2022-04-08)
--------------------
-* Make lifecycle demo automatically exit when done (`#558 <https://github.com/ros2/demos/issues/558>`_)
-* Contributors: Shane Loretz
-
-0.20.0 (2022-03-01)
--------------------
-* Use default on_activate()/on_deactivate() implemenetation of Node (`#552 <https://github.com/ros2/demos/issues/552>`_)
-* Contributors: Ivan Santiago Paunovic
-
-0.19.0 (2022-01-14)
--------------------
-
-0.18.0 (2021-12-17)
--------------------
-* Update maintainers to Audrow Nash and Michael Jeronimo (`#543 <https://github.com/ros2/demos/issues/543>`_)
-* Contributors: Audrow Nash
-
-0.17.0 (2021-10-18)
--------------------
-* Fix use of future in lifecycle demo (`#534 <https://github.com/ros2/demos/issues/534>`_)
-* Fixing deprecated subscriber callback warnings (`#532 <https://github.com/ros2/demos/issues/532>`_)
-* Contributors: Abrar Rahman Protyasha, Christophe Bedard
-
-0.16.0 (2021-08-11)
--------------------
-
-0.15.0 (2021-05-14)
--------------------
-
-0.14.2 (2021-04-26)
--------------------
-* Cleanup the README.rst for the lifecycle demo. (`#508 <https://github.com/ros2/demos/issues/508>`_)
-* Contributors: Chris Lalancette
-
-0.14.1 (2021-04-19)
--------------------
-
-0.14.0 (2021-04-06)
--------------------
-* change ParameterEventHandler to take events as const ref instead of shared pointer (`#494 <https://github.com/ros2/demos/issues/494>`_)
-* Contributors: William Woodall
-
-0.13.0 (2021-03-25)
--------------------
-
-0.12.1 (2021-03-18)
--------------------
-
-0.12.0 (2021-01-25)
--------------------
-
-0.11.0 (2020-12-10)
--------------------
-* Update the package.xml files with the latest Open Robotics maintainers (`#466 <https://github.com/ros2/demos/issues/466>`_)
+0.9.4 (2022-07-25)
+------------------
+* Update maintainer list for Foxy (`#471 <https://github.com/ros2/demos/issues/471>`_)
 * Contributors: Michael Jeronimo
-
-0.10.1 (2020-09-21)
--------------------
-* Add missing required parameter in LifecycleNode launch action (`#456 <https://github.com/ros2/demos/issues/456>`_)
-* Contributors: Ivan Santiago Paunovic
-
-0.10.0 (2020-06-17)
--------------------
 
 0.9.3 (2020-06-01)
 ------------------

@@ -20,7 +20,6 @@ from quality_of_service_demo_py.common_nodes import Talker
 
 import rclpy
 from rclpy.duration import Duration
-from rclpy.executors import ExternalShutdownException
 from rclpy.executors import SingleThreadedExecutor
 from rclpy.logging import get_logger
 from rclpy.qos import QoSDurabilityPolicy
@@ -62,9 +61,9 @@ def main(args=None):
             'Setting subscription durability to: TRANSIENT_LOCAL\n'
         )
         qos_profile_publisher.durability = \
-            QoSDurabilityPolicy.VOLATILE
+            QoSDurabilityPolicy.RMW_QOS_POLICY_DURABILITY_VOLATILE
         qos_profile_subscription.durability = \
-            QoSDurabilityPolicy.TRANSIENT_LOCAL
+            QoSDurabilityPolicy.RMW_QOS_POLICY_DURABILITY_TRANSIENT_LOCAL
     elif qos_policy_name == 'deadline':
         print(
             'Deadline incompatibility selected.\n'
@@ -83,9 +82,9 @@ def main(args=None):
             'Setting subscription liveliness policy to: MANUAL_BY_TOPIC\n'
         )
         qos_profile_publisher.liveliness = \
-            QoSLivelinessPolicy.AUTOMATIC
+            QoSLivelinessPolicy.RMW_QOS_POLICY_LIVELINESS_AUTOMATIC
         qos_profile_subscription.liveliness = \
-            QoSLivelinessPolicy.MANUAL_BY_TOPIC
+            QoSLivelinessPolicy.RMW_QOS_POLICY_LIVELINESS_MANUAL_BY_TOPIC
     elif qos_policy_name == 'liveliness_lease_duration':
         print(
             'Liveliness lease duration incompatibility selected.\n'
@@ -104,9 +103,9 @@ def main(args=None):
             'Setting subscription reliability to: RELIABLE\n'
         )
         qos_profile_publisher.reliability = \
-            QoSReliabilityPolicy.BEST_EFFORT
+            QoSReliabilityPolicy.RMW_QOS_POLICY_RELIABILITY_BEST_EFFORT
         qos_profile_subscription.reliability = \
-            QoSReliabilityPolicy.RELIABLE
+            QoSReliabilityPolicy.RMW_QOS_POLICY_RELIABILITY_RELIABLE
     else:
         print('{name} not recognised.'.format(name=qos_policy_name))
         parser.print_help()
@@ -132,7 +131,7 @@ def main(args=None):
         print()
         print(exc, end='\n\n')
         print('Please try this demo using a different RMW implementation')
-        return 1
+        return -1
 
     executor = SingleThreadedExecutor()
     executor.add_node(listener)
@@ -143,10 +142,8 @@ def main(args=None):
             executor.spin_once()
     except KeyboardInterrupt:
         pass
-    except ExternalShutdownException:
-        return 1
-    finally:
-        rclpy.try_shutdown()
+
+    rclpy.shutdown()
 
     return 0
 

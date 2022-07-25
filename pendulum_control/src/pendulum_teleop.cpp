@@ -20,7 +20,7 @@
 
 #include "rclcpp/rclcpp.hpp"
 
-#include "rttest/utils.hpp"
+#include "rttest/utils.h"
 
 #include "pendulum_msgs/msg/joint_command.hpp"
 
