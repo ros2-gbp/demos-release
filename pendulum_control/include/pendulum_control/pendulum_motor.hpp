@@ -15,12 +15,19 @@
 #ifndef PENDULUM_CONTROL__PENDULUM_MOTOR_HPP_
 #define PENDULUM_CONTROL__PENDULUM_MOTOR_HPP_
 
+// Needed for M_PI on Windows
+#ifdef _MSC_VER
+#ifndef _USE_MATH_DEFINES
+#define _USE_MATH_DEFINES
+#endif
+#endif
+
 #include <chrono>
 #include <cmath>
 #include <memory>
 
 #include "rttest/rttest.h"
-#include "rttest/utils.h"
+#include "rttest/utils.hpp"
 
 #include "pendulum_msgs/msg/joint_command.hpp"
 #include "pendulum_msgs/msg/joint_state.hpp"
@@ -29,32 +36,28 @@
 #define GRAVITY 9.80665
 #endif
 
-#ifndef PI
-#define PI 3.14159265359
-#endif
-
 namespace pendulum_control
 {
 
 /// Struct representing the physical properties of the pendulum.
 struct PendulumProperties
 {
-  // Mass of the weight on the end of the pendulum in kilograms
+  /// Mass of the weight on the end of the pendulum in kilograms
   double mass = 0.01;
-  // Length of the pendulum in meters
+  /// Length of the pendulum in meters
   double length = 0.5;
 };
 
 /// Struct representing the dynamic/kinematic state of the pendulum.
 struct PendulumState
 {
-  // Angle from the ground in radians
+  /// Angle from the ground in radians
   double position = 0;
-  // Angular velocity in radians/sec
+  /// Angular velocity in radians/sec
   double velocity = 0;
-  // Angular acceleration in radians/sec^2
+  /// Angular acceleration in radians/sec^2
   double acceleration = 0;
-  // Torque on the joint (currently unused)
+  /// Torque on the joint (currently unused)
   double torque = 0;
 };
 
@@ -74,7 +77,7 @@ public:
   {
     // Calculate physics engine timestep.
     dt_ = physics_update_period_.count() / (1000.0 * 1000.0 * 1000.0);
-    long_to_timespec(physics_update_period_.count(), &physics_update_timespec_);
+    uint64_to_timespec(physics_update_period_.count(), &physics_update_timespec_);
 
     // Initialize a separate high-priority thread to run the physics update loop.
     pthread_attr_init(&thread_attr_);
@@ -97,8 +100,8 @@ public:
     state_.position = msg->position;
 
     // Enforce position limits
-    if (state_.position > PI) {
-      state_.position = PI;
+    if (state_.position > M_PI) {
+      state_.position = M_PI;
     } else if (state_.position < 0) {
       state_.position = 0;
     }
@@ -178,6 +181,7 @@ public:
     properties_ = properties;
   }
 
+  /// Count the number of messages received (number of times the callback fired).
   size_t messages_received = 0;
 
 private:
@@ -194,12 +198,12 @@ private:
   {
     rttest_lock_and_prefault_dynamic();
     while (!done_) {
-      state_.acceleration = GRAVITY * std::sin(state_.position - PI / 2.0) / properties_.length +
+      state_.acceleration = GRAVITY * std::sin(state_.position - M_PI / 2.0) / properties_.length +
         state_.torque / (properties_.mass * properties_.length * properties_.length);
       state_.velocity += state_.acceleration * dt_;
       state_.position += state_.velocity * dt_;
-      if (state_.position > PI) {
-        state_.position = PI;
+      if (state_.position > M_PI) {
+        state_.position = M_PI;
       } else if (state_.position < 0) {
         state_.position = 0;
       }

@@ -32,11 +32,11 @@ logger = rclpy.logging.get_logger('topic_monitor')
 class MonitoredTopic:
     """Monitor for the statistics and status of a single topic."""
 
-    def __init__(self, topic_id, stale_time, lock=None):
+    def __init__(self, topic_id, stale_time, lock):
         self.expected_value = None
         self.expected_value_timer = None
         self.initial_value = None
-        self.lock = lock or Lock()
+        self.lock = lock
         self.received_values = []
         self.reception_rate_over_time = []
         self.stale_time = stale_time
@@ -68,7 +68,7 @@ class MonitoredTopic:
             if self.expected_value is None:
                 # This is the first value from the topic
                 self.expected_value = received_value
-                self.initial_value = received_value - QOS_DEPTH
+                self.initial_value = received_value
                 self.allowed_latency_timer.reset()
             if received_value == -1:
                 # The topic was previously offline
@@ -76,7 +76,10 @@ class MonitoredTopic:
                 self.expected_value_timer.cancel()
                 self.expected_value = None
             else:
+                self.expected_value_timer.cancel()
                 self.received_values.append(received_value)
+                self.expected_value = received_value + 1
+                self.allowed_latency_timer.reset()
             self.time_of_last_data = time.time()  # TODO(dhood): time stamp of msg
             status_changed = status != self.status
             self.status_changed |= status_changed  # don't clear the flag before check_status
@@ -100,8 +103,8 @@ class MonitoredTopic:
         rate = None
         if self.status != 'Offline':
             expected_values = range(
-                max(self.initial_value, self.expected_value - window_size + 1),
-                self.expected_value + 1)
+                max(self.initial_value, self.expected_value - window_size),
+                self.expected_value)
             # How many of the expected values have been received?
             count = len(set(expected_values) & set(self.received_values))
             rate = count / len(expected_values)
@@ -125,7 +128,6 @@ class TopicMonitor:
             expected_period=1.0, allowed_latency=1.0, stale_time=1.0):
         # Create a subscription to the topic
         monitored_topic = MonitoredTopic(topic_name, stale_time, lock=self.monitored_topics_lock)
-        monitored_topic.topic_name = topic_name
         node_logger = node.get_logger()
         node_logger.info('Subscribing to topic: %s' % topic_name)
         sub = node.create_subscription(
@@ -207,9 +209,6 @@ class TopicMonitor:
         return status_changed
 
     def calculate_statistics(self):
-        self.calculate_reception_rates()
-
-    def calculate_reception_rates(self):
         with self.monitored_topics_lock:
             for topic_id, monitored_topic in self.monitored_topics.items():
                 rate = monitored_topic.current_reception_rate(self.window_size)
@@ -244,7 +243,7 @@ class TopicMonitorDisplay:
         plt.title('Reception rate over time')
         plt.xlabel('Time (s)')
         plt.ylabel('Reception rate (last %i msgs)' % self.topic_monitor.get_window_size())
-        self.ax = self.fig.add_subplot(111)
+        self.ax = self.fig.get_axes()[0]
         self.ax.axis([0, self.x_range_s, 0, 1.1])
 
         # Shrink axis' height to make room for legend
@@ -341,7 +340,7 @@ def run_topic_listening(node, topic_monitor, options):
                 if topic_name not in already_ignored_topics:
                     node.get_logger().info(
                         "Warning: ignoring topic '%s' because its message type (%s)"
-                        'is not suported.'
+                        'is not supported.'
                         % (topic_name, type_name))
                     already_ignored_topics.add(topic_name)
                 continue
@@ -353,7 +352,7 @@ def run_topic_listening(node, topic_monitor, options):
                 qos_profile.depth = QOS_DEPTH
                 if topic_info['reliability'] == 'best_effort':
                     qos_profile.reliability = \
-                        QoSReliabilityPolicy.RMW_QOS_POLICY_RELIABILITY_BEST_EFFORT
+                        QoSReliabilityPolicy.BEST_EFFORT
                 topic_monitor.add_monitored_topic(
                     Header, topic_name, node, qos_profile,
                     options.expected_period, options.allowed_latency, options.stale_time)
@@ -417,7 +416,7 @@ def main():
             topic_monitor_display = TopicMonitorDisplay(topic_monitor, args.stats_calc_period)
 
         last_time = time.time()
-        while data_receiving_thread.isAlive():
+        while data_receiving_thread.is_alive():
             now = time.time()
             if now - last_time > args.stats_calc_period:
                 last_time = now
@@ -425,9 +424,13 @@ def main():
                 topic_monitor.calculate_statistics()
                 if args.show_display:
                     topic_monitor_display.update_display()
+                # sleep the main thread so background threads can do work
+                time_to_sleep = args.stats_calc_period - (time.time() - now)
+                if time_to_sleep > 0:
+                    time.sleep(time_to_sleep)
 
     finally:
-        if data_receiving_thread.isAlive():
+        if data_receiving_thread.is_alive():
             data_receiving_thread.stop()
         # Block this thread until the other thread terminates
         data_receiving_thread.join()

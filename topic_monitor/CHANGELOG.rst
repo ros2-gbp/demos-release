@@ -2,10 +2,73 @@
 Changelog for package topic_monitor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-0.9.4 (2022-07-25)
-------------------
-* Update maintainer list for Foxy (`#471 <https://github.com/ros2/demos/issues/471>`_)
-* Contributors: Michael Jeronimo
+0.22.0 (2022-09-13)
+-------------------
+
+0.21.0 (2022-04-29)
+-------------------
+
+0.20.1 (2022-04-08)
+-------------------
+
+0.20.0 (2022-03-01)
+-------------------
+
+0.19.0 (2022-01-14)
+-------------------
+
+0.18.0 (2021-12-17)
+-------------------
+* Update maintainers to Audrow Nash and Michael Jeronimo (`#543 <https://github.com/ros2/demos/issues/543>`_)
+* Contributors: Audrow Nash
+
+0.17.0 (2021-10-18)
+-------------------
+
+0.16.0 (2021-08-11)
+-------------------
+* Small cleanups to the topic monitor. (`#517 <https://github.com/ros2/demos/issues/517>`_)
+* Contributors: Chris Lalancette
+
+0.15.0 (2021-05-14)
+-------------------
+* Fix topic_monitor for high publication rate (`#461 <https://github.com/ros2/demos/issues/461>`_)
+* Use is_alive for threads. (`#510 <https://github.com/ros2/demos/issues/510>`_)
+* Contributors: Chris Lalancette, Elias De Coninck
+
+0.14.2 (2021-04-26)
+-------------------
+
+0.14.1 (2021-04-19)
+-------------------
+* Use underscores instead of dashes in setup.cfg (`#502 <https://github.com/ros2/demos/issues/502>`_)
+* Contributors: Ivan Santiago Paunovic
+
+0.14.0 (2021-04-06)
+-------------------
+* Change index.ros.org -> docs.ros.org. (`#496 <https://github.com/ros2/demos/issues/496>`_)
+* Contributors: Chris Lalancette
+
+0.13.0 (2021-03-25)
+-------------------
+
+0.12.1 (2021-03-18)
+-------------------
+
+0.12.0 (2021-01-25)
+-------------------
+
+0.11.0 (2020-12-10)
+-------------------
+* Update deprecated qos policy value names (`#468 <https://github.com/ros2/demos/issues/468>`_)
+* Update the package.xml files with the latest Open Robotics maintainers (`#466 <https://github.com/ros2/demos/issues/466>`_)
+* Contributors: Ivan Santiago Paunovic, Michael Jeronimo
+
+0.10.1 (2020-09-21)
+-------------------
+
+0.10.0 (2020-06-17)
+-------------------
 
 0.9.3 (2020-06-01)
 ------------------

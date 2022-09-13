@@ -19,18 +19,25 @@
 #include <utility>
 #include <vector>
 
-#include "opencv2/highgui/highgui.hpp"
+#include "opencv2/core/mat.hpp"
+#include "opencv2/core.hpp"
+#include "opencv2/highgui.hpp"
+#include "opencv2/videoio.hpp"
 
 #include "rcl_interfaces/msg/parameter_descriptor.hpp"
 #include "rclcpp/rclcpp.hpp"
 #include "rclcpp_components/register_node_macro.hpp"
-#include "sensor_msgs/msg/image.hpp"
 #include "std_msgs/msg/bool.hpp"
 
+#include "image_tools/cv_mat_sensor_msgs_image_type_adapter.hpp"
 #include "image_tools/visibility_control.h"
 
 #include "./burger.hpp"
 #include "./policy_maps.hpp"
+
+RCLCPP_USING_CUSTOM_TYPE_AS_ROS_MESSAGE_TYPE(
+  image_tools::ROSCvMatContainer,
+  sensor_msgs::msg::Image);
 
 namespace image_tools
 {
@@ -74,11 +81,11 @@ private:
     // ensure that every message gets received in order, or best effort, meaning that the transport
     // makes no guarantees about the order or reliability of delivery.
     qos.reliability(reliability_policy_);
-    pub_ = create_publisher<sensor_msgs::msg::Image>("image", qos);
+    pub_ = create_publisher<image_tools::ROSCvMatContainer>("image", qos);
 
     // Subscribe to a message that will toggle flipping or not flipping, and manage the state in a
     // callback
-    auto callback = [this](const std_msgs::msg::Bool::SharedPtr msg) -> void
+    auto callback = [this](std_msgs::msg::Bool::ConstSharedPtr msg) -> void
       {
         this->is_flipped_ = msg->data;
         RCLCPP_INFO(this->get_logger(), "Set flip mode to: %s", this->is_flipped_ ? "on" : "off");
@@ -89,8 +96,7 @@ private:
 
     if (!burger_mode_) {
       // Initialize OpenCV video capture stream.
-      // Always open device 0.
-      cap.open(0);
+      cap.open(device_id_);
 
       // Set the width and height based on command line arguments.
       cap.set(cv::CAP_PROP_FRAME_WIDTH, static_cast<double>(width_));
@@ -114,9 +120,6 @@ private:
     cv::Mat frame;
 
     // Initialize a shared pointer to an Image message.
-    auto msg = std::make_unique<sensor_msgs::msg::Image>();
-    msg->is_bigendian = false;
-
     // Get the frame from the video capture.
     if (burger_mode_) {
       frame = burger_cap.render_burger(width_, height_);
@@ -134,25 +137,26 @@ private:
       cv::flip(frame, frame, 1);
     }
 
-    // Convert to a ROS image
-    convert_frame_to_message(frame, *msg);
-
     // Conditionally show image
     if (show_camera_) {
-      cv::Mat cvframe = frame;
       // Show the image in a window called "cam2image".
-      cv::imshow("cam2image", cvframe);
+      cv::imshow("cam2image", frame);
       // Draw the image to the screen and wait 1 millisecond.
       cv::waitKey(1);
     }
 
-    // Publish the image message and increment the frame_id.
+    std_msgs::msg::Header header;
+    header.frame_id = frame_id_;
+    header.stamp = this->now();
+    image_tools::ROSCvMatContainer container(frame, header);
+
+    // Publish the image message and increment the publish_number_.
     RCLCPP_INFO(get_logger(), "Publishing image #%zd", publish_number_++);
-    pub_->publish(std::move(msg));
+    pub_->publish(std::move(container));
   }
 
   IMAGE_TOOLS_LOCAL
-  bool help(const std::vector<std::string> args)
+  bool help(const std::vector<std::string> & args)
   {
     if (std::find(args.begin(), args.end(), "--help") != args.end() ||
       std::find(args.begin(), args.end(), "-h") != args.end())
@@ -180,6 +184,8 @@ private:
       ss << "  burger_mode\tProduce images of burgers rather than connecting to a camera";
       ss << std::endl;
       ss << "  show_camera\tShow camera stream. Either 'true' or 'false' (default)";
+      ss << std::endl;
+      ss << "  device_id\tDevice ID of the camera. 0 (default) selects the default camera device.";
       ss << std::endl;
       ss << "  width\t\tWidth component of the camera stream resolution. Default value is 320";
       ss << std::endl;
@@ -236,6 +242,7 @@ private:
     depth_ = this->declare_parameter("depth", 10);
     freq_ = this->declare_parameter("frequency", 30.0);
     show_camera_ = this->declare_parameter("show_camera", false);
+    device_id_ = static_cast<int>(this->declare_parameter("device_id", 0));
     width_ = this->declare_parameter("width", 320);
     height_ = this->declare_parameter("height", 240);
     rcl_interfaces::msg::ParameterDescriptor burger_mode_desc;
@@ -244,54 +251,11 @@ private:
     frame_id_ = this->declare_parameter("frame_id", "camera_frame");
   }
 
-  /// Convert an OpenCV matrix encoding type to a string format recognized by sensor_msgs::Image.
-  /**
-   * \param[in] mat_type The OpenCV encoding type.
-   * \return A string representing the encoding type.
-   */
-  IMAGE_TOOLS_LOCAL
-  std::string mat_type2encoding(int mat_type)
-  {
-    switch (mat_type) {
-      case CV_8UC1:
-        return "mono8";
-      case CV_8UC3:
-        return "bgr8";
-      case CV_16SC1:
-        return "mono16";
-      case CV_8UC4:
-        return "rgba8";
-      default:
-        throw std::runtime_error("Unsupported encoding type");
-    }
-  }
-
-  /// Convert an OpenCV matrix (cv::Mat) to a ROS Image message.
-  /**
-   * \param[in] frame The OpenCV matrix/image to convert.
-   * \param[in] frame_id ID for the ROS message.
-   * \param[out] Allocated shared pointer for the ROS Image message.
-   */
-  IMAGE_TOOLS_LOCAL
-  void convert_frame_to_message(
-    const cv::Mat & frame, sensor_msgs::msg::Image & msg)
-  {
-    // copy cv information into ros message
-    msg.height = frame.rows;
-    msg.width = frame.cols;
-    msg.encoding = mat_type2encoding(frame.type());
-    msg.step = static_cast<sensor_msgs::msg::Image::_step_type>(frame.step);
-    size_t size = frame.step * frame.rows;
-    msg.data.resize(size);
-    memcpy(&msg.data[0], frame.data, size);
-    msg.header.frame_id = frame_id_;
-  }
-
   cv::VideoCapture cap;
   burger::Burger burger_cap;
 
   rclcpp::Subscription<std_msgs::msg::Bool>::SharedPtr sub_;
-  rclcpp::Publisher<sensor_msgs::msg::Image>::SharedPtr pub_;
+  rclcpp::Publisher<image_tools::ROSCvMatContainer>::SharedPtr pub_;
   rclcpp::TimerBase::SharedPtr timer_;
 
   // ROS parameters
@@ -304,6 +268,7 @@ private:
   size_t height_;
   bool burger_mode_;
   std::string frame_id_;
+  int device_id_;
 
   /// If true, will cause the incoming camera image message to flip about the y-axis.
   bool is_flipped_;

@@ -51,6 +51,7 @@ custom_executable(services add_two_ints_client)
 # Tutorials of Parameters with Asynchronous and Synchronous
 custom_executable(parameters list_parameters_async)
 custom_executable(parameters parameter_events)
+custom_executable(parameters parameter_event_handler)
 custom_executable(parameters set_and_get_parameters_async)
 
 add_library(timers_library SHARED
@@ -67,6 +68,8 @@ add_library(parameters_library SHARED
   src/parameters/parameter_events_async.cpp
   src/parameters/even_parameters_node.cpp)
 add_library(topics_library SHARED
+  src/topics/content_filtering_publisher.cpp
+  src/topics/content_filtering_subscriber.cpp
   src/topics/talker.cpp
   src/topics/talker_loaned_message.cpp
   src/topics/talker_serialized_message.cpp
@@ -109,6 +112,12 @@ rclcpp_components_register_node(parameters_library
   EXECUTABLE even_parameters_node)
 
 rclcpp_components_register_node(topics_library
+  PLUGIN "demo_nodes_cpp::ContentFilteringPublisher"
+  EXECUTABLE content_filtering_publisher)
+rclcpp_components_register_node(topics_library
+  PLUGIN "demo_nodes_cpp::ContentFilteringSubscriber"
+  EXECUTABLE content_filtering_subscriber)
+rclcpp_components_register_node(topics_library
   PLUGIN "demo_nodes_cpp::Talker"
   EXECUTABLE talker)
 rclcpp_components_register_node(topics_library
@@ -146,6 +155,7 @@ if(BUILD_TESTING)
   # Add each test case.  Multi-executable tests can be specified in
   # semicolon-separated strings, like  exe1;exe2.
   set(tutorial_tests
+    "content_filtering_publisher:content_filtering_subscriber"
     list_parameters_async
     list_parameters
     parameter_events_async

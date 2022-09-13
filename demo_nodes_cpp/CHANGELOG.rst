@@ -2,10 +2,90 @@
 Changelog for package demo_nodes_cpp
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-0.9.4 (2022-07-25)
-------------------
-* Update maintainer list for Foxy (`#471 <https://github.com/ros2/demos/issues/471>`_)
+0.22.0 (2022-09-13)
+-------------------
+* counter starts from 1, not 2. (`#562 <https://github.com/ros2/demos/issues/562>`_)
+* add a demo of content filter listener (`#557 <https://github.com/ros2/demos/issues/557>`_)
+* Contributors: Chen Lihui, Tomoya Fujita
+
+0.21.0 (2022-04-29)
+-------------------
+
+0.20.1 (2022-04-08)
+-------------------
+
+0.20.0 (2022-03-01)
+-------------------
+
+0.19.0 (2022-01-14)
+-------------------
+
+0.18.0 (2021-12-17)
+-------------------
+* Update maintainers to Audrow Nash and Michael Jeronimo (`#543 <https://github.com/ros2/demos/issues/543>`_)
+* Add how to fix the most vexing parse problem (`#541 <https://github.com/ros2/demos/issues/541>`_)
+  * use uniform initialization
+* Contributors: Audrow Nash, Tomoya Fujita
+
+0.17.0 (2021-10-18)
+-------------------
+* Fixing deprecated subscriber callback warnings (`#532 <https://github.com/ros2/demos/issues/532>`_)
+* Contributors: Abrar Rahman Protyasha
+
+0.16.0 (2021-08-11)
+-------------------
+* Update talker_loaned_message.cpp (`#518 <https://github.com/ros2/demos/issues/518>`_)
+* Contributors: Zongbao Feng
+
+0.15.0 (2021-05-14)
+-------------------
+* Revert "Use sizeof(char) in place for sizeof(void) (`#515 <https://github.com/ros2/demos/issues/515>`_)" (`#516 <https://github.com/ros2/demos/issues/516>`_)
+* change how serialized message works with subscription (`#497 <https://github.com/ros2/demos/issues/497>`_)
+* Use sizeof(char) in place for sizeof(void) (`#515 <https://github.com/ros2/demos/issues/515>`_)
+* Fix small print issue in allocator tutorial. (`#509 <https://github.com/ros2/demos/issues/509>`_)
+* Contributors: Chris Lalancette, Michel Hidalgo, William Woodall
+
+0.14.2 (2021-04-26)
+-------------------
+* Small fixes for even_parameters_node. (`#500 <https://github.com/ros2/demos/issues/500>`_)
+* Contributors: Chris Lalancette
+
+0.14.1 (2021-04-19)
+-------------------
+
+0.14.0 (2021-04-06)
+-------------------
+* change ParameterEventHandler to take events as const ref instead of shared pointer (`#494 <https://github.com/ros2/demos/issues/494>`_)
+* Fix integer type in RCLCPP\_* macro printf. (`#492 <https://github.com/ros2/demos/issues/492>`_)
+* Contributors: Chris Lalancette, William Woodall
+
+0.13.0 (2021-03-25)
+-------------------
+* Add a demo for the new ParameterEventHandler class (`#486 <https://github.com/ros2/demos/issues/486>`_)
 * Contributors: Michael Jeronimo
+
+0.12.1 (2021-03-18)
+-------------------
+* Filter qos overrides in paramter events demos (`#491 <https://github.com/ros2/demos/issues/491>`_)
+* Update code now that parameter types are static by default (`#487 <https://github.com/ros2/demos/issues/487>`_)
+* Contributors: Ivan Santiago Paunovic
+
+0.12.0 (2021-01-25)
+-------------------
+* Update logging macros (`#476 <https://github.com/ros2/demos/issues/476>`_)
+* Contributors: Audrow Nash
+
+0.11.0 (2020-12-10)
+-------------------
+* Make sure to wait for the service before declaring events. (`#473 <https://github.com/ros2/demos/issues/473>`_)
+* Update the package.xml files with the latest Open Robotics maintainers (`#466 <https://github.com/ros2/demos/issues/466>`_)
+* Contributors: Chris Lalancette, Michael Jeronimo
+
+0.10.1 (2020-09-21)
+-------------------
+
+0.10.0 (2020-06-17)
+-------------------
 
 0.9.3 (2020-06-01)
 ------------------

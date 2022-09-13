@@ -4,7 +4,7 @@ package_name = 'quality_of_service_demo_py'
 
 setup(
     name=package_name,
-    version='0.9.4',
+    version='0.22.0',
     packages=[package_name],
     data_files=[
         ('share/ament_index/resource_index/packages', ['resource/' + package_name]),
@@ -13,8 +13,8 @@ setup(
     install_requires=['setuptools'],
     zip_safe=True,
     author='Emerson Knapp',
-    maintainer='Amazon ROS Contributions',
-    maintainer_email='ros-contributions@amazon.com',
+    maintainer='Audrow Nash, Michael Jeronimo',
+    maintainer_email='audrow@openrobotics.org, michael.jeronimo@openrobotics.org',
     keywords=['ROS'],
     classifiers=[
         'Intended Audience :: Developers',
@@ -27,10 +27,13 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'lifespan = quality_of_service_demo_py.lifespan:main',
-            'liveliness = quality_of_service_demo_py.liveliness:main',
             'deadline = quality_of_service_demo_py.deadline:main',
             'incompatible_qos = quality_of_service_demo_py.incompatible_qos:main',
+            'lifespan = quality_of_service_demo_py.lifespan:main',
+            'liveliness = quality_of_service_demo_py.liveliness:main',
+            'message_lost_listener = quality_of_service_demo_py.message_lost_listener:main',
+            'qos_overrides_listener = quality_of_service_demo_py.qos_overrides_listener:main',
+            'qos_overrides_talker = quality_of_service_demo_py.qos_overrides_talker:main',
         ],
     },
 )

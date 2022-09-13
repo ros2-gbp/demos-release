@@ -18,6 +18,7 @@ from quality_of_service_demo_py.common_nodes import Talker
 
 import rclpy
 from rclpy.duration import Duration
+from rclpy.executors import ExternalShutdownException
 from rclpy.executors import SingleThreadedExecutor
 from rclpy.logging import get_logger
 from rclpy.qos import QoSProfile
@@ -68,9 +69,12 @@ def main(args=None):
     executor = SingleThreadedExecutor()
     executor.add_node(listener)
     executor.add_node(talker)
-    executor.spin()
-
-    rclpy.shutdown()
+    try:
+        executor.spin()
+    except (KeyboardInterrupt, ExternalShutdownException):
+        pass
+    finally:
+        rclpy.try_shutdown()
 
 
 if __name__ == '__main__':

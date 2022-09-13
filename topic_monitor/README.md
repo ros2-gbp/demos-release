@@ -1,9 +1,9 @@
-# Visualizing the effector of QoS policies
+# Visualizing the effect of QoS policies
 
 This demo uses a “topic monitor” that can be used to visualize the statistics of ROS 2 topics that are publishing sequential data.
 
 ## Background
-Please read the [About Quality of Service Settings](https://github.com/ros2/ros2/wiki/About-Quality-of-Service-Settings) page for background information about the Quality of Service settings available in ROS 2.
+Please read the [About Quality of Service Settings](https://docs.ros.org/en/rolling/Concepts/About-Quality-of-Service-Settings.html) page for background information about the Quality of Service settings available in ROS 2.
 
 ## Running the demo
 To visualize the reception rate, we will use a “topic monitor” that periodically calculates the reception rate of topics with publishers of periodic, sequential data.
@@ -12,9 +12,6 @@ If you have the Python3 `matplotlib` and `tkinter` packages installed, you can u
 ```
 ros2 run topic_monitor topic_monitor --display
 ```
-
-Alternatively, if you have ROS 1 installed, you can use the ROS 1 - ROS 2 bridge to plot the reception rate using ROS 1 tools such as `rqt`, or log it using `rosbag`.
-Be sure to run the bridge with `--bridge-all-2to1-topics` so that all topics will be bridged, that way `rqt` will be able to list the topics before it has subscribed to them.
 
 **For all invocations that follow make sure the same `ROS_DOMAIN_ID` has been set to the same value on the respective machines.**
 
@@ -39,7 +36,7 @@ The behavior shown here is comparable to the difference between that of TCPROS a
 One difference is that even the “reliable” reliability in ROS 2 uses UDP underneath, which allows for a range of behavior in between that of TCP and UDP.
 Another key difference is that UDPROS has currently only been implemented in the C++ ROS 1 client library, and is not an option for ROS 1 nodes written in Python.
 By contrast, the QoS settings available in ROS 2 are implemented in a core library that language-specific client libraries then make use of, meaning that these features only have to be implemented once and then just exposed through the different language interfaces.
-See [ROS 2 Client Libraries](https://index.ros.org/doc/ros2/ROS-2-Client-Libraries/) for more information.
+See [ROS 2 Client Libraries](https://docs.ros.org/en/rolling/Concepts/About-ROS-2-Client-Libraries.html) for more information.
 
 
 ### Comparing the latency of reliability QoS settings
@@ -68,14 +65,14 @@ You should see that the reception rate of the publishers with the higher depth i
 ### Comparing the effect of data size
 The maximum message size in UDP (the underlying transport for ROS 2) is 64KB, after which messages get fragmented into smaller parts and sent individually.
 Larger message requires multiple fragments to be sent, and unless all fragments are received, the reception rate of the data declines.
-For connections with "reliable" reliability policy, when the lost fragments will be re-sent.
+For connections with "reliable" reliability policy, lost fragments will be re-sent.
 For connections with "best effort" reliability, the loss of any fragment causes the whole message to be discarded by the subscriber.
 
 You will need two machines running ROS 2: one stationary and one mobile.
 
 **Warning**: this demo causes a lot of network traffic.
 You should not use the Fast RTPS ROS middleware implementation for this part.
-See [DDS and ROS Middleware Implementations](https://index.ros.org/doc/ros2/DDS-and-ROS-middleware-implementations/) for instructions on how to change the vendor.
+See [DDS and ROS Middleware Implementations](https://docs.ros.org/en/rolling/Concepts/About-Different-Middleware-Vendors.html) for instructions on how to change the vendor.
 
 1. Run the `ros2 launch topic_monitor fragmentation_demo.launch.py` executable on the stationary machine.
 1. Run `ros2 run topic_monitor topic_monitor --display --expected-period 4` on the mobile machine.

@@ -2,10 +2,78 @@
 Changelog for package quality_of_service_demo_cpp
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-0.9.4 (2022-07-25)
-------------------
-* Update maintainer list for Foxy (`#471 <https://github.com/ros2/demos/issues/471>`_)
+0.22.0 (2022-09-13)
+-------------------
+
+0.21.0 (2022-04-29)
+-------------------
+
+0.20.1 (2022-04-08)
+-------------------
+
+0.20.0 (2022-03-01)
+-------------------
+* Install includes to include/${PROJECT_NAME} (`#548 <https://github.com/ros2/demos/issues/548>`_)
+* Contributors: Shane Loretz
+
+0.19.0 (2022-01-14)
+-------------------
+* Fix include order and relative paths for cpplint (`#551 <https://github.com/ros2/demos/issues/551>`_)
+* Contributors: Jacob Perron
+
+0.18.0 (2021-12-17)
+-------------------
+* Fixes for uncrustify 0.72 (`#545 <https://github.com/ros2/demos/issues/545>`_)
+* Update maintainers to Audrow Nash and Michael Jeronimo (`#543 <https://github.com/ros2/demos/issues/543>`_)
+* Additional fixes for documentation in demos. (`#538 <https://github.com/ros2/demos/issues/538>`_)
+* Contributors: Audrow Nash, Chris Lalancette
+
+0.17.0 (2021-10-18)
+-------------------
+* Fixing deprecated subscriber callback warnings (`#532 <https://github.com/ros2/demos/issues/532>`_)
+* Contributors: Abrar Rahman Protyasha
+
+0.16.0 (2021-08-11)
+-------------------
+* Initialize message correctly (`#522 <https://github.com/ros2/demos/issues/522>`_)
+* Contributors: Ivan Santiago Paunovic
+
+0.15.0 (2021-05-14)
+-------------------
+
+0.14.2 (2021-04-26)
+-------------------
+
+0.14.1 (2021-04-19)
+-------------------
+
+0.14.0 (2021-04-06)
+-------------------
+
+0.13.0 (2021-03-25)
+-------------------
+
+0.12.1 (2021-03-18)
+-------------------
+
+0.12.0 (2021-01-25)
+-------------------
+* Add demo of how to use qos overrides (`#474 <https://github.com/ros2/demos/issues/474>`_)
+* Contributors: Ivan Santiago Paunovic
+
+0.11.0 (2020-12-10)
+-------------------
+* Update the package.xml files with the latest Open Robotics maintainers (`#466 <https://github.com/ros2/demos/issues/466>`_)
 * Contributors: Michael Jeronimo
+
+0.10.1 (2020-09-21)
+-------------------
+* Update comments in quality_of_service_demo_cpp message_lost_talker and message_lost_listener (`#458 <https://github.com/ros2/demos/issues/458>`_)
+* Add message lost status event demo using rclcpp (`#453 <https://github.com/ros2/demos/issues/453>`_)
+* Contributors: Ivan Santiago Paunovic
+
+0.10.0 (2020-06-17)
+-------------------
 
 0.9.3 (2020-06-01)
 ------------------
