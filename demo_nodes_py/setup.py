@@ -5,7 +5,7 @@ package_name = 'demo_nodes_py'
 
 setup(
     name=package_name,
-    version='0.22.0',
+    version='0.23.0',
     packages=find_packages(exclude=['test']),
     data_files=[
         ('share/ament_index/resource_index/packages', ['resource/' + package_name]),
@@ -41,6 +41,7 @@ setup(
             'add_two_ints_client_async = demo_nodes_py.services.add_two_ints_client_async:main',
             'add_two_ints_server = demo_nodes_py.services.add_two_ints_server:main',
             'async_param_client = demo_nodes_py.parameters.async_param_client:main',
+            'set_parameters_callback = demo_nodes_py.parameters.set_parameters_callback:main'
         ],
     },
 )
