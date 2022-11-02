@@ -2,6 +2,9 @@
 Changelog for package dummy_map_server
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.23.0 (2022-11-02)
+-------------------
+
 0.22.0 (2022-09-13)
 -------------------
 * Added README.md for dummy_map_server (`#572 <https://github.com/ros2/demos/issues/572>`_)
