@@ -13,7 +13,6 @@
 # limitations under the License.
 
 import rclpy
-from rclpy.executors import ExternalShutdownException
 from rclpy.executors import SingleThreadedExecutor
 from rclpy.node import Node
 from rclpy.qos_event import SubscriptionEventCallbacks
@@ -67,10 +66,10 @@ def main():
 
     try:
         executor.spin()
-    except (KeyboardInterrupt, ExternalShutdownException):
+    except KeyboardInterrupt:
         pass
     finally:
-        rclpy.try_shutdown()
+        rclpy.shutdown()
 
 
 if __name__ == '__main__':

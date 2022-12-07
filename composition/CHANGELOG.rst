@@ -2,41 +2,10 @@
 Changelog for package composition
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-0.23.0 (2022-11-02)
--------------------
-* fix memory leak (`#585 <https://github.com/ros2/demos/issues/585>`_)
-* Contributors: Chen Lihui
-
-0.22.0 (2022-09-13)
+0.14.4 (2022-12-06)
 -------------------
 
-0.21.0 (2022-04-29)
--------------------
-
-0.20.1 (2022-04-08)
--------------------
-
-0.20.0 (2022-03-01)
--------------------
-
-0.19.0 (2022-01-14)
--------------------
-
-0.18.0 (2021-12-17)
--------------------
-* Update maintainers to Audrow Nash and Michael Jeronimo (`#543 <https://github.com/ros2/demos/issues/543>`_)
-* Additional fixes for documentation in demos. (`#538 <https://github.com/ros2/demos/issues/538>`_)
-* Contributors: Audrow Nash, Chris Lalancette
-
-0.17.0 (2021-10-18)
--------------------
-* Fixing deprecated subscriber callback warnings (`#532 <https://github.com/ros2/demos/issues/532>`_)
-* Contributors: Abrar Rahman Protyasha
-
-0.16.0 (2021-08-11)
--------------------
-
-0.15.0 (2021-05-14)
+0.14.3 (2021-05-10)
 -------------------
 
 0.14.2 (2021-04-26)

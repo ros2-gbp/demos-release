@@ -66,11 +66,8 @@ add_library(parameters_library SHARED
   src/parameters/parameter_blackboard.cpp
   src/parameters/set_and_get_parameters.cpp
   src/parameters/parameter_events_async.cpp
-  src/parameters/even_parameters_node.cpp
-  src/parameters/set_parameters_callback.cpp)
+  src/parameters/even_parameters_node.cpp)
 add_library(topics_library SHARED
-  src/topics/content_filtering_publisher.cpp
-  src/topics/content_filtering_subscriber.cpp
   src/topics/talker.cpp
   src/topics/talker_loaned_message.cpp
   src/topics/talker_serialized_message.cpp
@@ -111,16 +108,7 @@ rclcpp_components_register_node(parameters_library
 rclcpp_components_register_node(parameters_library
   PLUGIN "demo_nodes_cpp::EvenParameterNode"
   EXECUTABLE even_parameters_node)
-rclcpp_components_register_node(parameters_library
-  PLUGIN "demo_nodes_cpp::SetParametersCallback"
-  EXECUTABLE set_parameters_callback)
 
-rclcpp_components_register_node(topics_library
-  PLUGIN "demo_nodes_cpp::ContentFilteringPublisher"
-  EXECUTABLE content_filtering_publisher)
-rclcpp_components_register_node(topics_library
-  PLUGIN "demo_nodes_cpp::ContentFilteringSubscriber"
-  EXECUTABLE content_filtering_subscriber)
 rclcpp_components_register_node(topics_library
   PLUGIN "demo_nodes_cpp::Talker"
   EXECUTABLE talker)
@@ -159,7 +147,6 @@ if(BUILD_TESTING)
   # Add each test case.  Multi-executable tests can be specified in
   # semicolon-separated strings, like  exe1;exe2.
   set(tutorial_tests
-    "content_filtering_publisher:content_filtering_subscriber"
     list_parameters_async
     list_parameters
     parameter_events_async

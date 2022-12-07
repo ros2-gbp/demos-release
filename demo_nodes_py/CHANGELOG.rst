@@ -2,45 +2,10 @@
 Changelog for package demo_nodes_py
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-0.23.0 (2022-11-02)
--------------------
-* Demo for pre and post set parameter callback support (`#565 <https://github.com/ros2/demos/issues/565>`_)
-* Contributors: Deepanshu Bansal
-
-0.22.0 (2022-09-13)
--------------------
-* Add demo for rclpy parameter client (`#566 <https://github.com/ros2/demos/issues/566>`_)
-* Exit with code 0 if ExternalShutdownException is raised (`#581 <https://github.com/ros2/demos/issues/581>`_)
-* Contributors: Brian, Jacob Perron
-
-0.21.0 (2022-04-29)
+0.14.4 (2022-12-06)
 -------------------
 
-0.20.1 (2022-04-08)
--------------------
-
-0.20.0 (2022-03-01)
--------------------
-* Cleanups in demo_nodes_py. (`#555 <https://github.com/ros2/demos/issues/555>`_)
-* Contributors: Chris Lalancette
-
-0.19.0 (2022-01-14)
--------------------
-
-0.18.0 (2021-12-17)
--------------------
-* Update maintainers to Audrow Nash and Michael Jeronimo (`#543 <https://github.com/ros2/demos/issues/543>`_)
-* Fixed typo executor -> executors (`#542 <https://github.com/ros2/demos/issues/542>`_)
-* Update python nodes SIGINT handling (`#539 <https://github.com/ros2/demos/issues/539>`_)
-* Contributors: Audrow Nash, Ivan Santiago Paunovic, ori155
-
-0.17.0 (2021-10-18)
--------------------
-
-0.16.0 (2021-08-11)
--------------------
-
-0.15.0 (2021-05-14)
+0.14.3 (2021-05-10)
 -------------------
 
 0.14.2 (2021-04-26)

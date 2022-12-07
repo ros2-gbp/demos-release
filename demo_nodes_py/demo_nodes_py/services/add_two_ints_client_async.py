@@ -41,7 +41,7 @@ def main(args=None):
             break
 
     node.destroy_node()
-    rclpy.try_shutdown()
+    rclpy.shutdown()
 
 
 if __name__ == '__main__':

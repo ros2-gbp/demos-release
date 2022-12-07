@@ -13,7 +13,6 @@
 # limitations under the License.
 
 import rclpy
-from rclpy.executors import ExternalShutdownException
 from rclpy.node import Node
 from rclpy.qos_overriding_options import QosCallbackResult
 from rclpy.qos_overriding_options import QoSOverridingOptions
@@ -51,11 +50,11 @@ def main(args=None):
     node = Listener()
     try:
         rclpy.spin(node)
-    except (KeyboardInterrupt, ExternalShutdownException):
+    except KeyboardInterrupt:
         pass
-    finally:
-        rclpy.try_shutdown()
-        node.destroy_node()
+
+    node.destroy_node()
+    rclpy.shutdown()
 
 
 if __name__ == '__main__':

@@ -12,17 +12,15 @@ if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
 endif()
 
 find_package(ament_cmake REQUIRED)
-find_package(builtin_interfaces REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(rmw REQUIRED)
 find_package(sensor_msgs REQUIRED)
 find_package(std_msgs REQUIRED)
 
-find_package(OpenCV REQUIRED COMPONENTS core highgui imgproc videoio)
+find_package(OpenCV REQUIRED)
 
 include_directories(include)
-# TODO(sloretz) stop exporting old-style CMake variables in the future
-ament_export_include_directories("include/${PROJECT_NAME}")
+ament_export_include_directories(include)
 
 ##
 ## Demos
@@ -31,67 +29,56 @@ ament_export_include_directories("include/${PROJECT_NAME}")
 # Simple example of using unique_ptr to minimize copies.
 add_executable(two_node_pipeline
   src/two_node_pipeline/two_node_pipeline.cpp)
-target_link_libraries(two_node_pipeline
-  rclcpp::rclcpp
-  ${std_msgs_TARGETS})
+ament_target_dependencies(two_node_pipeline
+  "rclcpp"
+  "std_msgs")
 
   # Simple example of a cyclic pipeline which uses no allocation while iterating.
 add_executable(cyclic_pipeline
   src/cyclic_pipeline/cyclic_pipeline.cpp)
-target_link_libraries(cyclic_pipeline
-  rclcpp::rclcpp
-  ${std_msgs_TARGETS})
+ament_target_dependencies(cyclic_pipeline
+  "rclcpp"
+  "std_msgs")
 
 # A single program with one of each of the image pipeline demo nodes.
 add_executable(image_pipeline_all_in_one
   src/image_pipeline/image_pipeline_all_in_one.cpp)
-target_link_libraries(image_pipeline_all_in_one
-  rclcpp::rclcpp
-  ${builtin_interfaces_TARGETS}
-  ${sensor_msgs_TARGETS}
-  opencv_core
-  opencv_highgui)
+ament_target_dependencies(image_pipeline_all_in_one
+  "rclcpp"
+  "sensor_msgs"
+  "OpenCV")
 
 # A single program with one of each of the image pipeline demo nodes, but two image views.
 add_executable(image_pipeline_with_two_image_view
   src/image_pipeline/image_pipeline_with_two_image_view.cpp)
-target_link_libraries(image_pipeline_with_two_image_view
-  rclcpp::rclcpp
-  ${builtin_interfaces_TARGETS}
-  ${sensor_msgs_TARGETS}
-  opencv_core
-  opencv_highgui)
+ament_target_dependencies(image_pipeline_with_two_image_view
+  "rclcpp"
+  "sensor_msgs"
+  "OpenCV")
 
 # A stand alone node which produces images from a camera using OpenCV.
 add_executable(camera_node
   src/image_pipeline/camera_node.cpp)
-target_link_libraries(camera_node
-  rclcpp::rclcpp
-  ${builtin_interfaces_TARGETS}
-  ${sensor_msgs_TARGETS}
-  opencv_core
-  opencv_highgui
-  opencv_imgproc)
+ament_target_dependencies(camera_node
+  "rclcpp"
+  "sensor_msgs"
+  "OpenCV")
 
 # A stand alone node which adds some text to an image using OpenCV before passing it along.
 add_executable(watermark_node
   src/image_pipeline/watermark_node.cpp)
-target_link_libraries(watermark_node
-  rclcpp::rclcpp
-  ${builtin_interfaces_TARGETS}
-  ${sensor_msgs_TARGETS}
-  opencv_core
-  opencv_videoio)
+ament_target_dependencies(watermark_node
+  "rclcpp"
+  "sensor_msgs"
+  "OpenCV")
 
 # A stand alone node which consumes images and displays them using OpenCV.
 add_executable(image_view_node
   src/image_pipeline/image_view_node.cpp)
-target_link_libraries(image_view_node
-  rclcpp::rclcpp
-  ${builtin_interfaces_TARGETS}
-  ${sensor_msgs_TARGETS}
-  opencv_core
-  opencv_highgui)
+ament_target_dependencies(image_view_node
+  "rclcpp"
+  "sensor_msgs"
+  "OpenCV")
 
 install(TARGETS
   two_node_pipeline
@@ -103,7 +90,10 @@ install(TARGETS
   image_view_node
   DESTINATION lib/${PROJECT_NAME})
 
-install(DIRECTORY include/ DESTINATION include/${PROJECT_NAME})
+install(
+  DIRECTORY include/
+  DESTINATION include
+)
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)

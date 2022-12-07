@@ -13,7 +13,6 @@
 # limitations under the License.
 
 import rclpy
-from rclpy.executors import ExternalShutdownException
 from rclpy.node import Node
 
 from std_msgs.msg import String
@@ -39,16 +38,13 @@ def main(args=None):
 
     serialized_subscriber = SerializedSubscriber()
 
-    try:
-        rclpy.spin(serialized_subscriber)
-    except (KeyboardInterrupt, ExternalShutdownException):
-        pass
-    finally:
-        # Destroy the node explicitly
-        # (optional - otherwise it will be done automatically
-        # when the garbage collector destroys the node object)
-        serialized_subscriber.destroy_node()
-        rclpy.try_shutdown()
+    rclpy.spin(serialized_subscriber)
+
+    # Destroy the node explicitly
+    # (optional - otherwise it will be done automatically
+    # when the garbage collector destroys the node object)
+    serialized_subscriber.destroy_node()
+    rclpy.shutdown()
 
 
 if __name__ == '__main__':

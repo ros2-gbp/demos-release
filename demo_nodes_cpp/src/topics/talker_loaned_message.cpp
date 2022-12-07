@@ -55,6 +55,7 @@ public:
     auto publish_message =
       [this]() -> void
       {
+        count_++;
         // We loan a message here and don't allocate the memory on the stack.
         // For middlewares which support message loaning, this means the middleware
         // completely owns the memory for this message.
@@ -71,7 +72,7 @@ public:
         // The loaned message instance is thus no longer valid after a call to publish.
         pod_pub_->publish(std::move(pod_loaned_msg));
 
-        // Similar as in the above case, we ask the middleware to loan a message.
+        // Similar as in the above case, we ask the middleware to laon a message.
         // As most likely the middleware won't be able to loan a message for a non-POD
         // data type, the memory for the message will be allocated on the heap within
         // the scope of the `LoanedMessage` instance.
@@ -81,7 +82,6 @@ public:
         non_pod_loaned_msg.get().data = non_pod_msg_data;
         RCLCPP_INFO(this->get_logger(), "Publishing: '%s'", non_pod_msg_data.c_str());
         non_pod_pub_->publish(std::move(non_pod_loaned_msg));
-        count_++;
       };
 
     // Create a publisher with a custom Quality of Service profile.

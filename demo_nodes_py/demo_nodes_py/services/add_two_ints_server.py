@@ -15,7 +15,6 @@
 from example_interfaces.srv import AddTwoInts
 
 import rclpy
-from rclpy.executors import ExternalShutdownException
 from rclpy.node import Node
 
 
@@ -39,13 +38,13 @@ def main(args=None):
 
     try:
         rclpy.spin(node)
-    except (KeyboardInterrupt, ExternalShutdownException):
+    except KeyboardInterrupt:
         pass
-    finally:
-        # Destroy the node explicitly
-        # (optional - Done automatically when node is garbage collected)
-        node.destroy_node()
-        rclpy.try_shutdown()
+
+    # Destroy the node explicitly
+    # (optional - Done automatically when node is garbage collected)
+    node.destroy_node()
+    rclpy.shutdown()
 
 
 if __name__ == '__main__':

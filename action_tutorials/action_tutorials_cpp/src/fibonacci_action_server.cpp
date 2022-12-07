@@ -55,12 +55,10 @@ private:
     const rclcpp_action::GoalUUID & uuid,
     std::shared_ptr<const Fibonacci::Goal> goal)
   {
-    (void)uuid;
     RCLCPP_INFO(this->get_logger(), "Received goal request with order %d", goal->order);
-    // The Fibonacci action uses int32 for the return of sequences, which means it can only
-    // hold 2^31-1 (2147483647) before wrapping negative in two's complement.  Based on empirical
-    // tests, that means that an order of > 46 will cause wrapping, so we don't allow that here.
-    if (goal->order > 46) {
+    (void)uuid;
+    // Let's reject sequences that are over 9000
+    if (goal->order > 9000) {
       return rclcpp_action::GoalResponse::REJECT;
     }
     return rclcpp_action::GoalResponse::ACCEPT_AND_EXECUTE;

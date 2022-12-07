@@ -18,19 +18,18 @@ find_package(sensor_msgs REQUIRED)
 find_package(statistics_msgs REQUIRED)
 
 include_directories(include)
-# TODO(sloretz) stop exporting old-style CMake variables in the future
-ament_export_include_directories("include/${PROJECT_NAME}")
+ament_export_include_directories(include)
 
 add_executable(display_topic_statistics
   src/imu_talker_listener_nodes.cpp
   src/display_topic_statistics.cpp
   src/string_talker_listener_nodes.cpp
   src/topic_statistics_listener.cpp)
-target_link_libraries(display_topic_statistics
-  rclcpp::rclcpp
-  rcutils::rcutils
-  ${sensor_msgs_TARGETS}
-  ${statistics_msgs_TARGETS})
+ament_target_dependencies(display_topic_statistics
+  "rclcpp"
+  "rcutils"
+  "sensor_msgs"
+  "statistics_msgs")
 install(TARGETS display_topic_statistics DESTINATION lib/${PROJECT_NAME})
 
 if(BUILD_TESTING)
