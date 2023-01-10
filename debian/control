@@ -1,0 +1,12 @@
+Source: ros-humble-logging-demo
+Section: misc
+Priority: optional
+Maintainer: Audrow Nash <audrow@openrobotics.org>
+Build-Depends: debhelper (>= 9.0.0), ros-humble-ament-cmake, ros-humble-ament-cmake-pytest <!nocheck>, ros-humble-ament-lint-auto <!nocheck>, ros-humble-ament-lint-common <!nocheck>, ros-humble-launch <!nocheck>, ros-humble-launch-testing <!nocheck>, ros-humble-launch-testing-ament-cmake <!nocheck>, ros-humble-launch-testing-ros <!nocheck>, ros-humble-rclcpp, ros-humble-rclcpp-components, ros-humble-rcutils, ros-humble-rmw-implementation-cmake <!nocheck>, ros-humble-rosidl-cmake, ros-humble-rosidl-default-generators, ros-humble-std-msgs, ros-humble-ros-workspace, ros-humble-rosidl-typesupport-fastrtps-c, ros-humble-rosidl-typesupport-fastrtps-cpp
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-humble-logging-demo
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-humble-rclcpp, ros-humble-rclcpp-components, ros-humble-rcutils, ros-humble-rosidl-default-runtime, ros-humble-std-msgs, ros-humble-ros-workspace
+Description: Examples for using and configuring loggers.
