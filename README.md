@@ -1,3 +1,47 @@
+## demos (humble) - 0.20.3-1
+
+The packages in the `demos` repository were released into the `humble` distro by running `/usr/local/bin/bloom-release -r humble -y demos` on `Tue, 10 Jan 2023 13:55:20 -0000`
+
+These packages were released:
+- `action_tutorials_cpp`
+- `action_tutorials_interfaces`
+- `action_tutorials_py`
+- `composition`
+- `demo_nodes_cpp`
+- `demo_nodes_cpp_native`
+- `demo_nodes_py`
+- `dummy_map_server`
+- `dummy_robot_bringup`
+- `dummy_sensors`
+- `image_tools`
+- `intra_process_demo`
+- `lifecycle`
+- `lifecycle_py`
+- `logging_demo`
+- `pendulum_control`
+- `pendulum_msgs`
+- `quality_of_service_demo_cpp`
+- `quality_of_service_demo_py`
+- `topic_monitor`
+- `topic_statistics_demo`
+
+Version of package(s) in repository `demos`:
+
+- upstream repository: https://github.com/ros2/demos.git
+- release repository: https://github.com/ros2-gbp/demos-release.git
+- rosdistro version: `0.20.2-1`
+- old version: `0.20.2-1`
+- new version: `0.20.3-1`
+
+Versions of tools used:
+
+- bloom version: `0.11.2`
+- catkin_pkg version: `0.5.2`
+- rosdep version: `0.22.1`
+- rosdistro version: `0.9.0`
+- vcstools version: `0.1.42`
+
+
 ## demos (galactic) - 0.14.4-1
 
 The packages in the `demos` repository were released into the `galactic` distro by running `/home/cottsay/infra_ws/install/bin/bloom-release demos -r galactic` on `Wed, 07 Dec 2022 01:54:45 -0000`
