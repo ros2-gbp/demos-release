@@ -2,10 +2,36 @@
 Changelog for package demo_nodes_cpp_native
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-0.14.4 (2022-12-06)
+0.20.3 (2023-01-10)
+-------------------
+* Make demo_nodes_cpp_native install stuff only when it builds (`#590 <https://github.com/ros2/demos/issues/590>`_) (`#591 <https://github.com/ros2/demos/issues/591>`_)
+* Contributors: mergify[bot]
+
+0.20.2 (2022-05-10)
 -------------------
 
-0.14.3 (2021-05-10)
+0.20.1 (2022-04-08)
+-------------------
+
+0.20.0 (2022-03-01)
+-------------------
+
+0.19.0 (2022-01-14)
+-------------------
+
+0.18.0 (2021-12-17)
+-------------------
+* Update maintainers to Audrow Nash and Michael Jeronimo (`#543 <https://github.com/ros2/demos/issues/543>`_)
+* Fix typo in demo_nodes_cpp_native package description (`#536 <https://github.com/ros2/demos/issues/536>`_)
+* Contributors: Audrow Nash, Víctor Mayoral Vilches
+
+0.17.0 (2021-10-18)
+-------------------
+
+0.16.0 (2021-08-11)
+-------------------
+
+0.15.0 (2021-05-14)
 -------------------
 
 0.14.2 (2021-04-26)

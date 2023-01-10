@@ -5,7 +5,7 @@ package_name = 'demo_nodes_py'
 
 setup(
     name=package_name,
-    version='0.14.4',
+    version='0.20.3',
     packages=find_packages(exclude=['test']),
     data_files=[
         ('share/ament_index/resource_index/packages',
@@ -16,8 +16,8 @@ setup(
     zip_safe=True,
     author='Esteve Fernandez',
     author_email='esteve@osrfoundation.org',
-    maintainer='Mikael Arguedas',
-    maintainer_email='mikael@osrfoundation.org',
+    maintainer='Audrow Nash, Michael Jeronimo',
+    maintainer_email='audrow@openrobotics.org, michael.jeronimo@openrobotics.org',
     keywords=['ROS'],
     classifiers=[
         'Intended Audience :: Developers',
