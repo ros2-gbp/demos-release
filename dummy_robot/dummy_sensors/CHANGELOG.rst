@@ -2,10 +2,20 @@
 Changelog for package dummy_sensors
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-0.20.3 (2023-01-10)
+0.24.0 (2023-02-14)
+-------------------
+* Added README.md for dummy_sensors (`#573 <https://github.com/ros2/demos/issues/573>`_)
+* Update the demos to C++17. (`#594 <https://github.com/ros2/demos/issues/594>`_)
+* [rolling] Update maintainers - 2022-11-07 (`#589 <https://github.com/ros2/demos/issues/589>`_)
+* Contributors: Audrow Nash, Chris Lalancette, Gary Bey
+
+0.23.0 (2022-11-02)
 -------------------
 
-0.20.2 (2022-05-10)
+0.22.0 (2022-09-13)
+-------------------
+
+0.21.0 (2022-04-29)
 -------------------
 
 0.20.1 (2022-04-08)
