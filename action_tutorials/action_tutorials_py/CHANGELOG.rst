@@ -2,6 +2,9 @@
 Changelog for package action_tutorials_py
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.24.1 (2023-02-24)
+-------------------
+
 0.24.0 (2023-02-14)
 -------------------
 * Add README's for action_tutorials. (`#576 <https://github.com/ros2/demos/issues/576>`_)
