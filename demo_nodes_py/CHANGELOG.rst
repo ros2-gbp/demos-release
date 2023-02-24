@@ -2,6 +2,9 @@
 Changelog for package demo_nodes_py
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.24.1 (2023-02-24)
+-------------------
+
 0.24.0 (2023-02-14)
 -------------------
 * Added README.md for demo_nodes_py (`#600 <https://github.com/ros2/demos/issues/600>`_)
