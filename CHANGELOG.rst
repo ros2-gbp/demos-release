@@ -2,6 +2,11 @@
 Changelog for package demo_nodes_py
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.26.0 (2023-04-11)
+-------------------
+* Enable document generation using rosdoc2 (`#606 <https://github.com/ros2/demos/issues/606>`_)
+* Contributors: Yadu
+
 0.25.0 (2023-03-01)
 -------------------
 * Service introspection (`#602 <https://github.com/ros2/demos/issues/602>`_)
