@@ -1,0 +1,12 @@
+Source: ros-iron-action-tutorials-py
+Section: misc
+Priority: optional
+Maintainer: Aditya Pande <aditya.pande@openrobotics.org>
+Build-Depends: debhelper (>= 9.0.0), ros-iron-action-tutorials-interfaces, ros-iron-ament-lint-auto <!nocheck>, ros-iron-ament-lint-common <!nocheck>, ros-iron-ros-workspace, python3-all, python3-setuptools, dh-python
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-iron-action-tutorials-py
+Architecture: any
+Depends: ${python3:Depends}, ${misc:Depends}, ros-iron-action-tutorials-interfaces, ros-iron-rclpy, ros-iron-ros-workspace
+Description: Python action tutorial code
