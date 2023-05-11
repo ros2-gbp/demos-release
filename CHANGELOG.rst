@@ -2,6 +2,9 @@
 Changelog for package demo_nodes_cpp_native
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.27.1 (2023-05-11)
+-------------------
+
 0.27.0 (2023-04-13)
 -------------------
 * Change all ROS2 -> ROS 2. (`#610 <https://github.com/ros2/demos/issues/610>`_)
