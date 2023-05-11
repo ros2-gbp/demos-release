@@ -2,13 +2,10 @@
 Changelog for package quality_of_service_demo_py
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-0.28.1 (2023-05-11)
+0.27.1 (2023-05-11)
 -------------------
-* Use non-deprecated rclpy import. (`#615 <https://github.com/ros2/demos/issues/615>`_)
+* Use non-deprecated rclpy import. (`#617 <https://github.com/ros2/demos/issues/617>`_)
 * Contributors: Chris Lalancette
-
-0.28.0 (2023-04-27)
--------------------
 
 0.27.0 (2023-04-13)
 -------------------
