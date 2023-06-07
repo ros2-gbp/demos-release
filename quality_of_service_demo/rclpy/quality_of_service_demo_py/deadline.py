@@ -11,7 +11,9 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+
 import argparse
+import sys
 
 from quality_of_service_demo_py.common_nodes import Listener
 from quality_of_service_demo_py.common_nodes import Talker
@@ -52,12 +54,20 @@ def main(args=None):
         depth=10,
         deadline=deadline)
 
-    subscription_callbacks = SubscriptionEventCallbacks(
-        deadline=lambda event: get_logger('Listener').info(str(event)))
+    def sub_deadline_event(event):
+        count = event.total_count
+        delta = event.total_count_change
+        get_logger('listener').info(f'Requested deadline missed - total {count} delta {delta}')
+
+    subscription_callbacks = SubscriptionEventCallbacks(deadline=sub_deadline_event)
     listener = Listener(topic, qos_profile, event_callbacks=subscription_callbacks)
 
-    publisher_callbacks = PublisherEventCallbacks(
-        deadline=lambda event: get_logger('Talker').info(str(event)))
+    def pub_deadline_event(event):
+        count = event.total_count
+        delta = event.total_count_change
+        get_logger('talker').info(f'Offered deadline missed - total {count} delta {delta}')
+
+    publisher_callbacks = PublisherEventCallbacks(deadline=pub_deadline_event)
     talker = Talker(topic, qos_profile, event_callbacks=publisher_callbacks)
 
     publish_for_seconds = parsed_args.publish_for / 1000.0
@@ -76,6 +86,8 @@ def main(args=None):
     finally:
         rclpy.try_shutdown()
 
+    return 0
+
 
 if __name__ == '__main__':
-    main()
+    sys.exit(main())
