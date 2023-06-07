@@ -2,7 +2,15 @@
 Changelog for package demo_nodes_cpp
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-0.27.1 (2023-05-11)
+0.29.0 (2023-06-07)
+-------------------
+* Add demos for using logger service (`#611 <https://github.com/ros2/demos/issues/611>`_)
+* Contributors: Barry Xu
+
+0.28.1 (2023-05-11)
+-------------------
+
+0.28.0 (2023-04-27)
 -------------------
 
 0.27.0 (2023-04-13)

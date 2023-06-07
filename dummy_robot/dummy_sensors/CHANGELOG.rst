@@ -2,10 +2,16 @@
 Changelog for package dummy_sensors
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-0.27.1 (2023-05-11)
+0.29.0 (2023-06-07)
 -------------------
-* Fix unstable LaserScan status for rviz2 (`#616 <https://github.com/ros2/demos/issues/616>`_)
+
+0.28.1 (2023-05-11)
+-------------------
+* Fix unstable LaserScan status for rviz2 (`#614 <https://github.com/ros2/demos/issues/614>`_)
 * Contributors: Chen Lihui
+
+0.28.0 (2023-04-27)
+-------------------
 
 0.27.0 (2023-04-13)
 -------------------
