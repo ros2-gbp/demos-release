@@ -2,6 +2,9 @@
 Changelog for package demo_nodes_py
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.30.1 (2023-07-11)
+-------------------
+
 0.30.0 (2023-06-12)
 -------------------
 * Change the service introspection parameter off value to 'disabled' (`#634 <https://github.com/ros2/demos/issues/634>`_)
