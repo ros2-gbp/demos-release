@@ -1,0 +1,12 @@
+Source: ros-rolling-demo-nodes-cpp
+Section: misc
+Priority: optional
+Maintainer: Aditya Pande <aditya.pande@openrobotics.org>
+Build-Depends: debhelper (>= 9.0.0), ament-cmake, ament-cmake-copyright <!nocheck>, ament-cmake-cppcheck <!nocheck>, ament-cmake-cpplint <!nocheck>, ament-cmake-flake8 <!nocheck>, ament-cmake-lint-cmake <!nocheck>, ament-cmake-pep257 <!nocheck>, ament-cmake-pytest <!nocheck>, ament-cmake-uncrustify <!nocheck>, ament-cmake-xmllint <!nocheck>, ament-lint <!nocheck>, librcpputils-dev, librcutils-dev, libstd-msgs-dev, python3-rcutils, python3-std-msgs, ros-rolling-example-interfaces, ros-rolling-launch <!nocheck>, ros-rolling-launch-testing <!nocheck>, ros-rolling-launch-testing-ament-cmake <!nocheck>, ros-rolling-launch-testing-ros <!nocheck>, ros-rolling-rcl, ros-rolling-rcl-interfaces, ros-rolling-rclcpp, ros-rolling-rclcpp-components, ros-rolling-rmw, ros-std-msgs, ros-rolling-ros-workspace
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-rolling-demo-nodes-cpp
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, librcpputils-dev, librcutils-dev, libstd-msgs-dev, python3-rcutils, python3-std-msgs, ros-rolling-example-interfaces, ros-rolling-launch-ros, ros-rolling-launch-xml, ros-rolling-rcl, ros-rolling-rcl-interfaces, ros-rolling-rclcpp, ros-rolling-rclcpp-components, ros-rolling-rmw, ros-std-msgs, ros-rolling-ros-workspace
+Description: C++ nodes which were previously in the ros2/examples repository but are now just used for demo purposes.
