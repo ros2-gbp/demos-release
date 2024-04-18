@@ -1,1 +1,1 @@
-{"base": "e96f12037", "parent": "debian/rolling/logging_demo", "previous": "cddf57d86", "trim": "", "trimbase": ""}
+{"base": "4a05ffe80", "parent": "debian/jazzy/logging_demo", "previous": "6c62d0252", "trim": "", "trimbase": ""}
