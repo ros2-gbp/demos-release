@@ -1,0 +1,12 @@
+Source: ros-rolling-composition
+Section: misc
+Priority: optional
+Maintainer: Aditya Pande <aditya.pande@openrobotics.org>
+Build-Depends: debhelper (>= 9.0.0), ament-cmake, ament-cmake-copyright <!nocheck>, ament-cmake-cppcheck <!nocheck>, ament-cmake-cpplint <!nocheck>, ament-cmake-flake8 <!nocheck>, ament-cmake-lint-cmake <!nocheck>, ament-cmake-pep257 <!nocheck>, ament-cmake-pytest <!nocheck>, ament-cmake-uncrustify <!nocheck>, ament-cmake-xmllint <!nocheck>, ament-lint <!nocheck>, librcutils-dev, libstd-msgs-dev, python3-rcutils, python3-std-msgs, ros-rolling-example-interfaces, ros-rolling-launch <!nocheck>, ros-rolling-launch-testing <!nocheck>, ros-rolling-launch-testing-ament-cmake <!nocheck>, ros-rolling-launch-testing-ros <!nocheck>, ros-rolling-rclcpp, ros-rolling-rclcpp-components, ros-rolling-rmw-implementation-cmake <!nocheck>, ros-std-msgs, ros-rolling-ros-workspace
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-rolling-composition
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, librcutils-dev, libstd-msgs-dev, python3-rcutils, python3-std-msgs, ros-rolling-example-interfaces, ros-rolling-launch-ros, ros-rolling-rclcpp, ros-rolling-rclcpp-components, ros-std-msgs, ros-rolling-ros-workspace
+Description: Examples for composing multiple nodes in a single process.
