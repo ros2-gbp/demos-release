@@ -1,0 +1,12 @@
+Source: ros-rolling-lifecycle
+Section: misc
+Priority: optional
+Maintainer: Aditya Pande <aditya.pande@openrobotics.org>
+Build-Depends: debhelper (>= 9.0.0), ros-rolling-ament-cmake, ros-rolling-ament-lint-auto <!nocheck>, ros-rolling-ament-lint-common <!nocheck>, ros-rolling-lifecycle-msgs, ros-rolling-rclcpp, ros-rolling-rclcpp-lifecycle, ros-rolling-ros-testing <!nocheck>, ros-rolling-std-msgs, ros-rolling-ros-workspace
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-rolling-lifecycle
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-rolling-lifecycle-msgs, ros-rolling-rclcpp, ros-rolling-rclcpp-lifecycle, ros-rolling-std-msgs, ros-rolling-ros-workspace
+Description: Package containing demos for lifecycle implementation
