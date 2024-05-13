@@ -2,6 +2,9 @@
 Changelog for package action_tutorials_py
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.33.3 (2024-05-13)
+-------------------
+
 0.33.2 (2024-03-28)
 -------------------
 * Update maintainer list in package.xml files (`#665 <https://github.com/ros2/demos/issues/665>`_)
