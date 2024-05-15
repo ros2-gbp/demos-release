@@ -15,7 +15,6 @@
 import os
 
 from launch import LaunchDescription
-from launch.substitutions import FileContent
 from launch_ros.actions import Node
 from launch_ros.substitutions import FindPackageShare
 
@@ -23,7 +22,8 @@ from launch_ros.substitutions import FindPackageShare
 def generate_launch_description():
     pkg_share = FindPackageShare('dummy_robot_bringup').find('dummy_robot_bringup')
     urdf_file = os.path.join(pkg_share, 'launch', 'single_rrbot.urdf')
-    robot_desc = FileContent(urdf_file)
+    with open(urdf_file, 'r') as infp:
+        robot_desc = infp.read()
     rsp_params = {'robot_description': robot_desc}
 
     return LaunchDescription([

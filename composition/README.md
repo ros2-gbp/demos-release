@@ -54,7 +54,7 @@ ros2 run composition linktime_composition
 Rather than using the command line tool to run each composition, we can **automate this action** with `ros2 launch` functionality:
 
 ```bash
-ros2 launch composition composition_demo_launch.py
+ros2 launch composition composition_demo.launch.py
 ```
 
 ## Verify
@@ -93,9 +93,9 @@ When executed correctly, strings should be printed to terminal similar to what i
 When executed correctly, strings should be printed to terminal similar to what is shown below:
 
 ```bash
-INFO] [1674529118.496557668] [dlopen_composition]: Load library /opt/ros/rolling/lib/libtalker_component.so
+INFO] [1674529118.496557668] [dlopen_composition]: Load library /opt/ros/humble/lib/libtalker_component.so
 [INFO] [1674529118.496774575] [dlopen_composition]: Instantiate class rclcpp_components::NodeFactoryTemplate<composition::Talker>
-[INFO] [1674529118.503388909] [dlopen_composition]: Load library /opt/ros/rolling/lib/liblistener_component.so
+[INFO] [1674529118.503388909] [dlopen_composition]: Load library /opt/ros/humble/lib/liblistener_component.so
 [INFO] [1674529118.503739855] [dlopen_composition]: Instantiate class rclcpp_components::NodeFactoryTemplate<composition::Listener>
 [INFO] [1674529119.503505873] [talker]: Publishing: 'Hello World: 1'
 [INFO] [1674529119.503770137] [listener]: I heard: [Hello World: 1]
@@ -180,5 +180,5 @@ When executed correctly, strings should be printed to terminal similar to what i
 
 ## References
 
-1. [Composing multiple nodes in a single process](https://docs.ros.org/en/rolling/Tutorials/Intermediate/Composition.html)
-2. [About Composition](https://docs.ros.org/en/rolling/Concepts/About-Composition.html#about-composition)
+1. [Composing multiple nodes in a single process](https://docs.ros.org/en/humble/Tutorials/Intermediate/Composition.html)
+2. [About Composition](https://docs.ros.org/en/humble/Concepts/About-Composition.html#about-composition)

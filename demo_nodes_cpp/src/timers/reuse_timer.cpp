@@ -13,6 +13,8 @@
 // limitations under the License.
 
 #include <chrono>
+#include <cstdio>
+#include <memory>
 
 #include "rclcpp/rclcpp.hpp"
 #include "rclcpp_components/register_node_macro.hpp"
@@ -23,39 +25,39 @@ using namespace std::chrono_literals;
 namespace demo_nodes_cpp
 {
 
-class ReuseTimerNode final : public rclcpp::Node
+class ReuseTimerNode : public rclcpp::Node
 {
 public:
   DEMO_NODES_CPP_PUBLIC
   explicit ReuseTimerNode(const rclcpp::NodeOptions & options)
-  : Node("reuse_timer", options), count_(0)
+  : Node("reuse_timer", options), count(0)
   {
-    one_off_timer_ = this->create_wall_timer(
+    setvbuf(stdout, NULL, _IONBF, BUFSIZ);
+    one_off_timer = this->create_wall_timer(
       1s,
       [this]() {
         RCLCPP_INFO(this->get_logger(), "in one_off_timer callback");
-        this->one_off_timer_->cancel();
+        this->one_off_timer->cancel();
       });
     // cancel immediately to prevent it running the first time.
-    one_off_timer_->cancel();
+    one_off_timer->cancel();
 
-    periodic_timer_ = this->create_wall_timer(
+    periodic_timer = this->create_wall_timer(
       2s,
       [this]() {
         RCLCPP_INFO(this->get_logger(), "in periodic_timer callback");
-        if (this->count_++ % 3 == 0) {
+        if (this->count++ % 3 == 0) {
           RCLCPP_INFO(this->get_logger(), "  resetting one off timer");
-          this->one_off_timer_->reset();
+          this->one_off_timer->reset();
         } else {
           RCLCPP_INFO(this->get_logger(), "  not resetting one off timer");
         }
       });
   }
 
-private:
-  rclcpp::TimerBase::SharedPtr periodic_timer_;
-  rclcpp::TimerBase::SharedPtr one_off_timer_;
-  size_t count_;
+  rclcpp::TimerBase::SharedPtr periodic_timer;
+  rclcpp::TimerBase::SharedPtr one_off_timer;
+  size_t count;
 };
 
 }  // namespace demo_nodes_cpp
