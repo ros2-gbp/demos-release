@@ -1,0 +1,12 @@
+Source: ros-rolling-demo-nodes-cpp
+Section: misc
+Priority: optional
+Maintainer: Aditya Pande <aditya.pande@openrobotics.org>
+Build-Depends: debhelper (>= 9.0.0), ros-rolling-ament-cmake, ros-rolling-ament-cmake-pytest <!nocheck>, ros-rolling-ament-lint-auto <!nocheck>, ros-rolling-ament-lint-common <!nocheck>, ros-rolling-example-interfaces, ros-rolling-launch <!nocheck>, ros-rolling-launch-testing <!nocheck>, ros-rolling-launch-testing-ament-cmake <!nocheck>, ros-rolling-launch-testing-ros <!nocheck>, ros-rolling-rcl, ros-rolling-rcl-interfaces, ros-rolling-rclcpp, ros-rolling-rclcpp-components, ros-rolling-rcpputils, ros-rolling-rcutils, ros-rolling-rmw, ros-rolling-std-msgs, ros-rolling-ros-workspace
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-rolling-demo-nodes-cpp
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-rolling-example-interfaces, ros-rolling-launch-ros, ros-rolling-launch-xml, ros-rolling-rcl, ros-rolling-rcl-interfaces, ros-rolling-rclcpp, ros-rolling-rclcpp-components, ros-rolling-rcpputils, ros-rolling-rcutils, ros-rolling-rmw, ros-rolling-std-msgs, ros-rolling-ros-workspace
+Description: C++ nodes which were previously in the ros2/examples repository but are now just used for demo purposes.
