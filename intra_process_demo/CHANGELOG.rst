@@ -2,12 +2,12 @@
 Changelog for package intra_process_demo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-0.34.1 (2024-06-17)
+0.33.4 (2024-06-27)
 -------------------
-* [intra_process_demo] executable name in README.md fix-up (`#690 <https://github.com/ros2/demos/issues/690>`_)
-* Contributors: Trushant Adeshara
+* [intra_process_demo] executable name in README.md fix-up (`#690 <https://github.com/ros2/demos/issues/690>`_) (`#691 <https://github.com/ros2/demos/issues/691>`_)
+  Co-authored-by: Trushant Adeshara <150821956+Trushant-Adeshara-UM@users.noreply.github.com>
 
-0.34.0 (2024-04-26)
+0.33.3 (2024-05-13)
 -------------------
 
 0.33.2 (2024-03-28)
