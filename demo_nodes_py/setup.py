@@ -5,7 +5,7 @@ package_name = 'demo_nodes_py'
 
 setup(
     name=package_name,
-    version='0.33.4',
+    version='0.27.2',
     packages=find_packages(exclude=['test']),
     data_files=[
         ('share/ament_index/resource_index/packages', ['resource/' + package_name]),
@@ -43,8 +43,7 @@ setup(
             'async_param_client = demo_nodes_py.parameters.async_param_client:main',
             'set_parameters_callback = demo_nodes_py.parameters.set_parameters_callback:main',
             'introspection = demo_nodes_py.services.introspection:main',
-            'matched_event_detect = demo_nodes_py.events.matched_event_detect:main',
-            'use_logger_service = demo_nodes_py.logging.use_logger_service:main',
+            'matched_event_detect = demo_nodes_py.events.matched_event_detect:main'
         ],
     },
 )

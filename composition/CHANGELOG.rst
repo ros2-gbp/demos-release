@@ -2,54 +2,12 @@
 Changelog for package composition
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-0.33.4 (2024-06-27)
+0.27.2 (2024-07-10)
 -------------------
+* Add launch action console output in the verify section (`#683 <https://github.com/ros2/demos/issues/683>`_)
+* Contributors: Mikael Arguedas
 
-0.33.3 (2024-05-13)
--------------------
-* [composition] add launch action console output in the verify section (`#677 <https://github.com/ros2/demos/issues/677>`_) (`#681 <https://github.com/ros2/demos/issues/681>`_)
-  (cherry picked from commit 34d29db73e78a84a174ad8699a2d646b0eeb1cdf)
-  Co-authored-by: Mikael Arguedas <mikael.arguedas@gmail.com>
-* Contributors: mergify[bot]
-
-0.33.2 (2024-03-28)
--------------------
-* Update maintainer list in package.xml files (`#665 <https://github.com/ros2/demos/issues/665>`_)
-* Contributors: Michael Jeronimo
-
-0.33.1 (2024-02-07)
--------------------
-
-0.33.0 (2024-01-24)
--------------------
-* Migrate std::bind calls to lambda expressions (`#659 <https://github.com/ros2/demos/issues/659>`_)
-* Contributors: Felipe Gomes de Melo
-
-0.32.1 (2023-12-26)
--------------------
-
-0.32.0 (2023-11-06)
--------------------
-
-0.31.1 (2023-09-07)
--------------------
-
-0.31.0 (2023-08-21)
--------------------
-
-0.30.1 (2023-07-11)
--------------------
-
-0.30.0 (2023-06-12)
--------------------
-
-0.29.0 (2023-06-07)
--------------------
-
-0.28.1 (2023-05-11)
--------------------
-
-0.28.0 (2023-04-27)
+0.27.1 (2023-05-11)
 -------------------
 
 0.27.0 (2023-04-13)

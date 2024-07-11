@@ -12,8 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import sys
-
 import rclpy
 from rclpy.event_handler import SubscriptionEventCallbacks
 from rclpy.executors import ExternalShutdownException
@@ -60,8 +58,8 @@ class MessageLostListener(Node):
         )
 
 
-def main(args=None):
-    rclpy.init(args=args)
+def main():
+    rclpy.init(args=None)
 
     listener = MessageLostListener()
     executor = SingleThreadedExecutor()
@@ -74,8 +72,6 @@ def main(args=None):
     finally:
         rclpy.try_shutdown()
 
-    return 0
-
 
 if __name__ == '__main__':
-    sys.exit(main())
+    main()

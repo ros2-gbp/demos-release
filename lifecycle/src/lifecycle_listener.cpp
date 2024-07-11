@@ -12,13 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <functional>
 #include <memory>
 #include <string>
 
 #include "lifecycle_msgs/msg/transition_event.hpp"
 
 #include "rclcpp/rclcpp.hpp"
+
+#include "rcutils/logging_macros.h"
 
 #include "std_msgs/msg/string.hpp"
 
@@ -39,7 +40,7 @@ public:
     // Data topic from the lc_talker node
     sub_data_ = this->create_subscription<std_msgs::msg::String>(
       "lifecycle_chatter", 10,
-      [this](std_msgs::msg::String::ConstSharedPtr msg) {return this->data_callback(msg);});
+      std::bind(&LifecycleListener::data_callback, this, std::placeholders::_1));
 
     // Notification event topic. All state changes
     // are published here as TransitionEvents with
@@ -47,10 +48,7 @@ public:
     sub_notification_ = this->create_subscription<lifecycle_msgs::msg::TransitionEvent>(
       "/lc_talker/transition_event",
       10,
-      [this](lifecycle_msgs::msg::TransitionEvent::ConstSharedPtr msg) {
-        return this->notification_callback(msg);
-      }
-    );
+      std::bind(&LifecycleListener::notification_callback, this, std::placeholders::_1));
   }
 
   void data_callback(std_msgs::msg::String::ConstSharedPtr msg)

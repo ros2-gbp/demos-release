@@ -37,14 +37,6 @@ Run the command below to compile the `demo_nodes_cpp` ROS 2 package:
 colcon build --packages-up-to demo_nodes_cpp
 ```
 
-**Note**: By default, the demo executables will spin up the [SingleThreaded executor](https://docs.ros.org/en/rolling/Concepts/Intermediate/About-Executors.html#executors) if run in separate processes, i.e., not composed in the same component container.
-To configure the demo executables to run with a different executor, build the package with the custom `DEMO_EXECUTOR` flag set to the fully qualified name of the executor.
-For example, to run with the experimental `EventsExecutor`,
-
-```bash
-colcon build --packages-select demo_nodes_cpp --cmake-args -DDEMO_EXECUTOR:STRING=rclcpp::experimental::executors::EventsExecutor
-```
-
 ## **Run**
 
 ### Basic Talker & Listener
@@ -208,7 +200,7 @@ ros2 run demo_nodes_cpp allocator_tutorial
 
 ### Parameter Events
 
-This runs `parameter_events`/`parameter_events_async` ROS 2 node(s) which initiates 10 parameter events which changes an example string parameter.
+This runs `parameter_events`/`parameters_events_async` ROS 2 node(s) which initiates 10 parameter events which changes an example string parameter.
 
 > foo -> bar -> baz -> foobar -> foo -> bar -> baz -> foobar -> foo -> bar
 
@@ -254,7 +246,7 @@ This runs `parameter_blackboard` ROS 2 node which instantiates a ROS 2 parameter
 
 ```bash
 # Open new terminal
-ros2 run demo_nodes_cpp parameter_blackboard
+ros2 run demo_nodes_cpp parameters_blackboard
 ```
 
 ![](img/parameters_blackboard.png)
@@ -452,9 +444,9 @@ When executed correctly, strings should be printed to terminal similar to what i
 When executed correctly, strings should be printed to terminal similar to what is shown below:
 
 ```bash
-[INFO] [1674563905.346022942] [list_parameters]: Setting parameters...
-[INFO] [1674563905.347158439] [list_parameters]: Listing parameters...
-[INFO] [1674563905.347570888] [list_parameters]:
+[INFO] [1674563905.346022942] [list_paramters]: Setting parameters...
+[INFO] [1674563905.347158439] [list_paramters]: Listing parameters...
+[INFO] [1674563905.347570888] [list_paramters]:
 Parameter names:
  bar
  foo
@@ -609,36 +601,31 @@ Run `ros2 param set /even_parameters_node myint 3` to set the parameter to an in
 
 #### [Before]
 
-Run `ros2 param get /set_param_callback_node param1` should print the following to terminal:
+Run `ros2 param get /set_parameters_callback param1` should print the following to terminal:
 ```bash
 Double value is: 0.0
 ```
 
-Run `ros2 param get /set_param_callback_node param2` should print the following to terminal:
+Run `ros2 param get /set_parameters_callback param2` should print the following to terminal:
 ```bash
 Double value is 0.0
 ```
 
 #### [Change]
 
-Run `ros2 param set set_param_callback_node param1 10.0` and see it fail with
-```bash
-Setting parameter failed: cannot set 'param1' > 5.0
-```
-
-Run `ros2 param set set_param_callback_node param1 3.0`
+Run `ros2 param set /set_parameters_callback param1 28.0` should print the following to terminal:
 ```bash
 Set parameter successful
 ```
 
 #### [After]
 
-Run `ros2 param get /set_param_callback_node param1` should print the following to terminal:
+Run `ros2 param get /set_parameters_callback param1` should print the following to terminal:
 ```bash
 Double value is: 28.0
 ```
 
-Run `ros2 param get /set_param_callback_node param2` should print the following to terminal:
+Run `ros2 param get /set_parameters_callback param2` should print the following to terminal:
 ```bash
 Double value is 4.0
 ```
@@ -651,14 +638,15 @@ When executed correctly, strings should be printed to terminal similar to what i
 INFO] [1674568261.762813104] [parameter_blackboard]: Parameter blackboard node named '/parameter_blackboard' ready, and serving '5' parameters already!
 ```
 
-Running `ros2 param list` should reveal the 6 parameters served:
+Running `ros2 param list` should reveal the 5 parameters served:
 ```bash
 /parameter_blackboard:
   qos_overrides./parameter_events.publisher.depth
   qos_overrides./parameter_events.publisher.durability
   qos_overrides./parameter_events.publisher.history
   qos_overrides./parameter_events.publisher.reliability
-  start_type_description_service
+  use_sim_time
+/rqt_gui_py_node_33886:
   use_sim_time
 ```
 
