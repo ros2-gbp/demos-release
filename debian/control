@@ -1,0 +1,12 @@
+Source: ros-iron-logging-demo
+Section: misc
+Priority: optional
+Maintainer: Aditya Pande <aditya.pande@openrobotics.org>
+Build-Depends: debhelper (>= 9.0.0), ros-iron-ament-cmake, ros-iron-ament-cmake-pytest <!nocheck>, ros-iron-ament-lint-auto <!nocheck>, ros-iron-ament-lint-common <!nocheck>, ros-iron-launch <!nocheck>, ros-iron-launch-testing <!nocheck>, ros-iron-launch-testing-ament-cmake <!nocheck>, ros-iron-launch-testing-ros <!nocheck>, ros-iron-rclcpp, ros-iron-rclcpp-components, ros-iron-rcutils, ros-iron-rmw-implementation-cmake <!nocheck>, ros-iron-rosidl-default-generators, ros-iron-std-msgs, ros-iron-ros-workspace, ros-iron-rosidl-typesupport-fastrtps-c, ros-iron-rosidl-typesupport-fastrtps-cpp
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-iron-logging-demo
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-iron-rclcpp, ros-iron-rclcpp-components, ros-iron-rcutils, ros-iron-rosidl-default-runtime, ros-iron-std-msgs, ros-iron-ros-workspace
+Description: Examples for using and configuring loggers.
