@@ -1,3 +1,47 @@
+## demos (iron) - 0.27.2-1
+
+The packages in the `demos` repository were released into the `iron` distro by running `/usr/bin/bloom-release --rosdistro iron demos` on `Thu, 11 Jul 2024 05:28:10 -0000`
+
+These packages were released:
+- `action_tutorials_cpp`
+- `action_tutorials_interfaces`
+- `action_tutorials_py`
+- `composition`
+- `demo_nodes_cpp`
+- `demo_nodes_cpp_native`
+- `demo_nodes_py`
+- `dummy_map_server`
+- `dummy_robot_bringup`
+- `dummy_sensors`
+- `image_tools`
+- `intra_process_demo`
+- `lifecycle`
+- `lifecycle_py`
+- `logging_demo`
+- `pendulum_control`
+- `pendulum_msgs`
+- `quality_of_service_demo_cpp`
+- `quality_of_service_demo_py`
+- `topic_monitor`
+- `topic_statistics_demo`
+
+Version of package(s) in repository `demos`:
+
+- upstream repository: https://github.com/ros2/demos.git
+- release repository: https://github.com/ros2-gbp/demos-release.git
+- rosdistro version: `0.27.1-1`
+- old version: `0.27.1-1`
+- new version: `0.27.2-1`
+
+Versions of tools used:
+
+- bloom version: `0.12.0`
+- catkin_pkg version: `0.5.2`
+- rosdep version: `0.24.0`
+- rosdistro version: `0.9.1`
+- vcstools version: `0.1.42`
+
+
 ## demos (jazzy) - 0.33.4-1
 
 The packages in the `demos` repository were released into the `jazzy` distro by running `/usr/bin/bloom-release --rosdistro jazzy demos` on `Thu, 27 Jun 2024 11:06:17 -0000`
