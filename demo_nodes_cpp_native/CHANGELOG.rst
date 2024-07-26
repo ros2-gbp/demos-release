@@ -2,42 +2,18 @@
 Changelog for package demo_nodes_cpp_native
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-0.27.2 (2024-07-10)
+0.20.5 (2024-07-26)
 -------------------
 
-0.27.1 (2023-05-11)
+0.20.4 (2024-05-15)
 -------------------
 
-0.27.0 (2023-04-13)
+0.20.3 (2023-01-10)
 -------------------
-* Change all ROS2 -> ROS 2. (`#610 <https://github.com/ros2/demos/issues/610>`_)
-* Contributors: Chris Lalancette
+* Make demo_nodes_cpp_native install stuff only when it builds (`#590 <https://github.com/ros2/demos/issues/590>`_) (`#591 <https://github.com/ros2/demos/issues/591>`_)
+* Contributors: mergify[bot]
 
-0.26.0 (2023-04-11)
--------------------
-* Added README.md for demo_cpp_nodes_native (`#597 <https://github.com/ros2/demos/issues/597>`_)
-* Contributors: Gary Bey
-
-0.25.0 (2023-03-01)
--------------------
-
-0.24.1 (2023-02-24)
--------------------
-
-0.24.0 (2023-02-14)
--------------------
-* Update the demos to C++17. (`#594 <https://github.com/ros2/demos/issues/594>`_)
-* [rolling] Update maintainers - 2022-11-07 (`#589 <https://github.com/ros2/demos/issues/589>`_)
-* Make demo_nodes_cpp_native install stuff only when it builds (`#590 <https://github.com/ros2/demos/issues/590>`_)
-* Contributors: Audrow Nash, Chris Lalancette, Shane Loretz
-
-0.23.0 (2022-11-02)
--------------------
-
-0.22.0 (2022-09-13)
--------------------
-
-0.21.0 (2022-04-29)
+0.20.2 (2022-05-10)
 -------------------
 
 0.20.1 (2022-04-08)

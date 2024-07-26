@@ -12,6 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import sys
+
 import rclpy
 from rclpy.executors import ExternalShutdownException
 from rclpy.node import Node
@@ -41,8 +43,10 @@ def main(args=None):
 
     try:
         rclpy.spin(serialized_subscriber)
-    except (KeyboardInterrupt, ExternalShutdownException):
+    except KeyboardInterrupt:
         pass
+    except ExternalShutdownException:
+        sys.exit(1)
     finally:
         # Destroy the node explicitly
         # (optional - otherwise it will be done automatically

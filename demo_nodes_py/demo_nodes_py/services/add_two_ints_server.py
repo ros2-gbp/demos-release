@@ -12,6 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import sys
+
 from example_interfaces.srv import AddTwoInts
 
 import rclpy
@@ -39,8 +41,10 @@ def main(args=None):
 
     try:
         rclpy.spin(node)
-    except (KeyboardInterrupt, ExternalShutdownException):
+    except KeyboardInterrupt:
         pass
+    except ExternalShutdownException:
+        sys.exit(1)
     finally:
         # Destroy the node explicitly
         # (optional - Done automatically when node is garbage collected)

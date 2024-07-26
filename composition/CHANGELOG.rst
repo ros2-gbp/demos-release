@@ -2,46 +2,18 @@
 Changelog for package composition
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-0.27.2 (2024-07-10)
--------------------
-* Add launch action console output in the verify section (`#683 <https://github.com/ros2/demos/issues/683>`_)
-* Contributors: Mikael Arguedas
-
-0.27.1 (2023-05-11)
+0.20.5 (2024-07-26)
 -------------------
 
-0.27.0 (2023-04-13)
+0.20.4 (2024-05-15)
 -------------------
-* Change all ROS2 -> ROS 2. (`#610 <https://github.com/ros2/demos/issues/610>`_)
-* Contributors: Chris Lalancette
+* [composition] add launch action console output in the verify section (`#677 <https://github.com/ros2/demos/issues/677>`_) (`#682 <https://github.com/ros2/demos/issues/682>`_)
+* Contributors: mergify[bot]
 
-0.26.0 (2023-04-11)
--------------------
-* update launch file name format to match documentation (`#588 <https://github.com/ros2/demos/issues/588>`_)
-* Contributors: Patrick Wspanialy
-
-0.25.0 (2023-03-01)
+0.20.3 (2023-01-10)
 -------------------
 
-0.24.1 (2023-02-24)
--------------------
-
-0.24.0 (2023-02-14)
--------------------
-* Added README.md for composition (`#598 <https://github.com/ros2/demos/issues/598>`_)
-* Update the demos to C++17. (`#594 <https://github.com/ros2/demos/issues/594>`_)
-* [rolling] Update maintainers - 2022-11-07 (`#589 <https://github.com/ros2/demos/issues/589>`_)
-* Contributors: Audrow Nash, Chris Lalancette, Gary Bey
-
-0.23.0 (2022-11-02)
--------------------
-* fix memory leak (`#585 <https://github.com/ros2/demos/issues/585>`_)
-* Contributors: Chen Lihui
-
-0.22.0 (2022-09-13)
--------------------
-
-0.21.0 (2022-04-29)
+0.20.2 (2022-05-10)
 -------------------
 
 0.20.1 (2022-04-08)

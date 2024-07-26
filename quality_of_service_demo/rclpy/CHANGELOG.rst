@@ -2,44 +2,16 @@
 Changelog for package quality_of_service_demo_py
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-0.27.2 (2024-07-10)
+0.20.5 (2024-07-26)
 -------------------
 
-0.27.1 (2023-05-11)
--------------------
-* Use non-deprecated rclpy import. (`#617 <https://github.com/ros2/demos/issues/617>`_)
-* Contributors: Chris Lalancette
-
-0.27.0 (2023-04-13)
--------------------
-* Change all ROS2 -> ROS 2. (`#610 <https://github.com/ros2/demos/issues/610>`_)
-* Contributors: Chris Lalancette
-
-0.26.0 (2023-04-11)
--------------------
-* Enable document generation using rosdoc2 (`#606 <https://github.com/ros2/demos/issues/606>`_)
-* Contributors: Yadu
-
-0.25.0 (2023-03-01)
+0.20.4 (2024-05-15)
 -------------------
 
-0.24.1 (2023-02-24)
+0.20.3 (2023-01-10)
 -------------------
 
-0.24.0 (2023-02-14)
--------------------
-* [rolling] Update maintainers - 2022-11-07 (`#589 <https://github.com/ros2/demos/issues/589>`_)
-* Contributors: Audrow Nash
-
-0.23.0 (2022-11-02)
--------------------
-
-0.22.0 (2022-09-13)
--------------------
-* Exit with code 0 if ExternalShutdownException is raised (`#581 <https://github.com/ros2/demos/issues/581>`_)
-* Contributors: Jacob Perron
-
-0.21.0 (2022-04-29)
+0.20.2 (2022-05-10)
 -------------------
 
 0.20.1 (2022-04-08)

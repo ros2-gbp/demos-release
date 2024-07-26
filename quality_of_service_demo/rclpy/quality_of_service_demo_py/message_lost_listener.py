@@ -12,11 +12,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import sys
+
 import rclpy
-from rclpy.event_handler import SubscriptionEventCallbacks
 from rclpy.executors import ExternalShutdownException
 from rclpy.executors import SingleThreadedExecutor
 from rclpy.node import Node
+from rclpy.qos_event import SubscriptionEventCallbacks
 from rclpy.time import Time
 
 from sensor_msgs.msg import Image
@@ -67,8 +69,10 @@ def main():
 
     try:
         executor.spin()
-    except (KeyboardInterrupt, ExternalShutdownException):
+    except KeyboardInterrupt:
         pass
+    except ExternalShutdownException:
+        sys.exit(1)
     finally:
         rclpy.try_shutdown()
 

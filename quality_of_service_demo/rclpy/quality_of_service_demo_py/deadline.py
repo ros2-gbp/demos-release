@@ -12,18 +12,19 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 import argparse
+import sys
 
 from quality_of_service_demo_py.common_nodes import Listener
 from quality_of_service_demo_py.common_nodes import Talker
 
 import rclpy
 from rclpy.duration import Duration
-from rclpy.event_handler import PublisherEventCallbacks
-from rclpy.event_handler import SubscriptionEventCallbacks
 from rclpy.executors import ExternalShutdownException
 from rclpy.executors import SingleThreadedExecutor
 from rclpy.logging import get_logger
 from rclpy.qos import QoSProfile
+from rclpy.qos_event import PublisherEventCallbacks
+from rclpy.qos_event import SubscriptionEventCallbacks
 
 
 def parse_args():
@@ -71,8 +72,10 @@ def main(args=None):
     executor.add_node(talker)
     try:
         executor.spin()
-    except (KeyboardInterrupt, ExternalShutdownException):
+    except KeyboardInterrupt:
         pass
+    except ExternalShutdownException:
+        sys.exit(1)
     finally:
         rclpy.try_shutdown()
 

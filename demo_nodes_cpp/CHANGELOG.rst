@@ -2,56 +2,19 @@
 Changelog for package demo_nodes_cpp
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-0.27.2 (2024-07-10)
+0.20.5 (2024-07-26)
 -------------------
 
-0.27.1 (2023-05-11)
+0.20.4 (2024-05-15)
 -------------------
 
-0.27.0 (2023-04-13)
+0.20.3 (2023-01-10)
 -------------------
-* Change all ROS2 -> ROS 2. (`#610 <https://github.com/ros2/demos/issues/610>`_)
-* Add matched event demo for rclcpp and rclpy (`#607 <https://github.com/ros2/demos/issues/607>`_)
-* Contributors: Barry Xu, Chris Lalancette
 
-0.26.0 (2023-04-11)
+0.20.2 (2022-05-10)
 -------------------
-* Fix the set_parameters_callback example program. (`#608 <https://github.com/ros2/demos/issues/608>`_)
-* [demo_nodes_cpp] Add YAML launch demos for topics (`#605 <https://github.com/ros2/demos/issues/605>`_)
-* update launch file name format to match documentation (`#588 <https://github.com/ros2/demos/issues/588>`_)
-* Contributors: Chris Lalancette, Damien LaRocque, Patrick Wspanialy
-
-0.25.0 (2023-03-01)
--------------------
-* Service introspection (`#602 <https://github.com/ros2/demos/issues/602>`_)
-  * Add in a rclcpp and rclpy demo of introspection.
-* Contributors: Chris Lalancette
-
-0.24.1 (2023-02-24)
--------------------
-* Added README.md for demo_cpp_nodes (`#599 <https://github.com/ros2/demos/issues/599>`_)
-* Contributors: Gary Bey
-
-0.24.0 (2023-02-14)
--------------------
-* Update the demos to C++17. (`#594 <https://github.com/ros2/demos/issues/594>`_)
-* [rolling] Update maintainers - 2022-11-07 (`#589 <https://github.com/ros2/demos/issues/589>`_)
-* Contributors: Audrow Nash, Chris Lalancette
-
-0.23.0 (2022-11-02)
--------------------
-* Demo for pre and post set parameter callback support (`#565 <https://github.com/ros2/demos/issues/565>`_)
-  * local parameter callback support
-* Contributors: Deepanshu Bansal
-
-0.22.0 (2022-09-13)
--------------------
-* counter starts from 1, not 2. (`#562 <https://github.com/ros2/demos/issues/562>`_)
-* add a demo of content filter listener (`#557 <https://github.com/ros2/demos/issues/557>`_)
-* Contributors: Chen Lihui, Tomoya Fujita
-
-0.21.0 (2022-04-29)
--------------------
+* add a demo of content filter listener (`#557 <https://github.com/ros2/demos/issues/557>`_) (`#559 <https://github.com/ros2/demos/issues/559>`_)
+* Contributors: mergify[bot]
 
 0.20.1 (2022-04-08)
 -------------------

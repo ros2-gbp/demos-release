@@ -4,7 +4,7 @@ package_name = 'action_tutorials_py'
 
 setup(
     name=package_name,
-    version='0.27.2',
+    version='0.20.5',
     packages=[package_name],
     data_files=[
         ('share/ament_index/resource_index/packages',
@@ -15,8 +15,8 @@ setup(
     zip_safe=True,
     author='Jacob Perron',
     author_email='jacob@openrobotics.org',
-    maintainer='Aditya Pande, Audrow Nash, Michael Jeronimo',
-    maintainer_email='aditya.pande@openrobotics.org, audrow@openrobotics.org, michael.jeronimo@openrobotics.org',  # noqa: E501
+    maintainer='Audrow Nash, Michael Jeronimo',
+    maintainer_email='audrow@openrobotics.org, michael.jeronimo@openrobotics.org',
     keywords=['ROS'],
     classifiers=[
         'Intended Audience :: Developers',
