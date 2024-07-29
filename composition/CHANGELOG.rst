@@ -2,6 +2,9 @@
 Changelog for package composition
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.34.2 (2024-07-29)
+-------------------
+
 0.34.1 (2024-06-17)
 -------------------
 * Change references from "jazzy" to "rolling" on the rolling branch. (`#687 <https://github.com/ros2/demos/issues/687>`_)
