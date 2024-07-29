@@ -2,9 +2,10 @@ cmake_minimum_required(VERSION 3.5)
 
 project(lifecycle)
 
-# Default to C++14
+# Default to C++17
 if(NOT CMAKE_CXX_STANDARD)
-  set(CMAKE_CXX_STANDARD 14)
+  set(CMAKE_CXX_STANDARD 17)
+  set(CMAKE_CXX_STANDARD_REQUIRED ON)
 endif()
 
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
@@ -22,6 +23,7 @@ add_executable(lifecycle_talker
   src/lifecycle_talker.cpp)
 ament_target_dependencies(lifecycle_talker
   "lifecycle_msgs"
+  "rclcpp"
   "rclcpp_lifecycle"
   "std_msgs"
 )
@@ -29,15 +31,14 @@ add_executable(lifecycle_listener
   src/lifecycle_listener.cpp)
 ament_target_dependencies(lifecycle_listener
   "lifecycle_msgs"
-  "rclcpp_lifecycle"
+  "rclcpp"
   "std_msgs"
 )
 add_executable(lifecycle_service_client
   src/lifecycle_service_client.cpp)
 ament_target_dependencies(lifecycle_service_client
   "lifecycle_msgs"
-  "rclcpp_lifecycle"
-  "std_msgs"
+  "rclcpp"
 )
 
 install(TARGETS

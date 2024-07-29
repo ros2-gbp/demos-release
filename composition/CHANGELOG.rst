@@ -2,18 +2,90 @@
 Changelog for package composition
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-0.20.5 (2024-07-26)
+0.34.2 (2024-07-29)
 -------------------
 
-0.20.4 (2024-05-15)
+0.34.1 (2024-06-17)
 -------------------
-* [composition] add launch action console output in the verify section (`#677 <https://github.com/ros2/demos/issues/677>`_) (`#682 <https://github.com/ros2/demos/issues/682>`_)
-* Contributors: mergify[bot]
+* Change references from "jazzy" to "rolling" on the rolling branch. (`#687 <https://github.com/ros2/demos/issues/687>`_)
+* [composition] add launch action console output in the verify section (`#677 <https://github.com/ros2/demos/issues/677>`_)
+* Contributors: Chris Lalancette, Mikael Arguedas
 
-0.20.3 (2023-01-10)
+0.34.0 (2024-04-26)
 -------------------
 
-0.20.2 (2022-05-10)
+0.33.2 (2024-03-28)
+-------------------
+* Update maintainer list in package.xml files (`#665 <https://github.com/ros2/demos/issues/665>`_)
+* Contributors: Michael Jeronimo
+
+0.33.1 (2024-02-07)
+-------------------
+
+0.33.0 (2024-01-24)
+-------------------
+* Migrate std::bind calls to lambda expressions (`#659 <https://github.com/ros2/demos/issues/659>`_)
+* Contributors: Felipe Gomes de Melo
+
+0.32.1 (2023-12-26)
+-------------------
+
+0.32.0 (2023-11-06)
+-------------------
+
+0.31.1 (2023-09-07)
+-------------------
+
+0.31.0 (2023-08-21)
+-------------------
+
+0.30.1 (2023-07-11)
+-------------------
+
+0.30.0 (2023-06-12)
+-------------------
+
+0.29.0 (2023-06-07)
+-------------------
+
+0.28.1 (2023-05-11)
+-------------------
+
+0.28.0 (2023-04-27)
+-------------------
+
+0.27.0 (2023-04-13)
+-------------------
+* Change all ROS2 -> ROS 2. (`#610 <https://github.com/ros2/demos/issues/610>`_)
+* Contributors: Chris Lalancette
+
+0.26.0 (2023-04-11)
+-------------------
+* update launch file name format to match documentation (`#588 <https://github.com/ros2/demos/issues/588>`_)
+* Contributors: Patrick Wspanialy
+
+0.25.0 (2023-03-01)
+-------------------
+
+0.24.1 (2023-02-24)
+-------------------
+
+0.24.0 (2023-02-14)
+-------------------
+* Added README.md for composition (`#598 <https://github.com/ros2/demos/issues/598>`_)
+* Update the demos to C++17. (`#594 <https://github.com/ros2/demos/issues/594>`_)
+* [rolling] Update maintainers - 2022-11-07 (`#589 <https://github.com/ros2/demos/issues/589>`_)
+* Contributors: Audrow Nash, Chris Lalancette, Gary Bey
+
+0.23.0 (2022-11-02)
+-------------------
+* fix memory leak (`#585 <https://github.com/ros2/demos/issues/585>`_)
+* Contributors: Chen Lihui
+
+0.22.0 (2022-09-13)
+-------------------
+
+0.21.0 (2022-04-29)
 -------------------
 
 0.20.1 (2022-04-08)
