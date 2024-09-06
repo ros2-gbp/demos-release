@@ -2,15 +2,13 @@
 Changelog for package quality_of_service_demo_py
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-0.34.2 (2024-07-29)
--------------------
-* Change all of the demos to use the new rclpy context manager. (`#694 <https://github.com/ros2/demos/issues/694>`_)
-* Contributors: Chris Lalancette
-
-0.34.1 (2024-06-17)
+0.33.5 (2024-09-06)
 -------------------
 
-0.34.0 (2024-04-26)
+0.33.4 (2024-06-27)
+-------------------
+
+0.33.3 (2024-05-13)
 -------------------
 
 0.33.2 (2024-03-28)

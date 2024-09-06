@@ -15,8 +15,6 @@
 from typing import Optional
 
 import rclpy
-from rclpy.executors import ExternalShutdownException
-from rclpy.executors import SingleThreadedExecutor
 
 # Node, State and Publisher are aliases for LifecycleNode, LifecycleState and LifecyclePublisher
 # respectively.
@@ -144,14 +142,15 @@ class LifecycleTalker(Node):
 # node, give it a name and add it to the executor.
 
 def main():
+    rclpy.init()
+
+    executor = rclpy.executors.SingleThreadedExecutor()
+    lc_node = LifecycleTalker('lc_talker')
+    executor.add_node(lc_node)
     try:
-        with rclpy.init():
-            executor = SingleThreadedExecutor()
-            lc_node = LifecycleTalker('lc_talker')
-            executor.add_node(lc_node)
-            executor.spin()
-    except (KeyboardInterrupt, ExternalShutdownException):
-        pass
+        executor.spin()
+    except (KeyboardInterrupt, rclpy.executors.ExternalShutdownException):
+        lc_node.destroy_node()
 
 
 if __name__ == '__main__':

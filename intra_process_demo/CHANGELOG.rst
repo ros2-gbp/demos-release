@@ -2,17 +2,19 @@
 Changelog for package intra_process_demo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-0.34.2 (2024-07-29)
+0.33.5 (2024-09-06)
 -------------------
-* Removed pre-compiler check for opencv3 (`#695 <https://github.com/ros2/demos/issues/695>`_)
-* Contributors: Alejandro Hernández Cordero
+* Removed pre-compiler check for opencv3 (`#695 <https://github.com/ros2/demos/issues/695>`_) (`#696 <https://github.com/ros2/demos/issues/696>`_)
+  (cherry picked from commit e5dc79917333bb6bc9a3efe02fecb3c214cfacef)
+  Co-authored-by: Alejandro Hernández Cordero <ahcorde@gmail.com>
+* Contributors: mergify[bot]
 
-0.34.1 (2024-06-17)
+0.33.4 (2024-06-27)
 -------------------
-* [intra_process_demo] executable name in README.md fix-up (`#690 <https://github.com/ros2/demos/issues/690>`_)
-* Contributors: Trushant Adeshara
+* [intra_process_demo] executable name in README.md fix-up (`#690 <https://github.com/ros2/demos/issues/690>`_) (`#691 <https://github.com/ros2/demos/issues/691>`_)
+  Co-authored-by: Trushant Adeshara <150821956+Trushant-Adeshara-UM@users.noreply.github.com>
 
-0.34.0 (2024-04-26)
+0.33.3 (2024-05-13)
 -------------------
 
 0.33.2 (2024-03-28)

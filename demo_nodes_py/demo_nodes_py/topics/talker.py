@@ -37,13 +37,17 @@ class Talker(Node):
 
 
 def main(args=None):
-    try:
-        with rclpy.init(args=args):
-            node = Talker()
+    rclpy.init(args=args)
 
-            rclpy.spin(node)
+    node = Talker()
+
+    try:
+        rclpy.spin(node)
     except (KeyboardInterrupt, ExternalShutdownException):
         pass
+    finally:
+        node.destroy_node()
+        rclpy.try_shutdown()
 
 
 if __name__ == '__main__':

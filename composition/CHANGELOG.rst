@@ -2,17 +2,18 @@
 Changelog for package composition
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-0.34.2 (2024-07-29)
+0.33.5 (2024-09-06)
 -------------------
 
-0.34.1 (2024-06-17)
+0.33.4 (2024-06-27)
 -------------------
-* Change references from "jazzy" to "rolling" on the rolling branch. (`#687 <https://github.com/ros2/demos/issues/687>`_)
-* [composition] add launch action console output in the verify section (`#677 <https://github.com/ros2/demos/issues/677>`_)
-* Contributors: Chris Lalancette, Mikael Arguedas
 
-0.34.0 (2024-04-26)
+0.33.3 (2024-05-13)
 -------------------
+* [composition] add launch action console output in the verify section (`#677 <https://github.com/ros2/demos/issues/677>`_) (`#681 <https://github.com/ros2/demos/issues/681>`_)
+  (cherry picked from commit 34d29db73e78a84a174ad8699a2d646b0eeb1cdf)
+  Co-authored-by: Mikael Arguedas <mikael.arguedas@gmail.com>
+* Contributors: mergify[bot]
 
 0.33.2 (2024-03-28)
 -------------------
