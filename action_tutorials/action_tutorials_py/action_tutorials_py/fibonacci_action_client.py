@@ -13,10 +13,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from action_tutorials_interfaces.action import Fibonacci
+from example_interfaces.action import Fibonacci
 
 import rclpy
 from rclpy.action import ActionClient
+from rclpy.executors import ExternalShutdownException
 from rclpy.node import Node
 
 
@@ -58,17 +59,19 @@ class FibonacciActionClient(Node):
 
     def feedback_callback(self, feedback_msg):
         feedback = feedback_msg.feedback
-        self.get_logger().info('Received feedback: {0}'.format(feedback.partial_sequence))
+        self.get_logger().info('Received feedback: {0}'.format(feedback.sequence))
 
 
 def main(args=None):
-    rclpy.init(args=args)
+    try:
+        with rclpy.init(args=args):
+            action_client = FibonacciActionClient()
 
-    action_client = FibonacciActionClient()
+            action_client.send_goal(10)
 
-    action_client.send_goal(10)
-
-    rclpy.spin(action_client)
+            rclpy.spin(action_client)
+    except (KeyboardInterrupt, ExternalShutdownException):
+        pass
 
 
 if __name__ == '__main__':
