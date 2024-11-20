@@ -2,6 +2,9 @@
 Changelog for package composition
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.35.1 (2024-11-20)
+-------------------
+
 0.35.0 (2024-10-03)
 -------------------
 * Fix typo in composition comment (`#703 <https://github.com/ros2/demos/issues/703>`_)
