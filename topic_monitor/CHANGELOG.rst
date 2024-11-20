@@ -2,6 +2,11 @@
 Changelog for package topic_monitor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.35.1 (2024-11-20)
+-------------------
+* Add test_xmllint.py to all of the ament_python packages. (`#704 <https://github.com/ros2/demos/issues/704>`_)
+* Contributors: Chris Lalancette
+
 0.35.0 (2024-10-03)
 -------------------
 
