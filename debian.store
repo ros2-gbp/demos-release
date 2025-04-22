@@ -1,1 +1,1 @@
-{"base": "c6d4b15dd", "parent": "debian/rolling/lifecycle_py", "previous": "41f8d2146", "trim": "", "trimbase": ""}
+{"base": "da35a8e87674", "parent": "debian/kilted/lifecycle_py", "previous": "69a9e90ce24e", "trim": "", "trimbase": ""}
