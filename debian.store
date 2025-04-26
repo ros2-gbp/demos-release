@@ -1,1 +1,1 @@
-{"base": "540352223", "parent": "debian/rolling/pendulum_msgs", "previous": "d531c8005", "trim": "", "trimbase": ""}
+{"base": "cc1153aff03b", "parent": "debian/rolling/pendulum_msgs", "previous": "38ff988c625f", "trim": "", "trimbase": ""}
