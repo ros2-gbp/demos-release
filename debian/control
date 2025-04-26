@@ -1,0 +1,12 @@
+Source: ros-kilted-dummy-sensors
+Section: misc
+Priority: optional
+Maintainer: Aditya Pande <aditya.pande@openrobotics.org>
+Build-Depends: debhelper (>= 9.0.0), ros-kilted-ament-cmake, ros-kilted-ament-cmake-gtest <!nocheck>, ros-kilted-ament-lint-auto <!nocheck>, ros-kilted-ament-lint-common <!nocheck>, ros-kilted-rclcpp, ros-kilted-sensor-msgs, ros-kilted-ros-workspace
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-kilted-dummy-sensors
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-kilted-rclcpp, ros-kilted-sensor-msgs, ros-kilted-ros-workspace
+Description: dummy sensor nodes
