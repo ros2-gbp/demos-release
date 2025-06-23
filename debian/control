@@ -1,0 +1,12 @@
+Source: ros-kilted-intra-process-demo
+Section: misc
+Priority: optional
+Maintainer: Aditya Pande <aditya.pande@openrobotics.org>
+Build-Depends: debhelper (>= 9.0.0), libopencv-dev, ros-kilted-ament-cmake, ros-kilted-ament-cmake-pytest <!nocheck>, ros-kilted-ament-lint-auto <!nocheck>, ros-kilted-ament-lint-common <!nocheck>, ros-kilted-launch <!nocheck>, ros-kilted-launch-testing <!nocheck>, ros-kilted-launch-testing-ament-cmake <!nocheck>, ros-kilted-launch-testing-ros <!nocheck>, ros-kilted-rclcpp, ros-kilted-rmw-implementation-cmake <!nocheck>, ros-kilted-sensor-msgs, ros-kilted-std-msgs, ros-kilted-ros-workspace
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-kilted-intra-process-demo
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libopencv-dev, ros-kilted-rclcpp, ros-kilted-sensor-msgs, ros-kilted-ros-workspace
+Description: Demonstrations of intra process communication.
