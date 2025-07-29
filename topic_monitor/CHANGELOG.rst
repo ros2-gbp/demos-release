@@ -2,10 +2,18 @@
 Changelog for package topic_monitor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-0.36.1 (2025-06-23)
+0.37.2 (2025-07-29)
 -------------------
-* Update README.md (`#718 <https://github.com/ros2/demos/issues/718>`_)
-* Contributors: Alejandro Hernández Cordero
+* fix setuptools deprecations (`#733 <https://github.com/ros2/demos/issues/733>`_)
+* Contributors: mosfet80
+
+0.37.1 (2025-06-23)
+-------------------
+* Update README.md (`#718 <https://github.com/ros2/demos/issues/718>`_) (`#719 <https://github.com/ros2/demos/issues/719>`_)
+* Contributors: mergify[bot]
+
+0.37.0 (2025-04-25)
+-------------------
 
 0.36.0 (2025-04-25)
 -------------------
