@@ -2,41 +2,54 @@
 Changelog for package demo_nodes_cpp
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-0.37.2 (2025-07-29)
+0.33.6 (2025-08-06)
+-------------------
+* fix typo in docs demo_nodes_cpp (`#715 <https://github.com/ros2/demos/issues/715>`_) (`#717 <https://github.com/ros2/demos/issues/717>`_)
+  (cherry picked from commit 3b2cedb6d557f11dc67cdd2f3be75a4716380497)
+  Co-authored-by: Khaled Gabr <30967695+khaledgabr77@users.noreply.github.com>
+* Contributors: mergify[bot]
+
+0.33.5 (2024-09-06)
 -------------------
 
-0.37.1 (2025-06-23)
--------------------
-* Use EnableRmwIsolation in launch tests (`#724 <https://github.com/ros2/demos/issues/724>`_)
-* fix typo in docs demo_nodes_cpp (`#715 <https://github.com/ros2/demos/issues/715>`_)
-* Contributors: Khaled Gabr, Scott K Logan
-
-0.37.0 (2025-04-25)
+0.33.4 (2024-06-27)
 -------------------
 
-0.36.0 (2025-04-25)
+0.33.3 (2024-05-13)
 -------------------
-* Uniform CMAKE min VERSION (`#714 <https://github.com/ros2/demos/issues/714>`_)
-* Set envars to run tests with rmw_zenoh_cpp with multicast discovery (`#711 <https://github.com/ros2/demos/issues/711>`_)
-* Contributors: Alejandro Hernández Cordero, mosfet80
-
-0.35.1 (2024-11-20)
--------------------
-
-0.35.0 (2024-10-03)
--------------------
-
-0.34.2 (2024-07-29)
--------------------
-
-0.34.1 (2024-06-17)
--------------------
-* [demo_nodes_cpp] some readme and executable name fixups (`#678 <https://github.com/ros2/demos/issues/678>`_)
-* Fix gcc warnings when building with optimizations. (`#672 <https://github.com/ros2/demos/issues/672>`_)
-* Contributors: Chris Lalancette, Mikael Arguedas
-
-0.34.0 (2024-04-26)
--------------------
+* [demo_nodes_cpp] some readme and executable name fixups (`#678 <https://github.com/ros2/demos/issues/678>`_) (`#688 <https://github.com/ros2/demos/issues/688>`_)
+  (cherry picked from commit aa8df8904b864d063e31fd5b953ffe561c7a9fe0)
+  Co-authored-by: Mikael Arguedas <mikael.arguedas@gmail.com>
+* Fix gcc warnings when building with optimizations. (`#672 <https://github.com/ros2/demos/issues/672>`_) (`#673 <https://github.com/ros2/demos/issues/673>`_)
+  * Fix gcc warnings when building with optimizations.
+  When building the allocator_tutorial_pmr demo with -O2,
+  gcc is throwing an error saying that new and delete are
+  mismatched.  This is something of a misnomer, however;
+  the real problem is that the global new override we
+  have in that demo is actually implemented incorrectly.
+  In particular, the documentation at
+  https://en.cppreference.com/w/cpp/memory/new/operator_new
+  very clearly specifies that operator new either has to
+  return a valid pointer, or throw an exception on error.
+  Our version wasn't throwing the exception, so change it
+  to throw std::bad_alloc if std::malloc fails.
+  While we are in here, also fix another small possible
+  is where std::malloc could return nullptr on a zero-sized
+  object, thus throwing an exception it shouldn't.
+  * Always inline the new and delete operators.
+  That's because gcc 13 has a bug where it can sometimes
+  inline one or the other, and then it detects that they
+  mismatch.  For gcc and clang, just force them to always
+  be inline in this demo.
+  * Switch to NOINLINE instead.
+  Both clang and MSVC don't like inlining these, so instead
+  ensure that they are *not* inlined.  This also works
+  because the problem is when new is inlined but not delete
+  (or vice-versa).  As long as they are both not inlined,
+  this should fix the warning.
+  (cherry picked from commit 957ddbb9f04f55cabd8496e8d74eb35ee4d29105)
+  Co-authored-by: Chris Lalancette <clalancette@gmail.com>
+* Contributors: mergify[bot]
 
 0.33.2 (2024-03-28)
 -------------------

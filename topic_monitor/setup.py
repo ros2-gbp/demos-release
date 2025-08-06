@@ -8,7 +8,7 @@ package_name = 'topic_monitor'
 
 setup(
     name=package_name,
-    version='0.37.2',
+    version='0.33.6',
     packages=find_packages(exclude=['test']),
     data_files=[
         ('share/ament_index/resource_index/packages',
@@ -27,16 +27,13 @@ setup(
     keywords=['ROS'],
     classifiers=[
         'Intended Audience :: Developers',
+        'License :: OSI Approved :: Apache Software License',
         'Programming Language :: Python',
         'Topic :: Software Development',
     ],
     description='Package containing tools for monitoring ROS 2 topics.',
     license='Apache License, Version 2.0',
-    extras_require={
-        'test': [
-            'pytest',
-        ],
-    },
+    tests_require=['pytest'],
     entry_points={
         'console_scripts': [
             'data_publisher = topic_monitor.scripts.data_publisher:main',

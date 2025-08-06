@@ -1,6 +1,6 @@
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Changelog for package action_tutorials_py
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Changelog for package action_tutorials_interfaces
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 0.33.6 (2025-08-06)
 -------------------
@@ -21,8 +21,6 @@ Changelog for package action_tutorials_py
 
 0.33.1 (2024-02-07)
 -------------------
-* Add tests to action_tutorials_py. (`#664 <https://github.com/ros2/demos/issues/664>`_)
-* Contributors: Chris Lalancette
 
 0.33.0 (2024-01-24)
 -------------------
@@ -56,9 +54,13 @@ Changelog for package action_tutorials_py
 
 0.27.0 (2023-04-13)
 -------------------
+* Change all ROS2 -> ROS 2. (`#610 <https://github.com/ros2/demos/issues/610>`_)
+* Contributors: Chris Lalancette
 
 0.26.0 (2023-04-11)
 -------------------
+* A couple more upgrades to C++17. (`#609 <https://github.com/ros2/demos/issues/609>`_)
+* Contributors: Chris Lalancette
 
 0.25.0 (2023-03-01)
 -------------------
@@ -77,6 +79,8 @@ Changelog for package action_tutorials_py
 
 0.22.0 (2022-09-13)
 -------------------
+* Remove action_msgs dependency (`#580 <https://github.com/ros2/demos/issues/580>`_)
+* Contributors: Jacob Perron
 
 0.21.0 (2022-04-29)
 -------------------
@@ -109,8 +113,6 @@ Changelog for package action_tutorials_py
 
 0.14.1 (2021-04-19)
 -------------------
-* Use underscores instead of dashes in setup.cfg (`#502 <https://github.com/ros2/demos/issues/502>`_)
-* Contributors: Ivan Santiago Paunovic
 
 0.14.0 (2021-04-06)
 -------------------
@@ -149,8 +151,6 @@ Changelog for package action_tutorials_py
 
 0.8.4 (2019-11-19)
 ------------------
-* Make demos handle SIGINT gracefully. (`#377 <https://github.com/ros2/demos/issues/377>`_)
-* Contributors: Michel Hidalgo
 
 0.8.3 (2019-11-11)
 ------------------
@@ -160,14 +160,11 @@ Changelog for package action_tutorials_py
 
 0.8.1 (2019-10-23)
 ------------------
-* Update setup.py versions
-* Contributors: Jacob Perron
 
 0.8.0 (2019-09-26)
 ------------------
-* Remove non-existing dependency (`#384 <https://github.com/ros2/demos/issues/384>`_)
-* Move Python action tutorials to a new package, action_tutorials_py (`#378 <https://github.com/ros2/demos/issues/378>`_)
-* Contributors: Mikael Arguedas, Siddharth Kucheria
+* Move action tutorial interface to a new package, action_tutorials_interfaces (`#378 <https://github.com/ros2/demos/issues/378>`_)
+* Contributors: Siddharth Kucheria
 
 0.7.6 (2019-05-30)
 ------------------
