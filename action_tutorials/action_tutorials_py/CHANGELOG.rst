@@ -2,42 +2,21 @@
 Changelog for package action_tutorials_py
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-0.36.2 (2025-09-17)
+0.33.7 (2025-09-17)
 -------------------
-* fix setuptools deprecations (`#733 <https://github.com/ros2/demos/issues/733>`_) (`#736 <https://github.com/ros2/demos/issues/736>`_)
-* support cancel handler in action_tutorials_py action server. (`#727 <https://github.com/ros2/demos/issues/727>`_) (`#728 <https://github.com/ros2/demos/issues/728>`_)
+* fix setuptools deprecations (`#733 <https://github.com/ros2/demos/issues/733>`_) (`#737 <https://github.com/ros2/demos/issues/737>`_)
 * Contributors: mergify[bot]
 
-0.36.1 (2025-06-23)
+0.33.6 (2025-08-06)
 -------------------
 
-0.36.0 (2025-04-25)
--------------------
-* Update action python demos to support setting introspection (`#708 <https://github.com/ros2/demos/issues/708>`_)
-  * Update action python demos to support setting introspection
-  * Correct the errors in the document
-  ---------
-* Contributors: Barry Xu
-
-0.35.1 (2024-11-20)
--------------------
-* Add test_xmllint.py to all of the ament_python packages. (`#704 <https://github.com/ros2/demos/issues/704>`_)
-* Contributors: Chris Lalancette
-
-0.35.0 (2024-10-03)
--------------------
-* Remove action_tutorials_interfaces. (`#701 <https://github.com/ros2/demos/issues/701>`_)
-* Contributors: Chris Lalancette
-
-0.34.2 (2024-07-29)
--------------------
-* Change all of the demos to use the new rclpy context manager. (`#694 <https://github.com/ros2/demos/issues/694>`_)
-* Contributors: Chris Lalancette
-
-0.34.1 (2024-06-17)
+0.33.5 (2024-09-06)
 -------------------
 
-0.34.0 (2024-04-26)
+0.33.4 (2024-06-27)
+-------------------
+
+0.33.3 (2024-05-13)
 -------------------
 
 0.33.2 (2024-03-28)

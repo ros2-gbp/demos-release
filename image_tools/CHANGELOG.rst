@@ -2,34 +2,19 @@
 Changelog for package image_tools
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-0.36.2 (2025-09-17)
+0.33.7 (2025-09-17)
 -------------------
 
-0.36.1 (2025-06-23)
--------------------
-* Use EnableRmwIsolation in launch tests (`#724 <https://github.com/ros2/demos/issues/724>`_) (`#725 <https://github.com/ros2/demos/issues/725>`_)
-* Contributors: mergify[bot]
-
-0.36.0 (2025-04-25)
--------------------
-* Uniform CMAKE min VERSION (`#714 <https://github.com/ros2/demos/issues/714>`_)
-* Lint image_tools/CMakeLists.txt (`#712 <https://github.com/ros2/demos/issues/712>`_)
-* Set envars to run tests with rmw_zenoh_cpp with multicast discovery (`#711 <https://github.com/ros2/demos/issues/711>`_)
-* Contributors: Alejandro Hernández Cordero, mosfet80, yadunund
-
-0.35.1 (2024-11-20)
+0.33.6 (2025-08-06)
 -------------------
 
-0.35.0 (2024-10-03)
+0.33.5 (2024-09-06)
 -------------------
 
-0.34.2 (2024-07-29)
+0.33.4 (2024-06-27)
 -------------------
 
-0.34.1 (2024-06-17)
--------------------
-
-0.34.0 (2024-04-26)
+0.33.3 (2024-05-13)
 -------------------
 
 0.33.2 (2024-03-28)

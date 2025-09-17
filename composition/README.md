@@ -35,51 +35,10 @@ ros2 run composition manual_composition
 
 This runs `dlopen_composition` which is an alternative to run-time composition by creating a generic container process and explicitly passing the libraries to load without using ROS interfaces.
 
-First run the command to find the libraries prefix path.
-
-```bash
-ros2 pkg prefix composition
-```
-
-Then you can find the prefix path of the required shared libraries to load.
-
 The process will open each library and create one instance of each “rclcpp::Node” class in the library.
 
 ```bash
-ros2 run composition dlopen_composition <path_to_talker_component_shared_library> <path_to_listener_component_shared_library>
-```
-
-#### Linux
-
-The libraries will be present in `<prefix_path>/lib/` as `lib*.so` files.
-
-Run the following command to load the libraries.
-
-```bash
 ros2 run composition dlopen_composition `ros2 pkg prefix composition`/lib/libtalker_component.so `ros2 pkg prefix composition`/lib/liblistener_component.so
-```
-
-#### Windows
-
-On Windows, we will need the `*.dll` files.
-Since command substitution will not work on Windows, you have to give the absolute path of the libraries.
-
-The libraries will be in `<path_to_your_ros2_installation>\bin\`, so we have to run.
-
-```bash
-ros2 run composition dlopen_composition <prefix_path>\bin\talker_component.dll <prefix_path>\bin\listener_component.dll
-```
-
-To get the `prefix_path` run
-
-```bash
-ros2 pkg prefix composition
-```
-
-For example if our `prefix_path` comes out to be `C:\pixi_ws\ros2-windows\` we will run
-
-```bash
-ros2 run composition dlopen_composition C:\pixi_ws\ros2-windows\bin\talker_component.dll C:\pixi_ws\ros2-windows\bin\listener_component.dll
 ```
 
 ### Linktime Composition
@@ -193,11 +152,11 @@ When executed correctly, strings should be printed to terminal similar to what i
 [INFO] [launch]: All log files can be found below /root/.ros/log/2024-05-04-23-37-06-363020-d8ff93e471d7-9387
 [INFO] [launch]: Default logging verbosity is set to INFO
 [INFO] [component_container-1]: process started with pid [9402]
-[component_container-1] [INFO] [1714865826.695090046] [my_container]: Load Library: /opt/ros/rolling/lib/libtalker_component.so
+[component_container-1] [INFO] [1714865826.695090046] [my_container]: Load Library: /opt/ros/jazzy/lib/libtalker_component.so
 [component_container-1] [INFO] [1714865826.696388047] [my_container]: Found class: rclcpp_components::NodeFactoryTemplate<composition::Talker>
 [component_container-1] [INFO] [1714865826.696435882] [my_container]: Instantiate class: rclcpp_components::NodeFactoryTemplate<composition::Talker>
 [INFO] [launch_ros.actions.load_composable_nodes]: Loaded node '/talker' in container '/my_container'
-[component_container-1] [INFO] [1714865826.702958710] [my_container]: Load Library: /opt/ros/rolling/lib/liblistener_component.so
+[component_container-1] [INFO] [1714865826.702958710] [my_container]: Load Library: /opt/ros/jazzy/lib/liblistener_component.so
 [component_container-1] [INFO] [1714865826.703401061] [my_container]: Found class: rclcpp_components::NodeFactoryTemplate<composition::Listener>
 [component_container-1] [INFO] [1714865826.703414344] [my_container]: Instantiate class: rclcpp_components::NodeFactoryTemplate<composition::Listener>
 [INFO] [launch_ros.actions.load_composable_nodes]: Loaded node '/listener' in container '/my_container'

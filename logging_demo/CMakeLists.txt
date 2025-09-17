@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.20)
+cmake_minimum_required(VERSION 3.5)
 
 project(logging_demo)
 
@@ -29,29 +29,30 @@ add_library(logger_config_component SHARED
   src/logger_config_component.cpp)
 target_compile_definitions(logger_config_component
   PRIVATE "LOGGING_DEMO_BUILDING_DLL")
-target_link_libraries(logger_config_component PUBLIC
-  rclcpp::rclcpp
-  rclcpp_components::component)
+ament_target_dependencies(logger_config_component
+  "rclcpp"
+  "rclcpp_components")
 rosidl_get_typesupport_target(cpp_typesupport_target "${PROJECT_NAME}" "rosidl_typesupport_cpp")
-target_link_libraries(logger_config_component PUBLIC "${cpp_typesupport_target}")
+target_link_libraries(logger_config_component "${cpp_typesupport_target}")
 rclcpp_components_register_nodes(logger_config_component "logging_demo::LoggerConfig")
 
 add_library(logger_usage_component SHARED
   src/logger_usage_component.cpp)
 target_compile_definitions(logger_usage_component
   PRIVATE "LOGGING_DEMO_BUILDING_DLL")
-target_link_libraries(logger_usage_component PUBLIC
-  rclcpp::rclcpp
-  rclcpp_components::component
-  ${std_msgs_TARGETS})
+ament_target_dependencies(logger_usage_component
+  "rclcpp"
+  "rclcpp_components"
+  "std_msgs")
 rclcpp_components_register_nodes(logger_usage_component "logging_demo::LoggerUsage")
 
 add_executable(logging_demo_main
   src/logging_demo_main.cpp)
-target_link_libraries(logging_demo_main PRIVATE
+target_link_libraries(logging_demo_main
   logger_config_component
-  logger_usage_component
-  rclcpp::rclcpp)
+  logger_usage_component)
+ament_target_dependencies(logging_demo_main
+  "rclcpp")
 
 install(TARGETS
   logger_config_component
@@ -91,13 +92,10 @@ if(BUILD_TESTING)
       OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/test_logging_demo${target_suffix}_$<CONFIG>.py"
       INPUT "${CMAKE_CURRENT_BINARY_DIR}/test_logging_demo${target_suffix}.py.genexp"
     )
-
-    set(rmw_implementation_env_var RMW_IMPLEMENTATION=${rmw_implementation})
-
     add_launch_test(
       "${CMAKE_CURRENT_BINARY_DIR}/test_logging_demo${target_suffix}_$<CONFIG>.py"
       TARGET test_logging_demo${target_suffix}
-      ENV ${rmw_implementation_env_var}
+      ENV RMW_IMPLEMENTATION=${rmw_implementation}
       APPEND_LIBRARY_DIRS "${append_library_dirs}"
       TIMEOUT 30
     )

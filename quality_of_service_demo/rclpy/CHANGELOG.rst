@@ -2,34 +2,21 @@
 Changelog for package quality_of_service_demo_py
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-0.36.2 (2025-09-17)
+0.33.7 (2025-09-17)
 -------------------
-* fix setuptools deprecations (`#731 <https://github.com/ros2/demos/issues/731>`_) (`#739 <https://github.com/ros2/demos/issues/739>`_)
+* fix setuptools deprecations (`#731 <https://github.com/ros2/demos/issues/731>`_) (`#740 <https://github.com/ros2/demos/issues/740>`_)
 * Contributors: mergify[bot]
 
-0.36.1 (2025-06-23)
+0.33.6 (2025-08-06)
 -------------------
 
-0.36.0 (2025-04-25)
+0.33.5 (2024-09-06)
 -------------------
 
-0.35.1 (2024-11-20)
--------------------
-* Add test_xmllint.py to all of the ament_python packages. (`#704 <https://github.com/ros2/demos/issues/704>`_)
-* Contributors: Chris Lalancette
-
-0.35.0 (2024-10-03)
+0.33.4 (2024-06-27)
 -------------------
 
-0.34.2 (2024-07-29)
--------------------
-* Change all of the demos to use the new rclpy context manager. (`#694 <https://github.com/ros2/demos/issues/694>`_)
-* Contributors: Chris Lalancette
-
-0.34.1 (2024-06-17)
--------------------
-
-0.34.0 (2024-04-26)
+0.33.3 (2024-05-13)
 -------------------
 
 0.33.2 (2024-03-28)
