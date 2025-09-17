@@ -1,0 +1,12 @@
+Source: ros-kilted-quality-of-service-demo-cpp
+Section: misc
+Priority: optional
+Maintainer: Aditya Pande <aditya.pande@openrobotics.org>
+Build-Depends: debhelper (>= 9.0.0), ros-kilted-ament-cmake, ros-kilted-ament-lint-auto <!nocheck>, ros-kilted-ament-lint-common <!nocheck>, ros-kilted-example-interfaces, ros-kilted-launch <!nocheck>, ros-kilted-launch-testing <!nocheck>, ros-kilted-rclcpp, ros-kilted-rclcpp-components, ros-kilted-rcutils, ros-kilted-rmw, ros-kilted-rmw-implementation-cmake, ros-kilted-sensor-msgs, ros-kilted-std-msgs, ros-kilted-ros-workspace
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-kilted-quality-of-service-demo-cpp
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-kilted-example-interfaces, ros-kilted-launch-ros, ros-kilted-rclcpp, ros-kilted-rclcpp-components, ros-kilted-rcutils, ros-kilted-rmw, ros-kilted-sensor-msgs, ros-kilted-std-msgs, ros-kilted-ros-workspace
+Description: C++ Demo applications for Quality of Service features
