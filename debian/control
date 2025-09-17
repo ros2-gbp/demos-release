@@ -1,0 +1,12 @@
+Source: ros-humble-pendulum-msgs
+Section: misc
+Priority: optional
+Maintainer: Audrow Nash <audrow@openrobotics.org>
+Build-Depends: debhelper (>= 9.0.0), ros-humble-ament-cmake, ros-humble-builtin-interfaces, ros-humble-rosidl-default-generators, ros-humble-ros-workspace, ros-humble-rosidl-typesupport-fastrtps-c, ros-humble-rosidl-typesupport-fastrtps-cpp
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-humble-pendulum-msgs
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-humble-builtin-interfaces, ros-humble-rosidl-default-runtime, ros-humble-ros-workspace
+Description: Custom messages for real-time pendulum control.
