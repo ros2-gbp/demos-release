@@ -1,0 +1,251 @@
+ros-jazzy-topic-statistics-demo (0.33.7-1bookworm) bookworm; urgency=high
+
+
+
+ -- Aditya Pande <aditya.pande@openrobotics.org>  Tue, 16 Sep 2025 22:00:00 -0000
+
+ros-jazzy-topic-statistics-demo (0.33.6-1bookworm) bookworm; urgency=high
+
+
+
+ -- Aditya Pande <aditya.pande@openrobotics.org>  Tue, 05 Aug 2025 22:00:00 -0000
+
+ros-jazzy-topic-statistics-demo (0.33.5-1bookworm) bookworm; urgency=high
+
+
+
+ -- Aditya Pande <aditya.pande@openrobotics.org>  Thu, 05 Sep 2024 22:00:00 -0000
+
+ros-jazzy-topic-statistics-demo (0.33.4-1bookworm) bookworm; urgency=high
+
+
+
+ -- Aditya Pande <aditya.pande@openrobotics.org>  Wed, 26 Jun 2024 22:00:00 -0000
+
+ros-jazzy-topic-statistics-demo (0.33.3-1bookworm) bookworm; urgency=high
+
+
+
+ -- Aditya Pande <aditya.pande@openrobotics.org>  Sun, 12 May 2024 22:00:00 -0000
+
+ros-jazzy-topic-statistics-demo (0.33.2-1bookworm) bookworm; urgency=high
+
+  * Update maintainer list in package.xml files (#665 <https://github.com/ros2/demos/issues/665>)
+  * Contributors: Michael Jeronimo
+
+ -- Aditya Pande <aditya.pande@openrobotics.org>  Wed, 27 Mar 2024 23:00:00 -0000
+
+ros-jazzy-topic-statistics-demo (0.33.1-1bookworm) bookworm; urgency=high
+
+
+
+ -- Aditya Pande <aditya.pande@openrobotics.org>  Tue, 06 Feb 2024 23:00:00 -0000
+
+ros-jazzy-topic-statistics-demo (0.33.0-1bookworm) bookworm; urgency=high
+
+
+
+ -- Aditya Pande <aditya.pande@openrobotics.org>  Tue, 23 Jan 2024 23:00:00 -0000
+
+ros-jazzy-topic-statistics-demo (0.32.1-1bookworm) bookworm; urgency=high
+
+
+
+ -- Aditya Pande <aditya.pande@openrobotics.org>  Mon, 25 Dec 2023 23:00:00 -0000
+
+ros-jazzy-topic-statistics-demo (0.32.0-1bookworm) bookworm; urgency=high
+
+
+
+ -- Aditya Pande <aditya.pande@openrobotics.org>  Sun, 05 Nov 2023 23:00:00 -0000
+
+ros-jazzy-topic-statistics-demo (0.31.1-1bookworm) bookworm; urgency=high
+
+
+
+ -- Aditya Pande <aditya.pande@openrobotics.org>  Wed, 06 Sep 2023 22:00:00 -0000
+
+ros-jazzy-topic-statistics-demo (0.31.0-1bookworm) bookworm; urgency=high
+
+
+
+ -- Aditya Pande <aditya.pande@openrobotics.org>  Sun, 20 Aug 2023 22:00:00 -0000
+
+ros-jazzy-topic-statistics-demo (0.30.1-1bookworm) bookworm; urgency=high
+
+
+
+ -- Aditya Pande <aditya.pande@openrobotics.org>  Mon, 10 Jul 2023 22:00:00 -0000
+
+ros-jazzy-topic-statistics-demo (0.30.0-1bookworm) bookworm; urgency=high
+
+
+
+ -- Aditya Pande <aditya.pande@openrobotics.org>  Sun, 11 Jun 2023 22:00:00 -0000
+
+ros-jazzy-topic-statistics-demo (0.29.0-1bookworm) bookworm; urgency=high
+
+
+
+ -- Aditya Pande <aditya.pande@openrobotics.org>  Tue, 06 Jun 2023 22:00:00 -0000
+
+ros-jazzy-topic-statistics-demo (0.28.1-1bookworm) bookworm; urgency=high
+
+
+
+ -- Aditya Pande <aditya.pande@openrobotics.org>  Wed, 10 May 2023 22:00:00 -0000
+
+ros-jazzy-topic-statistics-demo (0.28.0-1bookworm) bookworm; urgency=high
+
+
+
+ -- Aditya Pande <aditya.pande@openrobotics.org>  Wed, 26 Apr 2023 22:00:00 -0000
+
+ros-jazzy-topic-statistics-demo (0.27.0-1bookworm) bookworm; urgency=high
+
+
+
+ -- Aditya Pande <aditya.pande@openrobotics.org>  Wed, 12 Apr 2023 22:00:00 -0000
+
+ros-jazzy-topic-statistics-demo (0.26.0-1bookworm) bookworm; urgency=high
+
+
+
+ -- Aditya Pande <aditya.pande@openrobotics.org>  Mon, 10 Apr 2023 22:00:00 -0000
+
+ros-jazzy-topic-statistics-demo (0.25.0-1bookworm) bookworm; urgency=high
+
+
+
+ -- Aditya Pande <aditya.pande@openrobotics.org>  Tue, 28 Feb 2023 23:00:00 -0000
+
+ros-jazzy-topic-statistics-demo (0.24.1-1bookworm) bookworm; urgency=high
+
+
+
+ -- Aditya Pande <aditya.pande@openrobotics.org>  Thu, 23 Feb 2023 23:00:00 -0000
+
+ros-jazzy-topic-statistics-demo (0.24.0-1bookworm) bookworm; urgency=high
+
+  * Update the demos to C++17. (#594 <https://github.com/ros2/demos/issues/594>)
+  * [rolling] Update maintainers - 2022-11-07 (#589 <https://github.com/ros2/demos/issues/589>)
+  * Contributors: Audrow Nash, Chris Lalancette
+
+ -- Aditya Pande <aditya.pande@openrobotics.org>  Mon, 13 Feb 2023 23:00:00 -0000
+
+ros-jazzy-topic-statistics-demo (0.23.0-1bookworm) bookworm; urgency=high
+
+
+
+ -- Aditya Pande <aditya.pande@openrobotics.org>  Tue, 01 Nov 2022 23:00:00 -0000
+
+ros-jazzy-topic-statistics-demo (0.22.0-1bookworm) bookworm; urgency=high
+
+
+
+ -- Aditya Pande <aditya.pande@openrobotics.org>  Mon, 12 Sep 2022 22:00:00 -0000
+
+ros-jazzy-topic-statistics-demo (0.21.0-1bookworm) bookworm; urgency=high
+
+
+
+ -- Aditya Pande <aditya.pande@openrobotics.org>  Thu, 28 Apr 2022 22:00:00 -0000
+
+ros-jazzy-topic-statistics-demo (0.20.1-1bookworm) bookworm; urgency=high
+
+
+
+ -- Aditya Pande <aditya.pande@openrobotics.org>  Thu, 07 Apr 2022 22:00:00 -0000
+
+ros-jazzy-topic-statistics-demo (0.20.0-1bookworm) bookworm; urgency=high
+
+  * Install includes to include/${PROJECT_NAME} (#548 <https://github.com/ros2/demos/issues/548>)
+  * Contributors: Shane Loretz
+
+ -- Aditya Pande <aditya.pande@openrobotics.org>  Mon, 28 Feb 2022 23:00:00 -0000
+
+ros-jazzy-topic-statistics-demo (0.19.0-1bookworm) bookworm; urgency=high
+
+
+
+ -- Aditya Pande <aditya.pande@openrobotics.org>  Thu, 13 Jan 2022 23:00:00 -0000
+
+ros-jazzy-topic-statistics-demo (0.18.0-1bookworm) bookworm; urgency=high
+
+  * Additional fixes for documentation in demos. (#538 <https://github.com/ros2/demos/issues/538>)
+  * Contributors: Chris Lalancette
+
+ -- Aditya Pande <aditya.pande@openrobotics.org>  Thu, 16 Dec 2021 23:00:00 -0000
+
+ros-jazzy-topic-statistics-demo (0.17.0-1bookworm) bookworm; urgency=high
+
+  * Fixing deprecated subscriber callback warnings (#532 <https://github.com/ros2/demos/issues/532>)
+  * Contributors: Abrar Rahman Protyasha
+
+ -- Aditya Pande <aditya.pande@openrobotics.org>  Sun, 17 Oct 2021 22:00:00 -0000
+
+ros-jazzy-topic-statistics-demo (0.16.0-1bookworm) bookworm; urgency=high
+
+
+
+ -- Aditya Pande <aditya.pande@openrobotics.org>  Tue, 10 Aug 2021 22:00:00 -0000
+
+ros-jazzy-topic-statistics-demo (0.15.0-1bookworm) bookworm; urgency=high
+
+
+
+ -- Aditya Pande <aditya.pande@openrobotics.org>  Thu, 13 May 2021 22:00:00 -0000
+
+ros-jazzy-topic-statistics-demo (0.14.2-1bookworm) bookworm; urgency=high
+
+
+
+ -- Aditya Pande <aditya.pande@openrobotics.org>  Sun, 25 Apr 2021 22:00:00 -0000
+
+ros-jazzy-topic-statistics-demo (0.14.1-1bookworm) bookworm; urgency=high
+
+
+
+ -- Aditya Pande <aditya.pande@openrobotics.org>  Sun, 18 Apr 2021 22:00:00 -0000
+
+ros-jazzy-topic-statistics-demo (0.14.0-1bookworm) bookworm; urgency=high
+
+  * Change index.ros.org -> docs.ros.org. (#496 <https://github.com/ros2/demos/issues/496>)
+  * Contributors: Chris Lalancette
+
+ -- Aditya Pande <aditya.pande@openrobotics.org>  Mon, 05 Apr 2021 22:00:00 -0000
+
+ros-jazzy-topic-statistics-demo (0.13.0-1bookworm) bookworm; urgency=high
+
+
+
+ -- Aditya Pande <aditya.pande@openrobotics.org>  Wed, 24 Mar 2021 23:00:00 -0000
+
+ros-jazzy-topic-statistics-demo (0.12.1-1bookworm) bookworm; urgency=high
+
+
+
+ -- Aditya Pande <aditya.pande@openrobotics.org>  Wed, 17 Mar 2021 23:00:00 -0000
+
+ros-jazzy-topic-statistics-demo (0.12.0-1bookworm) bookworm; urgency=high
+
+  * Update logging macros (#476 <https://github.com/ros2/demos/issues/476>)
+  * Contributors: Audrow Nash
+
+ -- Aditya Pande <aditya.pande@openrobotics.org>  Sun, 24 Jan 2021 23:00:00 -0000
+
+ros-jazzy-topic-statistics-demo (0.11.0-1bookworm) bookworm; urgency=high
+
+  * Update the package.xml files with the latest Open Robotics maintainers (#466 <https://github.com/ros2/demos/issues/466>)
+  * Contributors: Michael Jeronimo
+
+ -- Aditya Pande <aditya.pande@openrobotics.org>  Wed, 09 Dec 2020 23:00:00 -0000
+
+ros-jazzy-topic-statistics-demo (0.10.1-1bookworm) bookworm; urgency=high
+
+  * Create new topic statistics demo package (#454 <https://github.com/ros2/demos/issues/454>)
+  * Contributors: Prajakta Gokhale
+
+ -- Aditya Pande <aditya.pande@openrobotics.org>  Sun, 20 Sep 2020 22:00:00 -0000
+
+
