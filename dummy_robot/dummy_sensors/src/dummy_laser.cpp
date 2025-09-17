@@ -76,8 +76,6 @@ int main(int argc, char * argv[])
   rclcpp::Clock::SharedPtr clock = std::make_shared<rclcpp::Clock>(RCL_ROS_TIME);
   ts.attachClock(clock);
 
-  rclcpp::executors::SingleThreadedExecutor executor;
-  executor.add_node(node);
   auto counter = 0.0;
   auto amplitude = 1;
   auto distance = 0.0f;
@@ -92,7 +90,7 @@ int main(int argc, char * argv[])
     msg.header.stamp = clock->now();
 
     laser_pub->publish(msg);
-    executor.spin_some();
+    rclcpp::spin_some(node);
     loop_rate.sleep();
   }
 

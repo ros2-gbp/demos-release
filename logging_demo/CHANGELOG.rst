@@ -2,19 +2,13 @@
 Changelog for package logging_demo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-0.37.3 (2025-09-17)
+0.36.2 (2025-09-17)
 -------------------
 
-0.37.2 (2025-07-29)
+0.36.1 (2025-06-23)
 -------------------
-
-0.37.1 (2025-06-23)
--------------------
-* Use EnableRmwIsolation in launch tests (`#724 <https://github.com/ros2/demos/issues/724>`_)
-* Contributors: Scott K Logan
-
-0.37.0 (2025-04-25)
--------------------
+* Use EnableRmwIsolation in launch tests (`#724 <https://github.com/ros2/demos/issues/724>`_) (`#725 <https://github.com/ros2/demos/issues/725>`_)
+* Contributors: mergify[bot]
 
 0.36.0 (2025-04-25)
 -------------------

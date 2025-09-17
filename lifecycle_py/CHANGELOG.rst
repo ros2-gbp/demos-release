@@ -2,18 +2,12 @@
 Changelog for package lifecycle_py
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-0.37.3 (2025-09-17)
+0.36.2 (2025-09-17)
 -------------------
+* fix setuptools deprecations (`#733 <https://github.com/ros2/demos/issues/733>`_) (`#736 <https://github.com/ros2/demos/issues/736>`_)
+* Contributors: mergify[bot]
 
-0.37.2 (2025-07-29)
--------------------
-* fix setuptools deprecations (`#733 <https://github.com/ros2/demos/issues/733>`_)
-* Contributors: mosfet80
-
-0.37.1 (2025-06-23)
--------------------
-
-0.37.0 (2025-04-25)
+0.36.1 (2025-06-23)
 -------------------
 
 0.36.0 (2025-04-25)
