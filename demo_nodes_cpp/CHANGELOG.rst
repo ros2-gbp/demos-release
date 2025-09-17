@@ -2,160 +2,22 @@
 Changelog for package demo_nodes_cpp
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-0.33.7 (2025-09-17)
+0.20.6 (2025-09-17)
 -------------------
 
-0.33.6 (2025-08-06)
+0.20.5 (2024-07-26)
 -------------------
-* fix typo in docs demo_nodes_cpp (`#715 <https://github.com/ros2/demos/issues/715>`_) (`#717 <https://github.com/ros2/demos/issues/717>`_)
-  (cherry picked from commit 3b2cedb6d557f11dc67cdd2f3be75a4716380497)
-  Co-authored-by: Khaled Gabr <30967695+khaledgabr77@users.noreply.github.com>
+
+0.20.4 (2024-05-15)
+-------------------
+
+0.20.3 (2023-01-10)
+-------------------
+
+0.20.2 (2022-05-10)
+-------------------
+* add a demo of content filter listener (`#557 <https://github.com/ros2/demos/issues/557>`_) (`#559 <https://github.com/ros2/demos/issues/559>`_)
 * Contributors: mergify[bot]
-
-0.33.5 (2024-09-06)
--------------------
-
-0.33.4 (2024-06-27)
--------------------
-
-0.33.3 (2024-05-13)
--------------------
-* [demo_nodes_cpp] some readme and executable name fixups (`#678 <https://github.com/ros2/demos/issues/678>`_) (`#688 <https://github.com/ros2/demos/issues/688>`_)
-  (cherry picked from commit aa8df8904b864d063e31fd5b953ffe561c7a9fe0)
-  Co-authored-by: Mikael Arguedas <mikael.arguedas@gmail.com>
-* Fix gcc warnings when building with optimizations. (`#672 <https://github.com/ros2/demos/issues/672>`_) (`#673 <https://github.com/ros2/demos/issues/673>`_)
-  * Fix gcc warnings when building with optimizations.
-  When building the allocator_tutorial_pmr demo with -O2,
-  gcc is throwing an error saying that new and delete are
-  mismatched.  This is something of a misnomer, however;
-  the real problem is that the global new override we
-  have in that demo is actually implemented incorrectly.
-  In particular, the documentation at
-  https://en.cppreference.com/w/cpp/memory/new/operator_new
-  very clearly specifies that operator new either has to
-  return a valid pointer, or throw an exception on error.
-  Our version wasn't throwing the exception, so change it
-  to throw std::bad_alloc if std::malloc fails.
-  While we are in here, also fix another small possible
-  is where std::malloc could return nullptr on a zero-sized
-  object, thus throwing an exception it shouldn't.
-  * Always inline the new and delete operators.
-  That's because gcc 13 has a bug where it can sometimes
-  inline one or the other, and then it detects that they
-  mismatch.  For gcc and clang, just force them to always
-  be inline in this demo.
-  * Switch to NOINLINE instead.
-  Both clang and MSVC don't like inlining these, so instead
-  ensure that they are *not* inlined.  This also works
-  because the problem is when new is inlined but not delete
-  (or vice-versa).  As long as they are both not inlined,
-  this should fix the warning.
-  (cherry picked from commit 957ddbb9f04f55cabd8496e8d74eb35ee4d29105)
-  Co-authored-by: Chris Lalancette <clalancette@gmail.com>
-* Contributors: mergify[bot]
-
-0.33.2 (2024-03-28)
--------------------
-* A few uncrustify fixes for 0.78. (`#667 <https://github.com/ros2/demos/issues/667>`_)
-* Allow users to configure the executor for executables in `demo_nodes_cpp` (`#666 <https://github.com/ros2/demos/issues/666>`_)
-* Update maintainer list in package.xml files (`#665 <https://github.com/ros2/demos/issues/665>`_)
-* Contributors: Chris Lalancette, Michael Jeronimo, Yadu
-
-0.33.1 (2024-02-07)
--------------------
-
-0.33.0 (2024-01-24)
--------------------
-
-0.32.1 (2023-12-26)
--------------------
-* Added extra documentation and clarifications. (`#651 <https://github.com/ros2/demos/issues/651>`_)
-* Contributors: jrutgeer
-
-0.32.0 (2023-11-06)
--------------------
-* Add in support for both the PMR and custom allocator tutorials. (`#655 <https://github.com/ros2/demos/issues/655>`_)
-* Replacing old-style C++ allocator with a polymorphic memory resource (PMR) (`#653 <https://github.com/ros2/demos/issues/653>`_)
-* Contributors: Ali Ashkani Nia, Chris Lalancette
-
-0.31.1 (2023-09-07)
--------------------
-* Remove unnecessary captures in the various demos. (`#647 <https://github.com/ros2/demos/issues/647>`_)
-* Contributors: Chris Lalancette
-
-0.31.0 (2023-08-21)
--------------------
-* Dramatically speed up the demo_nodes_cpp tests (`#641 <https://github.com/ros2/demos/issues/641>`_)
-* Switch to using RCLCPP logging macros in the lifecycle package. (`#644 <https://github.com/ros2/demos/issues/644>`_)
-* Contributors: Chris Lalancette
-
-0.30.1 (2023-07-11)
--------------------
-* failed to call introspection_client (`#643 <https://github.com/ros2/demos/issues/643>`_)
-* Contributors: Chen Lihui
-
-0.30.0 (2023-06-12)
--------------------
-* Small cleanups to the demos when running through them. (`#639 <https://github.com/ros2/demos/issues/639>`_)
-* Cleanup demo_nodes_cpp CMake and dependencies (`#638 <https://github.com/ros2/demos/issues/638>`_)
-* Change the service introspection parameter off value to 'disabled' (`#634 <https://github.com/ros2/demos/issues/634>`_)
-* Contributors: Chris Lalancette
-
-0.29.0 (2023-06-07)
--------------------
-* Add demos for using logger service (`#611 <https://github.com/ros2/demos/issues/611>`_)
-* Contributors: Barry Xu
-
-0.28.1 (2023-05-11)
--------------------
-
-0.28.0 (2023-04-27)
--------------------
-
-0.27.0 (2023-04-13)
--------------------
-* Change all ROS2 -> ROS 2. (`#610 <https://github.com/ros2/demos/issues/610>`_)
-* Add matched event demo for rclcpp and rclpy (`#607 <https://github.com/ros2/demos/issues/607>`_)
-* Contributors: Barry Xu, Chris Lalancette
-
-0.26.0 (2023-04-11)
--------------------
-* Fix the set_parameters_callback example program. (`#608 <https://github.com/ros2/demos/issues/608>`_)
-* [demo_nodes_cpp] Add YAML launch demos for topics (`#605 <https://github.com/ros2/demos/issues/605>`_)
-* update launch file name format to match documentation (`#588 <https://github.com/ros2/demos/issues/588>`_)
-* Contributors: Chris Lalancette, Damien LaRocque, Patrick Wspanialy
-
-0.25.0 (2023-03-01)
--------------------
-* Service introspection (`#602 <https://github.com/ros2/demos/issues/602>`_)
-  * Add in a rclcpp and rclpy demo of introspection.
-* Contributors: Chris Lalancette
-
-0.24.1 (2023-02-24)
--------------------
-* Added README.md for demo_cpp_nodes (`#599 <https://github.com/ros2/demos/issues/599>`_)
-* Contributors: Gary Bey
-
-0.24.0 (2023-02-14)
--------------------
-* Update the demos to C++17. (`#594 <https://github.com/ros2/demos/issues/594>`_)
-* [rolling] Update maintainers - 2022-11-07 (`#589 <https://github.com/ros2/demos/issues/589>`_)
-* Contributors: Audrow Nash, Chris Lalancette
-
-0.23.0 (2022-11-02)
--------------------
-* Demo for pre and post set parameter callback support (`#565 <https://github.com/ros2/demos/issues/565>`_)
-  * local parameter callback support
-* Contributors: Deepanshu Bansal
-
-0.22.0 (2022-09-13)
--------------------
-* counter starts from 1, not 2. (`#562 <https://github.com/ros2/demos/issues/562>`_)
-* add a demo of content filter listener (`#557 <https://github.com/ros2/demos/issues/557>`_)
-* Contributors: Chen Lihui, Tomoya Fujita
-
-0.21.0 (2022-04-29)
--------------------
 
 0.20.1 (2022-04-08)
 -------------------

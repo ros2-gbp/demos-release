@@ -4,7 +4,7 @@ package_name = 'quality_of_service_demo_py'
 
 setup(
     name=package_name,
-    version='0.33.7',
+    version='0.20.6',
     packages=[package_name],
     data_files=[
         ('share/ament_index/resource_index/packages', ['resource/' + package_name]),
@@ -13,15 +13,15 @@ setup(
     install_requires=['setuptools'],
     zip_safe=True,
     author='Emerson Knapp',
-    maintainer='Aditya Pande, Audrow Nash, Michael Jeronimo',
-    maintainer_email='aditya.pande@openrobotics.org, audrow@openrobotics.org, michael.jeronimo@openrobotics.org',  # noqa: E501
+    maintainer='Audrow Nash, Michael Jeronimo',
+    maintainer_email='audrow@openrobotics.org, michael.jeronimo@openrobotics.org',
     keywords=['ROS'],
     classifiers=[
         'Intended Audience :: Developers',
         'Programming Language :: Python',
         'Topic :: Software Development',
     ],
-    description='Python nodes to demonstrate ROS 2 QoS policies.',
+    description='Python nodes to demonstrate ROS2 QoS policies.',
     license='Apache License, Version 2.0',
     extras_require={
         'test': [

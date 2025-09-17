@@ -2,97 +2,21 @@
 Changelog for package quality_of_service_demo_py
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-0.33.7 (2025-09-17)
+0.20.6 (2025-09-17)
 -------------------
-* fix setuptools deprecations (`#731 <https://github.com/ros2/demos/issues/731>`_) (`#740 <https://github.com/ros2/demos/issues/740>`_)
+* fix setuptools deprecations (`#731 <https://github.com/ros2/demos/issues/731>`_) (`#741 <https://github.com/ros2/demos/issues/741>`_)
 * Contributors: mergify[bot]
 
-0.33.6 (2025-08-06)
+0.20.5 (2024-07-26)
 -------------------
 
-0.33.5 (2024-09-06)
+0.20.4 (2024-05-15)
 -------------------
 
-0.33.4 (2024-06-27)
+0.20.3 (2023-01-10)
 -------------------
 
-0.33.3 (2024-05-13)
--------------------
-
-0.33.2 (2024-03-28)
--------------------
-* Update maintainer list in package.xml files (`#665 <https://github.com/ros2/demos/issues/665>`_)
-* Contributors: Michael Jeronimo
-
-0.33.1 (2024-02-07)
--------------------
-
-0.33.0 (2024-01-24)
--------------------
-
-0.32.1 (2023-12-26)
--------------------
-
-0.32.0 (2023-11-06)
--------------------
-
-0.31.1 (2023-09-07)
--------------------
-
-0.31.0 (2023-08-21)
--------------------
-
-0.30.1 (2023-07-11)
--------------------
-
-0.30.0 (2023-06-12)
--------------------
-
-0.29.0 (2023-06-07)
--------------------
-* More quality of service demo cleanup (`#632 <https://github.com/ros2/demos/issues/632>`_)
-* Fix small typos in the incompatible_qos demos. (`#629 <https://github.com/ros2/demos/issues/629>`_)
-* Fix the quality_of_service_demo_py output to look like the C++ one. (`#626 <https://github.com/ros2/demos/issues/626>`_)
-* Contributors: Chris Lalancette
-
-0.28.1 (2023-05-11)
--------------------
-* Use non-deprecated rclpy import. (`#615 <https://github.com/ros2/demos/issues/615>`_)
-* Contributors: Chris Lalancette
-
-0.28.0 (2023-04-27)
--------------------
-
-0.27.0 (2023-04-13)
--------------------
-* Change all ROS2 -> ROS 2. (`#610 <https://github.com/ros2/demos/issues/610>`_)
-* Contributors: Chris Lalancette
-
-0.26.0 (2023-04-11)
--------------------
-* Enable document generation using rosdoc2 (`#606 <https://github.com/ros2/demos/issues/606>`_)
-* Contributors: Yadu
-
-0.25.0 (2023-03-01)
--------------------
-
-0.24.1 (2023-02-24)
--------------------
-
-0.24.0 (2023-02-14)
--------------------
-* [rolling] Update maintainers - 2022-11-07 (`#589 <https://github.com/ros2/demos/issues/589>`_)
-* Contributors: Audrow Nash
-
-0.23.0 (2022-11-02)
--------------------
-
-0.22.0 (2022-09-13)
--------------------
-* Exit with code 0 if ExternalShutdownException is raised (`#581 <https://github.com/ros2/demos/issues/581>`_)
-* Contributors: Jacob Perron
-
-0.21.0 (2022-04-29)
+0.20.2 (2022-05-10)
 -------------------
 
 0.20.1 (2022-04-08)
