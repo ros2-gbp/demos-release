@@ -1,0 +1,128 @@
+ros-humble-topic-statistics-demo (0.20.6-1jammy) jammy; urgency=high
+
+
+
+ -- Mabel Zhang <mabel@openrobotics.org>  Tue, 16 Sep 2025 22:00:00 -0000
+
+ros-humble-topic-statistics-demo (0.20.5-1jammy) jammy; urgency=high
+
+
+
+ -- Mabel Zhang <mabel@openrobotics.org>  Thu, 25 Jul 2024 22:00:00 -0000
+
+ros-humble-topic-statistics-demo (0.20.4-1jammy) jammy; urgency=high
+
+
+
+ -- Mabel Zhang <mabel@openrobotics.org>  Tue, 14 May 2024 22:00:00 -0000
+
+ros-humble-topic-statistics-demo (0.20.3-1jammy) jammy; urgency=high
+
+
+
+ -- Mabel Zhang <mabel@openrobotics.org>  Mon, 09 Jan 2023 23:00:00 -0000
+
+ros-humble-topic-statistics-demo (0.20.2-1jammy) jammy; urgency=high
+
+
+
+ -- Mabel Zhang <mabel@openrobotics.org>  Mon, 09 May 2022 22:00:00 -0000
+
+ros-humble-topic-statistics-demo (0.20.1-1jammy) jammy; urgency=high
+
+
+
+ -- Mabel Zhang <mabel@openrobotics.org>  Thu, 07 Apr 2022 22:00:00 -0000
+
+ros-humble-topic-statistics-demo (0.20.0-1jammy) jammy; urgency=high
+
+  * Install includes to include/${PROJECT_NAME} (#548 <https://github.com/ros2/demos/issues/548>)
+  * Contributors: Shane Loretz
+
+ -- Mabel Zhang <mabel@openrobotics.org>  Mon, 28 Feb 2022 23:00:00 -0000
+
+ros-humble-topic-statistics-demo (0.19.0-1jammy) jammy; urgency=high
+
+
+
+ -- Mabel Zhang <mabel@openrobotics.org>  Thu, 13 Jan 2022 23:00:00 -0000
+
+ros-humble-topic-statistics-demo (0.18.0-1jammy) jammy; urgency=high
+
+  * Additional fixes for documentation in demos. (#538 <https://github.com/ros2/demos/issues/538>)
+  * Contributors: Chris Lalancette
+
+ -- Mabel Zhang <mabel@openrobotics.org>  Thu, 16 Dec 2021 23:00:00 -0000
+
+ros-humble-topic-statistics-demo (0.17.0-1jammy) jammy; urgency=high
+
+  * Fixing deprecated subscriber callback warnings (#532 <https://github.com/ros2/demos/issues/532>)
+  * Contributors: Abrar Rahman Protyasha
+
+ -- Mabel Zhang <mabel@openrobotics.org>  Sun, 17 Oct 2021 22:00:00 -0000
+
+ros-humble-topic-statistics-demo (0.16.0-1jammy) jammy; urgency=high
+
+
+
+ -- Mabel Zhang <mabel@openrobotics.org>  Tue, 10 Aug 2021 22:00:00 -0000
+
+ros-humble-topic-statistics-demo (0.15.0-1jammy) jammy; urgency=high
+
+
+
+ -- Mabel Zhang <mabel@openrobotics.org>  Thu, 13 May 2021 22:00:00 -0000
+
+ros-humble-topic-statistics-demo (0.14.2-1jammy) jammy; urgency=high
+
+
+
+ -- Mabel Zhang <mabel@openrobotics.org>  Sun, 25 Apr 2021 22:00:00 -0000
+
+ros-humble-topic-statistics-demo (0.14.1-1jammy) jammy; urgency=high
+
+
+
+ -- Mabel Zhang <mabel@openrobotics.org>  Sun, 18 Apr 2021 22:00:00 -0000
+
+ros-humble-topic-statistics-demo (0.14.0-1jammy) jammy; urgency=high
+
+  * Change index.ros.org -> docs.ros.org. (#496 <https://github.com/ros2/demos/issues/496>)
+  * Contributors: Chris Lalancette
+
+ -- Mabel Zhang <mabel@openrobotics.org>  Mon, 05 Apr 2021 22:00:00 -0000
+
+ros-humble-topic-statistics-demo (0.13.0-1jammy) jammy; urgency=high
+
+
+
+ -- Mabel Zhang <mabel@openrobotics.org>  Wed, 24 Mar 2021 23:00:00 -0000
+
+ros-humble-topic-statistics-demo (0.12.1-1jammy) jammy; urgency=high
+
+
+
+ -- Mabel Zhang <mabel@openrobotics.org>  Wed, 17 Mar 2021 23:00:00 -0000
+
+ros-humble-topic-statistics-demo (0.12.0-1jammy) jammy; urgency=high
+
+  * Update logging macros (#476 <https://github.com/ros2/demos/issues/476>)
+  * Contributors: Audrow Nash
+
+ -- Mabel Zhang <mabel@openrobotics.org>  Sun, 24 Jan 2021 23:00:00 -0000
+
+ros-humble-topic-statistics-demo (0.11.0-1jammy) jammy; urgency=high
+
+  * Update the package.xml files with the latest Open Robotics maintainers (#466 <https://github.com/ros2/demos/issues/466>)
+  * Contributors: Michael Jeronimo
+
+ -- Mabel Zhang <mabel@openrobotics.org>  Wed, 09 Dec 2020 23:00:00 -0000
+
+ros-humble-topic-statistics-demo (0.10.1-1jammy) jammy; urgency=high
+
+  * Create new topic statistics demo package (#454 <https://github.com/ros2/demos/issues/454>)
+  * Contributors: Prajakta Gokhale
+
+ -- Mabel Zhang <mabel@openrobotics.org>  Sun, 20 Sep 2020 22:00:00 -0000
+
+
