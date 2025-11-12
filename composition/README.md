@@ -35,13 +35,31 @@ ros2 run composition manual_composition
 
 This runs `dlopen_composition` which is an alternative to run-time composition by creating a generic container process and explicitly passing the libraries to load without using ROS interfaces.
 
+First run the command to find the libraries prefix path.
+
+```bash
+ros2 pkg prefix composition
+```
+
+Then you can find the prefix path of the required shared libraries to load.
+
 The process will open each library and create one instance of each “rclcpp::Node” class in the library.
+
+```bash
+ros2 run composition dlopen_composition <path_to_talker_component_shared_library> <path_to_listener_component_shared_library>
+```
+
+#### Linux
+
+The libraries will be present in `<prefix_path>/lib/` as `lib*.so` files.
+
+Run the following command to load the libraries.
 
 ```bash
 ros2 run composition dlopen_composition `ros2 pkg prefix composition`/lib/libtalker_component.so `ros2 pkg prefix composition`/lib/liblistener_component.so
 ```
 
-### Linktime Composition
+### Linktime Composition (not supported on Windows)
 
 Similar to previous, this runs `linktime_composition` which **links all classes from libraries** that are registered under the **library_path** with the **linker**.
 
@@ -54,7 +72,7 @@ ros2 run composition linktime_composition
 Rather than using the command line tool to run each composition, we can **automate this action** with `ros2 launch` functionality:
 
 ```bash
-ros2 launch composition composition_demo.launch.py
+ros2 launch composition composition_demo_launch.py
 ```
 
 ## Verify
@@ -93,9 +111,9 @@ When executed correctly, strings should be printed to terminal similar to what i
 When executed correctly, strings should be printed to terminal similar to what is shown below:
 
 ```bash
-INFO] [1674529118.496557668] [dlopen_composition]: Load library /opt/ros/humble/lib/libtalker_component.so
+INFO] [1674529118.496557668] [dlopen_composition]: Load library /opt/ros/rolling/lib/libtalker_component.so
 [INFO] [1674529118.496774575] [dlopen_composition]: Instantiate class rclcpp_components::NodeFactoryTemplate<composition::Talker>
-[INFO] [1674529118.503388909] [dlopen_composition]: Load library /opt/ros/humble/lib/liblistener_component.so
+[INFO] [1674529118.503388909] [dlopen_composition]: Load library /opt/ros/rolling/lib/liblistener_component.so
 [INFO] [1674529118.503739855] [dlopen_composition]: Instantiate class rclcpp_components::NodeFactoryTemplate<composition::Listener>
 [INFO] [1674529119.503505873] [talker]: Publishing: 'Hello World: 1'
 [INFO] [1674529119.503770137] [listener]: I heard: [Hello World: 1]
@@ -152,11 +170,11 @@ When executed correctly, strings should be printed to terminal similar to what i
 [INFO] [launch]: All log files can be found below /root/.ros/log/2024-05-04-23-37-06-363020-d8ff93e471d7-9387
 [INFO] [launch]: Default logging verbosity is set to INFO
 [INFO] [component_container-1]: process started with pid [9402]
-[component_container-1] [INFO] [1714865826.695090046] [my_container]: Load Library: /opt/ros/jazzy/lib/libtalker_component.so
+[component_container-1] [INFO] [1714865826.695090046] [my_container]: Load Library: /opt/ros/rolling/lib/libtalker_component.so
 [component_container-1] [INFO] [1714865826.696388047] [my_container]: Found class: rclcpp_components::NodeFactoryTemplate<composition::Talker>
 [component_container-1] [INFO] [1714865826.696435882] [my_container]: Instantiate class: rclcpp_components::NodeFactoryTemplate<composition::Talker>
 [INFO] [launch_ros.actions.load_composable_nodes]: Loaded node '/talker' in container '/my_container'
-[component_container-1] [INFO] [1714865826.702958710] [my_container]: Load Library: /opt/ros/jazzy/lib/liblistener_component.so
+[component_container-1] [INFO] [1714865826.702958710] [my_container]: Load Library: /opt/ros/rolling/lib/liblistener_component.so
 [component_container-1] [INFO] [1714865826.703401061] [my_container]: Found class: rclcpp_components::NodeFactoryTemplate<composition::Listener>
 [component_container-1] [INFO] [1714865826.703414344] [my_container]: Instantiate class: rclcpp_components::NodeFactoryTemplate<composition::Listener>
 [INFO] [launch_ros.actions.load_composable_nodes]: Loaded node '/listener' in container '/my_container'
@@ -180,5 +198,5 @@ When executed correctly, strings should be printed to terminal similar to what i
 
 ## References
 
-1. [Composing multiple nodes in a single process](https://docs.ros.org/en/humble/Tutorials/Intermediate/Composition.html)
-2. [About Composition](https://docs.ros.org/en/humble/Concepts/About-Composition.html#about-composition)
+1. [Composing multiple nodes in a single process](https://docs.ros.org/en/rolling/Tutorials/Intermediate/Composition.html)
+2. [About Composition](https://docs.ros.org/en/rolling/Concepts/About-Composition.html#about-composition)
