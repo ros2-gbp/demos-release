@@ -11,22 +11,19 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
 import argparse
-import sys
 
 from quality_of_service_demo_py.common_nodes import Listener
 from quality_of_service_demo_py.common_nodes import Talker
 
 import rclpy
 from rclpy.duration import Duration
-from rclpy.event_handler import PublisherEventCallbacks
-from rclpy.event_handler import SubscriptionEventCallbacks
-from rclpy.executors import ExternalShutdownException
 from rclpy.executors import SingleThreadedExecutor
 from rclpy.logging import get_logger
 from rclpy.qos import QoSLivelinessPolicy
 from rclpy.qos import QoSProfile
+from rclpy.qos_event import PublisherEventCallbacks
+from rclpy.qos_event import SubscriptionEventCallbacks
 
 POLICY_MAP = {
     'AUTOMATIC': QoSLivelinessPolicy.AUTOMATIC,
@@ -66,24 +63,12 @@ def main(args=None):
         liveliness=liveliness_policy,
         liveliness_lease_duration=liveliness_lease_duration)
 
-    def sub_liveliness_event(event):
-        get_logger('listener').info('Liveliness changed event:')
-        get_logger('listener').info(f'  alive_count: {event.alive_count}')
-        get_logger('listener').info(f'  not_alive_count: {event.not_alive_count}')
-        get_logger('listener').info(f'  alive_count_change: {event.alive_count_change}')
-        get_logger('listener').info(f'  not_alive_count_change: {event.not_alive_count_change}')
-
-    subscription_callbacks = SubscriptionEventCallbacks(liveliness=sub_liveliness_event)
+    subscription_callbacks = SubscriptionEventCallbacks(
+        liveliness=lambda event: get_logger('Listener').info(str(event)))
     listener = Listener(topic, qos_profile, event_callbacks=subscription_callbacks)
 
-    def pub_liveliness_event(event):
-        get_logger('talker').info('Liveliness changed event:')
-        get_logger('talker').info(f'  alive_count: {event.alive_count}')
-        get_logger('talker').info(f'  not_alive_count: {event.not_alive_count}')
-        get_logger('talker').info(f'  alive_count_change: {event.alive_count_change}')
-        get_logger('talker').info(f'  not_alive_count_change: {event.not_alive_count_change}')
-
-    publisher_callbacks = PublisherEventCallbacks(liveliness=pub_liveliness_event)
+    publisher_callbacks = PublisherEventCallbacks(
+        liveliness=lambda event: get_logger('Talker').info(str(event)))
     talker = Talker(
         topic, qos_profile,
         event_callbacks=publisher_callbacks,
@@ -106,15 +91,10 @@ def main(args=None):
 
     executor.add_node(listener)
     executor.add_node(talker)
-    try:
-        executor.spin()
-    except (KeyboardInterrupt, ExternalShutdownException):
-        pass
-    finally:
-        rclpy.try_shutdown()
+    executor.spin()
 
-    return 0
+    rclpy.shutdown()
 
 
 if __name__ == '__main__':
-    sys.exit(main())
+    main()

@@ -110,7 +110,7 @@ private:
     // Start main timer loop
     timer_ = this->create_wall_timer(
       std::chrono::milliseconds(static_cast<int>(1000.0 / freq_)),
-      [this]() {return this->timerCallback();});
+      std::bind(&Cam2Image::timerCallback, this));
   }
 
   /// Publish camera, or burger, image.
