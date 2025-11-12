@@ -14,18 +14,14 @@ import launch_testing.actions
 import launch_testing.asserts
 import launch_testing.util
 import launch_testing_ros
-from launch_testing_ros.actions import EnableRmwIsolation
 
 
 def generate_test_description():
+    env = os.environ.copy()
     # bare minimum formatting for console output matching
-    additional_env = {
-        'RCUTILS_CONSOLE_OUTPUT_FORMAT': '{message}',
-    }
+    env['RCUTILS_CONSOLE_OUTPUT_FORMAT'] = '{message}'
 
-    launch_description = LaunchDescription([
-        EnableRmwIsolation(),
-    ])
+    launch_description = LaunchDescription()
 
     processes_under_test = []
     exes_and_params = '@DEMO_NODES_CPP_EXECUTABLE@'.split(';')
@@ -43,7 +39,7 @@ def generate_test_description():
                 cmd=cmd,
                 name='test_executable_' + str(i),
                 output='screen',
-                additional_env=additional_env,
+                env=env,
             )
         )
 

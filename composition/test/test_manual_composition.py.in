@@ -21,13 +21,10 @@ import launch_testing
 import launch_testing.actions
 import launch_testing.asserts
 import launch_testing_ros
-from launch_testing_ros.actions import EnableRmwIsolation
 
 
 def generate_test_description():
-    launch_description = LaunchDescription([
-        EnableRmwIsolation(),
-    ])
+    launch_description = LaunchDescription()
     process_under_test = ExecuteProcess(
         cmd=['@MANUAL_COMPOSITION_EXECUTABLE@'],
         name='test_manual_composition',

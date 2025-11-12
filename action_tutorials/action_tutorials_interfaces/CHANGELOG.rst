@@ -1,6 +1,6 @@
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Changelog for package pendulum_msgs
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Changelog for package action_tutorials_interfaces
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 0.33.8 (2025-11-12)
 -------------------
@@ -76,15 +76,17 @@ Changelog for package pendulum_msgs
 
 0.24.0 (2023-02-14)
 -------------------
-* Added README.md for pendulum_msgs. (`#577 <https://github.com/ros2/demos/issues/577>`_)
+* Add README's for action_tutorials. (`#576 <https://github.com/ros2/demos/issues/576>`_)
 * [rolling] Update maintainers - 2022-11-07 (`#589 <https://github.com/ros2/demos/issues/589>`_)
-* Contributors: Audrow Nash, Gary Bey
+* Contributors: Audrow Nash, kagibson
 
 0.23.0 (2022-11-02)
 -------------------
 
 0.22.0 (2022-09-13)
 -------------------
+* Remove action_msgs dependency (`#580 <https://github.com/ros2/demos/issues/580>`_)
+* Contributors: Jacob Perron
 
 0.21.0 (2022-04-29)
 -------------------
@@ -167,6 +169,8 @@ Changelog for package pendulum_msgs
 
 0.8.0 (2019-09-26)
 ------------------
+* Move action tutorial interface to a new package, action_tutorials_interfaces (`#378 <https://github.com/ros2/demos/issues/378>`_)
+* Contributors: Siddharth Kucheria
 
 0.7.6 (2019-05-30)
 ------------------
@@ -192,19 +196,17 @@ Changelog for package pendulum_msgs
 0.6.2 (2019-01-15)
 ------------------
 
-0.6.1 (2018-12-13)
+0.6.1 (2018-12-12)
 ------------------
 
 0.6.0 (2018-12-07)
 ------------------
-* Updated package maintainer. (`#286 <https://github.com/ros2/demos/issues/286>`_)
-* Updated to use add_compile_options instead of setting only cxx flags
-* Contributors: Michael Carroll, Mikael Arguedas
 
 0.5.1 (2018-06-28)
 ------------------
-* make Mikael Arguedas the maintainer (`#263 <https://github.com/ros2/demos/issues/263>`_)
-* Contributors: Mikael Arguedas
 
 0.5.0 (2018-06-27)
+------------------
+
+0.4.0 (2017-12-08)
 ------------------
