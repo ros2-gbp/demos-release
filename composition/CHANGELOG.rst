@@ -2,28 +2,22 @@
 Changelog for package composition
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-0.37.5 (2026-01-09)
+0.36.4 (2026-01-09)
 -------------------
 
-0.37.4 (2025-11-12)
+0.36.3 (2025-11-12)
 -------------------
-* Log message for linktime composition on Windows (`#640 <https://github.com/ros2/demos/issues/640>`_)
-* Contributors: yadunund
+* Log message for linktime composition on Windows (`#640 <https://github.com/ros2/demos/issues/640>`_) (`#742 <https://github.com/ros2/demos/issues/742>`_)
+* Contributors: mergify[bot]
 
-0.37.3 (2025-09-17)
--------------------
-
-0.37.2 (2025-07-29)
+0.36.2 (2025-09-17)
 -------------------
 
-0.37.1 (2025-06-23)
+0.36.1 (2025-06-23)
 -------------------
-* correct name of shared libraries and their location (`#722 <https://github.com/ros2/demos/issues/722>`_) (`#726 <https://github.com/ros2/demos/issues/726>`_)
-* Use EnableRmwIsolation in launch tests (`#724 <https://github.com/ros2/demos/issues/724>`_)
-* Contributors: Scott K Logan, mergify[bot]
-
-0.37.0 (2025-04-25)
--------------------
+* Use EnableRmwIsolation in launch tests (`#724 <https://github.com/ros2/demos/issues/724>`_) (`#725 <https://github.com/ros2/demos/issues/725>`_)
+* correct name of shared libraries and their location (`#722 <https://github.com/ros2/demos/issues/722>`_)
+* Contributors: Aniket Kumar Roy, mergify[bot]
 
 0.36.0 (2025-04-25)
 -------------------
