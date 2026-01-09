@@ -1,0 +1,12 @@
+Source: ros-jazzy-pendulum-msgs
+Section: misc
+Priority: optional
+Maintainer: Aditya Pande <aditya.pande@openrobotics.org>
+Build-Depends: debhelper (>= 9.0.0), ros-jazzy-ament-cmake, ros-jazzy-builtin-interfaces, ros-jazzy-rosidl-default-generators, ros-jazzy-ros-workspace, ros-jazzy-rosidl-typesupport-fastrtps-c, ros-jazzy-rosidl-typesupport-fastrtps-cpp
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-jazzy-pendulum-msgs
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-jazzy-builtin-interfaces, ros-jazzy-rosidl-default-runtime, ros-jazzy-ros-workspace
+Description: Custom messages for real-time pendulum control.
