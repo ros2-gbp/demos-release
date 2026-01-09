@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.20)
+cmake_minimum_required(VERSION 3.5)
 
 project(dummy_map_server)
 
@@ -17,9 +17,9 @@ find_package(rclcpp REQUIRED)
 find_package(rmw REQUIRED)
 
 add_executable(dummy_map_server src/dummy_map_server.cpp)
-target_link_libraries(dummy_map_server PRIVATE
-  rclcpp::rclcpp
-  ${nav_msgs_TARGETS}
+ament_target_dependencies(dummy_map_server
+  "rclcpp"
+  "nav_msgs"
 )
 
 install(TARGETS dummy_map_server

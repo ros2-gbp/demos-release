@@ -1,6 +1,6 @@
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Changelog for package lifecycle_py
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Changelog for package action_tutorials_interfaces
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 0.33.9 (2026-01-09)
 -------------------
@@ -10,8 +10,6 @@ Changelog for package lifecycle_py
 
 0.33.7 (2025-09-17)
 -------------------
-* fix setuptools deprecations (`#733 <https://github.com/ros2/demos/issues/733>`_) (`#737 <https://github.com/ros2/demos/issues/737>`_)
-* Contributors: mergify[bot]
 
 0.33.6 (2025-08-06)
 -------------------
@@ -65,33 +63,33 @@ Changelog for package lifecycle_py
 
 0.27.0 (2023-04-13)
 -------------------
+* Change all ROS2 -> ROS 2. (`#610 <https://github.com/ros2/demos/issues/610>`_)
+* Contributors: Chris Lalancette
 
 0.26.0 (2023-04-11)
 -------------------
-* Enable document generation using rosdoc2 (`#606 <https://github.com/ros2/demos/issues/606>`_)
-* update launch file name format to match documentation (`#588 <https://github.com/ros2/demos/issues/588>`_)
-* Contributors: Patrick Wspanialy, Yadu
+* A couple more upgrades to C++17. (`#609 <https://github.com/ros2/demos/issues/609>`_)
+* Contributors: Chris Lalancette
 
 0.25.0 (2023-03-01)
 -------------------
-* Cleanup lifecycle_py to conform to ROS 2 standards. (`#604 <https://github.com/ros2/demos/issues/604>`_)
-* Contributors: Chris Lalancette
 
 0.24.1 (2023-02-24)
 -------------------
 
 0.24.0 (2023-02-14)
 -------------------
+* Add README's for action_tutorials. (`#576 <https://github.com/ros2/demos/issues/576>`_)
 * [rolling] Update maintainers - 2022-11-07 (`#589 <https://github.com/ros2/demos/issues/589>`_)
-* Contributors: Audrow Nash
+* Contributors: Audrow Nash, kagibson
 
 0.23.0 (2022-11-02)
 -------------------
-* Install the launch file for lifecycle_py. (`#586 <https://github.com/ros2/demos/issues/586>`_)
-* Contributors: Chris Lalancette
 
 0.22.0 (2022-09-13)
 -------------------
+* Remove action_msgs dependency (`#580 <https://github.com/ros2/demos/issues/580>`_)
+* Contributors: Jacob Perron
 
 0.21.0 (2022-04-29)
 -------------------
@@ -101,16 +99,14 @@ Changelog for package lifecycle_py
 
 0.20.0 (2022-03-01)
 -------------------
-* Create changelog for lifecycle_py
-* Contributors: Audrow Nash
 
 0.19.0 (2022-01-14)
 -------------------
-* Add rclpy lifecycle demo (`#547 <https://github.com/ros2/demos/issues/547>`_)
-* Contributors: Ivan Santiago Paunovic
 
 0.18.0 (2021-12-17)
 -------------------
+* Update maintainers to Audrow Nash and Michael Jeronimo (`#543 <https://github.com/ros2/demos/issues/543>`_)
+* Contributors: Audrow Nash
 
 0.17.0 (2021-10-18)
 -------------------
@@ -141,6 +137,8 @@ Changelog for package lifecycle_py
 
 0.11.0 (2020-12-10)
 -------------------
+* Update the package.xml files with the latest Open Robotics maintainers (`#466 <https://github.com/ros2/demos/issues/466>`_)
+* Contributors: Michael Jeronimo
 
 0.10.1 (2020-09-21)
 -------------------
@@ -174,6 +172,8 @@ Changelog for package lifecycle_py
 
 0.8.0 (2019-09-26)
 ------------------
+* Move action tutorial interface to a new package, action_tutorials_interfaces (`#378 <https://github.com/ros2/demos/issues/378>`_)
+* Contributors: Siddharth Kucheria
 
 0.7.6 (2019-05-30)
 ------------------
