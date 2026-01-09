@@ -9,10 +9,9 @@ endif()
 
 find_package(ament_cmake REQUIRED)
 
-# Default to C++17
+# Default to C++14
 if(NOT CMAKE_CXX_STANDARD)
-  set(CMAKE_CXX_STANDARD 17)
-  set(CMAKE_CXX_STANDARD_REQUIRED ON)
+  set(CMAKE_CXX_STANDARD 14)
 endif()
 
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
@@ -57,7 +56,12 @@ install(TARGETS
   pendulum_demo
   pendulum_logger
   pendulum_teleop
-  DESTINATION lib/${PROJECT_NAME})
+  DESTINATION bin)
+
+install(
+  PROGRAMS "scripts/pendulum_launch.bash"
+  DESTINATION bin
+)
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)

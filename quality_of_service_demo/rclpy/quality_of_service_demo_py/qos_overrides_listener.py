@@ -53,14 +53,14 @@ def main(args=None):
     node = Listener()
     try:
         rclpy.spin(node)
-    except (KeyboardInterrupt, ExternalShutdownException):
+    except KeyboardInterrupt:
         pass
+    except ExternalShutdownException:
+        sys.exit(1)
     finally:
-        node.destroy_node()
         rclpy.try_shutdown()
-
-    return 0
+        node.destroy_node()
 
 
 if __name__ == '__main__':
-    sys.exit(main())
+    main()

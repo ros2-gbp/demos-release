@@ -125,14 +125,13 @@ int main(int argc, char * argv[])
 
   auto listener = std::make_shared<Listener>(qos_profile, topic);
   listener->get_options().event_callbacks.liveliness_callback =
-    [listener](rclcpp::QOSLivelinessChangedInfo & event)
+    [](rclcpp::QOSLivelinessChangedInfo & event)
     {
-      RCLCPP_INFO(listener->get_logger(), "Liveliness changed event:");
-      RCLCPP_INFO(listener->get_logger(), "  alive_count: %d", event.alive_count);
-      RCLCPP_INFO(listener->get_logger(), "  not_alive_count: %d", event.not_alive_count);
-      RCLCPP_INFO(listener->get_logger(), "  alive_count_change: %d", event.alive_count_change);
-      RCLCPP_INFO(
-        listener->get_logger(), "  not_alive_count_change: %d", event.not_alive_count_change);
+      printf("Liveliness changed event: \n");
+      printf("  alive_count: %d\n", event.alive_count);
+      printf("  not_alive_count: %d\n", event.not_alive_count);
+      printf("  alive_count_change: %d\n", event.alive_count_change);
+      printf("  not_alive_count_change: %d\n", event.not_alive_count_change);
     };
 
   talker->initialize();

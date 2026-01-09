@@ -15,8 +15,8 @@
 #ifndef UTILS_HPP_
 #define UTILS_HPP_
 
-#include <functional>
-#include <memory>
+#include <atomic>
+#include <thread>
 
 #include "rclcpp/qos.hpp"
 #include "rmw/types.h"
@@ -29,22 +29,30 @@ rmw_time_to_seconds(const rmw_time_t & time);
 void
 print_qos(const rclcpp::QoS & qos);
 
-void
-install_ctrl_handler(std::function<void(void)> ctrl_handler);
-
-class KeyboardReader final
+class CommandGetter
 {
 public:
-  KeyboardReader();
+  /// Whether or not the command getter is currently expecting listening for user inputs.
+  bool is_active() const;
 
-  char readOne();
+  /// Start listening for user inputs (character key presses).
+  void start();
 
-  ~KeyboardReader();
+  /// Stop listening for user inputs.
+  void stop();
+
+  /// Function prototype for handling user inputs.
+  virtual void handle_cmd(const char cmd) const = 0;
+
+  /// Helper function with event loop for the command getting thread.
+  void operator()() const;
 
 private:
-  class KeyboardReaderImpl;
+  /// Get a key press from running terminal
+  char getch() const;
 
-  std::unique_ptr<KeyboardReaderImpl> pimpl_;
+  std::thread thread_;
+  std::atomic<bool> run_;
 };
 
 #endif  // UTILS_HPP_
