@@ -2,7 +2,7 @@
 <?xml-model href="http://download.ros.org/schema/package_format2.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="2">
   <name>demo_nodes_cpp_native</name>
-  <version>0.37.5</version>
+  <version>0.37.6</version>
   <description>
     C++ nodes which access the native handles of the rmw implementation.
   </description>
@@ -20,7 +20,7 @@
   <depend>rclcpp</depend>
   <depend>rclcpp_components</depend>
   <depend>rmw_fastrtps_cpp</depend>
-  <depend>std_msgs</depend>
+  <depend>example_interfaces</depend>
 
   <test_depend>ament_cmake_pytest</test_depend>
   <test_depend>ament_lint_auto</test_depend>
