@@ -12,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include <functional>
 #include <memory>
 #include <string>
 
@@ -19,9 +20,7 @@
 
 #include "rclcpp/rclcpp.hpp"
 
-#include "rcutils/logging_macros.h"
-
-#include "std_msgs/msg/string.hpp"
+#include "example_interfaces/msg/string.hpp"
 
 /// LifecycleListener class as a simple listener node
 /**
@@ -38,9 +37,11 @@ public:
   : Node(node_name)
   {
     // Data topic from the lc_talker node
-    sub_data_ = this->create_subscription<std_msgs::msg::String>(
+    sub_data_ = this->create_subscription<example_interfaces::msg::String>(
       "lifecycle_chatter", 10,
-      std::bind(&LifecycleListener::data_callback, this, std::placeholders::_1));
+      [this](example_interfaces::msg::String::ConstSharedPtr msg) {
+        return this->data_callback(msg);
+      });
 
     // Notification event topic. All state changes
     // are published here as TransitionEvents with
@@ -48,10 +49,13 @@ public:
     sub_notification_ = this->create_subscription<lifecycle_msgs::msg::TransitionEvent>(
       "/lc_talker/transition_event",
       10,
-      std::bind(&LifecycleListener::notification_callback, this, std::placeholders::_1));
+      [this](lifecycle_msgs::msg::TransitionEvent::ConstSharedPtr msg) {
+        return this->notification_callback(msg);
+      }
+    );
   }
 
-  void data_callback(std_msgs::msg::String::ConstSharedPtr msg)
+  void data_callback(example_interfaces::msg::String::ConstSharedPtr msg)
   {
     RCLCPP_INFO(get_logger(), "data_callback: %s", msg->data.c_str());
   }
@@ -64,7 +68,7 @@ public:
   }
 
 private:
-  std::shared_ptr<rclcpp::Subscription<std_msgs::msg::String>> sub_data_;
+  std::shared_ptr<rclcpp::Subscription<example_interfaces::msg::String>> sub_data_;
   std::shared_ptr<rclcpp::Subscription<lifecycle_msgs::msg::TransitionEvent>>
   sub_notification_;
 };

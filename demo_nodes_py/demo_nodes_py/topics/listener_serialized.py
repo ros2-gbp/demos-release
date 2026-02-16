@@ -12,13 +12,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import sys
+from example_interfaces.msg import String
 
 import rclpy
 from rclpy.executors import ExternalShutdownException
 from rclpy.node import Node
-
-from std_msgs.msg import String
 
 
 class SerializedSubscriber(Node):
@@ -30,29 +28,22 @@ class SerializedSubscriber(Node):
             'chatter',
             self.listener_callback,
             10,
-            raw=True)  # We're subscribing to the serialized bytes, not std_msgs.msg.String
+            raw=True)
+        # We're subscribing to the serialized bytes,
+        # not example_interfaces.msg.String
 
     def listener_callback(self, msg):
         self.get_logger().info('I heard: "%s"' % msg)
 
 
 def main(args=None):
-    rclpy.init(args=args)
-
-    serialized_subscriber = SerializedSubscriber()
-
     try:
-        rclpy.spin(serialized_subscriber)
-    except KeyboardInterrupt:
+        with rclpy.init(args=args):
+            serialized_subscriber = SerializedSubscriber()
+
+            rclpy.spin(serialized_subscriber)
+    except (KeyboardInterrupt, ExternalShutdownException):
         pass
-    except ExternalShutdownException:
-        sys.exit(1)
-    finally:
-        # Destroy the node explicitly
-        # (optional - otherwise it will be done automatically
-        # when the garbage collector destroys the node object)
-        serialized_subscriber.destroy_node()
-        rclpy.try_shutdown()
 
 
 if __name__ == '__main__':

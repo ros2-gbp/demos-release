@@ -1,10 +1,11 @@
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.20)
 
 project(topic_statistics_demo)
 
-# Default to C++14
+# Default to C++17
 if(NOT CMAKE_CXX_STANDARD)
-  set(CMAKE_CXX_STANDARD 14)
+  set(CMAKE_CXX_STANDARD 17)
+  set(CMAKE_CXX_STANDARD_REQUIRED ON)
 endif()
 
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
@@ -15,7 +16,7 @@ find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(rcutils)
 find_package(sensor_msgs REQUIRED)
-find_package(statistics_msgs REQUIRED)
+find_package(example_interfaces REQUIRED)
 
 include_directories(include)
 # TODO(sloretz) stop exporting old-style CMake variables in the future
@@ -30,7 +31,8 @@ target_link_libraries(display_topic_statistics
   rclcpp::rclcpp
   rcutils::rcutils
   ${sensor_msgs_TARGETS}
-  ${statistics_msgs_TARGETS})
+  ${statistics_msgs_TARGETS}
+  ${example_interfaces_TARGETS})
 install(TARGETS display_topic_statistics DESTINATION lib/${PROJECT_NAME})
 
 if(BUILD_TESTING)

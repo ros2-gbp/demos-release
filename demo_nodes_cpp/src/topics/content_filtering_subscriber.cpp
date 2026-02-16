@@ -12,11 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include <array>
+#include <string>
+
 #include "rclcpp/rclcpp.hpp"
 #include "rclcpp_components/register_node_macro.hpp"
 #include "rcpputils/join.hpp"
 
-#include "std_msgs/msg/float32.hpp"
+#include "example_interfaces/msg/float32.hpp"
 
 #include "demo_nodes_cpp/visibility_control.h"
 
@@ -34,10 +37,9 @@ public:
   explicit ContentFilteringSubscriber(const rclcpp::NodeOptions & options)
   : Node("content_filtering_subscriber", options)
   {
-    setvbuf(stdout, NULL, _IONBF, BUFSIZ);
     // Create a callback function for when messages are received.
     auto callback =
-      [this](const std_msgs::msg::Float32 & msg) -> void
+      [this](const example_interfaces::msg::Float32 & msg) -> void
       {
         if (msg.data < EMERGENCY_TEMPERATURE[0] || msg.data > EMERGENCY_TEMPERATURE[1]) {
           RCLCPP_INFO(
@@ -57,7 +59,8 @@ public:
       std::to_string(EMERGENCY_TEMPERATURE[1])
     };
 
-    sub_ = create_subscription<std_msgs::msg::Float32>("temperature", 10, callback, sub_options);
+    sub_ = create_subscription<example_interfaces::msg::Float32>(
+      "temperature", 10, callback, sub_options);
 
     if (!sub_->is_cft_enabled()) {
       RCLCPP_WARN(
@@ -73,7 +76,7 @@ public:
   }
 
 private:
-  rclcpp::Subscription<std_msgs::msg::Float32>::SharedPtr sub_;
+  rclcpp::Subscription<example_interfaces::msg::Float32>::SharedPtr sub_;
 };
 
 }  // namespace demo_nodes_cpp
