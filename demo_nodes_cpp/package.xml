@@ -2,7 +2,7 @@
 <?xml-model href="http://download.ros.org/schema/package_format2.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="2">
   <name>demo_nodes_cpp</name>
-  <version>0.37.5</version>
+  <version>0.37.6</version>
   <description>
     C++ nodes which were previously in the ros2/examples repository but are now just used for demo purposes.
   </description>
@@ -25,7 +25,7 @@
   <build_depend>rcpputils</build_depend>
   <build_depend>rcutils</build_depend>
   <build_depend>rmw</build_depend>
-  <build_depend>std_msgs</build_depend>
+  <build_depend>example_interfaces</build_depend>
 
   <exec_depend>example_interfaces</exec_depend>
   <exec_depend>launch_ros</exec_depend>
@@ -37,7 +37,7 @@
   <exec_depend>rcpputils</exec_depend>
   <exec_depend>rcutils</exec_depend>
   <exec_depend>rmw</exec_depend>
-  <exec_depend>std_msgs</exec_depend>
+  <exec_depend>example_interfaces</exec_depend>
 
   <test_depend>ament_cmake_pytest</test_depend>
   <test_depend>ament_lint_auto</test_depend>
