@@ -2,34 +2,19 @@
 Changelog for package demo_nodes_cpp_native
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-0.37.7 (2026-03-24)
--------------------
-* Use new ROSIDL aggregate CMake target (`#781 <https://github.com/ros2/demos//issues/781>`_)
-* Contributors: Emerson Knapp
-
-0.37.6 (2026-02-16)
--------------------
-* Switching to example_interfaces (`#674 <https://github.com/ros2/demos/issues/674>`_)
-* Contributors: Lucas Wendland
-
-0.37.5 (2026-01-09)
+0.36.5 (2026-03-24)
 -------------------
 
-0.37.4 (2025-11-12)
+0.36.4 (2026-01-09)
 -------------------
 
-0.37.3 (2025-09-17)
+0.36.3 (2025-11-12)
 -------------------
 
-0.37.2 (2025-07-29)
+0.36.2 (2025-09-17)
 -------------------
 
-0.37.1 (2025-06-23)
--------------------
-* Removed outdated TODO (`#723 <https://github.com/ros2/demos/issues/723>`_)
-* Contributors: Alejandro Hernández Cordero
-
-0.37.0 (2025-04-25)
+0.36.1 (2025-06-23)
 -------------------
 
 0.36.0 (2025-04-25)

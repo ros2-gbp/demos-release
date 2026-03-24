@@ -17,7 +17,6 @@ find_package(rclcpp REQUIRED)
 find_package(rclcpp_components REQUIRED)
 find_package(sensor_msgs REQUIRED)
 find_package(std_msgs REQUIRED)
-find_package(example_interfaces REQUIRED)
 find_package(OpenCV REQUIRED COMPONENTS core highgui imgcodecs imgproc videoio)
 
 add_library(${PROJECT_NAME} SHARED
@@ -33,9 +32,8 @@ target_include_directories(${PROJECT_NAME} PUBLIC
   "$<INSTALL_INTERFACE:include/${PROJECT_NAME}>")
 target_link_libraries(${PROJECT_NAME}
   rclcpp::rclcpp
-  sensor_msgs::sensor_msgs
-  std_msgs::std_msgs
-  example_interfaces::example_interfaces
+  ${sensor_msgs_TARGETS}
+  ${std_msgs_TARGETS}
   rclcpp_components::component
   ${OpenCV_LIBS})
 rclcpp_components_register_node(${PROJECT_NAME} PLUGIN "image_tools::Cam2Image" EXECUTABLE cam2image)

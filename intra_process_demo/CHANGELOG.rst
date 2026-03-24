@@ -2,38 +2,26 @@
 Changelog for package intra_process_demo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-0.37.7 (2026-03-24)
+0.36.5 (2026-03-24)
 -------------------
-* Use new ROSIDL aggregate CMake target (`#781 <https://github.com/ros2/demos//issues/781>`_)
-* Don't use `libopencv-dev` for exec (`#760 <https://github.com/ros2/demos//issues/760>`_)
-* Contributors: Emerson Knapp, Michael Carlstrom
+* Don't use `libopencv-dev` for exec (`#760 <https://github.com/ros2/demos//issues/760>`_) (`#761 <https://github.com/ros2/demos//issues/761>`_)
+* Contributors: mergify[bot]
 
-0.37.6 (2026-02-16)
+0.36.4 (2026-01-09)
 -------------------
-* Switching to example_interfaces (`#674 <https://github.com/ros2/demos/issues/674>`_)
-* Contributors: Lucas Wendland
+* fixup image_pipeline_demo (`#755 <https://github.com/ros2/demos/issues/755>`_) (`#756 <https://github.com/ros2/demos/issues/756>`_)
+* Contributors: mergify[bot]
 
-0.37.5 (2026-01-09)
--------------------
-* fixup image_pipeline_demo (`#755 <https://github.com/ros2/demos/issues/755>`_)
-* Contributors: William Woodall
-
-0.37.4 (2025-11-12)
+0.36.3 (2025-11-12)
 -------------------
 
-0.37.3 (2025-09-17)
+0.36.2 (2025-09-17)
 -------------------
 
-0.37.2 (2025-07-29)
+0.36.1 (2025-06-23)
 -------------------
-
-0.37.1 (2025-06-23)
--------------------
-* Use EnableRmwIsolation in launch tests (`#724 <https://github.com/ros2/demos/issues/724>`_)
-* Contributors: Scott K Logan
-
-0.37.0 (2025-04-25)
--------------------
+* Use EnableRmwIsolation in launch tests (`#724 <https://github.com/ros2/demos/issues/724>`_) (`#725 <https://github.com/ros2/demos/issues/725>`_)
+* Contributors: mergify[bot]
 
 0.36.0 (2025-04-25)
 -------------------

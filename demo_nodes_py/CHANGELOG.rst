@@ -2,36 +2,23 @@
 Changelog for package demo_nodes_py
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-0.37.7 (2026-03-24)
+0.36.5 (2026-03-24)
 -------------------
-* add child logger under parent node, with different log levels. (`#772 <https://github.com/ros2/demos//issues/772>`_)
-* Fix deprecated RcutilsLogger::warn() usage in LoggerServiceNode (`#773 <https://github.com/ros2/demos//issues/773>`_)
-* Ignore A005 (`#771 <https://github.com/ros2/demos//issues/771>`_)
-* Contributors: Barry Xu, Michael Carlstrom, Tomoya Fujita
+* Fix deprecated RcutilsLogger::warn() usage in LoggerServiceNode (`#773 <https://github.com/ros2/demos//issues/773>`_) (`#774 <https://github.com/ros2/demos//issues/774>`_)
+* Contributors: mergify[bot]
 
-0.37.6 (2026-02-16)
--------------------
-* Switching to example_interfaces (`#674 <https://github.com/ros2/demos/issues/674>`_)
-* Contributors: Lucas Wendland
-
-0.37.5 (2026-01-09)
+0.36.4 (2026-01-09)
 -------------------
 
-0.37.4 (2025-11-12)
+0.36.3 (2025-11-12)
 -------------------
 
-0.37.3 (2025-09-17)
+0.36.2 (2025-09-17)
 -------------------
+* fix setuptools deprecations (`#733 <https://github.com/ros2/demos/issues/733>`_) (`#736 <https://github.com/ros2/demos/issues/736>`_)
+* Contributors: mergify[bot]
 
-0.37.2 (2025-07-29)
--------------------
-* fix setuptools deprecations (`#733 <https://github.com/ros2/demos/issues/733>`_)
-* Contributors: mosfet80
-
-0.37.1 (2025-06-23)
--------------------
-
-0.37.0 (2025-04-25)
+0.36.1 (2025-06-23)
 -------------------
 
 0.36.0 (2025-04-25)

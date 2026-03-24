@@ -2,39 +2,25 @@
 Changelog for package composition
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-0.37.7 (2026-03-24)
--------------------
-* Use new ROSIDL aggregate CMake target (`#781 <https://github.com/ros2/demos//issues/781>`_)
-* Add tests isolation in test_dlopen_composition.py.in and test_linktime_composition.py.in (`#764 <https://github.com/ros2/demos//issues/764>`_)
-* Contributors: Emerson Knapp, Julien Enoch
-
-0.37.6 (2026-02-16)
--------------------
-* Switching to example_interfaces (`#674 <https://github.com/ros2/demos/issues/674>`_)
-* Contributors: Lucas Wendland
-
-0.37.5 (2026-01-09)
+0.36.5 (2026-03-24)
 -------------------
 
-0.37.4 (2025-11-12)
--------------------
-* Log message for linktime composition on Windows (`#640 <https://github.com/ros2/demos/issues/640>`_)
-* Contributors: yadunund
-
-0.37.3 (2025-09-17)
+0.36.4 (2026-01-09)
 -------------------
 
-0.37.2 (2025-07-29)
+0.36.3 (2025-11-12)
+-------------------
+* Log message for linktime composition on Windows (`#640 <https://github.com/ros2/demos/issues/640>`_) (`#742 <https://github.com/ros2/demos/issues/742>`_)
+* Contributors: mergify[bot]
+
+0.36.2 (2025-09-17)
 -------------------
 
-0.37.1 (2025-06-23)
+0.36.1 (2025-06-23)
 -------------------
-* correct name of shared libraries and their location (`#722 <https://github.com/ros2/demos/issues/722>`_) (`#726 <https://github.com/ros2/demos/issues/726>`_)
-* Use EnableRmwIsolation in launch tests (`#724 <https://github.com/ros2/demos/issues/724>`_)
-* Contributors: Scott K Logan, mergify[bot]
-
-0.37.0 (2025-04-25)
--------------------
+* Use EnableRmwIsolation in launch tests (`#724 <https://github.com/ros2/demos/issues/724>`_) (`#725 <https://github.com/ros2/demos/issues/725>`_)
+* correct name of shared libraries and their location (`#722 <https://github.com/ros2/demos/issues/722>`_)
+* Contributors: Aniket Kumar Roy, mergify[bot]
 
 0.36.0 (2025-04-25)
 -------------------

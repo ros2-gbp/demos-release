@@ -15,15 +15,12 @@
 
 import time
 
-from typing import Union
-
 from example_interfaces.action import Fibonacci
 
 from rcl_interfaces.msg import SetParametersResult
 
 import rclpy
 from rclpy.action import ActionServer, CancelResponse
-from rclpy.action.server import ServerGoalHandle
 from rclpy.executors import ExternalShutdownException
 from rclpy.executors import MultiThreadedExecutor
 from rclpy.node import Node
@@ -34,7 +31,7 @@ from rclpy.service_introspection import ServiceIntrospectionState
 
 class FibonacciActionServer(Node):
 
-    def __init__(self) -> None:
+    def __init__(self):
         super().__init__('fibonacci_action_server')
         self._action_server = ActionServer(
             self,
@@ -46,8 +43,7 @@ class FibonacciActionServer(Node):
         self.add_post_set_parameters_callback(self.on_post_set_parameters_callback)
         self.declare_parameter('action_server_configure_introspection', 'disabled')
 
-    def _check_parameter(self, parameter_list: list[Parameter[str]],
-                         parameter_name: str) -> SetParametersResult:
+    def _check_parameter(self, parameter_list, parameter_name):
         result = SetParametersResult()
         result.successful = True
         for param in parameter_list:
@@ -61,16 +57,15 @@ class FibonacciActionServer(Node):
 
             if param.value not in ('disabled', 'metadata', 'contents'):
                 result.successful = False
-                result.reason = "must be one of 'disabled', 'metadata', or 'contents'"
+                result.reason = "must be one of 'disabled', 'metadata', or 'contents"
                 break
 
         return result
 
-    def on_set_parameters_callback(self,
-                                   parameter_list: list[Parameter[str]]) -> SetParametersResult:
+    def on_set_parameters_callback(self, parameter_list) -> SetParametersResult:
         return self._check_parameter(parameter_list, 'action_server_configure_introspection')
 
-    def on_post_set_parameters_callback(self, parameter_list: list[Parameter[str]]) -> None:
+    def on_post_set_parameters_callback(self, parameter_list):
         for param in parameter_list:
             if param.name != 'action_server_configure_introspection':
                 continue
@@ -88,14 +83,7 @@ class FibonacciActionServer(Node):
                                                         introspection_state)
             break
 
-    def execute_callback(
-            self,
-            goal_handle: ServerGoalHandle[
-                Fibonacci.Goal,
-                Fibonacci.Result,
-                Fibonacci.Feedback,
-                Fibonacci.Impl
-            ], ) -> Fibonacci.Result:
+    def execute_callback(self, goal_handle):
         self.get_logger().info('Executing goal...')
 
         feedback_msg = Fibonacci.Feedback()
@@ -107,7 +95,7 @@ class FibonacciActionServer(Node):
                 self.get_logger().info('Goal canceled')
                 return Fibonacci.Result()
             feedback_msg.sequence.append(
-                feedback_msg.sequence[i] + feedback_msg.sequence[i - 1])
+                feedback_msg.sequence[i] + feedback_msg.sequence[i-1])
             self.get_logger().info('Feedback: {0}'.format(feedback_msg.sequence))
             goal_handle.publish_feedback(feedback_msg)
             time.sleep(1)
@@ -118,18 +106,12 @@ class FibonacciActionServer(Node):
         result.sequence = feedback_msg.sequence
         return result
 
-    def cancel_callback(
-            self,
-            goal_handle: ServerGoalHandle[
-                Fibonacci.Goal,
-                Fibonacci.Result,
-                Fibonacci.Feedback,
-                Fibonacci.Impl]) -> CancelResponse:
+    def cancel_callback(self, goal_handle):
         self.get_logger().info('Canceling goal...')
         return CancelResponse.ACCEPT
 
 
-def main(args: Union[list[str], None] = None) -> None:
+def main(args=None):
     try:
         with rclpy.init(args=args):
             fibonacci_action_server = FibonacciActionServer()
