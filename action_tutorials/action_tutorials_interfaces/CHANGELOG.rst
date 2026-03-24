@@ -1,6 +1,6 @@
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Changelog for package action_tutorials_cpp
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Changelog for package action_tutorials_interfaces
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 0.33.10 (2026-03-24)
 --------------------
@@ -36,9 +36,6 @@ Changelog for package action_tutorials_cpp
 
 0.33.0 (2024-01-24)
 -------------------
-* Fix format-security warning with clang. (`#663 <https://github.com/ros2/demos/issues/663>`_)
-* Migrate std::bind calls to lambda expressions (`#659 <https://github.com/ros2/demos/issues/659>`_)
-* Contributors: Chris Lalancette, Felipe Gomes de Melo
 
 0.32.1 (2023-12-26)
 -------------------
@@ -74,6 +71,8 @@ Changelog for package action_tutorials_cpp
 
 0.26.0 (2023-04-11)
 -------------------
+* A couple more upgrades to C++17. (`#609 <https://github.com/ros2/demos/issues/609>`_)
+* Contributors: Chris Lalancette
 
 0.25.0 (2023-03-01)
 -------------------
@@ -83,18 +82,17 @@ Changelog for package action_tutorials_cpp
 
 0.24.0 (2023-02-14)
 -------------------
-* Update the demos to C++17. (`#594 <https://github.com/ros2/demos/issues/594>`_)
 * Add README's for action_tutorials. (`#576 <https://github.com/ros2/demos/issues/576>`_)
 * [rolling] Update maintainers - 2022-11-07 (`#589 <https://github.com/ros2/demos/issues/589>`_)
-* Contributors: Audrow Nash, Chris Lalancette, kagibson
+* Contributors: Audrow Nash, kagibson
 
 0.23.0 (2022-11-02)
 -------------------
 
 0.22.0 (2022-09-13)
 -------------------
-* Fix two small bugs in the fibonacci C++ tutorial. (`#564 <https://github.com/ros2/demos/issues/564>`_)
-* Contributors: Chris Lalancette
+* Remove action_msgs dependency (`#580 <https://github.com/ros2/demos/issues/580>`_)
+* Contributors: Jacob Perron
 
 0.21.0 (2022-04-29)
 -------------------
@@ -139,8 +137,6 @@ Changelog for package action_tutorials_cpp
 
 0.12.0 (2021-01-25)
 -------------------
-* Update logging macros (`#476 <https://github.com/ros2/demos/issues/476>`_)
-* Contributors: Audrow Nash
 
 0.11.0 (2020-12-10)
 -------------------
@@ -149,8 +145,6 @@ Changelog for package action_tutorials_cpp
 
 0.10.1 (2020-09-21)
 -------------------
-* Update goal response callback signature (`#463 <https://github.com/ros2/demos/issues/463>`_)
-* Contributors: Jacob Perron
 
 0.10.0 (2020-06-17)
 -------------------
@@ -169,8 +163,6 @@ Changelog for package action_tutorials_cpp
 
 0.8.4 (2019-11-19)
 ------------------
-* Return without sending goal if exiting (`#415 <https://github.com/ros2/demos/issues/415>`_)
-* Contributors: Shane Loretz
 
 0.8.3 (2019-11-11)
 ------------------
@@ -183,7 +175,7 @@ Changelog for package action_tutorials_cpp
 
 0.8.0 (2019-09-26)
 ------------------
-* Add action tutorials in C++ (`#378 <https://github.com/ros2/demos/issues/378>`_)
+* Move action tutorial interface to a new package, action_tutorials_interfaces (`#378 <https://github.com/ros2/demos/issues/378>`_)
 * Contributors: Siddharth Kucheria
 
 0.7.6 (2019-05-30)
