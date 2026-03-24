@@ -1,0 +1,12 @@
+Source: ros-kilted-pendulum-control
+Section: misc
+Priority: optional
+Maintainer: Aditya Pande <aditya.pande@openrobotics.org>
+Build-Depends: debhelper (>= 9.0.0), ros-kilted-ament-cmake, ros-kilted-ament-cmake-pytest <!nocheck>, ros-kilted-ament-lint-auto <!nocheck>, ros-kilted-ament-lint-common <!nocheck>, ros-kilted-launch <!nocheck>, ros-kilted-launch-testing <!nocheck>, ros-kilted-launch-testing-ament-cmake <!nocheck>, ros-kilted-launch-testing-ros <!nocheck>, ros-kilted-pendulum-msgs, ros-kilted-rclcpp, ros-kilted-rmw-implementation-cmake <!nocheck>, ros-kilted-ros2run <!nocheck>, ros-kilted-rttest, ros-kilted-tlsf-cpp, ros-kilted-ros-workspace
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-kilted-pendulum-control
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-kilted-pendulum-msgs, ros-kilted-rclcpp, ros-kilted-rttest, ros-kilted-tlsf-cpp, ros-kilted-ros-workspace
+Description: Demonstrates ROS 2's realtime capabilities with a simulated inverted pendulum.
