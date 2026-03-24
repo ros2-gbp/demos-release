@@ -20,9 +20,6 @@ from quality_of_service_demo_py.common_nodes import Talker
 
 import rclpy
 from rclpy.duration import Duration
-from rclpy.event_handler import PublisherEventCallbacks
-from rclpy.event_handler import SubscriptionEventCallbacks
-from rclpy.event_handler import UnsupportedEventTypeError
 from rclpy.executors import ExternalShutdownException
 from rclpy.executors import SingleThreadedExecutor
 from rclpy.logging import get_logger
@@ -30,6 +27,9 @@ from rclpy.qos import QoSDurabilityPolicy
 from rclpy.qos import QoSLivelinessPolicy
 from rclpy.qos import QoSProfile
 from rclpy.qos import QoSReliabilityPolicy
+from rclpy.qos_event import PublisherEventCallbacks
+from rclpy.qos_event import SubscriptionEventCallbacks
+from rclpy.qos_event import UnsupportedEventTypeError
 
 
 def get_parser():
@@ -56,8 +56,8 @@ def main(args=None):
     if qos_policy_name == 'durability':
         print(
             'Durability incompatibility selected.\n'
-            'Incompatibility condition: publisher durability kind < '
-            'subscription durability kind.\n'
+            'Incompatibility condition: publisher durability kind <'
+            'subscripition durability kind.\n'
             'Setting publisher durability to: VOLATILE\n'
             'Setting subscription durability to: TRANSIENT_LOCAL\n'
         )
@@ -110,30 +110,17 @@ def main(args=None):
     else:
         print('{name} not recognised.'.format(name=qos_policy_name))
         parser.print_help()
-        return 1
+        return 0
 
     # Initialization and configuration
     rclpy.init(args=args)
     topic = 'incompatible_qos_chatter'
     num_msgs = 5
 
-    def sub_incompatible_qos_event(event):
-        count = event.total_count
-        delta = event.total_count_change
-        policy = event.last_policy_kind
-        get_logger('listener').info(
-            f'Requested incompatible qos - total {count} delta {delta} last_policy_kind: {policy}')
-
-    def pub_incompatible_qos_event(event):
-        count = event.total_count
-        delta = event.total_count_change
-        policy = event.last_policy_kind
-        get_logger('talker').info(
-            f'Offered incompatible qos - total {count} delta {delta} last_policy_kind: {policy}')
-
-    publisher_callbacks = PublisherEventCallbacks(incompatible_qos=pub_incompatible_qos_event)
+    publisher_callbacks = PublisherEventCallbacks(
+        incompatible_qos=lambda event: get_logger('Talker').info(str(event)))
     subscription_callbacks = SubscriptionEventCallbacks(
-        incompatible_qos=sub_incompatible_qos_event)
+        incompatible_qos=lambda event: get_logger('Listener').info(str(event)))
 
     try:
         talker = Talker(
@@ -154,8 +141,10 @@ def main(args=None):
     try:
         while talker.publish_count < num_msgs:
             executor.spin_once()
-    except (KeyboardInterrupt, ExternalShutdownException):
+    except KeyboardInterrupt:
         pass
+    except ExternalShutdownException:
+        return 1
     finally:
         rclpy.try_shutdown()
 

@@ -11,7 +11,6 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
 from rclpy.node import Node
 from std_msgs.msg import String
 
@@ -30,7 +29,7 @@ class Talker(Node):
         @param publish_count Number of messages to publish before stopping.
         @param asert_topic_period How often to manually assert Publisher liveliness.
         """
-        super().__init__('talker')
+        super().__init__('qos_talker')
         self.get_logger().info('Talker starting up')
         self.publisher = self.create_publisher(
             String, topic_name, qos_profile,
@@ -75,7 +74,7 @@ class Talker(Node):
         """
         message = String()
         message.data = 'Talker says {}'.format(self.publish_count)
-        self.get_logger().info("Publishing: '{}'".format(message.data))
+        self.get_logger().info('Publishing: {}'.format(message.data))
         self.publish_count += 1
         if self.stop_at_count > 0 and self.publish_count >= self.stop_at_count:
             self.publish_timer.cancel()
@@ -100,7 +99,7 @@ class Listener(Node):
         @param event_callbacks QoS event callbacks for Subscription.
         @param defer_subscribe Don't create Subscription until user calls start_listening()
         """
-        super().__init__('listener')
+        super().__init__('qos_listener')
         self.subscription = None
         self.topic_name = topic_name
         self.qos_profile = qos_profile
@@ -119,7 +118,7 @@ class Listener(Node):
                 String, self.topic_name, self._message_callback,
                 self.qos_profile,
                 event_callbacks=self.event_callbacks)
-            self.get_logger().info('Listener starting up')
+            self.get_logger().info('Subscription created')
 
     def _message_callback(self, message):
-        self.get_logger().info('Listener heard: [{}]'.format(message.data))
+        self.get_logger().info('I heard: {}'.format(message.data))
