@@ -22,7 +22,7 @@
 
 #include "rclcpp/rclcpp.hpp"
 #include "rcutils/error_handling.h"
-#include "std_msgs/msg/string.hpp"
+#include "example_interfaces/msg/string.hpp"
 
 using namespace std::chrono_literals;
 
@@ -32,9 +32,11 @@ namespace logging_demo
 LoggerUsage::LoggerUsage(rclcpp::NodeOptions options)
 : Node("logger_usage_demo", options), count_(0)
 {
-  pub_ = create_publisher<std_msgs::msg::String>("logging_demo_count", 10);
-  timer_ = create_wall_timer(500ms, std::bind(&LoggerUsage::on_timer, this));
-  debug_function_to_evaluate_ = std::bind(is_divisor_of_twelve, std::cref(count_), get_logger());
+  pub_ = create_publisher<example_interfaces::msg::String>("logging_demo_count", 10);
+  timer_ = create_wall_timer(500ms, [this]() {return this->on_timer();});
+  debug_function_to_evaluate_ = [this]() {
+      return is_divisor_of_twelve(std::cref(this->count_), this->get_logger());
+    };
 
   // After 10 iterations the severity will be set to DEBUG.
   auto on_one_shot_timer =
@@ -57,7 +59,7 @@ void LoggerUsage::on_timer()
   // This message will be logged only the first time this line is reached.
   RCLCPP_INFO_ONCE(get_logger(), "Timer callback called (this will only log once)");
 
-  auto msg = std::make_unique<std_msgs::msg::String>();
+  auto msg = std::make_unique<example_interfaces::msg::String>();
   msg->data = "Current count: " + std::to_string(count_);
 
   // This message will be logged each time it is reached.

@@ -12,19 +12,17 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include <array>
 #include <chrono>
-#include <cstdio>
 #include <memory>
 #include <utility>
 
 #include "rclcpp/rclcpp.hpp"
 #include "rclcpp_components/register_node_macro.hpp"
 
-#include "std_msgs/msg/float32.hpp"
+#include "example_interfaces/msg/float32.hpp"
 
 #include "demo_nodes_cpp/visibility_control.h"
-
-using namespace std::chrono_literals;
 
 namespace demo_nodes_cpp
 {
@@ -33,7 +31,7 @@ constexpr std::array<float, 3> TEMPERATURE_SETTING {-100.0f, 150.0f, 10.0f};
 
 // Create a ContentFilteringPublisher class that subclasses the generic rclcpp::Node base class.
 // The main function below will instantiate the class as a ROS node.
-class ContentFilteringPublisher : public rclcpp::Node
+class ContentFilteringPublisher final : public rclcpp::Node
 {
 public:
   DEMO_NODES_CPP_PUBLIC
@@ -41,11 +39,10 @@ public:
   : Node("content_filtering_publisher", options)
   {
     // Create a function for when messages are to be sent.
-    setvbuf(stdout, NULL, _IONBF, BUFSIZ);
     auto publish_message =
       [this]() -> void
       {
-        msg_ = std::make_unique<std_msgs::msg::Float32>();
+        msg_ = std::make_unique<example_interfaces::msg::Float32>();
         msg_->data = temperature_;
         temperature_ += TEMPERATURE_SETTING[2];
         if (temperature_ > TEMPERATURE_SETTING[1]) {
@@ -61,16 +58,18 @@ public:
     // rclcpp::KeepAll{} if the user wishes.
     // (rclcpp::KeepLast(7) -> rclcpp::KeepAll() fails to compile)
     rclcpp::QoS qos(rclcpp::KeepLast{7});
-    pub_ = this->create_publisher<std_msgs::msg::Float32>("temperature", qos);
+    pub_ = this->create_publisher<example_interfaces::msg::Float32>("temperature", qos);
+
+    int64_t publish_ms = this->declare_parameter("publish_ms", 1000);
 
     // Use a timer to schedule periodic message publishing.
-    timer_ = this->create_wall_timer(1s, publish_message);
+    timer_ = this->create_wall_timer(std::chrono::milliseconds(publish_ms), publish_message);
   }
 
 private:
   float temperature_ = TEMPERATURE_SETTING[0];
-  std::unique_ptr<std_msgs::msg::Float32> msg_;
-  rclcpp::Publisher<std_msgs::msg::Float32>::SharedPtr pub_;
+  std::unique_ptr<example_interfaces::msg::Float32> msg_;
+  rclcpp::Publisher<example_interfaces::msg::Float32>::SharedPtr pub_;
   rclcpp::TimerBase::SharedPtr timer_;
 };
 
