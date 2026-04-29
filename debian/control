@@ -1,0 +1,12 @@
+Source: ros-lyrical-quality-of-service-demo-cpp
+Section: misc
+Priority: optional
+Maintainer: Aditya Pande <aditya.pande@openrobotics.org>
+Build-Depends: debhelper (>= 9.0.0), ros-lyrical-ament-cmake, ros-lyrical-ament-lint-auto <!nocheck>, ros-lyrical-ament-lint-common <!nocheck>, ros-lyrical-example-interfaces, ros-lyrical-launch <!nocheck>, ros-lyrical-launch-testing <!nocheck>, ros-lyrical-rclcpp, ros-lyrical-rclcpp-components, ros-lyrical-rcutils, ros-lyrical-rmw, ros-lyrical-rmw-implementation-cmake, ros-lyrical-sensor-msgs, ros-lyrical-ros-workspace
+Homepage: https://index.ros.org/p/quality_of_service_demo_cpp/#lyrical
+Standards-Version: 3.9.2
+
+Package: ros-lyrical-quality-of-service-demo-cpp
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-lyrical-example-interfaces, ros-lyrical-launch-ros, ros-lyrical-rclcpp, ros-lyrical-rclcpp-components, ros-lyrical-rcutils, ros-lyrical-rmw, ros-lyrical-sensor-msgs, ros-lyrical-ros-workspace
+Description: C++ Demo applications for Quality of Service features
