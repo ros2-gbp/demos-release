@@ -1,0 +1,12 @@
+Source: ros-lyrical-pendulum-control
+Section: misc
+Priority: optional
+Maintainer: Aditya Pande <aditya.pande@openrobotics.org>
+Build-Depends: debhelper (>= 9.0.0), ros-lyrical-ament-cmake, ros-lyrical-ament-cmake-pytest <!nocheck>, ros-lyrical-ament-lint-auto <!nocheck>, ros-lyrical-ament-lint-common <!nocheck>, ros-lyrical-launch <!nocheck>, ros-lyrical-launch-testing <!nocheck>, ros-lyrical-launch-testing-ament-cmake <!nocheck>, ros-lyrical-launch-testing-ros <!nocheck>, ros-lyrical-pendulum-msgs, ros-lyrical-rclcpp, ros-lyrical-rmw-implementation-cmake <!nocheck>, ros-lyrical-ros2run <!nocheck>, ros-lyrical-rttest, ros-lyrical-tlsf-cpp, ros-lyrical-ros-workspace
+Homepage: https://index.ros.org/p/pendulum_control/#lyrical
+Standards-Version: 3.9.2
+
+Package: ros-lyrical-pendulum-control
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-lyrical-pendulum-msgs, ros-lyrical-rclcpp, ros-lyrical-rttest, ros-lyrical-tlsf-cpp, ros-lyrical-ros-workspace
+Description: Demonstrates ROS 2's realtime capabilities with a simulated inverted pendulum.
