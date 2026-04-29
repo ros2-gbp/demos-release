@@ -1,0 +1,12 @@
+Source: ros-lyrical-image-tools
+Section: misc
+Priority: optional
+Maintainer: Aditya Pande <aditya.pande@openrobotics.org>
+Build-Depends: debhelper (>= 9.0.0), libopencv-dev, ros-lyrical-ament-cmake, ros-lyrical-ament-cmake-pytest <!nocheck>, ros-lyrical-ament-lint-auto <!nocheck>, ros-lyrical-ament-lint-common <!nocheck>, ros-lyrical-example-interfaces, ros-lyrical-launch <!nocheck>, ros-lyrical-launch-ros <!nocheck>, ros-lyrical-launch-testing <!nocheck>, ros-lyrical-launch-testing-ament-cmake <!nocheck>, ros-lyrical-launch-testing-ros <!nocheck>, ros-lyrical-rclcpp, ros-lyrical-rclcpp-components, ros-lyrical-rmw-implementation-cmake <!nocheck>, ros-lyrical-sensor-msgs, ros-lyrical-std-msgs, ros-lyrical-ros-workspace
+Homepage: https://index.ros.org/p/image_tools/#lyrical
+Standards-Version: 3.9.2
+
+Package: ros-lyrical-image-tools
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libopencv-core410, libopencv-highgui410, libopencv-imgcodecs410, libopencv-imgproc410, libopencv-videoio410, ros-lyrical-example-interfaces, ros-lyrical-rclcpp, ros-lyrical-rclcpp-components, ros-lyrical-sensor-msgs, ros-lyrical-std-msgs, ros-lyrical-ros-workspace
+Description: Tools to capture and play back images to and from DDS subscriptions and publications.
