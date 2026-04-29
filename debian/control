@@ -1,0 +1,12 @@
+Source: ros-lyrical-composition
+Section: misc
+Priority: optional
+Maintainer: Aditya Pande <aditya.pande@openrobotics.org>
+Build-Depends: debhelper (>= 9.0.0), ros-lyrical-ament-cmake, ros-lyrical-ament-cmake-pytest <!nocheck>, ros-lyrical-ament-lint-auto <!nocheck>, ros-lyrical-ament-lint-common <!nocheck>, ros-lyrical-example-interfaces, ros-lyrical-launch <!nocheck>, ros-lyrical-launch-testing <!nocheck>, ros-lyrical-launch-testing-ament-cmake <!nocheck>, ros-lyrical-launch-testing-ros <!nocheck>, ros-lyrical-rclcpp, ros-lyrical-rclcpp-components, ros-lyrical-rcutils, ros-lyrical-rmw-implementation-cmake <!nocheck>, ros-lyrical-ros-workspace
+Homepage: https://index.ros.org/p/composition/#lyrical
+Standards-Version: 3.9.2
+
+Package: ros-lyrical-composition
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-lyrical-example-interfaces, ros-lyrical-launch-ros, ros-lyrical-rclcpp, ros-lyrical-rclcpp-components, ros-lyrical-rcutils, ros-lyrical-ros-workspace
+Description: Examples for composing multiple nodes in a single process.
