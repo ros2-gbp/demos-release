@@ -2,6 +2,9 @@
 Changelog for package dummy_sensors
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.38.0 (2026-05-07)
+-------------------
+
 0.37.7 (2026-03-24)
 -------------------
 * Use new ROSIDL aggregate CMake target (`#781 <https://github.com/ros2/demos//issues/781>`_)
