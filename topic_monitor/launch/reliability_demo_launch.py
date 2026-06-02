@@ -12,14 +12,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""Launch data publishers with different reliability configurations."""
+"""Launch data publishers with different reliability configruations."""
 
 from launch import LaunchDescription
 import launch.actions
 from launch_ros.substitutions import ExecutableInPackage
 
 
-def generate_launch_description() -> LaunchDescription:
+def generate_launch_description():
     executable = ExecutableInPackage(package='topic_monitor', executable='data_publisher')
     return LaunchDescription([
         launch.actions.ExecuteProcess(

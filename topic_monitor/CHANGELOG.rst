@@ -2,61 +2,39 @@
 Changelog for package topic_monitor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-0.38.0 (2026-05-07)
--------------------
-* Fixed topic monitor demos (`#791 <https://github.com/ros2/demos/issues/791>`_)
-* Contributors: Alejandro Hernández Cordero
+0.33.11 (2026-06-02)
+--------------------
 
-0.37.7 (2026-03-24)
--------------------
-* Add mypy config (`#776 <https://github.com/ros2/demos//issues/776>`_)
-* Contributors: Dan Mascarenhas
+0.33.10 (2026-03-24)
+--------------------
 
-0.37.6 (2026-02-16)
--------------------
-* Switching to example_interfaces (`#674 <https://github.com/ros2/demos/issues/674>`_)
-* Contributors: Lucas Wendland
-
-0.37.5 (2026-01-09)
+0.33.9 (2026-01-09)
 -------------------
 
-0.37.4 (2025-11-12)
+0.33.8 (2025-11-12)
 -------------------
 
-0.37.3 (2025-09-17)
+0.33.7 (2025-09-17)
 -------------------
-
-0.37.2 (2025-07-29)
--------------------
-* fix setuptools deprecations (`#733 <https://github.com/ros2/demos/issues/733>`_)
-* Contributors: mosfet80
-
-0.37.1 (2025-06-23)
--------------------
-* Update README.md (`#718 <https://github.com/ros2/demos/issues/718>`_) (`#719 <https://github.com/ros2/demos/issues/719>`_)
+* fix setuptools deprecations (`#733 <https://github.com/ros2/demos/issues/733>`_) (`#737 <https://github.com/ros2/demos/issues/737>`_)
 * Contributors: mergify[bot]
 
-0.37.0 (2025-04-25)
+0.33.6 (2025-08-06)
+-------------------
+* Update README.md (`#718 <https://github.com/ros2/demos/issues/718>`_) (`#720 <https://github.com/ros2/demos/issues/720>`_)
+  This removes the outdated comment about not using FastDDS for topic monitoring between two machines.
+  (cherry picked from commit ad559c0fe89300563dd82fdc958906093cb609e4)
+  Co-authored-by: Alejandro Hernández Cordero <ahcorde@gmail.com>
+  Co-authored-by: jmackay2 <1.732mackay@gmail.com>
+* Contributors: mergify[bot]
+
+0.33.5 (2024-09-06)
 -------------------
 
-0.36.0 (2025-04-25)
+0.33.4 (2024-06-27)
 -------------------
 
-0.35.1 (2024-11-20)
--------------------
-* Add test_xmllint.py to all of the ament_python packages. (`#704 <https://github.com/ros2/demos/issues/704>`_)
-* Contributors: Chris Lalancette
-
-0.35.0 (2024-10-03)
--------------------
-
-0.34.2 (2024-07-29)
--------------------
-
-0.34.1 (2024-06-17)
--------------------
-
-0.34.0 (2024-04-26)
+0.33.3 (2024-05-13)
 -------------------
 
 0.33.2 (2024-03-28)

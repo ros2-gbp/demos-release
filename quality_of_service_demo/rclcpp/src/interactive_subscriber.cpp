@@ -19,7 +19,7 @@
 #include <string>
 #include <thread>
 
-#include "example_interfaces/msg/string.hpp"
+#include "std_msgs/msg/string.hpp"
 #include "rcutils/cmdline_parser.h"
 #include "rclcpp/rclcpp.hpp"
 

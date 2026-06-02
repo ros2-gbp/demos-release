@@ -12,11 +12,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from example_interfaces.msg import String
-
 import rclpy
 from rclpy.executors import ExternalShutdownException
 from rclpy.node import Node
+
+from std_msgs.msg import String
 
 
 class Listener(Node):
@@ -30,12 +30,16 @@ class Listener(Node):
 
 
 def main(args=None):
+    rclpy.init(args=args)
+
+    node = Listener()
     try:
-        with rclpy.init(args=args):
-            node = Listener()
-            rclpy.spin(node)
+        rclpy.spin(node)
     except (KeyboardInterrupt, ExternalShutdownException):
         pass
+    finally:
+        node.destroy_node()
+        rclpy.try_shutdown()
 
 
 if __name__ == '__main__':

@@ -14,11 +14,8 @@
 
 from typing import Optional
 
-import example_interfaces.msg
-
 import rclpy
-from rclpy.executors import ExternalShutdownException
-from rclpy.executors import SingleThreadedExecutor
+
 # Node, State and Publisher are aliases for LifecycleNode, LifecycleState and LifecyclePublisher
 # respectively.
 # In case of ambiguity, the more explicit names can be imported.
@@ -27,27 +24,24 @@ from rclpy.lifecycle import Node
 from rclpy.lifecycle import Publisher
 from rclpy.lifecycle import State
 from rclpy.lifecycle import TransitionCallbackReturn
-from rclpy.lifecycle.node import LifecycleNodeArgs
 from rclpy.timer import Timer
-from typing_extensions import Unpack
+
+import std_msgs.msg
 
 
 class LifecycleTalker(Node):
     """Our lifecycle talker node."""
 
-    def __init__(self,
-                 node_name: str,
-                 **kwargs: Unpack[LifecycleNodeArgs]  # type: ignore
-                 ) -> None:
+    def __init__(self, node_name, **kwargs):
         """Construct the node."""
         self._count: int = 0
-        self._pub: Optional[Publisher[example_interfaces.msg.String]] = None
+        self._pub: Optional[Publisher] = None
         self._timer: Optional[Timer] = None
         super().__init__(node_name, **kwargs)
 
-    def publish(self) -> None:
+    def publish(self):
         """Publish a new message when enabled."""
-        msg = example_interfaces.msg.String()
+        msg = std_msgs.msg.String()
         msg.data = 'Lifecycle HelloWorld #' + str(self._count)
         self._count += 1
 
@@ -77,8 +71,7 @@ class LifecycleTalker(Node):
             TransitionCallbackReturn.FAILURE transitions to "unconfigured".
             TransitionCallbackReturn.ERROR or any uncaught exceptions to "errorprocessing"
         """
-        self._pub = self.create_lifecycle_publisher(
-            example_interfaces.msg.String, 'lifecycle_chatter', 10)
+        self._pub = self.create_lifecycle_publisher(std_msgs.msg.String, 'lifecycle_chatter', 10)
         self._timer = self.create_timer(1.0, self.publish)
 
         self.get_logger().info('on_configure() is called.')
@@ -118,10 +111,8 @@ class LifecycleTalker(Node):
             TransitionCallbackReturn.FAILURE transitions to "inactive".
             TransitionCallbackReturn.ERROR or any uncaught exceptions to "errorprocessing"
         """
-        if self._timer is not None:
-            self.destroy_timer(self._timer)
-        if self._pub is not None:
-            self.destroy_publisher(self._pub)
+        self.destroy_timer(self._timer)
+        self.destroy_publisher(self._pub)
 
         self.get_logger().info('on_cleanup() is called.')
         return TransitionCallbackReturn.SUCCESS
@@ -139,10 +130,8 @@ class LifecycleTalker(Node):
             TransitionCallbackReturn.FAILURE transitions to "inactive".
             TransitionCallbackReturn.ERROR or any uncaught exceptions to "errorprocessing"
         """
-        if self._timer is not None:
-            self.destroy_timer(self._timer)
-        if self._pub is not None:
-            self.destroy_publisher(self._pub)
+        self.destroy_timer(self._timer)
+        self.destroy_publisher(self._pub)
 
         self.get_logger().info('on_shutdown() is called.')
         return TransitionCallbackReturn.SUCCESS
@@ -152,15 +141,16 @@ class LifecycleTalker(Node):
 # as a regular node. This means we can spawn a
 # node, give it a name and add it to the executor.
 
-def main() -> None:
+def main():
+    rclpy.init()
+
+    executor = rclpy.executors.SingleThreadedExecutor()
+    lc_node = LifecycleTalker('lc_talker')
+    executor.add_node(lc_node)
     try:
-        with rclpy.init():
-            executor = SingleThreadedExecutor()
-            lc_node = LifecycleTalker('lc_talker')
-            executor.add_node(lc_node)
-            executor.spin()
-    except (KeyboardInterrupt, ExternalShutdownException):
-        pass
+        executor.spin()
+    except (KeyboardInterrupt, rclpy.executors.ExternalShutdownException):
+        lc_node.destroy_node()
 
 
 if __name__ == '__main__':

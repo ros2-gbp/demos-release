@@ -17,7 +17,7 @@
 
 #include "rclcpp/rclcpp.hpp"
 #include "rclcpp_components/register_node_macro.hpp"
-#include "example_interfaces/msg/string.hpp"
+#include "std_msgs/msg/string.hpp"
 
 #include "demo_nodes_cpp/visibility_control.h"
 
@@ -32,17 +32,16 @@ public:
   {
     setvbuf(stdout, NULL, _IONBF, BUFSIZ);
     auto callback =
-      [this](example_interfaces::msg::String::ConstSharedPtr msg) -> void
+      [this](std_msgs::msg::String::ConstSharedPtr msg) -> void
       {
         RCLCPP_INFO(this->get_logger(), "I heard: [%s]", msg->data.c_str());
       };
 
-    sub_ = create_subscription<example_interfaces::msg::String>(
-      "chatter", rclcpp::SensorDataQoS(), callback);
+    sub_ = create_subscription<std_msgs::msg::String>("chatter", rclcpp::SensorDataQoS(), callback);
   }
 
 private:
-  rclcpp::Subscription<example_interfaces::msg::String>::SharedPtr sub_;
+  rclcpp::Subscription<std_msgs::msg::String>::SharedPtr sub_;
 };
 
 }  // namespace demo_nodes_cpp
