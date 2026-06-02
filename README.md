@@ -1,5 +1,10 @@
-## **What Is This?**
+# Action Tutorials ROS 2 Interface
 
-This repository contains source code for demos mentioned in the official ROS 2 documentation [Tutorials](https://docs.ros.org/en/rolling/Tutorials.html).
+This tutorial defines the Fibonacci action for use with the action tutorials.
+There are three parts of the action:
 
-Each ROS 2 package consists of its own self-contained demonstration(s) with its respective `README.md` showing how things work.
+- The goal contains an *order* field which determines the length of the returned Fibonacci sequence.
+For example, order 2 should return sequence [0, 1] and order 5 should return sequence [0, 1, 1, 2, 3].
+- The feedback consists of a partial sequence that is returned as the Fibonacci sequence is calculated.
+For example, for order 5 at some point the partial sequence [0, 1, 1] will be returned.
+- The result consists of the complete Fibonacci sequence (ex. [0, 1, 1, 2, ..., 165580141]).
