@@ -12,14 +12,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""Launch data publishers with different depth configruations."""
+"""Launch data publishers with different depth configurations."""
 
 from launch import LaunchDescription
 import launch.actions
 from launch_ros.substitutions import ExecutableInPackage
 
 
-def create_data_publisher_action(size, depth):
+def create_data_publisher_action(size: str, depth: int) -> launch.actions.ExecuteProcess:
     name = '{0}_depth_{1}'.format(size, depth)
     payload = 0 if size == 'small' else 100000
     executable = ExecutableInPackage(package='topic_monitor', executable='data_publisher')
@@ -30,7 +30,7 @@ def create_data_publisher_action(size, depth):
     )
 
 
-def generate_launch_description():
+def generate_launch_description() -> LaunchDescription:
     return LaunchDescription([
         create_data_publisher_action('small', 1),
         create_data_publisher_action('small', 50),

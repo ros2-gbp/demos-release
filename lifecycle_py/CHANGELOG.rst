@@ -2,33 +2,67 @@
 Changelog for package lifecycle_py
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-0.33.11 (2026-06-02)
---------------------
-
-0.33.10 (2026-03-24)
---------------------
-
-0.33.9 (2026-01-09)
+0.37.9 (2026-07-06)
 -------------------
 
-0.33.8 (2025-11-12)
+0.37.8 (2026-04-14)
 -------------------
 
-0.33.7 (2025-09-17)
--------------------
-* fix setuptools deprecations (`#733 <https://github.com/ros2/demos/issues/733>`_) (`#737 <https://github.com/ros2/demos/issues/737>`_)
-* Contributors: mergify[bot]
+* Add `ament_mypy` support and type hints to `lifecycle_py` (`#778 <https://github.com/ros2/demos/issues/778>`_)
 
-0.33.6 (2025-08-06)
+* Contributors: Mohit Kumaresan
+
+0.37.7 (2026-03-24)
+-------------------
+* Revert lifecycle_py accidental merge - ament_mypy (`#777 <https://github.com/ros2/demos//issues/777>`_)
+* action_tutorials_py: add ament_mypy support (`#775 <https://github.com/ros2/demos//issues/775>`_)
+* Contributors: mohit
+
+0.37.6 (2026-02-16)
+-------------------
+* Switching to example_interfaces (`#674 <https://github.com/ros2/demos/issues/674>`_)
+* Contributors: Lucas Wendland
+
+0.37.5 (2026-01-09)
 -------------------
 
-0.33.5 (2024-09-06)
+0.37.4 (2025-11-12)
 -------------------
 
-0.33.4 (2024-06-27)
+0.37.3 (2025-09-17)
 -------------------
 
-0.33.3 (2024-05-13)
+0.37.2 (2025-07-29)
+-------------------
+* fix setuptools deprecations (`#733 <https://github.com/ros2/demos/issues/733>`_)
+* Contributors: mosfet80
+
+0.37.1 (2025-06-23)
+-------------------
+
+0.37.0 (2025-04-25)
+-------------------
+
+0.36.0 (2025-04-25)
+-------------------
+
+0.35.1 (2024-11-20)
+-------------------
+* Add test_xmllint.py to all of the ament_python packages. (`#704 <https://github.com/ros2/demos/issues/704>`_)
+* Contributors: Chris Lalancette
+
+0.35.0 (2024-10-03)
+-------------------
+
+0.34.2 (2024-07-29)
+-------------------
+* Change all of the demos to use the new rclpy context manager. (`#694 <https://github.com/ros2/demos/issues/694>`_)
+* Contributors: Chris Lalancette
+
+0.34.1 (2024-06-17)
+-------------------
+
+0.34.0 (2024-04-26)
 -------------------
 
 0.33.2 (2024-03-28)

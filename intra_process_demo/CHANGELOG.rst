@@ -2,41 +2,65 @@
 Changelog for package intra_process_demo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-0.33.11 (2026-06-02)
---------------------
-
-0.33.10 (2026-03-24)
---------------------
-* Don't use `libopencv-dev` for exec (`#760 <https://github.com/ros2/demos//issues/760>`_) (`#762 <https://github.com/ros2/demos//issues/762>`_)
-* Contributors: mergify[bot]
-
-0.33.9 (2026-01-09)
--------------------
-* fixup image_pipeline_demo (`#755 <https://github.com/ros2/demos/issues/755>`_) (`#757 <https://github.com/ros2/demos/issues/757>`_)
-* Contributors: mergify[bot]
-
-0.33.8 (2025-11-12)
+0.37.9 (2026-07-06)
 -------------------
 
-0.33.7 (2025-09-17)
+0.37.7 (2026-03-24)
+-------------------
+* Use new ROSIDL aggregate CMake target (`#781 <https://github.com/ros2/demos//issues/781>`_)
+* Don't use `libopencv-dev` for exec (`#760 <https://github.com/ros2/demos//issues/760>`_)
+* Contributors: Emerson Knapp, Michael Carlstrom
+
+0.37.6 (2026-02-16)
+-------------------
+* Switching to example_interfaces (`#674 <https://github.com/ros2/demos/issues/674>`_)
+* Contributors: Lucas Wendland
+
+0.37.5 (2026-01-09)
+-------------------
+* fixup image_pipeline_demo (`#755 <https://github.com/ros2/demos/issues/755>`_)
+* Contributors: William Woodall
+
+0.37.4 (2025-11-12)
 -------------------
 
-0.33.6 (2025-08-06)
+0.37.3 (2025-09-17)
 -------------------
 
-0.33.5 (2024-09-06)
+0.37.2 (2025-07-29)
 -------------------
-* Removed pre-compiler check for opencv3 (`#695 <https://github.com/ros2/demos/issues/695>`_) (`#696 <https://github.com/ros2/demos/issues/696>`_)
-  (cherry picked from commit e5dc79917333bb6bc9a3efe02fecb3c214cfacef)
-  Co-authored-by: Alejandro Hernández Cordero <ahcorde@gmail.com>
-* Contributors: mergify[bot]
 
-0.33.4 (2024-06-27)
+0.37.1 (2025-06-23)
 -------------------
-* [intra_process_demo] executable name in README.md fix-up (`#690 <https://github.com/ros2/demos/issues/690>`_) (`#691 <https://github.com/ros2/demos/issues/691>`_)
-  Co-authored-by: Trushant Adeshara <150821956+Trushant-Adeshara-UM@users.noreply.github.com>
+* Use EnableRmwIsolation in launch tests (`#724 <https://github.com/ros2/demos/issues/724>`_)
+* Contributors: Scott K Logan
 
-0.33.3 (2024-05-13)
+0.37.0 (2025-04-25)
+-------------------
+
+0.36.0 (2025-04-25)
+-------------------
+* Uniform CMAKE min VERSION (`#714 <https://github.com/ros2/demos/issues/714>`_)
+* Set envars to run tests with rmw_zenoh_cpp with multicast discovery (`#711 <https://github.com/ros2/demos/issues/711>`_)
+* Contributors: Alejandro Hernández Cordero, mosfet80
+
+0.35.1 (2024-11-20)
+-------------------
+
+0.35.0 (2024-10-03)
+-------------------
+
+0.34.2 (2024-07-29)
+-------------------
+* Removed pre-compiler check for opencv3 (`#695 <https://github.com/ros2/demos/issues/695>`_)
+* Contributors: Alejandro Hernández Cordero
+
+0.34.1 (2024-06-17)
+-------------------
+* [intra_process_demo] executable name in README.md fix-up (`#690 <https://github.com/ros2/demos/issues/690>`_)
+* Contributors: Trushant Adeshara
+
+0.34.0 (2024-04-26)
 -------------------
 
 0.33.2 (2024-03-28)
