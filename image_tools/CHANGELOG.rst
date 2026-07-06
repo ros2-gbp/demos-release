@@ -2,6 +2,11 @@
 Changelog for package image_tools
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.37.9 (2026-07-06)
+-------------------
+* Update showimage.cpp removing extra std::cerr outputs (`#785 <https://github.com/ros2/demos/issues/785>`_) (`#789 <https://github.com/ros2/demos/issues/789>`_)
+* Contributors: mergify[bot]
+
 0.37.7 (2026-03-24)
 -------------------
 * Use new ROSIDL aggregate CMake target (`#781 <https://github.com/ros2/demos//issues/781>`_)
