@@ -19,9 +19,10 @@
 
 #include "rclcpp/rclcpp.hpp"
 #include "rclcpp_components/register_node_macro.hpp"
+#include "rcutils/cmdline_parser.h"
 
-#include "example_interfaces/msg/float64.hpp"
-#include "example_interfaces/msg/string.hpp"
+#include "std_msgs/msg/float64.hpp"
+#include "std_msgs/msg/string.hpp"
 
 #include "demo_nodes_cpp/visibility_control.h"
 
@@ -54,6 +55,7 @@ public:
     auto publish_message =
       [this]() -> void
       {
+        count_++;
         // We loan a message here and don't allocate the memory on the stack.
         // For middlewares which support message loaning, this means the middleware
         // completely owns the memory for this message.
@@ -80,13 +82,12 @@ public:
         non_pod_loaned_msg.get().data = non_pod_msg_data;
         RCLCPP_INFO(this->get_logger(), "Publishing: '%s'", non_pod_msg_data.c_str());
         non_pod_pub_->publish(std::move(non_pod_loaned_msg));
-        count_++;
       };
 
     // Create a publisher with a custom Quality of Service profile.
     rclcpp::QoS qos(rclcpp::KeepLast(7));
-    pod_pub_ = this->create_publisher<example_interfaces::msg::Float64>("chatter_pod", qos);
-    non_pod_pub_ = this->create_publisher<example_interfaces::msg::String>("chatter", qos);
+    pod_pub_ = this->create_publisher<std_msgs::msg::Float64>("chatter_pod", qos);
+    non_pod_pub_ = this->create_publisher<std_msgs::msg::String>("chatter", qos);
 
     // Use a timer to schedule periodic message publishing.
     timer_ = this->create_wall_timer(1s, publish_message);
@@ -94,8 +95,8 @@ public:
 
 private:
   size_t count_ = 1;
-  rclcpp::Publisher<example_interfaces::msg::Float64>::SharedPtr pod_pub_;
-  rclcpp::Publisher<example_interfaces::msg::String>::SharedPtr non_pod_pub_;
+  rclcpp::Publisher<std_msgs::msg::Float64>::SharedPtr pod_pub_;
+  rclcpp::Publisher<std_msgs::msg::String>::SharedPtr non_pod_pub_;
   rclcpp::TimerBase::SharedPtr timer_;
 };
 

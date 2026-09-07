@@ -14,13 +14,13 @@
 
 import sys
 
-from example_interfaces.msg import String
-
 import rclpy
 from rclpy.executors import ExternalShutdownException
 from rclpy.node import Node
 from rclpy.qos_overriding_options import QosCallbackResult
 from rclpy.qos_overriding_options import QoSOverridingOptions
+
+from std_msgs.msg import String
 
 
 class Listener(Node):
@@ -48,15 +48,19 @@ class Listener(Node):
 
 
 def main(args=None):
-    try:
-        with rclpy.init(args=args):
-            node = Listener()
-            rclpy.spin(node)
-    except (KeyboardInterrupt, ExternalShutdownException):
-        pass
+    rclpy.init(args=args)
 
-    return 0
+    node = Listener()
+    try:
+        rclpy.spin(node)
+    except KeyboardInterrupt:
+        pass
+    except ExternalShutdownException:
+        sys.exit(1)
+    finally:
+        rclpy.try_shutdown()
+        node.destroy_node()
 
 
 if __name__ == '__main__':
-    sys.exit(main())
+    main()

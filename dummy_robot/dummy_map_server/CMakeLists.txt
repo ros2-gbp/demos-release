@@ -1,11 +1,10 @@
-cmake_minimum_required(VERSION 3.20)
+cmake_minimum_required(VERSION 3.5)
 
 project(dummy_map_server)
 
-# Default to C++17
+# Default to C++14
 if(NOT CMAKE_CXX_STANDARD)
-  set(CMAKE_CXX_STANDARD 17)
-  set(CMAKE_CXX_STANDARD_REQUIRED ON)
+  set(CMAKE_CXX_STANDARD 14)
 endif()
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
@@ -17,9 +16,9 @@ find_package(rclcpp REQUIRED)
 find_package(rmw REQUIRED)
 
 add_executable(dummy_map_server src/dummy_map_server.cpp)
-target_link_libraries(dummy_map_server PRIVATE
-  rclcpp::rclcpp
-  nav_msgs::nav_msgs
+ament_target_dependencies(dummy_map_server
+  "rclcpp"
+  "nav_msgs"
 )
 
 install(TARGETS dummy_map_server

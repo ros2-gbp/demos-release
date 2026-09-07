@@ -15,10 +15,10 @@
 import sys
 
 import rclpy
-from rclpy.event_handler import SubscriptionEventCallbacks
 from rclpy.executors import ExternalShutdownException
 from rclpy.executors import SingleThreadedExecutor
 from rclpy.node import Node
+from rclpy.qos_event import SubscriptionEventCallbacks
 from rclpy.time import Time
 
 from sensor_msgs.msg import Image
@@ -60,19 +60,22 @@ class MessageLostListener(Node):
         )
 
 
-def main(args=None):
+def main():
+    rclpy.init(args=None)
+
+    listener = MessageLostListener()
+    executor = SingleThreadedExecutor()
+    executor.add_node(listener)
+
     try:
-        with rclpy.init(args=args):
-            listener = MessageLostListener()
-            executor = SingleThreadedExecutor()
-            executor.add_node(listener)
-
-            executor.spin()
-    except (KeyboardInterrupt, ExternalShutdownException):
+        executor.spin()
+    except KeyboardInterrupt:
         pass
-
-    return 0
+    except ExternalShutdownException:
+        sys.exit(1)
+    finally:
+        rclpy.try_shutdown()
 
 
 if __name__ == '__main__':
-    sys.exit(main())
+    main()

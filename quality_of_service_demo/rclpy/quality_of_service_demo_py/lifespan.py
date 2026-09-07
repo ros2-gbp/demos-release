@@ -11,16 +11,13 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
 import argparse
-import sys
 
 from quality_of_service_demo_py.common_nodes import Listener
 from quality_of_service_demo_py.common_nodes import Talker
 
 import rclpy
 from rclpy.duration import Duration
-from rclpy.executors import ExternalShutdownException
 from rclpy.executors import SingleThreadedExecutor
 from rclpy.qos import QoSDurabilityPolicy
 from rclpy.qos import QoSProfile
@@ -47,37 +44,35 @@ def parse_args():
 
 
 def main(args=None):
-    try:
-        parsed_args = parse_args()
-        with rclpy.init(args=args):
-            topic = 'qos_lifespan_chatter'
-            lifespan = Duration(seconds=parsed_args.lifespan / 1000.0)
+    parsed_args = parse_args()
+    rclpy.init(args=args)
 
-            qos_profile = QoSProfile(
-                depth=parsed_args.history,
-                # Guaranteed delivery is needed to send messages to late-joining subscription.
-                reliability=QoSReliabilityPolicy.RELIABLE,
-                # Store messages on the publisher so that they can be affected by Lifespan.
-                durability=QoSDurabilityPolicy.TRANSIENT_LOCAL,
-                lifespan=lifespan)
+    topic = 'qos_lifespan_chatter'
+    lifespan = Duration(seconds=parsed_args.lifespan / 1000.0)
 
-            listener = Listener(
-                topic, qos_profile, event_callbacks=None, defer_subscribe=True)
-            talker = Talker(
-                topic, qos_profile, event_callbacks=None, publish_count=parsed_args.publish_count)
-            subscribe_timer = listener.create_timer(  # noqa: F841
-                parsed_args.subscribe_after / 1000.0,
-                lambda: listener.start_listening())
+    qos_profile = QoSProfile(
+        depth=parsed_args.history,
+        # Guaranteed delivery is needed to send messages to late-joining subscription.
+        reliability=QoSReliabilityPolicy.RELIABLE,
+        # Store messages on the publisher so that they can be affected by Lifespan.
+        durability=QoSDurabilityPolicy.TRANSIENT_LOCAL,
+        lifespan=lifespan)
 
-            executor = SingleThreadedExecutor()
-            executor.add_node(listener)
-            executor.add_node(talker)
-            executor.spin()
-    except (KeyboardInterrupt, ExternalShutdownException):
-        pass
+    listener = Listener(
+        topic, qos_profile, event_callbacks=None, defer_subscribe=True)
+    talker = Talker(
+        topic, qos_profile, event_callbacks=None, publish_count=parsed_args.publish_count)
+    subscribe_timer = listener.create_timer(  # noqa: F841
+        parsed_args.subscribe_after / 1000.0,
+        lambda: listener.start_listening())
 
-    return 0
+    executor = SingleThreadedExecutor()
+    executor.add_node(listener)
+    executor.add_node(talker)
+    executor.spin()
+
+    rclpy.shutdown()
 
 
 if __name__ == '__main__':
-    sys.exit(main())
+    main()

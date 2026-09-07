@@ -13,6 +13,7 @@
 // limitations under the License.
 
 #include <chrono>
+#include <iostream>
 #include <memory>
 #include <string>
 #include <thread>
@@ -26,7 +27,9 @@
 #include "rclcpp_lifecycle/lifecycle_node.hpp"
 #include "rclcpp_lifecycle/lifecycle_publisher.hpp"
 
-#include "example_interfaces/msg/string.hpp"
+#include "rcutils/logging_macros.h"
+
+#include "std_msgs/msg/string.hpp"
 
 using namespace std::chrono_literals;
 
@@ -73,7 +76,7 @@ public:
   publish()
   {
     static size_t count = 0;
-    auto msg = std::make_unique<example_interfaces::msg::String>();
+    auto msg = std::make_unique<std_msgs::msg::String>();
     msg->data = "Lifecycle HelloWorld #" + std::to_string(++count);
 
     // Print the current state for demo purposes
@@ -114,9 +117,9 @@ public:
     // can comply to the current state of the node.
     // As of the beta version, there is only a lifecycle publisher
     // available.
-    pub_ = this->create_publisher<example_interfaces::msg::String>("lifecycle_chatter", 10);
+    pub_ = this->create_publisher<std_msgs::msg::String>("lifecycle_chatter", 10);
     timer_ = this->create_wall_timer(
-      1s, [this]() {return this->publish();});
+      1s, std::bind(&LifecycleTalker::publish, this));
 
     RCLCPP_INFO(get_logger(), "on_configure() is called.");
 
@@ -149,7 +152,7 @@ public:
     // Overriding this method is optional, a lot of times the default is enough.
     LifecycleNode::on_activate(state);
 
-    RCLCPP_INFO(get_logger(), "on_activate() is called.");
+    RCUTILS_LOG_INFO_NAMED(get_name(), "on_activate() is called.");
 
     // Let's sleep for 2 seconds.
     // We emulate we are doing important
@@ -185,7 +188,7 @@ public:
     // Overriding this method is optional, a lot of times the default is enough.
     LifecycleNode::on_deactivate(state);
 
-    RCLCPP_INFO(get_logger(), "on_deactivate() is called.");
+    RCUTILS_LOG_INFO_NAMED(get_name(), "on_deactivate() is called.");
 
     // We return a success and hence invoke the transition to the next
     // step: "inactive".
@@ -216,7 +219,7 @@ public:
     timer_.reset();
     pub_.reset();
 
-    RCLCPP_INFO(get_logger(), "on cleanup is called.");
+    RCUTILS_LOG_INFO_NAMED(get_name(), "on cleanup is called.");
 
     // We return a success and hence invoke the transition to the next
     // step: "unconfigured".
@@ -247,7 +250,10 @@ public:
     timer_.reset();
     pub_.reset();
 
-    RCLCPP_INFO(get_logger(), "on shutdown is called from state %s.", state.label().c_str());
+    RCUTILS_LOG_INFO_NAMED(
+      get_name(),
+      "on shutdown is called from state %s.",
+      state.label().c_str());
 
     // We return a success and hence invoke the transition to the next
     // step: "finalized".
@@ -264,7 +270,7 @@ private:
   // is in.
   // By default, a lifecycle publisher is inactive by creation and has to be
   // activated to publish messages into the ROS world.
-  std::shared_ptr<rclcpp_lifecycle::LifecyclePublisher<example_interfaces::msg::String>> pub_;
+  std::shared_ptr<rclcpp_lifecycle::LifecyclePublisher<std_msgs::msg::String>> pub_;
 
   // We hold an instance of a timer which periodically triggers the publish function.
   // As for the beta version, this is a regular timer. In a future version, a
