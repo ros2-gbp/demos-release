@@ -2,7 +2,7 @@
 <?xml-model href="http://download.ros.org/schema/package_format2.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="2">
   <name>demo_nodes_cpp_native</name>
-  <version>0.38.0</version>
+  <version>0.38.1</version>
   <description>
     C++ nodes which access the native handles of the rmw implementation.
   </description>
@@ -10,12 +10,13 @@
   <maintainer email="aditya.pande@openrobotics.org">Aditya Pande</maintainer>
   <maintainer email="audrow@openrobotics.org">Audrow Nash</maintainer>
 
-  <license>Apache License 2.0</license>
+  <license>Apache-2.0</license>
 
   <author email="dthomas@osrfoundation.org">Dirk Thomas</author>
   <author email="mabel@openrobotics.org">Mabel Zhang</author>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
+  <buildtool_depend>ament_cmake_ros_core</buildtool_depend>
 
   <depend>rclcpp</depend>
   <depend>rclcpp_components</depend>
