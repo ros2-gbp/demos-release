@@ -18,7 +18,7 @@ find_package(rclcpp_components REQUIRED)
 find_package(rcutils)
 find_package(rmw REQUIRED)
 find_package(sensor_msgs REQUIRED)
-find_package(example_interfaces REQUIRED)
+find_package(std_msgs REQUIRED)
 
 include_directories(include)
 # TODO(sloretz) stop exporting old-style CMake variables in the future
@@ -32,7 +32,7 @@ function(qos_demo_executable target)
   target_link_libraries(${target}
     rclcpp::rclcpp
     rcutils::rcutils
-    example_interfaces::example_interfaces)
+    ${std_msgs_TARGETS})
   install(TARGETS ${target} DESTINATION lib/${PROJECT_NAME})
 endfunction()
 
@@ -50,7 +50,7 @@ target_link_libraries(message_lost
   rclcpp::rclcpp
   rclcpp_components::component
   rcutils::rcutils
-  sensor_msgs::sensor_msgs)
+  ${sensor_msgs_TARGETS})
 target_compile_definitions(message_lost
   PRIVATE "QUALITY_OF_SERVICE_DEMO_BUILDING_DLL")
 rclcpp_components_register_node(message_lost
@@ -68,7 +68,7 @@ target_link_libraries(qos_overrides
   rclcpp::rclcpp
   rclcpp_components::component
   rcutils::rcutils
-  sensor_msgs::sensor_msgs)
+  ${sensor_msgs_TARGETS})
 target_compile_definitions(qos_overrides
   PRIVATE "QUALITY_OF_SERVICE_DEMO_BUILDING_DLL")
 rclcpp_components_register_node(qos_overrides

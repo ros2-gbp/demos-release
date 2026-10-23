@@ -15,8 +15,6 @@
 import argparse
 import sys
 
-from example_interfaces.msg import String
-
 import rclpy
 from rclpy.executors import ExternalShutdownException
 from rclpy.node import Node
@@ -24,6 +22,8 @@ from rclpy.qos import qos_profile_sensor_data
 from rclpy.qos import QoSProfile
 from rclpy.qos import QoSReliabilityPolicy
 from rclpy.utilities import remove_ros_args
+
+from std_msgs.msg import String
 
 
 class TalkerQos(Node):

@@ -22,7 +22,7 @@ find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(rclcpp_components REQUIRED)
 find_package(rmw REQUIRED)
-find_package(example_interfaces REQUIRED)
+find_package(std_msgs REQUIRED)
 
 include_directories(include)
 
@@ -31,9 +31,10 @@ add_library(talker_native SHARED
 target_compile_definitions(talker_native
   PRIVATE "DEMO_NODES_CPP_NATIVE_BUILDING_DLL")
 target_link_libraries(talker_native PUBLIC
-  example_interfaces::example_interfaces
   rclcpp::rclcpp
+  ${std_msgs_TARGETS}
   rclcpp_components::component)
+# TODO(sloretz) use target_link_libraries when rmw_fastrtps_cpp uses modern CMake targets)
 target_include_directories(talker_native PRIVATE
   ${rmw_fastrtps_cpp_INCLUDE_DIRS})
 target_link_libraries(talker_native PRIVATE

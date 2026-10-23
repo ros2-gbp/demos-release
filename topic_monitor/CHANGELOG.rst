@@ -2,48 +2,27 @@
 Changelog for package topic_monitor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-0.37.10 (2026-10-23)
---------------------
-* add python3-matplotlib in exec_depend. (`#804 <https://github.com/ros2/demos//issues/804>`_) (`#805 <https://github.com/ros2/demos//issues/805>`_)
-* topic_monitor: Fix mypy failure on missing/untyped matplotlib (`#794 <https://github.com/ros2/demos//issues/794>`_) (`#802 <https://github.com/ros2/demos//issues/802>`_)
-* Contributors: Michael Carroll, mergify[bot]
-
-0.37.9 (2026-07-06)
+0.36.6 (2026-10-23)
 -------------------
-* Fixed topic monitor demos (`#791 <https://github.com/ros2/demos/issues/791>`_) (`#792 <https://github.com/ros2/demos/issues/792>`_)
+
+0.36.5 (2026-03-24)
+-------------------
+
+0.36.4 (2026-01-09)
+-------------------
+
+0.36.3 (2025-11-12)
+-------------------
+
+0.36.2 (2025-09-17)
+-------------------
+* fix setuptools deprecations (`#733 <https://github.com/ros2/demos/issues/733>`_) (`#736 <https://github.com/ros2/demos/issues/736>`_)
 * Contributors: mergify[bot]
 
-0.37.7 (2026-03-24)
+0.36.1 (2025-06-23)
 -------------------
-* Add mypy config (`#776 <https://github.com/ros2/demos//issues/776>`_)
-* Contributors: Dan Mascarenhas
-
-0.37.6 (2026-02-16)
--------------------
-* Switching to example_interfaces (`#674 <https://github.com/ros2/demos/issues/674>`_)
-* Contributors: Lucas Wendland
-
-0.37.5 (2026-01-09)
--------------------
-
-0.37.4 (2025-11-12)
--------------------
-
-0.37.3 (2025-09-17)
--------------------
-
-0.37.2 (2025-07-29)
--------------------
-* fix setuptools deprecations (`#733 <https://github.com/ros2/demos/issues/733>`_)
-* Contributors: mosfet80
-
-0.37.1 (2025-06-23)
--------------------
-* Update README.md (`#718 <https://github.com/ros2/demos/issues/718>`_) (`#719 <https://github.com/ros2/demos/issues/719>`_)
-* Contributors: mergify[bot]
-
-0.37.0 (2025-04-25)
--------------------
+* Update README.md (`#718 <https://github.com/ros2/demos/issues/718>`_)
+* Contributors: Alejandro Hernández Cordero
 
 0.36.0 (2025-04-25)
 -------------------

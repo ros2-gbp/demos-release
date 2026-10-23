@@ -2,50 +2,26 @@
 Changelog for package lifecycle_py
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-0.37.10 (2026-10-23)
---------------------
-* Run lifecycle_py/test with RMW isolation (`#798 <https://github.com/ros2/demos//issues/798>`_) (`#799 <https://github.com/ros2/demos//issues/799>`_)
+0.36.6 (2026-10-23)
+-------------------
+* Run lifecycle_py/test with RMW isolation (backport `#798 <https://github.com/ros2/demos//issues/798>`_) (`#800 <https://github.com/ros2/demos//issues/800>`_)
 * Contributors: mergify[bot]
 
-0.37.9 (2026-07-06)
+0.36.5 (2026-03-24)
 -------------------
 
-0.37.8 (2026-04-14)
+0.36.4 (2026-01-09)
 -------------------
 
-* Add `ament_mypy` support and type hints to `lifecycle_py` (`#778 <https://github.com/ros2/demos/issues/778>`_)
-
-* Contributors: Mohit Kumaresan
-
-0.37.7 (2026-03-24)
--------------------
-* Revert lifecycle_py accidental merge - ament_mypy (`#777 <https://github.com/ros2/demos//issues/777>`_)
-* action_tutorials_py: add ament_mypy support (`#775 <https://github.com/ros2/demos//issues/775>`_)
-* Contributors: mohit
-
-0.37.6 (2026-02-16)
--------------------
-* Switching to example_interfaces (`#674 <https://github.com/ros2/demos/issues/674>`_)
-* Contributors: Lucas Wendland
-
-0.37.5 (2026-01-09)
+0.36.3 (2025-11-12)
 -------------------
 
-0.37.4 (2025-11-12)
+0.36.2 (2025-09-17)
 -------------------
+* fix setuptools deprecations (`#733 <https://github.com/ros2/demos/issues/733>`_) (`#736 <https://github.com/ros2/demos/issues/736>`_)
+* Contributors: mergify[bot]
 
-0.37.3 (2025-09-17)
--------------------
-
-0.37.2 (2025-07-29)
--------------------
-* fix setuptools deprecations (`#733 <https://github.com/ros2/demos/issues/733>`_)
-* Contributors: mosfet80
-
-0.37.1 (2025-06-23)
--------------------
-
-0.37.0 (2025-04-25)
+0.36.1 (2025-06-23)
 -------------------
 
 0.36.0 (2025-04-25)

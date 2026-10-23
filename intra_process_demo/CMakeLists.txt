@@ -17,7 +17,7 @@ find_package(builtin_interfaces REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(rmw REQUIRED)
 find_package(sensor_msgs REQUIRED)
-find_package(example_interfaces REQUIRED)
+find_package(std_msgs REQUIRED)
 
 find_package(OpenCV REQUIRED COMPONENTS core highgui imgproc videoio)
 
@@ -34,22 +34,22 @@ add_executable(two_node_pipeline
   src/two_node_pipeline/two_node_pipeline.cpp)
 target_link_libraries(two_node_pipeline
   rclcpp::rclcpp
-  example_interfaces::example_interfaces)
+  ${std_msgs_TARGETS})
 
   # Simple example of a cyclic pipeline which uses no allocation while iterating.
 add_executable(cyclic_pipeline
   src/cyclic_pipeline/cyclic_pipeline.cpp)
 target_link_libraries(cyclic_pipeline
   rclcpp::rclcpp
-  example_interfaces::example_interfaces)
+  ${std_msgs_TARGETS})
 
 # A single program with one of each of the image pipeline demo nodes.
 add_executable(image_pipeline_all_in_one
   src/image_pipeline/image_pipeline_all_in_one.cpp)
 target_link_libraries(image_pipeline_all_in_one
   rclcpp::rclcpp
-  builtin_interfaces::builtin_interfaces
-  sensor_msgs::sensor_msgs
+  ${builtin_interfaces_TARGETS}
+  ${sensor_msgs_TARGETS}
   opencv_core
   opencv_highgui)
 
@@ -58,8 +58,8 @@ add_executable(image_pipeline_with_two_image_view
   src/image_pipeline/image_pipeline_with_two_image_view.cpp)
 target_link_libraries(image_pipeline_with_two_image_view
   rclcpp::rclcpp
-  builtin_interfaces::builtin_interfaces
-  sensor_msgs::sensor_msgs
+  ${builtin_interfaces_TARGETS}
+  ${sensor_msgs_TARGETS}
   opencv_core
   opencv_highgui)
 
@@ -68,8 +68,8 @@ add_executable(camera_node
   src/image_pipeline/camera_node.cpp)
 target_link_libraries(camera_node
   rclcpp::rclcpp
-  builtin_interfaces::builtin_interfaces
-  sensor_msgs::sensor_msgs
+  ${builtin_interfaces_TARGETS}
+  ${sensor_msgs_TARGETS}
   opencv_core
   opencv_highgui
   opencv_imgproc)
@@ -79,8 +79,8 @@ add_executable(watermark_node
   src/image_pipeline/watermark_node.cpp)
 target_link_libraries(watermark_node
   rclcpp::rclcpp
-  builtin_interfaces::builtin_interfaces
-  sensor_msgs::sensor_msgs
+  ${builtin_interfaces_TARGETS}
+  ${sensor_msgs_TARGETS}
   opencv_core
   opencv_videoio)
 
@@ -89,8 +89,8 @@ add_executable(image_view_node
   src/image_pipeline/image_view_node.cpp)
 target_link_libraries(image_view_node
   rclcpp::rclcpp
-  builtin_interfaces::builtin_interfaces
-  sensor_msgs::sensor_msgs
+  ${builtin_interfaces_TARGETS}
+  ${sensor_msgs_TARGETS}
   opencv_core
   opencv_highgui)
 
