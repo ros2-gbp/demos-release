@@ -5,7 +5,7 @@ package_name = 'demo_nodes_py'
 
 setup(
     name=package_name,
-    version='0.38.0',
+    version='0.38.1',
     packages=find_packages(exclude=['test']),
     data_files=[
         ('share/ament_index/resource_index/packages', ['resource/' + package_name]),
@@ -27,7 +27,7 @@ setup(
         'Python nodes which were previously in the ros2/examples repository '
         'but are now just used for demo purposes.'
     ),
-    license='Apache License, Version 2.0',
+    license='Apache-2.0',
     extras_require={
         'test': [
             'pytest',
