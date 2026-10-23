@@ -13,17 +13,21 @@
 // limitations under the License.
 
 #include <chrono>
-#include <iostream>
+#include <cstddef>
+#include <cstdio>
 #include <memory>
+#include <string>
 
-#include "rclcpp/rclcpp.hpp"
+#include "rclcpp/node.hpp"
+#include "rclcpp/node_options.hpp"
+#include "rclcpp/publisher.hpp"
+#include "rclcpp/qos.hpp"
+#include "rclcpp/serialization.hpp"
+#include "rclcpp/serialized_message.hpp"
+#include "rclcpp/timer.hpp"
 #include "rclcpp_components/register_node_macro.hpp"
 
-#include "rcutils/allocator.h"
-
-#include "std_msgs/msg/string.hpp"
-
-#include "rclcpp/serialization.hpp"
+#include "example_interfaces/msg/string.hpp"
 
 #include "demo_nodes_cpp/visibility_control.h"
 
@@ -44,7 +48,7 @@ public:
     auto publish_message =
       [this]() -> void
       {
-        // In this example we send a std_msgs/String as serialized data.
+        // In this example we send a example_interfaces/String as serialized data.
         // This is the manual CDR serialization of a string message with the content of
         // Hello World: <count_> equivalent to talker example.
         // The serialized data is composed of a 8 Byte header
@@ -56,8 +60,9 @@ public:
 
         // In order to ease things up, we call the rmw_serialize function,
         // which can do the above conversion for us.
-        // For this, we initially fill up a std_msgs/String message and fill up its content
-        auto string_msg = std::make_shared<std_msgs::msg::String>();
+        // For this, we initially fill up a example_interfaces/String message and
+        // fill up its content
+        auto string_msg = std::make_shared<example_interfaces::msg::String>();
         string_msg->data = "Hello World:" + std::to_string(count_++);
 
         // We know the size of the data to be sent, and thus can pre-allocate the
@@ -70,10 +75,10 @@ public:
         auto message_payload_length = static_cast<size_t>(string_msg->data.size());
         serialized_msg_.reserve(message_header_length + message_payload_length);
 
-        static rclcpp::Serialization<std_msgs::msg::String> serializer;
+        static rclcpp::Serialization<example_interfaces::msg::String> serializer;
         serializer.serialize_message(string_msg.get(), &serialized_msg_);
 
-        // For demonstration we print the ROS2 message format
+        // For demonstration we print the ROS 2 message format
         printf("ROS message:\n");
         printf("%s\n", string_msg->data.c_str());
         // And after the corresponding binary representation
@@ -87,7 +92,7 @@ public:
       };
 
     rclcpp::QoS qos(rclcpp::KeepLast(7));
-    pub_ = this->create_publisher<std_msgs::msg::String>("chatter", qos);
+    pub_ = this->create_publisher<example_interfaces::msg::String>("chatter", qos);
 
     // Use a timer to schedule periodic message publishing.
     timer_ = this->create_wall_timer(1s, publish_message);
@@ -96,7 +101,7 @@ public:
 private:
   size_t count_ = 1;
   rclcpp::SerializedMessage serialized_msg_;
-  rclcpp::Publisher<std_msgs::msg::String>::SharedPtr pub_;
+  rclcpp::Publisher<example_interfaces::msg::String>::SharedPtr pub_;
   rclcpp::TimerBase::SharedPtr timer_;
 };
 

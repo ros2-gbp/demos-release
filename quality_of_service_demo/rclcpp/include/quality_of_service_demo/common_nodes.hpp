@@ -16,11 +16,17 @@
 #define QUALITY_OF_SERVICE_DEMO__COMMON_NODES_HPP_
 
 #include <chrono>
-#include <memory>
+#include <cstddef>
 #include <string>
 
-#include "rclcpp/rclcpp.hpp"
-#include "std_msgs/msg/string.hpp"
+#include "rclcpp/node.hpp"
+#include "rclcpp/publisher.hpp"
+#include "rclcpp/publisher_options.hpp"
+#include "rclcpp/qos.hpp"
+#include "rclcpp/subscription.hpp"
+#include "rclcpp/subscription_options.hpp"
+#include "rclcpp/timer.hpp"
+#include "example_interfaces/msg/string.hpp"
 
 constexpr char DEFAULT_TOPIC_NAME[] = "qos_chatter";
 
@@ -86,7 +92,7 @@ public:
 private:
   rclcpp::QoS qos_profile_;
   rclcpp::PublisherOptions publisher_options_;
-  rclcpp::Publisher<std_msgs::msg::String>::SharedPtr publisher_ = nullptr;
+  rclcpp::Publisher<example_interfaces::msg::String>::SharedPtr publisher_ = nullptr;
 
   const std::string topic_name_;
   size_t publish_count_ = 0;
@@ -133,7 +139,7 @@ public:
 private:
   rclcpp::QoS qos_profile_;
   rclcpp::SubscriptionOptions subscription_options_;
-  rclcpp::Subscription<std_msgs::msg::String>::SharedPtr subscription_ = nullptr;
+  rclcpp::Subscription<example_interfaces::msg::String>::SharedPtr subscription_ = nullptr;
 
   const std::string topic_name_;
   const bool defer_subscribe_ = false;

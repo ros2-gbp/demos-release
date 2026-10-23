@@ -20,13 +20,18 @@
 
 #include <math.h>
 
-#include <chrono>
-#include <iostream>
+#include <cmath>
+#include <cstddef>
 #include <memory>
 
+#include "rcl/time.h"
 #include "rclcpp/clock.hpp"
-#include "rclcpp/rclcpp.hpp"
+#include "rclcpp/executors/single_threaded_executor.hpp"
+#include "rclcpp/logging.hpp"
+#include "rclcpp/node.hpp"
+#include "rclcpp/rate.hpp"
 #include "rclcpp/time_source.hpp"
+#include "rclcpp/utilities.hpp"
 
 #include "sensor_msgs/msg/laser_scan.hpp"
 
@@ -58,8 +63,9 @@ int main(int argc, char * argv[])
   }
   msg.ranges.resize(static_cast<int>(num_values));
 
-  msg.time_increment =
-    static_cast<float>((angle_resolution / 10000.0) / 360.0 / (scan_frequency / 100.0));
+  // Set `time_increment` with 0 to avoid unstable status shown in the `LaserScan` display of rviz2
+  // while looking up transform with a forward time value.
+  msg.time_increment = 0.0f;
   msg.angle_increment = static_cast<float>(angle_resolution / 10000.0 * DEG2RAD);
   msg.angle_min = static_cast<float>(start_angle / 10000.0 * DEG2RAD - M_PI / 2);
   msg.angle_max = static_cast<float>(stop_angle / 10000.0 * DEG2RAD - M_PI / 2);
@@ -75,6 +81,8 @@ int main(int argc, char * argv[])
   rclcpp::Clock::SharedPtr clock = std::make_shared<rclcpp::Clock>(RCL_ROS_TIME);
   ts.attachClock(clock);
 
+  rclcpp::executors::SingleThreadedExecutor executor;
+  executor.add_node(node);
   auto counter = 0.0;
   auto amplitude = 1;
   auto distance = 0.0f;
@@ -89,7 +97,7 @@ int main(int argc, char * argv[])
     msg.header.stamp = clock->now();
 
     laser_pub->publish(msg);
-    rclcpp::spin_some(node);
+    executor.spin_some();
     loop_rate.sleep();
   }
 

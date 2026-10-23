@@ -13,10 +13,16 @@
 // limitations under the License.
 
 #include <chrono>
+#include <cstdio>
 #include <memory>
 #include <sstream>
 
-#include "rclcpp/rclcpp.hpp"
+#include "rclcpp/logging.hpp"
+#include "rclcpp/node.hpp"
+#include "rclcpp/node_options.hpp"
+#include "rclcpp/parameter.hpp"
+#include "rclcpp/parameter_client.hpp"
+#include "rclcpp/utilities.hpp"
 #include "rclcpp_components/register_node_macro.hpp"
 
 #include "demo_nodes_cpp/visibility_control.h"
@@ -31,7 +37,7 @@ class ListParameters : public rclcpp::Node
 public:
   DEMO_NODES_CPP_PUBLIC
   explicit ListParameters(const rclcpp::NodeOptions & options)
-  : Node("list_paramters", options)
+  : Node("list_parameters", options)
   {
     setvbuf(stdout, NULL, _IONBF, BUFSIZ);
     this->declare_parameter("foo", 0);

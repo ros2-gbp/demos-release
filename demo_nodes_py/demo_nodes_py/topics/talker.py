@@ -12,13 +12,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import sys
+from example_interfaces.msg import String
 
 import rclpy
 from rclpy.executors import ExternalShutdownException
 from rclpy.node import Node
-
-from std_msgs.msg import String
 
 
 class Talker(Node):
@@ -38,20 +36,14 @@ class Talker(Node):
         self.pub.publish(msg)
 
 
-def main(args=None):
-    rclpy.init(args=args)
-
-    node = Talker()
-
+def main():
     try:
-        rclpy.spin(node)
-    except KeyboardInterrupt:
+        with rclpy.init():
+            node = Talker()
+
+            rclpy.spin(node)
+    except (KeyboardInterrupt, ExternalShutdownException):
         pass
-    except ExternalShutdownException:
-        sys.exit(1)
-    finally:
-        node.destroy_node()
-        rclpy.try_shutdown()
 
 
 if __name__ == '__main__':

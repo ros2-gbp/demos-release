@@ -16,8 +16,11 @@
 #define COMPOSITION__NODE_LIKE_LISTENER_COMPONENT_HPP_
 
 #include "composition/visibility_control.h"
-#include "rclcpp/rclcpp.hpp"
-#include "std_msgs/msg/string.hpp"
+#include "example_interfaces/msg/string.hpp"
+#include "rclcpp/node.hpp"
+#include "rclcpp/node_interfaces/node_base_interface.hpp"
+#include "rclcpp/node_options.hpp"
+#include "rclcpp/subscription.hpp"
 
 namespace composition
 {
@@ -34,7 +37,7 @@ public:
 
 private:
   rclcpp::Node::SharedPtr node_;
-  rclcpp::Subscription<std_msgs::msg::String>::SharedPtr sub_;
+  rclcpp::Subscription<example_interfaces::msg::String>::SharedPtr sub_;
 };
 
 }  // namespace composition

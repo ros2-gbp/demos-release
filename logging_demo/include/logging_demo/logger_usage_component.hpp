@@ -15,11 +15,16 @@
 #ifndef LOGGING_DEMO__LOGGER_USAGE_COMPONENT_HPP_
 #define LOGGING_DEMO__LOGGER_USAGE_COMPONENT_HPP_
 
-#include <string>
+#include <cstddef>
+#include <functional>
 
 #include "logging_demo/visibility_control.h"
-#include "rclcpp/rclcpp.hpp"
-#include "std_msgs/msg/string.hpp"
+#include "rclcpp/logger.hpp"
+#include "rclcpp/node.hpp"
+#include "rclcpp/node_options.hpp"
+#include "rclcpp/publisher.hpp"
+#include "rclcpp/timer.hpp"
+#include "example_interfaces/msg/string.hpp"
 
 namespace logging_demo
 {
@@ -35,7 +40,7 @@ protected:
 
 private:
   size_t count_;
-  rclcpp::Publisher<std_msgs::msg::String>::SharedPtr pub_;
+  rclcpp::Publisher<example_interfaces::msg::String>::SharedPtr pub_;
   rclcpp::TimerBase::SharedPtr one_shot_timer_, timer_;
   std::function<bool()> debug_function_to_evaluate_;
 };

@@ -13,16 +13,18 @@
 // limitations under the License.
 
 #include <chrono>
+#include <cstdio>
+#include <iostream>
 #include <memory>
 #include <string>
 
 #include "rcutils/cmdline_parser.h"
 
-#include "rclcpp/rclcpp.hpp"
+#include "rclcpp/event_handler.hpp"
 #include "rclcpp/executors/single_threaded_executor.hpp"
-
-#include "std_msgs/msg/string.hpp"
-#include "std_msgs/msg/bool.hpp"
+#include "rclcpp/logging.hpp"
+#include "rclcpp/qos.hpp"
+#include "rclcpp/utilities.hpp"
 
 #include "quality_of_service_demo/common_nodes.hpp"
 
@@ -58,7 +60,7 @@ int main(int argc, char * argv[])
   if (qos_policy_name == "durability") {
     std::cout << "Durability incompatibility selected.\n"
       "Incompatibility condition: publisher durability kind < "
-      "subscripition durability kind.\n"
+      "subscription durability kind.\n"
       "Setting publisher durability to: VOLATILE\n"
       "Setting subscription durability to: TRANSIENT_LOCAL\n";
     qos_profile_publisher.durability(RMW_QOS_POLICY_DURABILITY_VOLATILE);

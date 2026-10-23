@@ -14,12 +14,14 @@
 
 #include "logging_demo/logger_config_component.hpp"
 
-#include <cinttypes>
 #include <iostream>
 #include <memory>
 
 #include "logging_demo/srv/config_logger.hpp"
-#include "rclcpp/rclcpp.hpp"
+#include "rcl/allocator.h"
+#include "rclcpp/logging.hpp"
+#include "rclcpp/node.hpp"
+#include "rclcpp/node_options.hpp"
 #include "rcutils/error_handling.h"
 #include "rcutils/logging.h"
 
@@ -30,9 +32,12 @@ LoggerConfig::LoggerConfig(rclcpp::NodeOptions options)
 : Node("logger_config", options)
 {
   srv_ = create_service<logging_demo::srv::ConfigLogger>(
-    "config_logger", std::bind(
-      &LoggerConfig::handle_logger_config_request,
-      this, std::placeholders::_1, std::placeholders::_2));
+    "config_logger", [this](
+      const std::shared_ptr<logging_demo::srv::ConfigLogger::Request> request,
+      std::shared_ptr<logging_demo::srv::ConfigLogger::Response> response) {
+      return this->handle_logger_config_request(request, response);
+    }
+  );
 }
 
 void

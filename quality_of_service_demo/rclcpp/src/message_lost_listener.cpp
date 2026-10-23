@@ -12,7 +12,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "rclcpp/rclcpp.hpp"
+#include "rcl/time.h"
+
+#include "rclcpp/event_handler.hpp"
+#include "rclcpp/logging.hpp"
+#include "rclcpp/node.hpp"
+#include "rclcpp/node_options.hpp"
+#include "rclcpp/subscription.hpp"
+#include "rclcpp/subscription_options.hpp"
+#include "rclcpp/time.hpp"
 #include "rclcpp_components/register_node_macro.hpp"
 
 #include "sensor_msgs/msg/image.hpp"
@@ -33,7 +41,8 @@ public:
       [this](const sensor_msgs::msg::Image::ConstSharedPtr msg) -> void
       {
         rclcpp::Time now = this->get_clock()->now();
-        auto diff = now - msg->header.stamp;
+        rclcpp::Time stamp_time(msg->header.stamp, RCL_ROS_TIME);
+        auto diff = now - stamp_time;
         RCLCPP_INFO(
           this->get_logger(),
           "I heard an image. Message single trip latency: [%f]",

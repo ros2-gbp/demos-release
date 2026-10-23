@@ -14,12 +14,16 @@
 
 #include "composition/client_component.hpp"
 
+#include <chrono>
 #include <cinttypes>
-#include <iostream>
 #include <memory>
 
 #include "example_interfaces/srv/add_two_ints.hpp"
-#include "rclcpp/rclcpp.hpp"
+#include "rclcpp/client.hpp"
+#include "rclcpp/logging.hpp"
+#include "rclcpp/node.hpp"
+#include "rclcpp/node_options.hpp"
+#include "rclcpp/utilities.hpp"
 
 using namespace std::chrono_literals;
 
@@ -33,7 +37,7 @@ Client::Client(const rclcpp::NodeOptions & options)
   // Note(dhood): The timer period must be greater than the duration of the timer callback.
   // Otherwise, the timer can starve a single-threaded executor.
   // See https://github.com/ros2/rclcpp/issues/392 for updates.
-  timer_ = create_wall_timer(2s, std::bind(&Client::on_timer, this));
+  timer_ = create_wall_timer(2s, [this]() {return this->on_timer();});
 }
 
 void Client::on_timer()

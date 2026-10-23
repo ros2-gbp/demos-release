@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.20)
 
 project(demo_nodes_cpp_native)
 
@@ -8,20 +8,16 @@ if(NOT rmw_fastrtps_cpp_FOUND)
   return()
 endif()
 
-# Default to C++14
-if(NOT CMAKE_CXX_STANDARD)
-  set(CMAKE_CXX_STANDARD 14)
-endif()
-
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
 endif()
 
 find_package(ament_cmake REQUIRED)
+find_package(ament_cmake_ros_core REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(rclcpp_components REQUIRED)
 find_package(rmw REQUIRED)
-find_package(std_msgs REQUIRED)
+find_package(example_interfaces REQUIRED)
 
 include_directories(include)
 
@@ -29,11 +25,13 @@ add_library(talker_native SHARED
   src/talker.cpp)
 target_compile_definitions(talker_native
   PRIVATE "DEMO_NODES_CPP_NATIVE_BUILDING_DLL")
-ament_target_dependencies(talker_native
-  "rclcpp"
-  "std_msgs"
-  "rclcpp_components"
-  "rmw_fastrtps_cpp")
+target_link_libraries(talker_native PUBLIC
+  example_interfaces::example_interfaces
+  rclcpp::rclcpp
+  rclcpp_components::component
+  ament_cmake_ros_core::ament_ros_defaults)
+target_link_libraries(talker_native PRIVATE
+  rmw_fastrtps_cpp::rmw_fastrtps_cpp)
 rclcpp_components_register_node(talker_native PLUGIN "demo_nodes_cpp_native::Talker" EXECUTABLE talker)
 install(TARGETS
   talker_native

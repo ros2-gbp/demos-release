@@ -12,14 +12,17 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <chrono>
 #include <cmath>
-#include <iostream>
+#include <cstddef>
 #include <memory>
 
+#include "rcl/time.h"
 #include "rclcpp/clock.hpp"
-#include "rclcpp/rclcpp.hpp"
+#include "rclcpp/executors/single_threaded_executor.hpp"
+#include "rclcpp/node.hpp"
+#include "rclcpp/rate.hpp"
 #include "rclcpp/time_source.hpp"
+#include "rclcpp/utilities.hpp"
 
 #include "sensor_msgs/msg/joint_state.hpp"
 
@@ -43,6 +46,8 @@ int main(int argc, char * argv[])
   rclcpp::Clock::SharedPtr clock = std::make_shared<rclcpp::Clock>(RCL_ROS_TIME);
   ts.attachClock(clock);
 
+  rclcpp::executors::SingleThreadedExecutor executor;
+  executor.add_node(node);
   auto counter = 0.0;
   auto joint_value = 0.0;
   while (rclcpp::ok()) {
@@ -56,7 +61,7 @@ int main(int argc, char * argv[])
     msg.header.stamp = clock->now();
 
     joint_state_pub->publish(msg);
-    rclcpp::spin_some(node);
+    executor.spin_some();
     loop_rate.sleep();
   }
 
