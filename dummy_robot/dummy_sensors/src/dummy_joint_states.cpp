@@ -12,17 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include <chrono>
 #include <cmath>
-#include <cstddef>
+#include <iostream>
 #include <memory>
 
-#include "rcl/time.h"
 #include "rclcpp/clock.hpp"
-#include "rclcpp/executors/single_threaded_executor.hpp"
-#include "rclcpp/node.hpp"
-#include "rclcpp/rate.hpp"
+#include "rclcpp/rclcpp.hpp"
 #include "rclcpp/time_source.hpp"
-#include "rclcpp/utilities.hpp"
 
 #include "sensor_msgs/msg/joint_state.hpp"
 

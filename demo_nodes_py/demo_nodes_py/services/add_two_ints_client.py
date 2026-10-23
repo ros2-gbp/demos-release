@@ -18,9 +18,9 @@ import rclpy
 from rclpy.executors import ExternalShutdownException
 
 
-def main():
+def main(args=None):
     try:
-        with rclpy.init():
+        with rclpy.init(args=args):
             node = rclpy.create_node('add_two_ints_client')
 
             cli = node.create_client(AddTwoInts, 'add_two_ints')

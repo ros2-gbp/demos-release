@@ -13,17 +13,11 @@
 // limitations under the License.
 
 #include <chrono>
-#include <cstddef>
 #include <cstdio>
-#include <string>
+#include <memory>
 #include <utility>
 
-#include "rclcpp/logging.hpp"
-#include "rclcpp/node.hpp"
-#include "rclcpp/node_options.hpp"
-#include "rclcpp/publisher.hpp"
-#include "rclcpp/qos.hpp"
-#include "rclcpp/timer.hpp"
+#include "rclcpp/rclcpp.hpp"
 #include "rclcpp_components/register_node_macro.hpp"
 
 #include "example_interfaces/msg/float64.hpp"

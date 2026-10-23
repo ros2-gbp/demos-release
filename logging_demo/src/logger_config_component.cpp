@@ -14,14 +14,12 @@
 
 #include "logging_demo/logger_config_component.hpp"
 
+#include <cinttypes>
 #include <iostream>
 #include <memory>
 
 #include "logging_demo/srv/config_logger.hpp"
-#include "rcl/allocator.h"
-#include "rclcpp/logging.hpp"
-#include "rclcpp/node.hpp"
-#include "rclcpp/node_options.hpp"
+#include "rclcpp/rclcpp.hpp"
 #include "rcutils/error_handling.h"
 #include "rcutils/logging.h"
 

@@ -36,9 +36,9 @@ class Talker(Node):
         self.pub.publish(msg)
 
 
-def main():
+def main(args=None):
     try:
-        with rclpy.init():
+        with rclpy.init(args=args):
             node = Talker()
 
             rclpy.spin(node)

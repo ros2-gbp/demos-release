@@ -15,15 +15,10 @@
 #ifndef LOGGING_DEMO__LOGGER_USAGE_COMPONENT_HPP_
 #define LOGGING_DEMO__LOGGER_USAGE_COMPONENT_HPP_
 
-#include <cstddef>
-#include <functional>
+#include <string>
 
 #include "logging_demo/visibility_control.h"
-#include "rclcpp/logger.hpp"
-#include "rclcpp/node.hpp"
-#include "rclcpp/node_options.hpp"
-#include "rclcpp/publisher.hpp"
-#include "rclcpp/timer.hpp"
+#include "rclcpp/rclcpp.hpp"
 #include "example_interfaces/msg/string.hpp"
 
 namespace logging_demo

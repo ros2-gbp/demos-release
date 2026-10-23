@@ -12,12 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <cstdio>
-#include <exception>
 #include <memory>
 
-#include "rclcpp/executors/single_threaded_executor.hpp"
-#include "rclcpp/utilities.hpp"
+#include "rclcpp/rclcpp.hpp"
 
 #include "image_pipeline/camera_node.hpp"
 #include "image_pipeline/image_view_node.hpp"

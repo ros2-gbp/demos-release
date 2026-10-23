@@ -13,18 +13,13 @@
 // limitations under the License.
 
 #include <chrono>
-#include <cstdio>
-#include <cstring>
 #include <memory>
 #include <string>
 
 #include "rcutils/cmdline_parser.h"
 
-#include "rclcpp/event_handler.hpp"
+#include "rclcpp/rclcpp.hpp"
 #include "rclcpp/executors/single_threaded_executor.hpp"
-#include "rclcpp/logging.hpp"
-#include "rclcpp/qos.hpp"
-#include "rclcpp/utilities.hpp"
 
 #include "quality_of_service_demo/common_nodes.hpp"
 

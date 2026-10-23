@@ -13,15 +13,9 @@
 // limitations under the License.
 
 #include <chrono>
-#include <cstdio>
 #include <memory>
 
-#include "rclcpp/client.hpp"
-#include "rclcpp/executors.hpp"
-#include "rclcpp/future_return_code.hpp"
-#include "rclcpp/logging.hpp"
-#include "rclcpp/node.hpp"
-#include "rclcpp/utilities.hpp"
+#include "rclcpp/rclcpp.hpp"
 
 #include "example_interfaces/srv/add_two_ints.hpp"
 

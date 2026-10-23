@@ -2,18 +2,13 @@
 Changelog for package image_tools
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-0.38.1 (2026-10-23)
--------------------
-* Delete old-style ament_export_libraries() call in image_tools (`#813 <https://github.com/ros2/demos//issues/813>`_)
-* Use the SPDX identifier Apache-2.0 in license declarations (`#809 <https://github.com/ros2/demos//issues/809>`_)
-* granular rclcpp/rclcpp.hpp and include what you use (`#806 <https://github.com/ros2/demos//issues/806>`_)
-* Use std::endian (`#783 <https://github.com/ros2/demos//issues/783>`_)
-* Contributors: Alejandro Hernández Cordero, Francois Gonothi Toure, Maurice Alexander Purnawan, Michael Carroll
+0.37.10 (2026-10-23)
+--------------------
 
-0.38.0 (2026-05-07)
+0.37.9 (2026-07-06)
 -------------------
-* Update showimage.cpp removing extra std::cerr outputs (`#785 <https://github.com/ros2/demos/issues/785>`_)
-* Contributors: jmackay2
+* Update showimage.cpp removing extra std::cerr outputs (`#785 <https://github.com/ros2/demos/issues/785>`_) (`#789 <https://github.com/ros2/demos/issues/789>`_)
+* Contributors: mergify[bot]
 
 0.37.7 (2026-03-24)
 -------------------

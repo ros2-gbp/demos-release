@@ -13,9 +13,6 @@
 // limitations under the License.
 
 #include <chrono>
-#include <cstdint>
-#include <cstdio>
-#include <functional>
 #include <future>
 #include <memory>
 #include <string>
@@ -26,12 +23,7 @@
 #include "lifecycle_msgs/srv/change_state.hpp"
 #include "lifecycle_msgs/srv/get_state.hpp"
 
-#include "rclcpp/client.hpp"
-#include "rclcpp/executors/single_threaded_executor.hpp"
-#include "rclcpp/logging.hpp"
-#include "rclcpp/node.hpp"
-#include "rclcpp/rate.hpp"
-#include "rclcpp/utilities.hpp"
+#include "rclcpp/rclcpp.hpp"
 
 using namespace std::chrono_literals;
 

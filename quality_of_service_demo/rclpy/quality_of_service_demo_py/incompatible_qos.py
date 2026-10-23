@@ -43,7 +43,7 @@ def get_parser():
     return parser
 
 
-def main():
+def main(args=None):
     try:
         # Argument parsing and usage
         parser = get_parser()
@@ -114,7 +114,7 @@ def main():
             return 1
 
         # Initialization and configuration
-        with rclpy.init():
+        with rclpy.init(args=args):
             topic = 'incompatible_qos_chatter'
             num_msgs = 5
 

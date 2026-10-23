@@ -2,15 +2,10 @@
 Changelog for package quality_of_service_demo_cpp
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-0.38.1 (2026-10-23)
--------------------
-* Use the SPDX identifier Apache-2.0 in license declarations (`#809 <https://github.com/ros2/demos//issues/809>`_)
-* Missing include (`#807 <https://github.com/ros2/demos//issues/807>`_)
-* granular rclcpp/rclcpp.hpp and include what you use (`#806 <https://github.com/ros2/demos//issues/806>`_)
-* Use std::endian (`#783 <https://github.com/ros2/demos//issues/783>`_)
-* Contributors: Alejandro Hernández Cordero, Maurice Alexander Purnawan, Michael Carroll
+0.37.10 (2026-10-23)
+--------------------
 
-0.38.0 (2026-05-07)
+0.37.9 (2026-07-06)
 -------------------
 
 0.37.7 (2026-03-24)

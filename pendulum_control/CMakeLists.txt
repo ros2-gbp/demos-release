@@ -8,7 +8,12 @@ if(APPLE OR WIN32)
 endif()
 
 find_package(ament_cmake REQUIRED)
-find_package(ament_cmake_ros_core REQUIRED)
+
+# Default to C++17
+if(NOT CMAKE_CXX_STANDARD)
+  set(CMAKE_CXX_STANDARD 17)
+  set(CMAKE_CXX_STANDARD_REQUIRED ON)
+endif()
 
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
@@ -32,24 +37,21 @@ target_link_libraries(pendulum_demo PRIVATE
   pendulum_msgs::pendulum_msgs
   rclcpp::rclcpp
   rttest::rttest
-  tlsf_cpp::tlsf_cpp
-  ament_cmake_ros_core::ament_ros_defaults)
+  tlsf_cpp::tlsf_cpp)
 
 add_executable(pendulum_logger
   src/pendulum_logger.cpp)
 target_link_libraries(pendulum_logger PRIVATE
   pendulum_msgs::pendulum_msgs
   rclcpp::rclcpp
-  rttest::rttest
-  ament_cmake_ros_core::ament_ros_defaults)
+  rttest::rttest)
 
 add_executable(pendulum_teleop
   src/pendulum_teleop.cpp)
 target_link_libraries(pendulum_teleop PRIVATE
   pendulum_msgs::pendulum_msgs
   rclcpp::rclcpp
-  rttest::rttest
-  ament_cmake_ros_core::ament_ros_defaults)
+  rttest::rttest)
 
 install(TARGETS
   pendulum_demo

@@ -32,9 +32,9 @@ class AddTwoIntsServer(Node):
         return response
 
 
-def main():
+def main(args=None):
     try:
-        with rclpy.init():
+        with rclpy.init(args=args):
             node = AddTwoIntsServer()
 
             rclpy.spin(node)

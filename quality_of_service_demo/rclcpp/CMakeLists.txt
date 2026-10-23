@@ -2,12 +2,17 @@ cmake_minimum_required(VERSION 3.20)
 
 project(quality_of_service_demo_cpp)
 
+# Default to C++17
+if(NOT CMAKE_CXX_STANDARD)
+  set(CMAKE_CXX_STANDARD 17)
+  set(CMAKE_CXX_STANDARD_REQUIRED ON)
+endif()
+
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
 endif()
 
 find_package(ament_cmake REQUIRED)
-find_package(ament_cmake_ros_core REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(rclcpp_components REQUIRED)
 find_package(rcutils)
@@ -27,8 +32,7 @@ function(qos_demo_executable target)
   target_link_libraries(${target}
     rclcpp::rclcpp
     rcutils::rcutils
-    example_interfaces::example_interfaces
-    ament_cmake_ros_core::ament_ros_defaults)
+    example_interfaces::example_interfaces)
   install(TARGETS ${target} DESTINATION lib/${PROJECT_NAME})
 endfunction()
 
@@ -46,8 +50,7 @@ target_link_libraries(message_lost
   rclcpp::rclcpp
   rclcpp_components::component
   rcutils::rcutils
-  sensor_msgs::sensor_msgs
-  ament_cmake_ros_core::ament_ros_defaults)
+  sensor_msgs::sensor_msgs)
 target_compile_definitions(message_lost
   PRIVATE "QUALITY_OF_SERVICE_DEMO_BUILDING_DLL")
 rclcpp_components_register_node(message_lost
@@ -65,8 +68,7 @@ target_link_libraries(qos_overrides
   rclcpp::rclcpp
   rclcpp_components::component
   rcutils::rcutils
-  sensor_msgs::sensor_msgs
-  ament_cmake_ros_core::ament_ros_defaults)
+  sensor_msgs::sensor_msgs)
 target_compile_definitions(qos_overrides
   PRIVATE "QUALITY_OF_SERVICE_DEMO_BUILDING_DLL")
 rclcpp_components_register_node(qos_overrides

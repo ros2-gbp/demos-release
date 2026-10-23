@@ -14,19 +14,14 @@
 
 #include "logging_demo/logger_usage_component.hpp"
 
-#include <chrono>
-#include <cstddef>
-#include <functional>
+#include <cinttypes>
+#include <iostream>
 #include <memory>
 #include <string>
 #include <utility>
 
-#include "rclcpp/logger.hpp"
-#include "rclcpp/logging.hpp"
-#include "rclcpp/node.hpp"
-#include "rclcpp/node_options.hpp"
+#include "rclcpp/rclcpp.hpp"
 #include "rcutils/error_handling.h"
-#include "rcutils/logging.h"
 #include "example_interfaces/msg/string.hpp"
 
 using namespace std::chrono_literals;

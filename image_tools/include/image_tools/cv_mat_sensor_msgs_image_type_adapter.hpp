@@ -15,7 +15,6 @@
 #ifndef IMAGE_TOOLS__CV_MAT_SENSOR_MSGS_IMAGE_TYPE_ADAPTER_HPP_
 #define IMAGE_TOOLS__CV_MAT_SENSOR_MSGS_IMAGE_TYPE_ADAPTER_HPP_
 
-#include <bit>
 #include <cstddef>
 #include <memory>
 #include <variant>  // NOLINT[build/include_order]
@@ -29,6 +28,26 @@
 
 namespace image_tools
 {
+namespace detail
+{
+// TODO(audrow): Replace with std::endian when C++ 20 is available
+// https://en.cppreference.com/w/cpp/types/endian
+enum class endian
+{
+#ifdef _WIN32
+  little = 0,
+  big    = 1,
+  native = little
+#else
+  little = __ORDER_LITTLE_ENDIAN__,
+  big    = __ORDER_BIG_ENDIAN__,
+  native = __BYTE_ORDER__
+#endif
+};
+
+}  // namespace detail
+
+
 // TODO(wjwwood): make this as a contribution to vision_opencv's cv_bridge package.
 //   Specifically the CvImage class, which is this is most similar to.
 /// A potentially owning, potentially non-owning, container of a cv::Mat and ROS header.
@@ -66,7 +85,7 @@ namespace image_tools
  */
 class ROSCvMatContainer
 {
-  static constexpr bool is_bigendian_system = std::endian::native == std::endian::big;
+  static constexpr bool is_bigendian_system = detail::endian::native == detail::endian::big;
 
 public:
   using SensorMsgsImageStorageType = std::variant<

@@ -15,11 +15,10 @@
 #include "composition/listener_component.hpp"
 
 #include <iostream>
+#include <memory>
 
+#include "rclcpp/rclcpp.hpp"
 #include "example_interfaces/msg/string.hpp"
-#include "rclcpp/logging.hpp"
-#include "rclcpp/node.hpp"
-#include "rclcpp/node_options.hpp"
 
 namespace composition
 {

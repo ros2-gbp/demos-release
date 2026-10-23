@@ -47,9 +47,9 @@ class Listener(Node):
         return result
 
 
-def main():
+def main(args=None):
     try:
-        with rclpy.init():
+        with rclpy.init(args=args):
             node = Listener()
             rclpy.spin(node)
     except (KeyboardInterrupt, ExternalShutdownException):

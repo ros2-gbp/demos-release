@@ -14,19 +14,12 @@
 
 #include <chrono>
 #include <cinttypes>
-#include <cstdint>
 #include <cstdio>
 #include <memory>
 #include <string>
-#include <type_traits>
 #include <utility>
 
-#include "rclcpp/executors/single_threaded_executor.hpp"
-#include "rclcpp/node.hpp"
-#include "rclcpp/node_options.hpp"
-#include "rclcpp/publisher.hpp"
-#include "rclcpp/subscription.hpp"
-#include "rclcpp/utilities.hpp"
+#include "rclcpp/rclcpp.hpp"
 #include "example_interfaces/msg/int32.hpp"
 
 using namespace std::chrono_literals;

@@ -2,12 +2,17 @@ cmake_minimum_required(VERSION 3.20)
 
 project(composition)
 
+# Default to C++17
+if(NOT CMAKE_CXX_STANDARD)
+  set(CMAKE_CXX_STANDARD 17)
+  set(CMAKE_CXX_STANDARD_REQUIRED ON)
+endif()
+
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
 endif()
 
 find_package(ament_cmake REQUIRED)
-find_package(ament_cmake_ros_core REQUIRED)
 find_package(example_interfaces REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(rclcpp_components REQUIRED)
@@ -26,7 +31,6 @@ target_compile_definitions(talker_component
 target_link_libraries(talker_component PUBLIC
   rclcpp::rclcpp
   rclcpp_components::component
-  ament_cmake_ros_core::ament_ros_defaults
   example_interfaces::example_interfaces)
 rclcpp_components_register_nodes(talker_component "composition::Talker")
 set(node_plugins "${node_plugins}composition::Talker;$<TARGET_FILE:talker_component>\n")
@@ -38,7 +42,6 @@ target_compile_definitions(listener_component
 target_link_libraries(listener_component PUBLIC
   rclcpp::rclcpp
   rclcpp_components::component
-  ament_cmake_ros_core::ament_ros_defaults
   example_interfaces::example_interfaces)
 rclcpp_components_register_nodes(listener_component "composition::Listener")
 set(node_plugins "${node_plugins}composition::Listener;$<TARGET_FILE:listener_component>\n")
@@ -50,7 +53,6 @@ target_compile_definitions(node_like_listener_component
 target_link_libraries(node_like_listener_component PUBLIC
   rclcpp::rclcpp
   rclcpp_components::component
-  ament_cmake_ros_core::ament_ros_defaults
   example_interfaces::example_interfaces)
 rclcpp_components_register_nodes(node_like_listener_component "composition::NodeLikeListener")
 set(node_plugins "${node_plugins}composition::NodeLikeListener;$<TARGET_FILE:node_like_listener_component>\n")
@@ -62,8 +64,7 @@ target_compile_definitions(server_component
 target_link_libraries(server_component PUBLIC
   example_interfaces::example_interfaces
   rclcpp::rclcpp
-  rclcpp_components::component
-  ament_cmake_ros_core::ament_ros_defaults)
+  rclcpp_components::component)
 rclcpp_components_register_nodes(server_component "composition::Server")
 set(node_plugins "${node_plugins}composition::Server;$<TARGET_FILE:server_component>\n")
 
@@ -74,8 +75,7 @@ target_compile_definitions(client_component
 target_link_libraries(client_component PUBLIC
   example_interfaces::example_interfaces
   rclcpp::rclcpp
-  rclcpp_components::component
-  ament_cmake_ros_core::ament_ros_defaults)
+  rclcpp_components::component)
 rclcpp_components_register_nodes(client_component "composition::Client")
 set(node_plugins "${node_plugins}composition::Client;$<TARGET_FILE:client_component>\n")
 
@@ -93,8 +93,7 @@ target_link_libraries(manual_composition PRIVATE
   listener_component
   server_component
   client_component
-  rclcpp::rclcpp
-  ament_cmake_ros_core::ament_ros_defaults)
+  rclcpp::rclcpp)
 
 add_executable(linktime_composition
   src/linktime_composition.cpp)
@@ -113,16 +112,14 @@ target_link_libraries(linktime_composition PRIVATE
   ${libs}
   class_loader::class_loader
   rclcpp::rclcpp
-  rclcpp_components::component
-  ament_cmake_ros_core::ament_ros_defaults)
+  rclcpp_components::component)
 
 add_executable(dlopen_composition
   src/dlopen_composition.cpp)
 target_link_libraries(dlopen_composition PRIVATE
   class_loader::class_loader
   rclcpp::rclcpp
-  rclcpp_components::component
-  ament_cmake_ros_core::ament_ros_defaults)
+  rclcpp_components::component)
 
 install(TARGETS
   talker_component

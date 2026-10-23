@@ -2,12 +2,17 @@ cmake_minimum_required(VERSION 3.20)
 
 project(demo_nodes_cpp)
 
+# Default to C++17
+if(NOT CMAKE_CXX_STANDARD)
+  set(CMAKE_CXX_STANDARD 17)
+  set(CMAKE_CXX_STANDARD_REQUIRED ON)
+endif()
+
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
 endif()
 
 find_package(ament_cmake REQUIRED)
-find_package(ament_cmake_ros_core REQUIRED)
 find_package(example_interfaces REQUIRED)
 find_package(rcl REQUIRED)
 find_package(rcl_interfaces REQUIRED)
@@ -26,7 +31,6 @@ function(custom_executable subfolder target)
     "$<INSTALL_INTERFACE:include/${PROJECT_NAME}>")
   target_link_libraries(${target} PRIVATE
     ${ARG_DEPENDENCIES}
-    ament_cmake_ros_core::ament_ros_defaults
   )
   install(TARGETS ${target}
     DESTINATION lib/${PROJECT_NAME})
@@ -47,7 +51,6 @@ target_include_directories(allocator_tutorial PRIVATE
 target_link_libraries(allocator_tutorial PRIVATE
   rclcpp::rclcpp
   example_interfaces::example_interfaces
-  ament_cmake_ros_core::ament_ros_defaults
 )
 install(TARGETS allocator_tutorial
   DESTINATION lib/${PROJECT_NAME})
@@ -84,8 +87,6 @@ function(create_demo_library plugin executable)
     "$<INSTALL_INTERFACE:include/${PROJECT_NAME}>")
   target_link_libraries(${library} PRIVATE
     ${ARG_DEPENDENCIES}
-    rclcpp::rclcpp
-    ament_cmake_ros_core::ament_ros_defaults
   )
   install(TARGETS ${library}
     ARCHIVE DESTINATION lib

@@ -15,11 +15,7 @@
 #include <array>
 #include <string>
 
-#include "rclcpp/logging.hpp"
-#include "rclcpp/node.hpp"
-#include "rclcpp/node_options.hpp"
-#include "rclcpp/subscription.hpp"
-#include "rclcpp/subscription_options.hpp"
+#include "rclcpp/rclcpp.hpp"
 #include "rclcpp_components/register_node_macro.hpp"
 #include "rcpputils/join.hpp"
 

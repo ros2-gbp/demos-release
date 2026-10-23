@@ -14,15 +14,11 @@
 
 #include <chrono>
 #include <cmath>
-#include <cstdio>
-#include <cstdlib>
+#include <fstream>
 #include <memory>
 #include <utility>
 
-#include "rclcpp/executors/single_threaded_executor.hpp"
-#include "rclcpp/node.hpp"
-#include "rclcpp/qos.hpp"
-#include "rclcpp/utilities.hpp"
+#include "rclcpp/rclcpp.hpp"
 
 #include "rttest/utils.hpp"
 

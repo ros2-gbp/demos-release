@@ -13,14 +13,9 @@
 // limitations under the License.
 
 #include <chrono>
-#include <cstddef>
-#include <iostream>
 #include <string>
 
 #include "quality_of_service_demo/common_nodes.hpp"
-
-#include "rclcpp/logging.hpp"
-#include "rclcpp/qos.hpp"
 
 #include "./utils.hpp"
 

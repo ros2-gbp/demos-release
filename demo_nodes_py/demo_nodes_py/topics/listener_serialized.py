@@ -36,9 +36,9 @@ class SerializedSubscriber(Node):
         self.get_logger().info('I heard: "%s"' % msg)
 
 
-def main():
+def main(args=None):
     try:
-        with rclpy.init():
+        with rclpy.init(args=args):
             serialized_subscriber = SerializedSubscriber()
 
             rclpy.spin(serialized_subscriber)

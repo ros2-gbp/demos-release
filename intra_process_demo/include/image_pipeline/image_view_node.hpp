@@ -19,11 +19,7 @@
 #include <string>
 
 #include "opencv2/highgui/highgui.hpp"
-#include "rclcpp/node.hpp"
-#include "rclcpp/node_options.hpp"
-#include "rclcpp/qos.hpp"
-#include "rclcpp/subscription.hpp"
-#include "rclcpp/utilities.hpp"
+#include "rclcpp/rclcpp.hpp"
 #include "sensor_msgs/msg/image.hpp"
 
 #include "common.hpp"

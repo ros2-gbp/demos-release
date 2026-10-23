@@ -2,15 +2,10 @@
 Changelog for package demo_nodes_cpp_native
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-0.38.1 (2026-10-23)
--------------------
-* Link demo_nodes_cpp_native against the rmw_fastrtps_cpp CMake target (`#815 <https://github.com/ros2/demos//issues/815>`_)
-* Use the SPDX identifier Apache-2.0 in license declarations (`#809 <https://github.com/ros2/demos//issues/809>`_)
-* granular rclcpp/rclcpp.hpp and include what you use (`#806 <https://github.com/ros2/demos//issues/806>`_)
-* Use std::endian (`#783 <https://github.com/ros2/demos//issues/783>`_)
-* Contributors: Alejandro Hernández Cordero, Maurice Alexander Purnawan, Michael Carroll, Tomoya Fujita
+0.37.10 (2026-10-23)
+--------------------
 
-0.38.0 (2026-05-07)
+0.37.9 (2026-07-06)
 -------------------
 
 0.37.7 (2026-03-24)

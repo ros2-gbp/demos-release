@@ -20,9 +20,7 @@
 #include "logging_demo/srv/config_logger.hpp"
 #include "logging_demo/visibility_control.h"
 
-#include "rclcpp/node.hpp"
-#include "rclcpp/node_options.hpp"
-#include "rclcpp/service.hpp"
+#include "rclcpp/rclcpp.hpp"
 
 namespace logging_demo
 {

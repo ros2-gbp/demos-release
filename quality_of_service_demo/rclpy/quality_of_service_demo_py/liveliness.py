@@ -53,10 +53,10 @@ def parse_args():
     return parser.parse_args()
 
 
-def main():
+def main(args=None):
     try:
         parsed_args = parse_args()
-        with rclpy.init():
+        with rclpy.init(args=args):
             topic = 'qos_liveliness_chatter'
             liveliness_lease_duration = Duration(
                 seconds=parsed_args.liveliness_lease_duration / 1000.0)

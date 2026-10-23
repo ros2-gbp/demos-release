@@ -133,9 +133,9 @@ class MultiPubNode(Node):
             self.destroy_publisher(pub)
 
 
-def main():
+def main(args=None):
     try:
-        with rclpy.init():
+        with rclpy.init(args=args):
             topic_name_for_detect_pub_matched_event = 'pub_topic_matched_event_detect'
             topic_name_for_detect_sub_matched_event = 'sub_topic_matched_event_detect'
 
