@@ -8,7 +8,7 @@ package_name = 'lifecycle_py'
 
 setup(
     name=package_name,
-    version='0.38.0',
+    version='0.38.1',
     packages=find_packages(exclude=['test']),
     data_files=[
         ('share/ament_index/resource_index/packages',
@@ -32,7 +32,7 @@ setup(
     description=(
         'Python lifecycle node demo'
     ),
-    license='Apache License, Version 2.0',
+    license='Apache-2.0',
     extras_require={
         'test': [
             'pytest',
